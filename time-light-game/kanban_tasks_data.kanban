@@ -10,7 +10,10 @@
 		{
 			"uuid": "c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
+				"90cc72e9-143b-4cfd-a2c2-44899877eb31"
+			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
@@ -23,7 +26,22 @@
 			"tasks": []
 		}
 	],
-	"tasks": [],
+	"tasks": [
+		{
+			"uuid": "b0d90b95-1bc1-4abe-968f-10193f4f6f44",
+			"title": "3D player controller",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "90cc72e9-143b-4cfd-a2c2-44899877eb31",
+			"title": "Test Movement Scene",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		}
+	],
 	"layout": {
 		"columns": [
 			[
