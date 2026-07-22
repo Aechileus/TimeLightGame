@@ -16,7 +16,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PhantomCameraManager="*uid://duq6jhf6unyis"
+Global="*uid://b0obqlkwt0opv"
+SignalBus="*uid://bt0aw8wv577hy"
+SceneChanger="*uid://bqe1a0jxnaoyd"
+Util="*uid://bfdq2honfh70u"
 
 [display]
 
@@ -25,7 +28,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 
 [file_customization]
 
