@@ -13,7 +13,9 @@
 			"tasks": [
 				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
 				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
-				"4e6a8c1f-e610-4a3f-9440-9ecfb37050e7"
+				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
+				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
+				"457b560e-4fed-4848-9603-70901284c62b"
 			]
 		},
 		{
@@ -133,9 +135,23 @@
 			"steps": []
 		},
 		{
-			"uuid": "4e6a8c1f-e610-4a3f-9440-9ecfb37050e7",
-			"title": "",
+			"uuid": "b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
+			"title": "Hacking and Slashing",
 			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "f7934af6-18b3-482f-8c94-d6ad1f23f1de",
+			"title": "Enemies",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "457b560e-4fed-4848-9603-70901284c62b",
+			"title": "Freeze time zones kinda like celeste",
+			"description": "When you enter an orb or something it can pause for you making you not waste time.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

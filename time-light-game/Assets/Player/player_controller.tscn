@@ -115,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5543787, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=2041865859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18740332, 0)
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_l00eo")
 
