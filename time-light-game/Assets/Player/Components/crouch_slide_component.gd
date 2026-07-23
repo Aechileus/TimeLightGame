@@ -10,6 +10,16 @@ class_name PlayerCrouchSlideComponent
 @export_range(0.1, 10.0, 0.1) var slide_exit_speed: float = 2.5
 @export_range(0.0, 10.0, 0.1) var slide_steering: float = 2.5
 
+@export_group("Air Slam")
+# how hard crouching in the air yanks you down
+@export_range(1.0, 40.0, 0.5) var slam_speed: float = 14.0
+# little reward for slamming into a slide, multiplies landing speed
+@export_range(1.0, 2.0, 0.05) var slam_landing_boost: float = 1.1
+
+@export_group("Slide Jump")
+# horizontal speed multiplier when jumping out of a slide
+@export_range(1.0, 2.0, 0.05) var slide_jump_boost: float = 1.15
+
 @onready var _body: CharacterBody3D = $"../../PlayerCharacterBody3D"
 @onready var _collision: CollisionShape3D = $"../../PlayerCharacterBody3D/PlayerCollisionShape"
 
@@ -18,6 +28,7 @@ var _standing_height: float
 var _collision_bottom: float
 var _is_crouching: bool = false
 var _is_sliding: bool = false
+var _is_slamming: bool = false
 
 
 # Duplicates the capsule so we can remember the bottom position. Keeping that bottom fixed
@@ -35,9 +46,27 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 	var crouch_held := Input.is_action_pressed(&"crouch")
 	var horizontal_speed := Vector2(_body.velocity.x, _body.velocity.z).length()
 
-	if Input.is_action_just_pressed(&"crouch") and was_on_floor:
-		if horizontal_speed >= slide_minimum_entry_speed or is_sprinting:
-			_start_slide(move_direction, horizontal_speed)
+	if Input.is_action_just_pressed(&"crouch"):
+		if was_on_floor:
+			if horizontal_speed >= slide_minimum_entry_speed or is_sprinting:
+				_start_slide(move_direction, horizontal_speed)
+		else:
+			# crouching in the air starts a slam, no more floaty crouch drag
+			_is_slamming = true
+
+	# letting go of crouch bails out of the slam early
+	if _is_slamming and not crouch_held:
+		_is_slamming = false
+
+	if _is_slamming:
+		if was_on_floor:
+			# touchdown, convert the slam into a slide if theres enough momentum
+			_is_slamming = false
+			if horizontal_speed >= slide_minimum_entry_speed:
+				_start_slide(move_direction, horizontal_speed * slam_landing_boost)
+		else:
+			# keep the pull applied every frame so gravity tweaks cant soften it
+			_body.velocity.y = minf(_body.velocity.y, -slam_speed)
 
 	if _is_sliding and (not crouch_held or not was_on_floor):
 		stop_slide()
@@ -78,6 +107,18 @@ func is_crouching() -> bool:
 # Lets the footstepper figure out slide state.
 func is_sliding() -> bool:
 	return _is_sliding
+
+# Lets the controller know a slam is pulling the player down, mostly so the
+# wall slide fall cap knows to stay out of the way.
+func is_slamming() -> bool:
+	return _is_slamming
+
+
+# Called by the controller when the player jumps out of a slide.
+# Scales horizontal velocity so slide hopping is a real way to build speed.
+func apply_slide_jump_boost() -> void:
+	_body.velocity.x *= slide_jump_boost
+	_body.velocity.z *= slide_jump_boost
 
 
 # Clear the slide state. Crouching can stay active as long as the input is held.

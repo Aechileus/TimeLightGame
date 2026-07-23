@@ -12,10 +12,8 @@
 			"title": "Todo",
 			"tasks": [
 				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
-				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
 				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
-				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
-				"7ada93f1-5714-4961-9d8e-41acfc1014c5"
+				"4e6a8c1f-e610-4a3f-9440-9ecfb37050e7"
 			]
 		},
 		{
@@ -35,7 +33,10 @@
 				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
 				"06596bd5-cd59-47f8-ade3-9075b1847e37",
 				"6b581247-698f-497d-8297-ad055f9d70d7",
-				"35f83554-786e-4e04-9bed-dd81372c9e03"
+				"35f83554-786e-4e04-9bed-dd81372c9e03",
+				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
+				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
+				"d5ef252e-c4be-4b57-9476-6badf78ab7a0"
 			]
 		}
 	],
@@ -92,7 +93,7 @@
 		{
 			"uuid": "d5ef252e-c4be-4b57-9476-6badf78ab7a0",
 			"title": "Pause Time",
-			"description": "",
+			"description": "We can use the pixelization mesh on the player character to get real fancy",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
@@ -128,6 +129,13 @@
 			"uuid": "7ada93f1-5714-4961-9d8e-41acfc1014c5",
 			"title": "Crouching Midair bug",
 			"description": "When you crouch mid jump since I remember foot position of the player and move to that in a crouch it can be awkward and kinda hover you.  We might want to turn this into a feature where you can slam down (like ultrakill)",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "4e6a8c1f-e610-4a3f-9440-9ecfb37050e7",
+			"title": "",
+			"description": "",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

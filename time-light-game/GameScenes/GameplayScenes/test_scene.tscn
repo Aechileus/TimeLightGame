@@ -116,7 +116,7 @@ script = ExtResource("6_oss0h")
 [node name="Fish" parent="." unique_id=1989897502 instance=ExtResource("7_yk13y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31377125, 0.87919474, -3.1374674)
 
-[node name="JesseSpillaneSpaceBomb" type="AudioStreamPlayer3D" parent="." unique_id=1260528991]
+[node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1260528991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
 stream = ExtResource("8_y2afc")
 attenuation_model = 3

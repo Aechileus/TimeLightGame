@@ -25,6 +25,12 @@ extends Node3D
 var capture_mouse_on_start: bool = true
 var click_to_capture_mouse: bool = true
 
+@export_group("Time Stop")
+# what pixel_size settles back to after a resume, 3 or 4 both look decent
+@export_range(1.0, 8.0, 0.5) var normal_pixel_size: float = 3.0
+@export var frozen_tint: Color = Color(1.0, 0.3, 0.3)
+@export var resume_flash_tint: Color = Color(0.35, 1.0, 0.4)
+
 @onready var character_body: CharacterBody3D = $PlayerCharacterBody3D
 @onready var player_camera: Camera3D = $PlayerCharacterBody3D/PlayerCamera
 @onready var footstep_checker: RayCast3D = $PlayerCharacterBody3D/FootStepChecker
@@ -33,6 +39,9 @@ var click_to_capture_mouse: bool = true
 @onready var crouch_slide: PlayerCrouchSlideComponent = $Components/CrouchSlide
 @onready var stair_step: PlayerStairStepComponent = $Components/StairStep
 @onready var footsteps: PlayerFootstepComponent = $Components/Footsteps
+@onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
+@onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/arms_rig/AnimationPlayer
+@onready var arms_rig = $PlayerCharacterBody3D/arms_rig
 
 var _gravity: float = 9.8
 var _is_sprinting: bool = false
@@ -40,11 +49,26 @@ var _sprint_grace_time_left: float = 0.0
 var _camera_base_height: float = 0.0
 var _camera_current_height: float = 0.0
 var _camera_step_offset: float = 0.0
+var _overlay_material: ShaderMaterial
+var _overlay_was_visible: bool = false
+var _overlay_tween: Tween
+var _flash_tween: Tween
 
 func _ready() -> void:
+	# player keeps processing while the tree is paused so the camera still works
+	# during time stop, movement gets gated in _physics_process instead
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_gravity = float(ProjectSettings.get_setting("physics/3d/default_gravity", 9.8))
 	_camera_base_height = player_camera.position.y
 	_camera_current_height = _camera_base_height
+
+	_overlay_material = overlay_mesh.mesh.material as ShaderMaterial
+	# start from a known tint so the first tween has something to lerp from
+	_overlay_material.set_shader_parameter("tint", Color.WHITE)
+	_overlay_was_visible = overlay_mesh.visible
+	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
+	SignalBus.time_stop_winding_up.connect(_on_time_stop_winding_up)
 
 	wall_movement.setup(character_body)
 	footsteps.setup(character_body, footstep_checker, footstep_audio)
@@ -54,6 +78,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# frozen in time, no moving around. this is where queued actions will
+	# eventually get set up while everything is stopped
+	if Global.is_time_stopped():
+		return
+
 	wall_movement.begin_frame(delta)
 
 	var input_vector := Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
@@ -105,7 +134,9 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 	if wall_movement.controls_locked():
 		return
 
-	var target_speed := crouch_slide.movement_speed if crouch_slide.is_crouching() else walk_speed
+	# crouch speed only matters on the ground, airborne crouching keeps momentum
+	# so the slam actually carries into the landing
+	var target_speed := crouch_slide.movement_speed if (crouch_slide.is_crouching() and was_on_floor) else walk_speed
 	if _is_sprinting:
 		target_speed = sprint_speed
 
@@ -148,12 +179,18 @@ func _apply_preserved_speed(
 func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 	var jump_pressed := Input.is_action_just_pressed(&"ui_accept")
 	if jump_pressed and was_on_floor:
+		# hopping out of a slide keeps the speed and stacks a little extra on top
+		if crouch_slide.is_sliding():
+			crouch_slide.apply_slide_jump_boost()
 		crouch_slide.stop_slide()
 		character_body.velocity.y = jump_velocity
 		return true
 
 	if wall_movement.try_wall_jump(jump_pressed):
 		crouch_slide.stop_slide()
+		var wallkicknoise = preload("res://Resources/SFX/Footsteps/wallkick.wav")
+		footstep_audio.stream = wallkicknoise
+		footstep_audio.play()
 		return true
 
 	if was_on_floor:
@@ -161,11 +198,16 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 
 	var active_gravity := wall_movement.get_gravity_multiplier(gravity_multiplier)
 	character_body.velocity.y -= _gravity * active_gravity * delta
-	wall_movement.clamp_fall_speed()
+	# the wall slide fall cap would eat the slam, so the slam wins while its active
+	if not crouch_slide.is_slamming():
+		wall_movement.clamp_fall_speed()
 	return false
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"time_stop"):
+		Global.toggle_time_stop()
+		return
 	if event.is_action_pressed(&"ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
@@ -192,3 +234,35 @@ func _update_camera_height(delta: float) -> void:
 	var camera_position := player_camera.position
 	camera_position.y = _camera_current_height + _camera_step_offset
 	player_camera.position = camera_position
+
+
+func _on_game_speed_state_changed(new_state) -> void:
+	if _overlay_tween:
+		_overlay_tween.kill()
+	if _flash_tween:
+		_flash_tween.kill()
+
+	if new_state == Global.TimeState.STOPPED:
+		_overlay_tween = create_tween().set_parallel()
+		_overlay_tween.tween_property(_overlay_material, "shader_parameter/tint", frozen_tint, 0.15)
+		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", 2.0, 0.15)
+	else:
+		# ease the pixelization back out while a quick green flash fades to normal
+		_overlay_tween = create_tween()
+		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", normal_pixel_size, 0.4)
+
+		_flash_tween = create_tween()
+		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", resume_flash_tint, 0.08)
+		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", Color.WHITE, 0.35)
+		_flash_tween.tween_callback(func() -> void:
+			overlay_mesh.visible = _overlay_was_visible
+		)
+
+
+func _on_time_stop_winding_up(_stopping: bool) -> void:
+	# arms swing during the last two beeps so the push lands right as the state flips,
+	# the shader tweens run on their own now so nothing waits on this animation
+	arms_rig.visible = true
+	arms_animation_player.play("push_R")
+	await arms_animation_player.animation_finished
+	arms_rig.visible = false
