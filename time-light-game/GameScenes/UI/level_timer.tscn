@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b8fc7wpo54ccm"]
+
+[ext_resource type="Script" uid="uid://cpmvo3sephloe" path="res://GameScenes/UI/level_timer.gd" id="1_timer"]
+
+[node name="LevelTimer" type="CanvasLayer" unique_id=390761727]
+layer = 10
+script = ExtResource("1_timer")
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1449434750]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "60.0"
+horizontal_alignment = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://x0v1iv1xejik"]
+
+[ext_resource type="AudioStream" uid="uid://xhihxq5r42jj" path="res://Resources/SFX/Footsteps/wallkick.wav" id="1_pag08"]
+[ext_resource type="Script" uid="uid://ber20p8yni0fl" path="res://Resources/Abilities/ability.gd" id="2_6p8pd"]
+
+[resource]
+script = ExtResource("2_6p8pd")
+display_name = "Test"
+effect_node = "Test"
+needs_target = false
+time_cost = 0.0
+speed = 1.0
+cast_range = 1.0
+cast_sfx = ExtResource("1_pag08")
+cast_animation = "finger_gun_fire"

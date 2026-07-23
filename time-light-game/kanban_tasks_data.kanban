@@ -11,18 +11,20 @@
 			"uuid": "c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
 			"title": "Todo",
 			"tasks": [
-				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
-				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
 				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
 				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
-				"457b560e-4fed-4848-9603-70901284c62b"
+				"457b560e-4fed-4848-9603-70901284c62b",
+				"30b1278a-f8c2-493e-be8c-b9339701a74d",
+				"9b9252f9-fa64-4367-96f4-e921e829b854",
+				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e"
 			]
 		},
 		{
@@ -38,7 +40,8 @@
 				"35f83554-786e-4e04-9bed-dd81372c9e03",
 				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
 				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
-				"d5ef252e-c4be-4b57-9476-6badf78ab7a0"
+				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
+				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
 			]
 		}
 	],
@@ -152,6 +155,27 @@
 			"uuid": "457b560e-4fed-4848-9603-70901284c62b",
 			"title": "Freeze time zones kinda like celeste",
 			"description": "When you enter an orb or something it can pause for you making you not waste time.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "30b1278a-f8c2-493e-be8c-b9339701a74d",
+			"title": "3D animations with weapons (scary)",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "9b9252f9-fa64-4367-96f4-e921e829b854",
+			"title": "I think we should refactor the level_timer",
+			"description": "When you scroll to set time until next pause, I think it should actively remove that time from the level timer.  Once the time in the bottom right is gone and the level timer is gone.  GGS.  ",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
+			"title": "Add finsh line area",
+			"description": "",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

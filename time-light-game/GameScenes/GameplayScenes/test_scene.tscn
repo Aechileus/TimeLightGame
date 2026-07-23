@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://oooklpjssfy5" path="res://Assets/Props/fish.tscn" id="7_yk13y"]
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="8_y2afc"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_6rgnf"]
+[ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="10_leveltimer"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("9_6rgnf")
@@ -26,6 +27,8 @@ volumetric_fog_detail_spread = 2.7991006
 volumetric_fog_sky_affect = 0.67
 
 [node name="TestScene" type="Node3D" unique_id=585908160]
+
+[node name="LevelTimer" parent="." unique_id=798731190 instance=ExtResource("10_leveltimer")]
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("1_ojn2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7528832, 1.1292973, 0.89392614)

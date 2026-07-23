@@ -42,9 +42,10 @@ var click_to_capture_mouse: bool = true
 @onready var stair_step: PlayerStairStepComponent = $Components/StairStep
 @onready var footsteps: PlayerFootstepComponent = $Components/Footsteps
 @onready var time_manipulation: PlayerTimeManipulationComponent = $Components/TimeManipulation
+@onready var abilities: PlayerAbilitiesComponent = $Components/Abilities
 @onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
-@onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/arms_rig/AnimationPlayer
-@onready var arms_rig = $PlayerCharacterBody3D/arms_rig
+@onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/PlayerCamera/arms_rig/AnimationPlayer
+@onready var arms_rig = $PlayerCharacterBody3D/PlayerCamera/arms_rig
 
 var _gravity: float = 9.8
 var _is_sprinting: bool = false
@@ -88,8 +89,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# frozen in time, no moving around. this is where queued actions will
-	# eventually get set up while everything is stopped
+	# frozen in time, no moving around. queueing ended up living in the
+	# abilities component instead so this just gates movement now. Oh well, composition wins.
 	if Global.is_time_stopped():
 		return
 
@@ -281,8 +282,13 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 		arms_rig.visible = false
 		return
 	if Global.is_time_stopped() == true:
+		# a queued ability with its own animation will override the time push/wave thing
+		var anim := "push_L"
+		if abilities.get_queued_animation() != "":
+			anim = abilities.get_queued_animation()
 		arms_rig.visible = true
-		arms_animation_player.play("push_L")
+		# DO NOT CHANGE THIS, WE PLAY THE ANIMATION OF ABILITIES IN TIME STOP BASED OFF OF THE RESOURCE!
+		arms_animation_player.play(anim)
 		await arms_animation_player.animation_finished
 		arms_rig.visible = false
 		return

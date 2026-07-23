@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dbyk6uiln76e1"]
+
+[ext_resource type="Script" uid="uid://ber20p8yni0fl" path="res://Resources/Abilities/ability.gd" id="1_ability"]
+[ext_resource type="AudioStream" uid="uid://xhihxq5r42jj" path="res://Resources/SFX/Footsteps/wallkick.wav" id="1_fqx32"]
+
+[resource]
+script = ExtResource("1_ability")
+display_name = "Dash"
+effect_node = "Dash"
+time_cost = 10.0
+cast_range = 6.0
+cast_sfx = ExtResource("1_fqx32")
+cast_animation = "jab_R"
