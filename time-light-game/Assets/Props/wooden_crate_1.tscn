@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://kvtvwbq1w1se"]
+
+[ext_resource type="PackedScene" uid="uid://d12nav1vgihyr" path="res://Assets/PSXPack2/wooden_crate_hx_5_1.glb" id="1_si3dm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(1.4, 1.4, 1.4)
+
+[node name="wooden_crate_1" unique_id=57569319 groups=["wood"] instance=ExtResource("1_si3dm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=106465566]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=408623204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015869141, 0.7259964, 0.0038146973)
+shape = SubResource("BoxShape3D_l00eo")

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dyw3cgh2x26hy"]
+
+[ext_resource type="Script" uid="uid://jy04eyhe2x6r" path="res://Assets/Player/player_controller.gd" id="1_player"]
+[ext_resource type="AudioStream" uid="uid://rtld3m8myrvt" path="res://Resources/SFX/Footsteps/concrete.wav" id="2_bjkko"]
+[ext_resource type="AudioStream" uid="uid://c4hqdnad4fpnt" path="res://Resources/SFX/Footsteps/carpet.wav" id="3_ihoj2"]
+[ext_resource type="AudioStream" uid="uid://daf52s15mlwco" path="res://Resources/SFX/Footsteps/wood.ogg" id="4_6d8w8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(0.6, 1.75, 0.6)
+
+[node name="PlayerController" type="Node3D" unique_id=440292127]
+script = ExtResource("1_player")
+walk_footstep_interval = 0.45
+sprint_footstep_interval = 0.30000000000000004
+footstep_check_distance = 0.85
+material_footstep_streams = Dictionary[int, AudioStream]({
+0: ExtResource("2_bjkko"),
+2: ExtResource("3_ihoj2"),
+3: ExtResource("4_6d8w8")
+})
+
+[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457]
+
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="PlayerCharacterBody3D" unique_id=369314731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_l00eo")
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerCharacterBody3D" unique_id=1213490484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5543787, 0)
+
+[node name="FootStepChecker" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=1094064857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59776616, 0)
+
+[node name="PlayerSFXs" type="AudioStreamPlayer3D" parent="PlayerCharacterBody3D" unique_id=353535756]
+bus = &"SFX"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacterBody3D" unique_id=199843824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.611211, 0)
+light_color = Color(0.8774927, 0.33457935, 0.32615355, 1)
+omni_range = 1.6601839
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="PlayerCharacterBody3D" unique_id=130594368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.611211, 0)
+omni_range = 17.285

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ogcjlodvbwae"]
+
+[ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="1_ojn2j"]
+[ext_resource type="PackedScene" uid="uid://dys5rt76iy6a" path="res://Assets/Props/wooden_plank.tscn" id="3_x7jfm"]
+[ext_resource type="PackedScene" uid="uid://kvtvwbq1w1se" path="res://Assets/Props/wooden_crate_1.tscn" id="4_eedxr"]
+[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="4_s8rcb"]
+
+[node name="TestScene" type="Node3D" unique_id=585908160]
+
+[node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("1_ojn2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7528832, 1.1292973, 0.89392614)
+
+[node name="wooden_plank" parent="." unique_id=14804143 instance=ExtResource("3_x7jfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93728334, -0.009966731, 0.7283559)
+
+[node name="wooden_plank2" parent="." unique_id=608983462 instance=ExtResource("3_x7jfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5052678, -0.009966731, 0.7283559)
+
+[node name="wooden_plank3" parent="." unique_id=228039694 instance=ExtResource("3_x7jfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5052678, -0.009966731, 0.13018513)
+
+[node name="wooden_plank4" parent="." unique_id=1349091485 instance=ExtResource("3_x7jfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945581, -0.009966731, 0.13018513)
+
+[node name="wooden_crate_1" parent="." unique_id=57569319 instance=ExtResource("4_eedxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28270078, -0.024226695, 3.9524512)
+
+[node name="wooden_crate_2" parent="." unique_id=1677935479 instance=ExtResource("4_eedxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28270078, -0.8582566, -5.0610204)
+
+[node name="wooden_crate_3" parent="." unique_id=1109823993 instance=ExtResource("4_eedxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28270078, -0.54860306, -3.6459866)
+
+[node name="wooden_crate_4" parent="." unique_id=1109030595 instance=ExtResource("4_eedxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0245807, -1.1207082, -5.076167)
+
+[node name="FloorContainer" type="Node" parent="." unique_id=911749726]
+
+[node name="FloorCeilingTiled" parent="FloorContainer" unique_id=2090689099 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="FloorCeilingTiled2" parent="FloorContainer" unique_id=1778240396 instance=ExtResource("4_s8rcb")]
+
+[node name="FloorCeilingTiled3" parent="FloorContainer" unique_id=1617227943 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="FloorCeilingTiled4" parent="FloorContainer" unique_id=1767906612 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="FloorCeilingTiled5" parent="FloorContainer" unique_id=864924037 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="FloorCeilingTiled6" parent="FloorContainer" unique_id=1705436439 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="FloorCeilingTiled7" parent="FloorContainer" unique_id=958209382 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="FloorCeilingTiled8" parent="FloorContainer" unique_id=299991450 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="FloorCeilingTiled9" parent="FloorContainer" unique_id=317195804 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="FloorCeilingTiled10" parent="FloorContainer" unique_id=1289460438 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
+
+[node name="FloorCeilingTiled11" parent="FloorContainer" unique_id=2090529396 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="FloorCeilingTiled12" parent="FloorContainer" unique_id=346943682 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 0)
+
+[node name="FloorCeilingTiled13" parent="FloorContainer" unique_id=1823049203 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, -4)
+
+[node name="FloorCeilingTiled14" parent="FloorContainer" unique_id=2138670896 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4)
+
+[node name="FloorCeilingTiled15" parent="FloorContainer" unique_id=456701732 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -4)
+
+[node name="FloorCeilingTiled16" parent="FloorContainer" unique_id=2039593027 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 4)
+
+[node name="FloorCeilingTiled17" parent="FloorContainer" unique_id=65415824 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+
+[node name="FloorCeilingTiled18" parent="FloorContainer" unique_id=977951268 instance=ExtResource("4_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 4)

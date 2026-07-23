@@ -11,19 +11,29 @@
 			"uuid": "c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
 			"title": "Todo",
 			"tasks": [
-				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
-				"90cc72e9-143b-4cfd-a2c2-44899877eb31"
+				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
+				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"6b581247-698f-497d-8297-ad055f9d70d7",
+				"35f83554-786e-4e04-9bed-dd81372c9e03",
+				"06596bd5-cd59-47f8-ade3-9075b1847e37"
+			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
+				"053942a6-64b7-4843-a33a-9fcb29746a2e",
+				"90cc72e9-143b-4cfd-a2c2-44899877eb31",
+				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5"
+			]
 		}
 	],
 	"tasks": [
@@ -38,6 +48,62 @@
 			"uuid": "90cc72e9-143b-4cfd-a2c2-44899877eb31",
 			"title": "Test Movement Scene",
 			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "053942a6-64b7-4843-a33a-9fcb29746a2e",
+			"title": "Footstep Logic",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
+			"title": "AutoStepHeightLogic",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "6b581247-698f-497d-8297-ad055f9d70d7",
+			"title": "Wall Kicking",
+			"description": "When a player jumps and contacts a wall whether they are looking at it or not we should slow their descent of their y axis (Gravity Multiplier on playercontroller) and allow them to jump again off of it",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "35f83554-786e-4e04-9bed-dd81372c9e03",
+			"title": "Sliding",
+			"description": "Players should be able to crouch using the \"crouch\" input map, and if theyre running or have good movement, they should slide forward.  We can probably tween their collision shape down to .6m on their height to make this feel smooth.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+			"title": "Dash",
+			"description": "Double Tap Sprint to lunge forward?  Maybe instead we have an ability set to like 1-4 and when a player right clicks it does the dash visually like in dishonored 1.\n",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "d5ef252e-c4be-4b57-9476-6badf78ab7a0",
+			"title": "Pause Time",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
+			"title": "Ability Selection",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "06596bd5-cd59-47f8-ade3-9075b1847e37",
+			"title": "Inertia?",
+			"description": "Maybe a slight inertia system could be interesting",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

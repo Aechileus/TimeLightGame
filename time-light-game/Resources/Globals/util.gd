@@ -12,3 +12,6 @@ enum GAME_SCENES {GAME, MENU}
 
 var GAME_PATH = "res://Main.tscn"
 var MENU_PATH = "res://Menu.tscn"
+
+# FOOTSTEP NOISES
+enum FLOOR_MATERIAL {CONCRETE, GRASS, CARPET, WOOD, Metal}

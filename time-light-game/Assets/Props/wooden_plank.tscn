@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dys5rt76iy6a"]
+
+[ext_resource type="PackedScene" uid="uid://buphh6hb64sxu" path="res://Assets/PSXPack2/wooden_plank_2.glb" id="1_jiffl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(1.2020874, 0.030395508, 0.17944336)
+
+[node name="wooden_plank" unique_id=14804143 groups=["wood"] instance=ExtResource("1_jiffl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=865594075]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=333219127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015563965, 0.013000488, 0.009155273)
+shape = SubResource("BoxShape3D_l00eo")
