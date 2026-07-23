@@ -13,16 +13,16 @@
 			"tasks": [
 				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
 				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
-				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
+				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
+				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
+				"7ada93f1-5714-4961-9d8e-41acfc1014c5"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing",
 			"tasks": [
-				"6b581247-698f-497d-8297-ad055f9d70d7",
-				"35f83554-786e-4e04-9bed-dd81372c9e03",
-				"06596bd5-cd59-47f8-ade3-9075b1847e37"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
 			]
 		},
 		{
@@ -32,7 +32,10 @@
 				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
 				"053942a6-64b7-4843-a33a-9fcb29746a2e",
 				"90cc72e9-143b-4cfd-a2c2-44899877eb31",
-				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5"
+				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
+				"06596bd5-cd59-47f8-ade3-9075b1847e37",
+				"6b581247-698f-497d-8297-ad055f9d70d7",
+				"35f83554-786e-4e04-9bed-dd81372c9e03"
 			]
 		}
 	],
@@ -75,7 +78,7 @@
 		{
 			"uuid": "35f83554-786e-4e04-9bed-dd81372c9e03",
 			"title": "Sliding",
-			"description": "Players should be able to crouch using the \"crouch\" input map, and if theyre running or have good movement, they should slide forward.  We can probably tween their collision shape down to .6m on their height to make this feel smooth.",
+			"description": "Players should be able to crouch using the \"crouch\" input map, and if theyre running or have good movement, they should slide forward.  We can probably tween their collision shape down to .6m on their height to make this feel smooth.\n\nNeed to add sprint deceleration/coyote time so players can still slide without it feeling like a mess of fingers to do.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
@@ -103,7 +106,28 @@
 		{
 			"uuid": "06596bd5-cd59-47f8-ade3-9075b1847e37",
 			"title": "Inertia?",
-			"description": "Maybe a slight inertia system could be interesting",
+			"description": "Maybe a slight inertia system could be interesting\nI decided to make it so speed ramps down really quickly when youre above a speed cap for sprinting or walking.  This doesnt feel floaty like ice, and also lets you feel like you can go fast...",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+			"title": "COMMENT EVERYTHING",
+			"description": "Need to add comments to all component functions since it can be confusing reading them not all under one big script.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "0dec7a52-dcab-406a-9af0-80f80dec30bf",
+			"title": "Add SFX for wall kicking",
+			"description": "can probably be done similarily to the footstep component, just need to check the group of the remembered wall and apply a sfx for it",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "7ada93f1-5714-4961-9d8e-41acfc1014c5",
+			"title": "Crouching Midair bug",
+			"description": "When you crouch mid jump since I remember foot position of the player and move to that in a crouch it can be awkward and kinda hover you.  We might want to turn this into a feature where you can slam down (like ultrakill)",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

@@ -1,32 +1,63 @@
 [gd_scene format=3 uid="uid://dyw3cgh2x26hy"]
 
 [ext_resource type="Script" uid="uid://jy04eyhe2x6r" path="res://Assets/Player/player_controller.gd" id="1_player"]
-[ext_resource type="AudioStream" uid="uid://rtld3m8myrvt" path="res://Resources/SFX/Footsteps/concrete.wav" id="2_bjkko"]
 [ext_resource type="AudioStream" uid="uid://c4hqdnad4fpnt" path="res://Resources/SFX/Footsteps/carpet.wav" id="3_ihoj2"]
 [ext_resource type="AudioStream" uid="uid://daf52s15mlwco" path="res://Resources/SFX/Footsteps/wood.ogg" id="4_6d8w8"]
+[ext_resource type="Script" uid="uid://thsejqie53kp" path="res://Assets/Player/Components/wall_movement_component.gd" id="5_wall"]
+[ext_resource type="Script" uid="uid://b8phu1stjphkj" path="res://Assets/Player/Components/crouch_slide_component.gd" id="6_crouch"]
+[ext_resource type="AudioStream" uid="uid://wm6olmc5oj8" path="res://Resources/SFX/Footsteps/concrete.ogg" id="6_vyx1p"]
+[ext_resource type="Script" uid="uid://c20qj1wvdesx8" path="res://Assets/Player/Components/stair_step_component.gd" id="7_stairs"]
+[ext_resource type="Script" uid="uid://hqjivw2o8ea7" path="res://Assets/Player/Components/footstep_component.gd" id="8_steps"]
+[ext_resource type="AudioStream" uid="uid://35v3lv5v14xp" path="res://Resources/SFX/Footsteps/grass.ogg" id="9_vyx1p"]
+[ext_resource type="AudioStream" uid="uid://by4jns16ahp4v" path="res://Resources/SFX/Footsteps/metal.ogg" id="10_rq5vb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
-size = Vector3(0.6, 1.75, 0.6)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
+radius = 0.3
+height = 1.7
 
 [node name="PlayerController" type="Node3D" unique_id=440292127]
 script = ExtResource("1_player")
-walk_footstep_interval = 0.45
-sprint_footstep_interval = 0.30000000000000004
-footstep_check_distance = 0.85
-material_footstep_streams = Dictionary[int, AudioStream]({
-0: ExtResource("2_bjkko"),
+overspeed_deceleration = 1.3
+momentum_steering = 2.5
+
+[node name="Components" type="Node" parent="." unique_id=1210953728]
+
+[node name="WallMovement" type="Node" parent="Components" unique_id=264129517]
+script = ExtResource("5_wall")
+jump_horizontal_velocity = 3.0
+
+[node name="CrouchSlide" type="Node" parent="Components" unique_id=1120910197]
+script = ExtResource("6_crouch")
+
+[node name="StairStep" type="Node" parent="Components" unique_id=1084148814]
+script = ExtResource("7_stairs")
+max_step_height = 0.5
+
+[node name="Footsteps" type="Node" parent="Components" unique_id=361699850]
+script = ExtResource("8_steps")
+walk_interval = 0.45
+sprint_interval = 0.30000000000000004
+check_distance = 0.85
+material_streams = Dictionary[int, AudioStream]({
+0: ExtResource("6_vyx1p"),
+1: ExtResource("9_vyx1p"),
 2: ExtResource("3_ihoj2"),
-3: ExtResource("4_6d8w8")
+3: ExtResource("4_6d8w8"),
+4: ExtResource("10_rq5vb")
 })
 
 [node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457]
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="PlayerCharacterBody3D" unique_id=369314731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_l00eo")
+shape = SubResource("CapsuleShape3D_oss0h")
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerCharacterBody3D" unique_id=1213490484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5543787, 0)
+
+[node name="StairStepRay" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=728562801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92217994, -0.22719502)
+target_position = Vector3(0, -0.982, -0.707)
 
 [node name="FootStepChecker" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=1094064857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59776616, 0)
