@@ -47,7 +47,7 @@ var click_to_capture_mouse: bool = true
 @onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/PlayerCamera/arms_rig/AnimationPlayer
 @onready var arms_rig = $PlayerCharacterBody3D/PlayerCamera/arms_rig
 
-var _gravity: float = 9.8
+@export var _gravity: float = 9.8
 var _is_sprinting: bool = false
 var _sprint_grace_time_left: float = 0.0
 var _camera_base_height: float = 0.0
@@ -217,6 +217,9 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"time_stop"):
+		# Time can always stop if free_time_control is on, and we can stop the countdown too
+		#if time_manipulation._free_time_control: # !! Doesn't work, seems to immediately unpause
+			#Global.force_time_stop()
 		# resuming is always fine, stopping needs a charge left in the tank
 		if Global.is_time_stopped() or time_manipulation.can_pause():
 			Global.toggle_time_stop()

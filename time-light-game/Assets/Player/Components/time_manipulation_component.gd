@@ -25,6 +25,7 @@ var _flow_window_active: bool = false
 var _flow_elapsed: float = 0.0
 var _flow_target: float = 0.0
 var _next_tick: float = 1.0
+var _free_time_control: bool = true
 
 var _tick_player: AudioStreamPlayer
 
@@ -48,7 +49,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# the clock only runs while time is actually flowing
-	if not _flow_window_active or Global.is_time_stopped():
+	if not _flow_window_active or Global.is_time_stopped() or _free_time_control:
 		return
 
 	_flow_elapsed += delta
@@ -84,7 +85,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Lets the controller check if stopping time is still on the table.
 func can_pause() -> bool:
-	return _charges_left > 0
+	return _charges_left > 0 or _free_time_control
 
 
 func _adjust_flow_time(direction: int) -> void:
@@ -117,6 +118,13 @@ func _update_label() -> void:
 		return
 	if _flowtime_label == null:
 		return
+	if _free_time_control:
+		_pauses_remain_label.hide()
+		_flowtime_label.hide()
+	else:
+		_pauses_remain_label.show()
+		_flowtime_label.show()
+		
 
 	if _flow_window_active and not Global.is_time_stopped():
 		# live countdown, drains from green to red as the window runs out

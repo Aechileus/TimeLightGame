@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var use_beeps: bool = true
+@export var use_beeps: bool = false
 @export var one_shot: bool = false
 
 var _used: bool = false
