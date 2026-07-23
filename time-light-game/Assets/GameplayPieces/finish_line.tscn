@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bi5m5xaah2oxr"]
+
+[ext_resource type="Script" uid="uid://e3knjvxsg4wb" path="res://Assets/GameplayPieces/finish_line.gd" id="1_7r3gb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1kwc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r3gb"]
+render_priority = 1
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0, 1, 0.14509805)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u1kwc"]
+material = SubResource("StandardMaterial3D_7r3gb")
+
+[sub_resource type="Curve" id="Curve_6cnrg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7r3gb"]
+curve = SubResource("Curve_6cnrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n52p5"]
+emission_shape_offset = Vector3(0, -1, 0)
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 1, 1)
+spread = 0.0
+gravity = Vector3(0, 5, 0)
+scale_over_velocity_max = 90.46
+color = Color(1, 1, 0.4745098, 0.9098039)
+emission_curve = SubResource("CurveTexture_7r3gb")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cnrg"]
+vertex_color_use_as_albedo = true
+emission = Color(0, 0.3882353, 0, 1)
+emission_energy_multiplier = 0.38
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7r3gb"]
+material = SubResource("StandardMaterial3D_6cnrg")
+size = Vector2(0.1, 0.1)
+
+[node name="FinishLine" type="Area3D" unique_id=8209525]
+collision_layer = 0
+script = ExtResource("1_7r3gb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1530298276]
+shape = SubResource("BoxShape3D_u1kwc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=614071958]
+mesh = SubResource("BoxMesh_u1kwc")
+
+[node name="CPUParticles3D" type="GPUParticles3D" parent="." unique_id=1075710872]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+process_material = SubResource("ParticleProcessMaterial_n52p5")
+draw_pass_1 = SubResource("QuadMesh_7r3gb")

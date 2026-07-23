@@ -4,6 +4,16 @@
 			"uuid": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"title": "Task",
 			"color": "569eff"
+		},
+		{
+			"uuid": "564582d7-ecf6-4981-9c78-82237188a878",
+			"title": "Bugfix",
+			"color": "f53819"
+		},
+		{
+			"uuid": "96d43955-5eb9-4e51-90e1-a02588a1236f",
+			"title": "Feature",
+			"color": "e4ef0e"
 		}
 	],
 	"stages": [
@@ -16,7 +26,8 @@
 				"457b560e-4fed-4848-9603-70901284c62b",
 				"30b1278a-f8c2-493e-be8c-b9339701a74d",
 				"9b9252f9-fa64-4367-96f4-e921e829b854",
-				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967"
+				"d7c3f938-d431-4485-a20f-a81359b79603",
+				"610ebf1b-a089-40f3-aa64-7b2e438e9ed2"
 			]
 		},
 		{
@@ -24,7 +35,8 @@
 			"title": "Doing",
 			"tasks": [
 				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e"
+				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967"
 			]
 		},
 		{
@@ -91,7 +103,7 @@
 		{
 			"uuid": "6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
 			"title": "Dash",
-			"description": "Double Tap Sprint to lunge forward?  Maybe instead we have an ability set to like 1-4 and when a player right clicks it does the dash visually like in dishonored 1.\n",
+			"description": "Double Tap Sprint to lunge forward?  Maybe instead we have an ability set to like 1-4 and when a player right clicks it does the dash visually like in dishonored 1.\n\n- I was thinking that most of the basic abilities would be keybinds so that you could use them in the game without having to pause",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
@@ -112,7 +124,7 @@
 		{
 			"uuid": "06596bd5-cd59-47f8-ade3-9075b1847e37",
 			"title": "Inertia?",
-			"description": "Maybe a slight inertia system could be interesting\nI decided to make it so speed ramps down really quickly when youre above a speed cap for sprinting or walking.  This doesnt feel floaty like ice, and also lets you feel like you can go fast...",
+			"description": "Maybe a slight inertia system could be interesting\nI decided to make it so speed ramps down really quickly when youre above a speed cap for sprinting or walking.  This doesnt feel floaty like ice, and also lets you feel like you can go fast...\n\n- The only thing with inertia that I'm finding is that it feels hard to do sharp ground turns, and given how fast I was thinking this game would end up playing, I reckon you'll want to be able to move pretty fast",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
@@ -168,15 +180,29 @@
 		{
 			"uuid": "9b9252f9-fa64-4367-96f4-e921e829b854",
 			"title": "I think we should refactor the level_timer",
-			"description": "When you scroll to set time until next pause, I think it should actively remove that time from the level timer.  Once the time in the bottom right is gone and the level timer is gone.  GGS.  ",
+			"description": "When you scroll to set time until next pause, I think it should actively remove that time from the level timer.  Once the time in the bottom right is gone and the level timer is gone.  GGS.  \n\n- If we get time, we should definitely trial both; I like the idea of having one big timer that's ticking down while you're playing, like, always, but your one could be a bit less confusing..?",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
 		{
 			"uuid": "c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
 			"title": "Add finsh line area",
-			"description": "",
+			"description": "Finish line exists but currently just restarts the level. I added a transparrent texture for debug purposes and some rudimentary billboard particles",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "d7c3f938-d431-4485-a20f-a81359b79603",
+			"title": "Dashing multiple times restarts the level..?",
+			"description": "Unless I missed why, this doesn't seem intended",
+			"category": "564582d7-ecf6-4981-9c78-82237188a878",
+			"steps": []
+		},
+		{
+			"uuid": "610ebf1b-a089-40f3-aa64-7b2e438e9ed2",
+			"title": "Red light green light tint doesn't fully work",
+			"description": "It looks like it doesn't exactly match the edges of the things it's applied to - especially noticable on the particles for the finish zone. Is this something to do with the order that the shaders are applied in?",
+			"category": "564582d7-ecf6-4981-9c78-82237188a878",
 			"steps": []
 		}
 	],

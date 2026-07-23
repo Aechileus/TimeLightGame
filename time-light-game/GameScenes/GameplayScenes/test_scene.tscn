@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="8_y2afc"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_6rgnf"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="10_leveltimer"]
+[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="11_qa46d"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("9_6rgnf")
@@ -27,6 +28,9 @@ volumetric_fog_detail_spread = 2.7991006
 volumetric_fog_sky_affect = 0.67
 
 [node name="TestScene" type="Node3D" unique_id=585908160]
+
+[node name="FinishLine" parent="." unique_id=411233920 instance=ExtResource("11_qa46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.96862, 4.836372, 0)
 
 [node name="LevelTimer" parent="." unique_id=798731190 instance=ExtResource("10_leveltimer")]
 
