@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="10_leveltimer"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="11_qa46d"]
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="12_84hxp"]
+[ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ramp_slim.tscn" id="13_84u62"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("9_6rgnf")
@@ -122,6 +123,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 2.317453, -2)
 
 [node name="wall_hr_17" parent="FloorContainer" unique_id=336403687 instance=ExtResource("5_s8rcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 7.9092565, -2)
+
+[node name="ramp_platform_slim_mx_12" parent="FloorContainer" unique_id=1221947856 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, -0.9999995, -5)
+
+[node name="ramp_platform_slim_mx_13" parent="FloorContainer" unique_id=465370888 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, -1.9999995, -5)
+
+[node name="ramp_platform_slim_mx_14" parent="FloorContainer" unique_id=1101343254 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, -2.9999995, -5)
+
+[node name="ramp_platform_slim_mx_15" parent="FloorContainer" unique_id=1933685315 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12, -3.9999995, -5)
+
+[node name="ramp_platform_slim_mx_16" parent="FloorContainer" unique_id=798369232 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, -4.9999995, -5)
+
+[node name="ramp_platform_slim_mx_17" parent="FloorContainer" unique_id=1869858086 instance=ExtResource("13_84u62")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16, -5.9999995, -5)
 
 [node name="Props" type="Node" parent="." unique_id=388706672]
 

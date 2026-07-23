@@ -44,6 +44,8 @@ size = Vector2(3, 3)
 
 [node name="PlayerController" type="Node3D" unique_id=440292127 groups=["player"]]
 script = ExtResource("1_player")
+sprint_deceleration = 12.0
+overspeed_deceleration = 0.5
 mouse_sensitivity = 0.00999999999999999
 frozen_tint = Color(1, 0.3019608, 0.3019608, 0.6745098)
 resume_flash_tint = Color(0.34901962, 1, 0.4, 1)
@@ -56,6 +58,7 @@ jump_horizontal_velocity = 2.5
 
 [node name="CrouchSlide" type="Node" parent="Components" unique_id=1120910197]
 script = ExtResource("6_crouch")
+slide_start_speed = 6.0
 slam_speed = 7.5
 
 [node name="TimeManipulation" type="Node" parent="Components" unique_id=1307419024]
@@ -285,7 +288,7 @@ autoplay = &"relax"
 
 [node name="StairStepRay" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=728562801]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92217994, -0.22719502)
-target_position = Vector3(0, -0.982, -0.707)
+target_position = Vector3(0, -1.602, -1.087)
 
 [node name="FootStepChecker" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=1094064857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59776616, 0)

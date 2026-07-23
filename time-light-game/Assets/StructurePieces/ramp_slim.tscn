@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://babk721kw363w"]
+
+[ext_resource type="PackedScene" uid="uid://d1lg1818dr1u4" path="res://Assets/PSXPack2/ramp_platform_slim_mx_1.glb" id="1_jkksc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_84u62"]
+friction = 0.0
+bounce = 0.4
+absorbent = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(1.4067627, 0.98687744, 2.001709)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l00eo"]
+points = PackedVector3Array(-0.71, 0, 0.57, 0.71, 0, 0.565, 0.71, 0, -1.41, -0.71, 0, -1.41, -0.71, 1, -1.41, 0.71, 1, -1.41)
+
+[node name="RampSlim" unique_id=1221947856 instance=ExtResource("1_jkksc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=914085969 groups=["metal", "ramp"]]
+physics_material_override = SubResource("PhysicsMaterial_84u62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=851885945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005004406, 0.5057068, 1.0003662)
+shape = SubResource("BoxShape3D_l00eo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1213106652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.4146934)
+shape = SubResource("ConvexPolygonShape3D_l00eo")

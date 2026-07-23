@@ -26,6 +26,9 @@ func try_step_up(horizontal_motion: Vector3) -> float:
 	_step_ray.force_raycast_update()
 	if not _step_ray.is_colliding():
 		return 0.0
+	# ramps handle their own slope, stepping up on them just jitters the player
+	if _is_in_ramp_group(_step_ray.get_collider()):
+		return 0.0
 	if _step_ray.get_collision_normal().dot(_body.up_direction) < cos(_body.floor_max_angle):
 		return 0.0
 
@@ -39,3 +42,13 @@ func try_step_up(horizontal_motion: Vector3) -> float:
 	_body.global_position.y += step_height
 	_body.velocity.y = 0.0
 	return step_height
+
+
+# ITS A RAMP (the identifier of ramps)
+func _is_in_ramp_group(collider: Object) -> bool:
+	var node := collider as Node
+	while node:
+		if node.is_in_group("ramp"):
+			return true
+		node = node.get_parent()
+	return false
