@@ -75,6 +75,10 @@ func apply_slide_motion(delta: float, move_direction: Vector3) -> bool:
 func is_crouching() -> bool:
 	return _is_crouching
 
+# Lets the footstepper figure out slide state.
+func is_sliding() -> bool:
+	return _is_sliding
+
 
 # Clear the slide state. Crouching can stay active as long as the input is held.
 func stop_slide() -> void:

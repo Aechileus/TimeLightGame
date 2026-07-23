@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="4_s8rcb"]
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/wall_1.tscn" id="5_s8rcb"]
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="6_oss0h"]
+[ext_resource type="PackedScene" uid="uid://oooklpjssfy5" path="res://Assets/Props/fish.tscn" id="7_yk13y"]
+[ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="8_y2afc"]
 
 [node name="TestScene" type="Node3D" unique_id=585908160]
 
@@ -110,3 +112,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0245807, -1.1207082, -5.076
 
 [node name="LevelRestarterTemp" type="Node" parent="." unique_id=1803876332]
 script = ExtResource("6_oss0h")
+
+[node name="Fish" parent="." unique_id=1989897502 instance=ExtResource("7_yk13y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31377125, 0.87919474, -3.1374674)
+
+[node name="JesseSpillaneSpaceBomb" type="AudioStreamPlayer3D" parent="." unique_id=1260528991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
+stream = ExtResource("8_y2afc")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true

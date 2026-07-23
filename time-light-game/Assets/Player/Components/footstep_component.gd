@@ -16,6 +16,7 @@ var _checker: RayCast3D
 var _audio: AudioStreamPlayer3D
 var _time: float = 0.0
 
+@onready var crouch_slide = $"../CrouchSlide"
 
 # Store the shared player nodes and finish the small amount of ray and audio setup
 # this component needs before the first physics frame.
@@ -95,7 +96,9 @@ func _update_footsteps(delta: float, is_moving: bool, is_sprinting: bool, materi
 ### sound playback variance.
 func _play_footstep() -> void:
 	var selected_stream := material_streams.get(current_material) as AudioStream
-	if selected_stream:
+	if crouch_slide.is_sliding() == true:
+		_audio.stream = preload("res://Resources/SFX/Footsteps/slide.wav")
+	elif selected_stream:
 		_audio.stream = selected_stream
 	elif not material_streams.is_empty():
 		return

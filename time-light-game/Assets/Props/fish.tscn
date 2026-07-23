@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://oooklpjssfy5"]
+
+[ext_resource type="PackedScene" uid="uid://bfjpjfy2bp427" path="res://Assets/PSXPack2/fish_mx_1.glb" id="1_lur63"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(0.53774905, 0.025, 0.175)
+
+[node name="Fish" unique_id=1989897502 instance=ExtResource("1_lur63")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1394331272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03157741, 0.0032877699)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=35021138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051926255, 0, 0)
+shape = SubResource("BoxShape3D_l00eo")
