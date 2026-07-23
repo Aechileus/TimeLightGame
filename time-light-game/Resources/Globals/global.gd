@@ -35,6 +35,16 @@ func is_time_stopped() -> bool:
 	return time_state == TimeState.STOPPED
 
 
+# Instant versions with no countdown beeps. Scene setup and the flow clock
+# use these so the freeze lands exactly when it should.
+func force_time_stop() -> void:
+	_set_time_stopped(true)
+
+
+func force_time_flow() -> void:
+	_set_time_stopped(false)
+
+
 func toggle_time_stop() -> void:
 	# ignore spam while a beep sequence is already going
 	if _time_toggle_busy:
@@ -43,25 +53,25 @@ func toggle_time_stop() -> void:
 
 	if time_state == TimeState.FLOWING:
 		# high, high, then the freeze lands right on the low beep
-		await _play_beep_and_wait(_ONE_BEEP)
+		await _play_beep_and_wait(_LOW_BEEP)
 		# heads up for anything that wants to animate before the freeze lands
 		SignalBus.time_stop_winding_up.emit(true)
-		await _play_beep_and_wait(_TWO_BEEP)
+		await _play_beep_and_wait(_LOW_BEEP)
 	#	_play_beep(_THREE_BEEP)
 	#	await _play_beep_and_wait(_HIGH_BEEP)
 	#	await _play_beep_and_wait(_HIGH_BEEP)
-		_play_beep(_LOW_BEEP)
+		_play_beep(_HIGH_BEEP)
 		_set_time_stopped(true)
 	else:
 		# low, low, then the resume lands right on the high beep
-		await _play_beep_and_wait(_THREE_ALT_BEEP)
+		await _play_beep_and_wait(_HIGH_BEEP)
 		# same heads up on the way back out
 		SignalBus.time_stop_winding_up.emit(false)
-		await _play_beep_and_wait(_TWO_BEEP)
+		await _play_beep_and_wait(_HIGH_BEEP)
 	#	_play_beep(_ONE_BEEP)
 	#	await _play_beep_and_wait(_LOW_BEEP)
 	#	await _play_beep_and_wait(_LOW_BEEP)
-		_play_beep(_HIGH_BEEP)
+		_play_beep(_LOW_BEEP)
 		_set_time_stopped(false)
 
 	_time_toggle_busy = false

@@ -26,6 +26,8 @@ var capture_mouse_on_start: bool = true
 var click_to_capture_mouse: bool = true
 
 @export_group("Time Stop")
+# per scene choice for whether the player wakes up frozen
+@export var start_time_stopped: bool = true
 # what pixel_size settles back to after a resume, 3 or 4 both look decent
 @export_range(1.0, 8.0, 0.5) var normal_pixel_size: float = 3.0
 @export var frozen_tint: Color = Color(1.0, 0.3, 0.3)
@@ -39,6 +41,7 @@ var click_to_capture_mouse: bool = true
 @onready var crouch_slide: PlayerCrouchSlideComponent = $Components/CrouchSlide
 @onready var stair_step: PlayerStairStepComponent = $Components/StairStep
 @onready var footsteps: PlayerFootstepComponent = $Components/Footsteps
+@onready var time_manipulation: PlayerTimeManipulationComponent = $Components/TimeManipulation
 @onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
 @onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/arms_rig/AnimationPlayer
 @onready var arms_rig = $PlayerCharacterBody3D/arms_rig
@@ -75,6 +78,13 @@ func _ready() -> void:
 
 	if capture_mouse_on_start:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	# deferred so every node is settled before the freeze signal goes out
+	if start_time_stopped:
+		Global.force_time_stop.call_deferred()
+	elif Global.is_time_stopped():
+		# stale stop hanging around from a previous scene, clear it
+		Global.force_time_flow.call_deferred()
 
 
 func _physics_process(delta: float) -> void:
@@ -206,7 +216,9 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"time_stop"):
-		Global.toggle_time_stop()
+		# resuming is always fine, stopping needs a charge left in the tank
+		if Global.is_time_stopped() or time_manipulation.can_pause():
+			Global.toggle_time_stop()
 		return
 	if event.is_action_pressed(&"ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -262,7 +274,15 @@ func _on_game_speed_state_changed(new_state) -> void:
 func _on_time_stop_winding_up(_stopping: bool) -> void:
 	# arms swing during the last two beeps so the push lands right as the state flips,
 	# the shader tweens run on their own now so nothing waits on this animation
-	arms_rig.visible = true
-	arms_animation_player.play("push_R")
-	await arms_animation_player.animation_finished
-	arms_rig.visible = false
+	if Global.is_time_stopped() == false:
+		arms_rig.visible = true
+		arms_animation_player.play("push_R")
+		await arms_animation_player.animation_finished
+		arms_rig.visible = false
+		return
+	if Global.is_time_stopped() == true:
+		arms_rig.visible = true
+		arms_animation_player.play("push_L")
+		await arms_animation_player.animation_finished
+		arms_rig.visible = false
+		return
