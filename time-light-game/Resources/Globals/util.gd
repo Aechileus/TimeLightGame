@@ -10,8 +10,8 @@ enum GAME_TIME_STATES {PAUSED, PLAY}
 # queue_free a scene change in progress.
 enum GAME_SCENES {GAME, MENU}
 
-var GAME_PATH = "res://Main.tscn"
-var MENU_PATH = "res://Menu.tscn"
+var GAME_PATH = "res://GameScenes/GameplayScenes/test_scene.tscn"
+var MENU_PATH = "res://GameScenes/UI/MainMenu.tscn"
 
 # FOOTSTEP NOISES
-enum FLOOR_MATERIAL {CONCRETE, GRASS, CARPET, WOOD, Metal}
+enum FLOOR_MATERIAL {CONCRETE, GRASS, CARPET, WOOD, METAL}
