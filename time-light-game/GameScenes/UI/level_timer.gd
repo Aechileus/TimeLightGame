@@ -32,4 +32,7 @@ func _on_ability_time_spent(seconds: float) -> void:
 
 
 func _update_label() -> void:
-	_label.text = String.num(maxf(_time_left, 0.0), 1)
+	var time_left: float = maxf(_time_left, 0.0)
+	var secs: int = floori(time_left)
+	var milis: int = floori((time_left - secs) * 1000)
+	_label.text = String.num(secs, 0) + ":" + String.num(milis, 0).pad_zeros(3)
