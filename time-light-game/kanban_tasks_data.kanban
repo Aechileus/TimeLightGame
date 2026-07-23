@@ -2,8 +2,18 @@
 	"categories": [
 		{
 			"uuid": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
-			"title": "Task",
+			"title": "Feature",
 			"color": "569eff"
+		},
+		{
+			"uuid": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"title": "Bugfix",
+			"color": "dc2c2c"
+		},
+		{
+			"uuid": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"title": "Polish",
+			"color": "9ad82a"
 		}
 	],
 	"stages": [
@@ -15,7 +25,8 @@
 				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
 				"457b560e-4fed-4848-9603-70901284c62b",
 				"30b1278a-f8c2-493e-be8c-b9339701a74d",
-				"9b9252f9-fa64-4367-96f4-e921e829b854"
+				"9b9252f9-fa64-4367-96f4-e921e829b854",
+				"0c4de1ed-2625-4ded-b79a-3557244a975d"
 			]
 		},
 		{
@@ -177,6 +188,13 @@
 			"title": "Add finsh line area",
 			"description": "",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "0c4de1ed-2625-4ded-b79a-3557244a975d",
+			"title": "Pixel shader has border",
+			"description": "The border seems to be offset byhalf a pixel downwards and to the right (+ve x, +ve y)",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
 		}
 	],
