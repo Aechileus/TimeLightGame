@@ -3,15 +3,7 @@
 [ext_resource type="Script" uid="uid://e3knjvxsg4wb" path="res://Assets/GameplayPieces/finish_line.gd" id="1_7r3gb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1kwc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r3gb"]
-render_priority = 1
-transparency = 1
-blend_mode = 1
-albedo_color = Color(1, 0, 1, 0.14509805)
-
-[sub_resource type="BoxMesh" id="BoxMesh_u1kwc"]
-material = SubResource("StandardMaterial3D_7r3gb")
+size = Vector3(3.6326904, 1, 3.736908)
 
 [sub_resource type="Curve" id="Curve_6cnrg"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -29,7 +21,7 @@ direction = Vector3(1, 1, 1)
 spread = 0.0
 gravity = Vector3(0, 5, 0)
 scale_over_velocity_max = 90.46
-color = Color(1, 1, 0.4745098, 0.9098039)
+color = Color(0, 1, 0.4745098, 0.9098039)
 emission_curve = SubResource("CurveTexture_7r3gb")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
@@ -48,17 +40,28 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_6cnrg")
 size = Vector2(0.1, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qy2k"]
+albedo_color = Color(0.20784314, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_siari"]
+material = SubResource("StandardMaterial3D_0qy2k")
+inner_radius = 1.776
+outer_radius = 2.0
+rings = 7
+
 [node name="FinishLine" type="Area3D" unique_id=8209525]
 collision_layer = 0
 script = ExtResource("1_7r3gb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1530298276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07684326, 0, -0.1252594)
 shape = SubResource("BoxShape3D_u1kwc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=614071958]
-mesh = SubResource("BoxMesh_u1kwc")
-
 [node name="CPUParticles3D" type="GPUParticles3D" parent="." unique_id=1075710872]
+process_mode = 3
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 process_material = SubResource("ParticleProcessMaterial_n52p5")
 draw_pass_1 = SubResource("QuadMesh_7r3gb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=199921983]
+mesh = SubResource("TorusMesh_siari")

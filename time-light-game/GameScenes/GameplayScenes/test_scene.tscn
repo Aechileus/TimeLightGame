@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_6rgnf"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="10_leveltimer"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="11_qa46d"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="12_84hxp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("9_6rgnf")
@@ -148,3 +149,6 @@ autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638862342]
 environment = SubResource("Environment_l00eo")
+
+[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("12_84hxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4271297, 0.105982065, -1.133801)

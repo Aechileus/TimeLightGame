@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://uhyve2r73fqh"]
+
+[ext_resource type="Script" uid="uid://cyos8iattwg6b" path="res://Assets/GameplayPieces/time_stop_zone.gd" id="1_l3hfb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_zone"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="Curve" id="Curve_tspgt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7r3gb"]
+curve = SubResource("Curve_tspgt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_enhu2"]
+emission_shape_offset = Vector3(0, -1, 0)
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 1, 1)
+spread = 0.0
+gravity = Vector3(0, 5, 0)
+scale_max = 3.52
+scale_over_velocity_max = 90.46
+color = Color(0.9663691, 0.83414495, 0, 0.9098039)
+emission_curve = SubResource("CurveTexture_7r3gb")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cnrg"]
+vertex_color_use_as_albedo = true
+emission = Color(0, 0.3882353, 0, 1)
+emission_energy_multiplier = 0.38
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_8x8ej"]
+material = SubResource("StandardMaterial3D_6cnrg")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2xsg"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_l00eo"]
+material = SubResource("StandardMaterial3D_w2xsg")
+inner_radius = 1.776
+outer_radius = 2.0
+rings = 7
+
+[node name="TimeStopZone" type="Area3D" unique_id=150785596]
+script = ExtResource("1_l3hfb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277066]
+shape = SubResource("BoxShape3D_zone")
+
+[node name="CPUParticles3D" type="GPUParticles3D" parent="." unique_id=504264376]
+process_mode = 3
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+process_material = SubResource("ParticleProcessMaterial_enhu2")
+draw_pass_1 = SubResource("QuadMesh_8x8ej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=218311376]
+mesh = SubResource("TorusMesh_l00eo")
