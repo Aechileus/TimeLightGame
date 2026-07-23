@@ -10,10 +10,23 @@
 [ext_resource type="Script" uid="uid://hqjivw2o8ea7" path="res://Assets/Player/Components/footstep_component.gd" id="8_steps"]
 [ext_resource type="AudioStream" uid="uid://35v3lv5v14xp" path="res://Resources/SFX/Footsteps/grass.ogg" id="9_vyx1p"]
 [ext_resource type="AudioStream" uid="uid://by4jns16ahp4v" path="res://Resources/SFX/Footsteps/metal.ogg" id="10_rq5vb"]
+[ext_resource type="Shader" uid="uid://sk5p6y7d2g85" path="res://Resources/Shader/overlay.gdshader" id="11_rq5vb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
 radius = 0.3
 height = 1.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlwju"]
+render_priority = 0
+shader = ExtResource("11_rq5vb")
+shader_parameter/pixel_size = 2.0
+shader_parameter/levels = 67.0
+shader_parameter/gamma = Vector2(0.5, 2.575)
+
+[sub_resource type="QuadMesh" id="QuadMesh_l00eo"]
+material = SubResource("ShaderMaterial_vlwju")
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="PlayerController" type="Node3D" unique_id=440292127]
 script = ExtResource("1_player")
@@ -54,6 +67,10 @@ shape = SubResource("CapsuleShape3D_oss0h")
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerCharacterBody3D" unique_id=1213490484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5543787, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=2041865859]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_l00eo")
 
 [node name="StairStepRay" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=728562801]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92217994, -0.22719502)
