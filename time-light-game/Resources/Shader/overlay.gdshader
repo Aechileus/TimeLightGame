@@ -5,8 +5,8 @@ uniform sampler2D screen_texture : hint_screen_texture;
 uniform float pixel_size : hint_range(0.0, 20.0, 1.0);
 uniform float levels : hint_range(0.0, 100.0, 1.0);
 uniform vec2 gamma;
-// full screen tint, white means no change. time stop uses this for the red/green stuff
-uniform vec3 tint : source_color = vec3(1.0);
+// replaced this to respect alpha ontop of just tint
+uniform vec4 tint : source_color = vec4(1.0, 1.0, 1.0, 0.0);
 
 void vertex() {
 	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
@@ -42,6 +42,6 @@ void fragment() {
 	color.rgb *= adjustment;
 	color.rgb = pow(color.rgb, vec3(gamma.y));
 	
-	ALBEDO = color.rgb * tint;
+	ALBEDO = mix(color.rgb, color.rgb * tint.rgb, tint.a);
 	ALPHA = color.a;
 }

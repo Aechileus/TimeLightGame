@@ -31,7 +31,7 @@ volumetric_fog_sky_affect = 0.67
 [node name="TestScene" type="Node3D" unique_id=585908160]
 
 [node name="FinishLine" parent="." unique_id=411233920 instance=ExtResource("11_qa46d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.96862, 4.836372, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.799716, 9.707983, 9.536743e-07)
 
 [node name="LevelTimer" parent="." unique_id=798731190 instance=ExtResource("10_leveltimer")]
 
@@ -99,14 +99,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 4)
 [node name="wall_hr_12" parent="FloorContainer" unique_id=1710775366 instance=ExtResource("5_s8rcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
 
+[node name="wall_hr_19" parent="FloorContainer" unique_id=1748203920 instance=ExtResource("5_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 9.335396, -2)
+
 [node name="wall_hr_13" parent="FloorContainer" unique_id=1060449847 instance=ExtResource("5_s8rcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="wall_hr_20" parent="FloorContainer" unique_id=180838711 instance=ExtResource("5_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 9.612272, 2)
 
 [node name="wall_hr_14" parent="FloorContainer" unique_id=1261519417 instance=ExtResource("5_s8rcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 2.6032438, 2)
 
+[node name="wall_hr_18" parent="FloorContainer" unique_id=605897763 instance=ExtResource("5_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 7.561016, 2)
+
+[node name="wall_hr_16" parent="FloorContainer" unique_id=829842537 instance=ExtResource("5_s8rcb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.16526, 5.244093, 0.578084)
+
 [node name="wall_hr_15" parent="FloorContainer" unique_id=1449334121 instance=ExtResource("5_s8rcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 2.317453, -2)
+
+[node name="wall_hr_17" parent="FloorContainer" unique_id=336403687 instance=ExtResource("5_s8rcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.948975, 7.9092565, -2)
 
 [node name="Props" type="Node" parent="." unique_id=388706672]
 
@@ -151,4 +166,4 @@ autoplay = true
 environment = SubResource("Environment_l00eo")
 
 [node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("12_84hxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4271297, 0.105982065, -1.133801)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.973511, 6.2697916, 0.63697577)

@@ -7,4 +7,4 @@ func _ready() -> void:
 # anything else entering including its own taurus ring
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		get_tree().reload_current_scene()
+		get_tree().call_deferred("reload_current_scene")

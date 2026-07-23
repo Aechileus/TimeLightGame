@@ -30,8 +30,8 @@ var click_to_capture_mouse: bool = true
 @export var start_time_stopped: bool = true
 # what pixel_size settles back to after a resume, 3 or 4 both look decent
 @export_range(1.0, 8.0, 0.5) var normal_pixel_size: float = 3.0
-@export var frozen_tint: Color = Color(1.0, 0.3, 0.3)
-@export var resume_flash_tint: Color = Color(0.35, 1.0, 0.4)
+@export var frozen_tint: Color = Color(1.0, 0.302, 0.302, 0.38)
+@export var resume_flash_tint: Color = Color(0.349, 1.0, 0.4, 0.318)
 
 @onready var character_body: CharacterBody3D = $PlayerCharacterBody3D
 @onready var player_camera: Camera3D = $PlayerCharacterBody3D/PlayerCamera
@@ -68,8 +68,8 @@ func _ready() -> void:
 	_camera_current_height = _camera_base_height
 
 	_overlay_material = overlay_mesh.mesh.material as ShaderMaterial
-	# start from a known tint so the first tween has something to lerp from
-	_overlay_material.set_shader_parameter("tint", Color.WHITE)
+	# start from no tint, alpha 0 is the off state now that alpha is strength
+	_overlay_material.set_shader_parameter("tint", Color(1, 1, 1, 0))
 	_overlay_was_visible = overlay_mesh.visible
 	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
 	SignalBus.time_stop_winding_up.connect(_on_time_stop_winding_up)
@@ -258,7 +258,7 @@ func _on_game_speed_state_changed(new_state) -> void:
 	if new_state == Global.TimeState.STOPPED:
 		_overlay_tween = create_tween().set_parallel()
 		_overlay_tween.tween_property(_overlay_material, "shader_parameter/tint", frozen_tint, 0.15)
-		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", 2.0, 0.15)
+		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", 2, 0.15)
 	else:
 		# ease the pixelization back out while a quick green flash fades to normal
 		_overlay_tween = create_tween()
@@ -266,7 +266,7 @@ func _on_game_speed_state_changed(new_state) -> void:
 
 		_flash_tween = create_tween()
 		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", resume_flash_tint, 0.08)
-		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", Color.WHITE, 0.35)
+		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", Color(1, 1, 1, 0), 0.35)
 		_flash_tween.tween_callback(func() -> void:
 			overlay_mesh.visible = _overlay_was_visible
 		)

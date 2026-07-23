@@ -32,9 +32,9 @@ height = 1.7
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vlwju"]
 render_priority = 0
 shader = ExtResource("11_rq5vb")
-shader_parameter/pixel_size = 4.0
+shader_parameter/pixel_size = 3.0
 shader_parameter/levels = 67.0
-shader_parameter/gamma = Vector2(0.5, 2.575)
+shader_parameter/gamma = Vector2(1, 1)
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_l00eo"]
@@ -42,9 +42,11 @@ material = SubResource("ShaderMaterial_vlwju")
 flip_faces = true
 size = Vector2(3, 3)
 
-[node name="PlayerController" type="Node3D" unique_id=440292127]
+[node name="PlayerController" type="Node3D" unique_id=440292127 groups=["player"]]
 script = ExtResource("1_player")
-mouse_sensitivity = 0.009999999999999998
+mouse_sensitivity = 0.00999999999999999
+frozen_tint = Color(1, 0.3019608, 0.3019608, 0.6745098)
+resume_flash_tint = Color(0.34901962, 1, 0.4, 1)
 
 [node name="Components" type="Node" parent="." unique_id=1210953728]
 
@@ -197,7 +199,7 @@ top_level = true
 material_override = SubResource("StandardMaterial3D_marker")
 mesh = SubResource("SphereMesh_6ywho")
 
-[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457]
+[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457 groups=["player"]]
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="PlayerCharacterBody3D" unique_id=369314731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -214,7 +216,7 @@ mesh = SubResource("QuadMesh_l00eo")
 [node name="arms_rig" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=920561538 instance=ExtResource("12_7pvar")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.7043787, 0)
 
-[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 807248929) index="0" unique_id=488035488]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -278,7 +280,7 @@ bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
 bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 bones/51/rotation = Quaternion(0.34815243, -0.6154591, 0.6154591, -0.34815246)
 
-[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=641917606]
+[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=54383545]
 autoplay = &"relax"
 
 [node name="StairStepRay" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=728562801]

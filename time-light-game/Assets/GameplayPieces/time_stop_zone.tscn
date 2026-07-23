@@ -22,7 +22,7 @@ spread = 0.0
 gravity = Vector3(0, 5, 0)
 scale_max = 3.52
 scale_over_velocity_max = 90.46
-color = Color(0.9663691, 0.83414495, 0, 0.9098039)
+color = Color(0.10980392, 1, 1, 0.65882355)
 emission_curve = SubResource("CurveTexture_7r3gb")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
@@ -42,7 +42,7 @@ material = SubResource("StandardMaterial3D_6cnrg")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2xsg"]
-albedo_color = Color(1, 1, 0, 1)
+albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_l00eo"]
 material = SubResource("StandardMaterial3D_w2xsg")
