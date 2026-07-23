@@ -20,11 +20,13 @@ class_name PlayerAbilitiesComponent
 @export var flowing_push_speed: float = 10.0
 
 @export_group("Marker Colors")
-@export var aiming_color: Color = Color(0.4, 0.9, 1.0)
+@export var aiming_color: Color = Color(0.26, 0.585, 0.65, 1.0)
+@export var aiming_miss_color: Color = Color(0.26, 0.585, 0.65, 0.502)
 @export var queued_color: Color = Color(0.4, 1.0, 0.55)
 
 @onready var _body: CharacterBody3D = $"../../PlayerCharacterBody3D"
 @onready var _camera: Camera3D = $"../../PlayerCharacterBody3D/PlayerCamera"
+@onready var _aim_ray: RayCast3D = $"../../PlayerCharacterBody3D/PlayerCamera/AimRay"
 @onready var _marker: MeshInstance3D = $"../../BlinkMarker"
 @onready var _marker_material: StandardMaterial3D = _marker.material_override
 @onready var _cast_audio: AudioStreamPlayer3D = $"../../PlayerCharacterBody3D/CastSFX"
@@ -56,7 +58,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if _aiming:
 		_push_marker_out(delta)
-		_marker_material.albedo_color = aiming_color
+		if _aim_ray.is_colliding(): 
+			_marker_material.albedo_color = aiming_color 
+		else: 
+			_marker_material.albedo_color = aiming_miss_color
 		_marker.visible = true
 	elif _queued and _queued_ability.needs_target:
 		# untargeted queued casts dont get a circle, the slot going green
@@ -72,22 +77,40 @@ func _physics_process(delta: float) -> void:
 ### TODO might want to consider a refactor here so it just casts it faster but invisibly at the same time repeatedly and
 ### if it escapes and gets through on the invisible recast it moves the circle through and to the new location.
 func _push_marker_out(delta: float) -> void:
-	if _stuck:
-		return
+	var x = aim_or_max_distance(_abilities[_selected].cast_range)
+	print(x)
+	_marker.global_position = x
 
-	var speed := frozen_push_speed if Global.is_time_stopped() else flowing_push_speed
-	_aim_distance = minf(_aim_distance + speed * delta, _abilities[_selected].cast_range)
-
-	var from := _camera.global_position
-	var direction := -_camera.global_transform.basis.z
-	var query := PhysicsRayQueryParameters3D.create(from, from + direction * _aim_distance)
-	query.exclude = [_body.get_rid()]
-	var hit := _body.get_world_3d().direct_space_state.intersect_ray(query)
-	if hit:
-		_stuck = true
-		_marker.global_position = hit.position - direction * 0.1
+func aim_or_max_distance(max_distance: float) -> Vector3:
+	var position = _aim_ray.global_position
+	var target = _aim_ray.get_collision_point()
+	var distance = position.distance_to(target)
+	
+	if !_aim_ray.is_colliding():
+		var basis = -_aim_ray.global_transform.basis.z # This is the basis vector for the -z direction (forwards) wrt translation
+		return position + basis.normalized() * max_distance
+	elif distance > max_distance:
+		return position + (target - position).normalized() * max_distance
 	else:
-		_marker.global_position = from + direction * _aim_distance
+		return target
+	
+	
+	#if _stuck:
+		#return
+#
+	#var speed := frozen_push_speed if Global.is_time_stopped() else flowing_push_speed
+	#_aim_distance = minf(_aim_distance + speed * delta, _abilities[_selected].cast_range)
+#
+	#var from := _camera.global_position
+	#var direction := -_camera.global_transform.basis.z
+	#var query := PhysicsRayQueryParameters3D.create(from, from + direction * _aim_distance)
+	#query.exclude = [_body.get_rid()]
+	#var hit := _body.get_world_3d().direct_space_state.intersect_ray(query)
+	#if hit:
+		#_stuck = true
+		#_marker.global_position = hit.position - direction * 0.1
+	#else:
+		#_marker.global_position = from + direction * _aim_distance
 
 
 func _unhandled_input(event: InputEvent) -> void:

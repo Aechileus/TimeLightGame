@@ -18,12 +18,17 @@
 [ext_resource type="Script" uid="uid://dqbhxw6fxpd8r" path="res://Assets/Player/Components/abilities_component.gd" id="14_abilities"]
 [ext_resource type="Resource" uid="uid://dbyk6uiln76e1" path="res://Resources/Abilities/dash.tres" id="15_dash"]
 [ext_resource type="Script" uid="uid://djkbao4rpejm8" path="res://Assets/Player/Abilities/test_ability.gd" id="17_testfx"]
+[ext_resource type="Script" uid="uid://bqkrrnrg1ncyh" path="res://Assets/Player/aim_ray.gd" id="19_leoma"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
+render_priority = 1
+transparency = 1
 shading_mode = 0
 albedo_color = Color(0.4, 0.9, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_6ywho"]
+radius = 0.2
+height = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
 radius = 0.3
@@ -210,6 +215,11 @@ shape = SubResource("CapsuleShape3D_oss0h")
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerCharacterBody3D" unique_id=1213490484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5543787, 0)
+
+[node name="AimRay" type="RayCast3D" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=1750115528]
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(0.49278507, 0.20770001, 0.67, 1)
+script = ExtResource("19_leoma")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=2041865859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18740332, 0)
