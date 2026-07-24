@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var _gravity: float = 9.8
 @export_group("Movement")
 ## The maximum speed that the player reaches while walking
 @export_range(0.1, 30.0, 0.1) var walk_speed: float = 5.0
@@ -92,7 +93,6 @@ var _hit_flash_tween: Tween
 # counts down while a dash is making the player untouchable
 var _invuln_time: float = 0.0
 
-@export var _gravity: float = 9.8
 var _is_sprinting: bool = false
 var _sprint_grace_time_left: float = 0.0
 var _camera_base_height: float = 0.0
@@ -140,12 +140,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# tick the dash immunity down here so it always drains
-	_invuln_time = maxf(_invuln_time - delta, 0.0)
+	# !! See below
 
 	# frozen in time, no moving around. queueing ended up living in the
 	# abilities component instead so this just gates movement now. Oh well, composition wins.
 	if Global.is_time_stopped():
 		return
+	
+	# I don't think it makes sense for the dash invuln to be canceled by time stop?
+	_invuln_time = maxf(_invuln_time - delta, 0.0)
 
 	wall_movement.begin_frame(delta)
 
@@ -154,7 +157,7 @@ func _physics_process(delta: float) -> void:
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
 
-	var was_on_floor := character_body.is_on_floor()
+	var was_on_floor := character_body.is_on_floor() # <- so is it or was it, huh?
 	_update_sprint_state(delta, input_vector)
 	crouch_slide.update_input(delta, was_on_floor, move_direction, _is_sprinting)
 	_update_horizontal_movement(delta, move_direction, was_on_floor)

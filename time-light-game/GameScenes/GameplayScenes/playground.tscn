@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="9_fqs8f"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="9_qut0p"]
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="10_idn6t"]
-[ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="11_hpdln"]
 [ext_resource type="PackedScene" uid="uid://bparslbjshcjh" path="res://Assets/Creatures/monster_spawner.tscn" id="11_idn6t"]
 [ext_resource type="PackedScene" uid="uid://kvtvwbq1w1se" path="res://Assets/Props/wooden_crate_1.tscn" id="11_o1qbv"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="12_13id2"]
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="12_kdjov"]
+[ext_resource type="AudioStream" uid="uid://cenear3deqtux" path="res://Resources/Music/boss theme-MP3.mp3" id="12_o1qbv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("12_13id2")
@@ -36,12 +36,29 @@ level_time = 600.0
 infinite_time = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("3_e68fa")]
+_gravity = 20.0
+walk_speed = 30.0
 ground_acceleration = 50.0
 ground_deceleration = 50.0
+air_acceleration = 20.0
 minimum_look_angle = -89.0
 maximum_look_angle = 89.0
 economy_enabled = false
 free_time_control = true
+
+[node name="WallMovement" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="0" unique_id=264129517]
+gravity_multiplier = 1.0
+max_fall_speed = 1.0
+jump_vertical_velocity = 8.0
+jump_horizontal_velocity = 4.5
+contact_grace_time = 0.15
+
+[node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
+slide_minimum_entry_speed = 6.0
+slide_start_speed = 8.0
+max_slide_speed = 60.0
+slam_speed = 10.0
+slide_jump_boost = 1.6
 
 [node name="RampContainer" type="Node" parent="." unique_id=450792952]
 
@@ -3210,9 +3227,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 [node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1966422214]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
-stream = ExtResource("11_hpdln")
+stream = ExtResource("12_o1qbv")
 attenuation_model = 3
 volume_db = -10.0
 autoplay = true
+panning_strength = 0.0
 bus = &"Music"
+parameters/looping = true
 script = ExtResource("12_kdjov")
+
+[editable path="PlayerController"]
+[editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

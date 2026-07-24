@@ -2,6 +2,8 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_nvyeh"]
 resource_name = "LowPassFilter"
+cutoff_hz = 400.0
+resonance = 1.0
 
 [resource]
 bus/1/name = &"SFX"
