@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://d33flyojl0kr7"]
+
+[ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="1_n1wo0"]
+[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="2_t46kt"]
+[ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="3_etv3f"]
+[ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_b5gd2"]
+[ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ramp_slim.tscn" id="5_c1fl4"]
+[ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/wall_1.tscn" id="6_l8w0q"]
+[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="7_qayq0"]
+[ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="8_5ii3m"]
+[ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_8gve0"]
+[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="10_taht6"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="11_f8ydy"]
+[ext_resource type="PackedScene" path="res://Assets/Creatures/monster_spawner.tscn" id="12_jxma5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ohwbu"]
+panorama = ExtResource("9_8gve0")
+
+[sub_resource type="Sky" id="Sky_0r82h"]
+sky_material = SubResource("PanoramaSkyMaterial_ohwbu")
+
+[sub_resource type="Environment" id="Environment_iaph3"]
+background_mode = 2
+sky = SubResource("Sky_0r82h")
+ambient_light_color = Color(0.22745098, 0, 0, 1)
+ambient_light_sky_contribution = 0.48
+volumetric_fog_length = 65.65
+volumetric_fog_detail_spread = 2.7991006
+volumetric_fog_sky_affect = 0.67
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qy2k"]
+albedo_color = Color(0.20784314, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_n1wo0"]
+material = SubResource("StandardMaterial3D_0qy2k")
+inner_radius = 1.776
+outer_radius = 2.0
+rings = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n1wo0"]
+viewport_path = NodePath("BillboardSign/SubViewport")
+
+[node name="Node3D" type="Node3D" unique_id=1911214141]
+
+[node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=63522727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
+stream = ExtResource("1_n1wo0")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_t46kt")
+
+[node name="LevelTimer" parent="." unique_id=390761727 instance=ExtResource("3_etv3f")]
+level_time = 600.0
+
+[node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_b5gd2")]
+transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 0, 0, 0)
+
+[node name="RampSlim" parent="." unique_id=1221947856 groups=["ramp"] instance=ExtResource("5_c1fl4")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -27.519165, -0.9999995, 0.69943523)
+
+[node name="LevelRestarterTemp" type="Node" parent="." unique_id=1763049882]
+script = ExtResource("8_5ii3m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1615137316]
+environment = SubResource("Environment_iaph3")
+
+[node name="FinishLine" parent="." unique_id=8209525 instance=ExtResource("10_taht6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4921002, -0.8940191, -0.1633887)
+
+[node name="MeshInstance3D" parent="FinishLine" index="2" unique_id=199921983]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("TorusMesh_n1wo0")
+
+[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("11_f8ydy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.803867, -0.89401865, 1.216919)
+
+[node name="MonsterSpawner" parent="." unique_id=1288297899 instance=ExtResource("12_jxma5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, -1.0060177, 15.192966)
+mode = 1
+
+[node name="walls" type="Node3D" parent="." unique_id=43752059]
+
+[node name="wall_hr_12" parent="walls" unique_id=1710775366 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, -1.3907301, 1.7826322)
+
+[node name="wall_hr_14" parent="walls" unique_id=982219299 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 1.6092699, 1.7826322)
+
+[node name="wall_hr_15" parent="walls" unique_id=486238189 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 4.60927, 1.7826322)
+
+[node name="wall_hr_13" parent="walls" unique_id=722656425 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.7984548, -1.3868599, -2.2175486)
+
+[node name="wall_hr_16" parent="walls" unique_id=1375343314 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 1.6092699, -2.2173676)
+
+[node name="wall_hr_17" parent="walls" unique_id=97809490 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 4.60927, -2.2173676)
+
+[node name="wall_hr_18" parent="walls" unique_id=520540651 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -2.203095, -1.3895174, -2.2173676)
+
+[node name="wall_hr_19" parent="walls" unique_id=1641204504 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -2.203095, 1.6104826, -2.2173676)
+
+[node name="wall_hr_20" parent="walls" unique_id=725666079 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -2.203095, 4.610482, -2.2173676)
+
+[node name="wall_hr_21" parent="walls" unique_id=1393729954 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, 9.7969055, -1.3851936, -2.2173676)
+
+[node name="wall_hr_22" parent="walls" unique_id=1346399394 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, 9.7969055, 1.6148064, -2.2173676)
+
+[node name="wall_hr_23" parent="walls" unique_id=801918089 instance=ExtResource("6_l8w0q")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, 9.7969055, 4.614806, -2.2173676)
+
+[node name="FloorsNCeilings" type="Node3D" parent="." unique_id=783837007]
+
+[node name="FloorCeilingTiled" parent="FloorsNCeilings" unique_id=2090689099 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="FloorCeilingTiled2" parent="FloorsNCeilings" unique_id=1783769512 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
+
+[node name="FloorCeilingTiled3" parent="FloorsNCeilings" unique_id=779306694 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0)
+
+[node name="FloorCeilingTiled5" parent="FloorsNCeilings" unique_id=1021315204 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="FloorCeilingTiled6" parent="FloorsNCeilings" unique_id=1299029883 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7, 0)
+
+[node name="FloorCeilingTiled7" parent="FloorsNCeilings" unique_id=84459489 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 0)
+
+[node name="FloorCeilingTiled4" parent="FloorsNCeilings" unique_id=240497383 instance=ExtResource("7_qayq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.0702491, 0)
+
+[node name="BillboardSign" type="Sprite3D" parent="." unique_id=1014450508]
+transform = Transform3D(0.022326283, 0, 0.99975085, 0, 1, 0, -0.99975085, 0, 0.022326283, -1.9573627, 1.2954934, -0.17776543)
+render_priority = 4
+texture = SubResource("ViewportTexture_n1wo0")
+
+[node name="SubViewport" type="SubViewport" parent="BillboardSign" unique_id=68390088]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillboardSign/SubViewport" unique_id=645585211]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.26666668, 0.26666668, 0.79607844)
+
+[node name="Label" type="Label" parent="BillboardSign/SubViewport/ColorRect" unique_id=582158978]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shift: Sprint
+Ctrl: Crouch
+Space: Jump
+You can crouch with momentum to slide.
+
+Scrollwheel: Adjust Time until Next Pause
+F: Unpause/Pause Time
+
+1-4: Select ability
+Rightclick: Use ability
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="FinishLine"]

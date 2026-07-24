@@ -7,7 +7,9 @@
 script = ExtResource("1_ability")
 display_name = "Dash"
 effect_node = "Dash"
-time_cost = 10.0
+time_cost = 4.0
+economy_cost = 2
 cast_range = 6.0
+damage = 50.0
 cast_sfx = ExtResource("1_fqx32")
 cast_animation = "jab_R"
