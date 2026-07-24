@@ -11,6 +11,9 @@ extends Resource
 # whether this ability aims with the circle marker, self cast stuff should
 # turn this off so right click just fires it
 @export var needs_target: bool = true
+# fires right away even while time is frozen instead of queueing for the unpause.
+# the shoot uses this since its projectiles freeze on their own and go at once
+@export var cast_while_frozen: bool = false
 
 # seconds pulled off the level clock when this gets cast
 @export_range(0.0, 30.0, 0.25) var time_cost: float = 1.0
@@ -18,6 +21,9 @@ extends Resource
 # movement style abilities like the dash use these two
 @export_range(1.0, 100.0, 0.5) var speed: float = 18.0
 @export_range(1.0, 60.0, 0.5) var cast_range: float = 12.0
+
+# how much hp damaging abilities like the shoot take off a target
+@export_range(0.0, 200.0, 1.0) var damage: float = 25.0
 
 # played the moment the cast goes off
 @export var cast_sfx: AudioStream

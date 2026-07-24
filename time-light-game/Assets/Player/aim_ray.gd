@@ -1,10 +1,7 @@
 extends RayCast3D
 
-@onready var player_controller = $"../../.."
+@export var player_controller: CollisionObject3D
 
 func _ready() -> void:
-	self.add_exception(player_controller)
-
-
-	
-	
+	if player_controller:
+		add_exception(player_controller)

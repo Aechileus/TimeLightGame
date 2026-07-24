@@ -22,8 +22,6 @@
 			"title": "Todo - Features",
 			"tasks": [
 				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
-				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
-				"457b560e-4fed-4848-9603-70901284c62b",
 				"30b1278a-f8c2-493e-be8c-b9339701a74d"
 			]
 		},
@@ -31,7 +29,9 @@
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing - Aech",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
+				"0c4de1ed-2625-4ded-b79a-3557244a975d"
 			]
 		},
 		{
@@ -47,6 +47,7 @@
 				"06596bd5-cd59-47f8-ade3-9075b1847e37",
 				"6b581247-698f-497d-8297-ad055f9d70d7",
 				"35f83554-786e-4e04-9bed-dd81372c9e03",
+				"457b560e-4fed-4848-9603-70901284c62b",
 				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
 				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
 				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
@@ -56,16 +57,16 @@
 		{
 			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
 			"title": "Doing - Snake",
-			"tasks": []
+			"tasks": [
+				"b010702a-0840-4a6c-aad9-4e076fed2ee8"
+			]
 		},
 		{
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
 			"title": "Todo: Polish",
 			"tasks": [
 				"9b9252f9-fa64-4367-96f4-e921e829b854",
-				"0c4de1ed-2625-4ded-b79a-3557244a975d",
-				"a7306602-e9a9-4c98-9210-220b43db50b5",
-				"b010702a-0840-4a6c-aad9-4e076fed2ee8"
+				"a7306602-e9a9-4c98-9210-220b43db50b5"
 			]
 		},
 		{
@@ -175,7 +176,7 @@
 		},
 		{
 			"uuid": "f7934af6-18b3-482f-8c94-d6ad1f23f1de",
-			"title": "Enemies",
+			"title": "Enemy",
 			"description": "",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
@@ -239,11 +240,11 @@
 				},
 				{
 					"details": "Make sliding give you a speed boost when you start",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Accelerate while sliding down ramps",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -255,11 +256,11 @@
 			"steps": [
 				{
 					"details": "Make pausing instant but still trigger the animation",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Make the time limit infinite",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Add some more obstacles/parts to demonstrate all the mechanics (sliding, wall jumping, etc)",

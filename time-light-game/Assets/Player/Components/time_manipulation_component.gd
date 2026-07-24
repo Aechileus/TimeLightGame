@@ -25,7 +25,7 @@ var _flow_window_active: bool = false
 var _flow_elapsed: float = 0.0
 var _flow_target: float = 0.0
 var _next_tick: float = 1.0
-var _free_time_control: bool = true
+@export var _free_time_control: bool = true
 
 var _tick_player: AudioStreamPlayer
 

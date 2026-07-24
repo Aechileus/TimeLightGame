@@ -155,12 +155,13 @@ func _release_cast() -> void:
 
 
 func _cast_at(ability: Ability, point: Vector3) -> void:
-	if Global.is_time_stopped():
+	if Global.is_time_stopped() and not ability.cast_while_frozen:
 		# frozen, the cast waits until time comes back
 		_queued = true
 		_queued_point = point
 		_queued_ability = ability
 	else:
+		# fires now, even mid freeze for stuff that handles the freeze itself
 		_fire(ability, point)
 	_update_ui()
 

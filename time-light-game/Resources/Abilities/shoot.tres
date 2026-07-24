@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dl54ghqtnroo4"]
+
+[ext_resource type="Script" uid="uid://ber20p8yni0fl" path="res://Resources/Abilities/ability.gd" id="1_ability"]
+[ext_resource type="AudioStream" uid="uid://chlwuetr25p5g" path="res://Resources/SFX/PlaceholderSFX/Boom70.wav" id="1_f2van"]
+
+[resource]
+script = ExtResource("1_ability")
+display_name = "Shoot"
+effect_node = "Shoot"
+needs_target = false
+cast_while_frozen = true
+speed = 45.0
+cast_range = 40.0
+cast_sfx = ExtResource("1_f2van")
+cast_animation = "finger_gun_fire"

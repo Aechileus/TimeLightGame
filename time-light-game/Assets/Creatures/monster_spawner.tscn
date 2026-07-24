@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Assets/Creatures/monster_spawner.gd" id="1_spawner"]
+[ext_resource type="PackedScene" uid="uid://crnws1je2racs" path="res://Assets/Creatures/DefaultMonster.tscn" id="2_monster"]
+
+[node name="MonsterSpawner" type="Node3D"]
+script = ExtResource("1_spawner")
+monster_scene = ExtResource("2_monster")

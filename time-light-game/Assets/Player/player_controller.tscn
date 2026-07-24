@@ -19,6 +19,10 @@
 [ext_resource type="Resource" uid="uid://dbyk6uiln76e1" path="res://Resources/Abilities/dash.tres" id="15_dash"]
 [ext_resource type="Script" uid="uid://djkbao4rpejm8" path="res://Assets/Player/Abilities/test_ability.gd" id="17_testfx"]
 [ext_resource type="Script" uid="uid://bqkrrnrg1ncyh" path="res://Assets/Player/aim_ray.gd" id="19_leoma"]
+[ext_resource type="Script" uid="uid://l3cswguovi1y" path="res://Assets/Player/Abilities/shoot_ability.gd" id="20_shootfx"]
+[ext_resource type="Resource" uid="uid://dl54ghqtnroo4" path="res://Resources/Abilities/shoot.tres" id="21_shoot"]
+[ext_resource type="Script" uid="uid://kv08viwre6ny" path="res://Assets/Player/Abilities/dash_hitbox.gd" id="22_dashhit"]
+[ext_resource type="Shader" uid="uid://b7haaf5d6c832" path="res://Assets/Player/VHSMode.gdshader" id="23_gyfsl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
 render_priority = 1
@@ -29,6 +33,9 @@ albedo_color = Color(0.4, 0.9, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_6ywho"]
 radius = 0.2
 height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dashhit"]
+radius = 0.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
 radius = 0.3
@@ -47,13 +54,33 @@ material = SubResource("ShaderMaterial_vlwju")
 flip_faces = true
 size = Vector2(3, 3)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l00eo"]
+shader = ExtResource("23_gyfsl")
+shader_parameter/wiggle = 0.02999999932944
+shader_parameter/wiggle_speed = 17.0
+shader_parameter/smear = 0.7550000358625
+shader_parameter/blur_samples = 15
+shader_parameter/tint = Color(1, 1, 1, 0)
+shader_parameter/flash = Color(1, 1, 1, 0)
+
 [node name="PlayerController" type="Node3D" unique_id=440292127 groups=["player"]]
 script = ExtResource("1_player")
 sprint_deceleration = 12.0
-overspeed_deceleration = 0.5
+overspeed_deceleration = 1.8
 mouse_sensitivity = 0.00999999999999999
 frozen_tint = Color(1, 0.3019608, 0.3019608, 0.6745098)
-resume_flash_tint = Color(0.34901962, 1, 0.4, 1)
+resume_flash_tint = Color(0.34901962, 1, 0.4, 0.6313726)
+
+[node name="PlayerHealthUI" type="CanvasLayer" parent="." unique_id=456243849]
+
+[node name="HealthLabel" type="Label" parent="PlayerHealthUI" unique_id=392832002]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 32
+text = "HP: 3"
 
 [node name="Components" type="Node" parent="." unique_id=1210953728]
 
@@ -68,6 +95,7 @@ slam_speed = 7.5
 
 [node name="TimeManipulation" type="Node" parent="Components" unique_id=1307419024]
 script = ExtResource("13_timemanip")
+_free_time_control = false
 
 [node name="TimeUI" type="CanvasLayer" parent="Components/TimeManipulation" unique_id=147271438]
 layer = 10
@@ -108,12 +136,16 @@ text = "[wave=1]Pauses Remaining: X"
 script = ExtResource("14_abilities")
 slot_1 = ExtResource("15_dash")
 slot_2 = ExtResource("7_0ay2m")
+slot_3 = ExtResource("21_shoot")
 
 [node name="Dash" type="Node" parent="Components/Abilities" unique_id=593293014]
 script = ExtResource("8_mhthp")
 
 [node name="Test" type="Node" parent="Components/Abilities" unique_id=903746497]
 script = ExtResource("17_testfx")
+
+[node name="Shoot" type="Node" parent="Components/Abilities" unique_id=1013959819]
+script = ExtResource("20_shootfx")
 
 [node name="AbilitiesUI" type="CanvasLayer" parent="Components/Abilities" unique_id=609597676]
 layer = 10
@@ -209,6 +241,14 @@ mesh = SubResource("SphereMesh_6ywho")
 
 [node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457 groups=["player"]]
 
+[node name="DashHitbox" type="Area3D" parent="PlayerCharacterBody3D" unique_id=1823255711]
+monitoring = false
+script = ExtResource("22_dashhit")
+
+[node name="DashHitShape" type="CollisionShape3D" parent="PlayerCharacterBody3D/DashHitbox" unique_id=1252119442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dashhit")
+
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="PlayerCharacterBody3D" unique_id=369314731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_oss0h")
@@ -229,7 +269,7 @@ mesh = SubResource("QuadMesh_l00eo")
 [node name="arms_rig" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=920561538 instance=ExtResource("12_7pvar")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.7043787, 0)
 
-[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 807248929) index="0" unique_id=488035488]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -293,8 +333,20 @@ bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
 bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 bones/51/rotation = Quaternion(0.34815243, -0.6154591, 0.6154591, -0.34815246)
 
-[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=641917606]
+[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=54383545]
 autoplay = &"relax"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=1570128987]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="PlayerCharacterBody3D/PlayerCamera/CanvasLayer" unique_id=679540981]
+material = SubResource("ShaderMaterial_l00eo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="StairStepRay" type="RayCast3D" parent="PlayerCharacterBody3D" unique_id=728562801]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92217994, -0.22719502)

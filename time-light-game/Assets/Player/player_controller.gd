@@ -25,6 +25,10 @@ extends Node3D
 var capture_mouse_on_start: bool = true
 var click_to_capture_mouse: bool = true
 
+@export_group("Health")
+# monsters hit for 1 each, so three of them and youre done
+@export var max_health: int = 3
+
 @export_group("Time Stop")
 # per scene choice for whether the player wakes up frozen
 @export var start_time_stopped: bool = true
@@ -46,6 +50,14 @@ var click_to_capture_mouse: bool = true
 @onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
 @onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/PlayerCamera/arms_rig/AnimationPlayer
 @onready var arms_rig = $PlayerCharacterBody3D/PlayerCamera/arms_rig
+@onready var _health_label: Label = $PlayerHealthUI/HealthLabel
+# the vhs post effect handles the screen tint and flashes now
+@onready var _vhs_material: ShaderMaterial = $PlayerCharacterBody3D/PlayerCamera/CanvasLayer/ColorRect.material
+
+var _health: int = 0
+var _hit_flash_tween: Tween
+# counts down while a dash is making the player untouchable
+var _invuln_time: float = 0.0
 
 @export var _gravity: float = 9.8
 var _is_sprinting: bool = false
@@ -77,6 +89,9 @@ func _ready() -> void:
 	wall_movement.setup(character_body)
 	footsteps.setup(character_body, footstep_checker, footstep_audio)
 
+	_health = max_health
+	_update_health_label()
+
 	if capture_mouse_on_start:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -89,6 +104,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# tick the dash immunity down here so it always drains
+	_invuln_time = maxf(_invuln_time - delta, 0.0)
+
 	# frozen in time, no moving around. queueing ended up living in the
 	# abilities component instead so this just gates movement now. Oh well, composition wins.
 	if Global.is_time_stopped():
@@ -243,6 +261,45 @@ func get_floor_material() -> Util.FLOOR_MATERIAL:
 	return footsteps.get_floor_material()
 
 
+# Monsters call this when a swing connects. Flashes the screen red so you can
+# actually feel the hit, and reloads the level when you run out.
+# Dashing sets an immunity window, so blasting through a monster shrugs off hits.
+func start_dash_immunity(duration: float) -> void:
+	_invuln_time = maxf(_invuln_time, duration)
+
+
+func take_damage(amount) -> void:
+	# untouchable mid dash, or already down
+	if _invuln_time > 0.0 or _health <= 0:
+		return
+	_health = maxi(_health - int(amount), 0)
+	_update_health_label()
+	_flash_hit()
+	if _health <= 0:
+		_die()
+
+
+func _die() -> void:
+	# make sure time isnt frozen on the reload, then run the level back. deferred
+	# since a hit can land during a physics callback and you cant free bodies then
+	Global.force_time_flow()
+	get_tree().reload_current_scene.call_deferred()
+
+
+# Punch a quick red flash through the vhs effect so a hit reads.
+func _flash_hit() -> void:
+	if _hit_flash_tween:
+		_hit_flash_tween.kill()
+	_vhs_material.set_shader_parameter("flash", Color(0.8, 0.0, 0.0, 0.45))
+	_hit_flash_tween = create_tween()
+	_hit_flash_tween.tween_property(_vhs_material, "shader_parameter/flash", Color(0.8, 0.0, 0.0, 0.0), 0.35)
+
+
+func _update_health_label() -> void:
+	if _health_label != null:
+		_health_label.text = "HP: %d" % _health
+
+
 func _update_camera_height(delta: float) -> void:
 	_camera_step_offset = move_toward(_camera_step_offset, 0.0, step_camera_smoothing * delta)
 	var target_height := crouch_camera_height if crouch_slide.is_crouching() else _camera_base_height
@@ -259,20 +316,21 @@ func _on_game_speed_state_changed(new_state) -> void:
 		_flash_tween.kill()
 
 	if new_state == Global.TimeState.STOPPED:
+		# pixelization stays on the overlay quad, the red tint rides the vhs now
 		_overlay_tween = create_tween().set_parallel()
-		_overlay_tween.tween_property(_overlay_material, "shader_parameter/tint", frozen_tint, 0.15)
 		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", 2, 0.15)
+		_overlay_tween.tween_property(_vhs_material, "shader_parameter/tint", frozen_tint, 0.15)
 	else:
-		# ease the pixelization back out while a quick green flash fades to normal
-		_overlay_tween = create_tween()
+		# ease the pixelization back out while the vhs clears its tint and pops a
+		# quick green flash on resume
+		_overlay_tween = create_tween().set_parallel()
 		_overlay_tween.tween_property(_overlay_material, "shader_parameter/pixel_size", normal_pixel_size, 0.4)
+		_overlay_tween.tween_property(_vhs_material, "shader_parameter/tint", Color(1, 1, 1, 0), 0.3)
 
+		var flash_clear := Color(resume_flash_tint.r, resume_flash_tint.g, resume_flash_tint.b, 0.0)
 		_flash_tween = create_tween()
-		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", resume_flash_tint, 0.08)
-		_flash_tween.tween_property(_overlay_material, "shader_parameter/tint", Color(1, 1, 1, 0), 0.35)
-		_flash_tween.tween_callback(func() -> void:
-			overlay_mesh.visible = _overlay_was_visible
-		)
+		_flash_tween.tween_property(_vhs_material, "shader_parameter/flash", resume_flash_tint, 0.08)
+		_flash_tween.tween_property(_vhs_material, "shader_parameter/flash", flash_clear, 0.35)
 
 
 func _on_time_stop_winding_up(_stopping: bool) -> void:

@@ -19,6 +19,8 @@ const _ONE_BEEP := preload("res://Resources/SFX/PlaceholderSFX/One.wav")
 const _TWO_BEEP := preload("res://Resources/SFX/PlaceholderSFX/Two.wav")
 const _THREE_BEEP := preload("res://Resources/SFX/PlaceholderSFX/Three.wav")
 const _THREE_ALT_BEEP := preload("res://Resources/SFX/PlaceholderSFX/ThreeAlt.wav")
+const _TIMESTOPSTART := preload("res://Resources/SFX/PlaceholderSFX/timestopstart.wav")
+const _TIMESTOPSTARTALT := preload("res://Resources/SFX/PlaceholderSFX/timestopstartalt.wav")
 
 var _beep_player: AudioStreamPlayer
 
@@ -53,25 +55,25 @@ func toggle_time_stop() -> void:
 
 	if time_state == TimeState.FLOWING:
 		# high, high, then the freeze lands right on the low beep
-		await _play_beep_and_wait(_LOW_BEEP)
+		#await _play_beep_and_wait(_LOW_BEEP)
 		# heads up for anything that wants to animate before the freeze lands
 		SignalBus.time_stop_winding_up.emit(true)
-		await _play_beep_and_wait(_LOW_BEEP)
+		#await _play_beep_and_wait(_LOW_BEEP)
 	#	_play_beep(_THREE_BEEP)
 	#	await _play_beep_and_wait(_HIGH_BEEP)
 	#	await _play_beep_and_wait(_HIGH_BEEP)
-		_play_beep(_HIGH_BEEP)
+		_play_beep(_TIMESTOPSTART)
 		_set_time_stopped(true)
 	else:
 		# low, low, then the resume lands right on the high beep
-		await _play_beep_and_wait(_HIGH_BEEP)
+		#await _play_beep_and_wait(_HIGH_BEEP)
 		# same heads up on the way back out
 		SignalBus.time_stop_winding_up.emit(false)
-		await _play_beep_and_wait(_HIGH_BEEP)
+		#await _play_beep_and_wait(_HIGH_BEEP)
 	#	_play_beep(_ONE_BEEP)
 	#	await _play_beep_and_wait(_LOW_BEEP)
 	#	await _play_beep_and_wait(_LOW_BEEP)
-		_play_beep(_LOW_BEEP)
+		_play_beep(_TIMESTOPSTARTALT)
 		_set_time_stopped(false)
 
 	_time_toggle_busy = false

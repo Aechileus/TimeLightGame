@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/wall_1.tscn" id="5_174kx"]
 [ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ramp_slim.tscn" id="6_y42g5"]
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="9_fqs8f"]
+[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="9_qut0p"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="10_idn6t"]
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="11_hpdln"]
+[ext_resource type="PackedScene" path="res://Assets/Creatures/monster_spawner.tscn" id="11_idn6t"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="12_13id2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
@@ -33,94 +36,94 @@ level_time = 600.0
 
 [node name="RampContainer" type="Node" parent="." unique_id=450792952]
 
-[node name="RampSlim" parent="RampContainer" unique_id=1221947856 instance=ExtResource("6_y42g5")]
+[node name="RampSlim" parent="RampContainer" unique_id=1221947856 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -15)
 
-[node name="RampSlim2" parent="RampContainer" unique_id=1006158126 instance=ExtResource("6_y42g5")]
+[node name="RampSlim2" parent="RampContainer" unique_id=1006158126 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
 
-[node name="RampSlim3" parent="RampContainer" unique_id=2109676055 instance=ExtResource("6_y42g5")]
+[node name="RampSlim3" parent="RampContainer" unique_id=2109676055 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19)
 
-[node name="RampSlim4" parent="RampContainer" unique_id=1648768572 instance=ExtResource("6_y42g5")]
+[node name="RampSlim4" parent="RampContainer" unique_id=1648768572 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -21)
 
-[node name="RampSlim5" parent="RampContainer" unique_id=1645754145 instance=ExtResource("6_y42g5")]
+[node name="RampSlim5" parent="RampContainer" unique_id=1645754145 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -23)
 
-[node name="RampSlim6" parent="RampContainer" unique_id=1539569360 instance=ExtResource("6_y42g5")]
+[node name="RampSlim6" parent="RampContainer" unique_id=1539569360 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -25)
 
-[node name="RampSlim7" parent="RampContainer" unique_id=1751135079 instance=ExtResource("6_y42g5")]
+[node name="RampSlim7" parent="RampContainer" unique_id=1751135079 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -15)
 
-[node name="RampSlim8" parent="RampContainer" unique_id=1630685724 instance=ExtResource("6_y42g5")]
+[node name="RampSlim8" parent="RampContainer" unique_id=1630685724 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -17)
 
-[node name="RampSlim9" parent="RampContainer" unique_id=584817715 instance=ExtResource("6_y42g5")]
+[node name="RampSlim9" parent="RampContainer" unique_id=584817715 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -19)
 
-[node name="RampSlim10" parent="RampContainer" unique_id=1278920975 instance=ExtResource("6_y42g5")]
+[node name="RampSlim10" parent="RampContainer" unique_id=1278920975 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -21)
 
-[node name="RampSlim11" parent="RampContainer" unique_id=2127786216 instance=ExtResource("6_y42g5")]
+[node name="RampSlim11" parent="RampContainer" unique_id=2127786216 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -23)
 
-[node name="RampSlim12" parent="RampContainer" unique_id=411401636 instance=ExtResource("6_y42g5")]
+[node name="RampSlim12" parent="RampContainer" unique_id=411401636 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, -25)
 
-[node name="RampSlim13" parent="RampContainer" unique_id=123810867 instance=ExtResource("6_y42g5")]
+[node name="RampSlim13" parent="RampContainer" unique_id=123810867 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, -15)
 
-[node name="RampSlim14" parent="RampContainer" unique_id=1852318208 instance=ExtResource("6_y42g5")]
+[node name="RampSlim14" parent="RampContainer" unique_id=1852318208 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -17)
 
-[node name="RampSlim15" parent="RampContainer" unique_id=1903059702 instance=ExtResource("6_y42g5")]
+[node name="RampSlim15" parent="RampContainer" unique_id=1903059702 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -19)
 
-[node name="RampSlim16" parent="RampContainer" unique_id=743261736 instance=ExtResource("6_y42g5")]
+[node name="RampSlim16" parent="RampContainer" unique_id=743261736 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -21)
 
-[node name="RampSlim17" parent="RampContainer" unique_id=178636404 instance=ExtResource("6_y42g5")]
+[node name="RampSlim17" parent="RampContainer" unique_id=178636404 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -23)
 
-[node name="RampSlim18" parent="RampContainer" unique_id=654662538 instance=ExtResource("6_y42g5")]
+[node name="RampSlim18" parent="RampContainer" unique_id=654662538 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, -25)
 
-[node name="RampSlim19" parent="RampContainer" unique_id=299690236 instance=ExtResource("6_y42g5")]
+[node name="RampSlim19" parent="RampContainer" unique_id=299690236 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, -15)
 
-[node name="RampSlim20" parent="RampContainer" unique_id=2110528612 instance=ExtResource("6_y42g5")]
+[node name="RampSlim20" parent="RampContainer" unique_id=2110528612 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -17)
 
-[node name="RampSlim21" parent="RampContainer" unique_id=813560213 instance=ExtResource("6_y42g5")]
+[node name="RampSlim21" parent="RampContainer" unique_id=813560213 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -19)
 
-[node name="RampSlim22" parent="RampContainer" unique_id=1684555865 instance=ExtResource("6_y42g5")]
+[node name="RampSlim22" parent="RampContainer" unique_id=1684555865 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -21)
 
-[node name="RampSlim23" parent="RampContainer" unique_id=1963364382 instance=ExtResource("6_y42g5")]
+[node name="RampSlim23" parent="RampContainer" unique_id=1963364382 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -23)
 
-[node name="RampSlim24" parent="RampContainer" unique_id=1155078501 instance=ExtResource("6_y42g5")]
+[node name="RampSlim24" parent="RampContainer" unique_id=1155078501 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, -25)
 
-[node name="RampSlim25" parent="RampContainer" unique_id=1632676895 instance=ExtResource("6_y42g5")]
+[node name="RampSlim25" parent="RampContainer" unique_id=1632676895 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -15)
 
-[node name="RampSlim26" parent="RampContainer" unique_id=1630011840 instance=ExtResource("6_y42g5")]
+[node name="RampSlim26" parent="RampContainer" unique_id=1630011840 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -17)
 
-[node name="RampSlim27" parent="RampContainer" unique_id=587956068 instance=ExtResource("6_y42g5")]
+[node name="RampSlim27" parent="RampContainer" unique_id=587956068 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -19)
 
-[node name="RampSlim28" parent="RampContainer" unique_id=869234838 instance=ExtResource("6_y42g5")]
+[node name="RampSlim28" parent="RampContainer" unique_id=869234838 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -21)
 
-[node name="RampSlim29" parent="RampContainer" unique_id=67863215 instance=ExtResource("6_y42g5")]
+[node name="RampSlim29" parent="RampContainer" unique_id=67863215 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -23)
 
-[node name="RampSlim30" parent="RampContainer" unique_id=440520873 instance=ExtResource("6_y42g5")]
+[node name="RampSlim30" parent="RampContainer" unique_id=440520873 groups=["ramp"] instance=ExtResource("6_y42g5")]
 transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -25)
 
 [node name="FloorContainer" type="Node" parent="." unique_id=911749726]
@@ -2442,3 +2445,13 @@ autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638862342]
 environment = SubResource("Environment_l00eo")
+
+[node name="FinishLine" parent="." unique_id=8209525 instance=ExtResource("9_qut0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.760403, -0.89401865, -2.9472046)
+
+[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("10_idn6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.803867, -0.89401865, 1.216919)
+
+[node name="MonsterSpawner" parent="." unique_id=1035364215 instance=ExtResource("11_idn6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, -1.0060177, 15.192966)
+mode = 1

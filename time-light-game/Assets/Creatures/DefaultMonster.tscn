@@ -2,43 +2,95 @@
 
 [ext_resource type="PackedScene" uid="uid://jvytufebye48" path="res://Assets/Creatures/Character_Monster.fbx" id="1_xem20"]
 [ext_resource type="AnimationLibrary" uid="uid://b56k5ydxyhia2" path="res://Assets/Creatures/Hip Hop Dancing.fbx" id="2_bekvb"]
+[ext_resource type="AnimationLibrary" uid="uid://beq3peghexot0" path="res://Assets/Creatures/Brutal Assassination.fbx" id="2_nfb52"]
+[ext_resource type="Shader" uid="uid://b7uibk0akn171" path="res://Assets/Creatures/dissolve.gdshader" id="3_dhqst"]
+[ext_resource type="Texture2D" uid="uid://dbfqea1qe54mt" path="res://Assets/Creatures/Character_Monster.png" id="3_skin"]
+[ext_resource type="AnimationLibrary" uid="uid://d2m1fiev3hby5" path="res://Assets/Creatures/animations/Fast Run.fbx" id="3_yypfn"]
+[ext_resource type="AnimationLibrary" uid="uid://b0jrhk0d0wgvf" path="res://Assets/Creatures/Kidney Hit.fbx" id="4_w266o"]
+[ext_resource type="AnimationLibrary" uid="uid://kpsta7cnthpm" path="res://Assets/Creatures/Mutant Punch.fbx" id="5_2ttam"]
+[ext_resource type="AnimationLibrary" uid="uid://cvkma4lepihva" path="res://Assets/Creatures/Receiving An Uppercut.fbx" id="6_h4fa3"]
+[ext_resource type="AnimationLibrary" uid="uid://b4eq2tw02tul8" path="res://Assets/Creatures/animations/left turn 45.fbx" id="7_st5et"]
+[ext_resource type="AnimationLibrary" uid="uid://bd1fuf25dghft" path="res://Assets/Creatures/animations/mutant breathing idle.fbx" id="8_yypfn"]
+[ext_resource type="AnimationLibrary" uid="uid://dkrgc4cabkjlf" path="res://Assets/Creatures/animations/mutant dying.fbx" id="9_dhqst"]
+[ext_resource type="AnimationLibrary" uid="uid://cb06lhcc8v5oj" path="res://Assets/Creatures/animations/mutant flexing muscles.fbx" id="10_8ffd7"]
+[ext_resource type="AnimationLibrary" uid="uid://d0xxl21uiadl4" path="res://Assets/Creatures/animations/mutant idle.fbx" id="11_2cjtd"]
+[ext_resource type="AnimationLibrary" uid="uid://bveen3s0fo13a" path="res://Assets/Creatures/animations/mutant jumping.fbx" id="12_jb84e"]
+[ext_resource type="AnimationLibrary" uid="uid://dqftfaxtlrskq" path="res://Assets/Creatures/animations/mutant right turn 45.fbx" id="14_ffw0s"]
+[ext_resource type="AnimationLibrary" uid="uid://iklmm2vger5a" path="res://Assets/Creatures/animations/mutant run.fbx" id="16_b18o1"]
+[ext_resource type="AnimationLibrary" uid="uid://cu8x6kkc37nt6" path="res://Assets/Creatures/animations/mutant swiping.fbx" id="17_3hrk1"]
+[ext_resource type="AnimationLibrary" uid="uid://bqq5es0eqhpsp" path="res://Assets/Creatures/animations/mutant walking.fbx" id="18_pki8n"]
+[ext_resource type="Script" uid="uid://b1353153iy28c" path="res://Assets/Creatures/monster_ai.gd" id="19_ai"]
+[ext_resource type="Script" uid="uid://na17oo0voc3k" path="res://Assets/Creatures/monster_footstep_component.gd" id="20_step"]
+[ext_resource type="AudioStream" uid="uid://wm6olmc5oj8" path="res://Resources/SFX/Footsteps/concrete.ogg" id="21_conc"]
+[ext_resource type="AudioStream" uid="uid://35v3lv5v14xp" path="res://Resources/SFX/Footsteps/grass.ogg" id="22_grass"]
+[ext_resource type="AudioStream" uid="uid://c4hqdnad4fpnt" path="res://Resources/SFX/Footsteps/carpet.wav" id="23_carp"]
+[ext_resource type="AudioStream" uid="uid://daf52s15mlwco" path="res://Resources/SFX/Footsteps/wood.ogg" id="24_wood"]
+[ext_resource type="AudioStream" uid="uid://by4jns16ahp4v" path="res://Resources/SFX/Footsteps/metal.ogg" id="25_metal"]
 
-[node name="LevelEnemy" unique_id=819955731 instance=ExtResource("1_xem20")]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jb84e"]
 
-[node name="Skeleton3D" parent="." index="0" unique_id=1952475744]
-bones/0/position = Vector3(-0.1906454, 0.9599187, -0.01881176)
-bones/0/rotation = Quaternion(0.13514048, 0.06666562, -0.08579268, 0.98485154)
-bones/1/rotation = Quaternion(-0.07946483, -0.031718727, 0.046194024, 0.99526155)
-bones/2/rotation = Quaternion(0.0002551775, -0.07982508, 0.070274964, 0.99432856)
-bones/3/rotation = Quaternion(0.014259637, -0.07901112, 0.07110217, 0.99423265)
-bones/4/rotation = Quaternion(-0.019649066, 0.027259747, -0.006726207, 0.9994126)
-bones/5/rotation = Quaternion(0.058057923, 0.12547731, -0.026773551, 0.9900344)
-bones/7/rotation = Quaternion(-0.52112913, -0.5475194, 0.5433065, -0.36532858)
-bones/8/rotation = Quaternion(0.15191312, 0.13306636, 0.7889776, 0.5802845)
-bones/9/rotation = Quaternion(-7.87768e-08, 3.166497e-08, 0.5414727, 0.8407183)
-bones/10/rotation = Quaternion(-0.16013394, 0.14139044, 0.18579507, 0.9590861)
-bones/11/rotation = Quaternion(0.18865627, -0.07523266, 0.15380868, 0.96700144)
-bones/12/rotation = Quaternion(-0.16059466, -0.0034169592, -0.18077588, 0.9703184)
-bones/13/rotation = Quaternion(-0.09874069, -0.002387928, -0.06430842, 0.99303025)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2cjtd"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_jb84e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ffd7"]
+render_priority = 0
+shader = ExtResource("3_dhqst")
+shader_parameter/enabled = false
+shader_parameter/t = 0.0
+shader_parameter/albedo_tex = ExtResource("3_skin")
+shader_parameter/albedo_and_emissive_color = Color(1, 1, 1, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_2cjtd")
+shader_parameter/noise_scale = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l00eo"]
+radius = 0.15113224
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hurt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.7
+
+[node name="LevelEnemy" unique_id=819955731 groups=["enemy"] instance=ExtResource("1_xem20")]
+collision_layer = 4
+script = ExtResource("19_ai")
+
+[node name="Skeleton3D" parent="." index="0" unique_id=1500189834]
+bones/0/position = Vector3(-1.6801059e-06, 1.1428092, -0.004664318)
+bones/0/rotation = Quaternion(5.8678825e-08, -9.58578e-07, 3.292419e-05, 1)
+bones/1/rotation = Quaternion(-0.029908437, 1.9428817e-06, -3.288078e-05, 0.99955267)
+bones/2/rotation = Quaternion(0.13306893, 0.002218254, 0.008583067, 0.99106723)
+bones/3/rotation = Quaternion(0.15649307, 0.0018752002, 0.008495478, 0.98764074)
+bones/4/rotation = Quaternion(0.025937254, -0.0080146715, 0.0009029226, 0.9996311)
+bones/5/rotation = Quaternion(-0.18870558, 0.023675306, -0.017435718, 0.98159355)
+bones/7/rotation = Quaternion(-0.54680616, -0.44563207, 0.55309963, -0.44327855)
+bones/8/rotation = Quaternion(-0.105583765, 0.046626702, -0.00041846192, 0.99331665)
+bones/9/rotation = Quaternion(-4.6831662e-08, 0.00014557397, -1.4625768e-07, 1)
+bones/10/rotation = Quaternion(0.010743761, -0.016984597, -0.02399177, 0.99951017)
+bones/11/rotation = Quaternion(0.2157881, 0.053016305, 0.27039692, 0.9367553)
+bones/12/rotation = Quaternion(0.0003619045, -0.008184631, -0.045331914, 0.99893844)
+bones/13/rotation = Quaternion(-5.5320567e-07, 6.092329e-05, 0.08586708, 0.99630666)
 bones/15/rotation = Quaternion(-0.010322338, -0.00054141064, 0.025187463, 0.9996294)
 bones/16/rotation = Quaternion(7.376076e-07, -0.00017930225, -0.0048442227, 0.9999883)
 bones/17/rotation = Quaternion(1.1920929e-07, 8.887437e-05, 0.006677824, 0.9999777)
-bones/19/rotation = Quaternion(-0.00013944214, -4.33065e-08, 1.68212e-05, 1)
-bones/20/rotation = Quaternion(0.00013947114, -5.982844e-08, -1.6842781e-05, 1)
+bones/19/rotation = Quaternion(-0.010353064, 0.0008330619, 0.025800893, 0.9996131)
+bones/20/rotation = Quaternion(-9.685755e-08, 1.7362865e-05, -0.0028162303, 0.99999607)
 bones/21/rotation = Quaternion(-2.6635828e-07, 7.4973523e-06, 0.0005543538, 0.9999999)
 bones/23/rotation = Quaternion(-0.010452752, 0.0043300525, 0.021293664, 0.9997093)
 bones/24/rotation = Quaternion(3.874302e-07, 4.252167e-05, 0.0048015737, 0.99998856)
 bones/25/rotation = Quaternion(-3.16184e-07, 2.3322431e-05, -0.0007602017, 0.9999997)
-bones/27/rotation = Quaternion(-0.004451498, 2.7008355e-08, -0.035373054, 0.99936426)
-bones/28/rotation = Quaternion(0.004451654, 4.1476596e-08, 0.035373166, 0.9993643)
+bones/27/rotation = Quaternion(-0.010289987, -0.0020186687, 0.026310423, 0.99959886)
+bones/28/rotation = Quaternion(-4.377216e-08, -4.541958e-06, -9.283507e-05, 1)
 bones/29/rotation = Quaternion(5.2899117e-07, -0.00034001938, -0.0071151736, 0.9999746)
-bones/31/rotation = Quaternion(0.44841173, -0.5910125, 0.5685947, 0.35543126)
-bones/32/rotation = Quaternion(0.48909986, -0.38850433, -0.20897937, 0.752445)
-bones/33/rotation = Quaternion(3.312653e-08, -2.0628798e-07, -0.10961629, 0.9939741)
-bones/34/rotation = Quaternion(-0.28963113, 0.23342016, -0.067975484, 0.92574745)
-bones/35/rotation = Quaternion(0.18728936, 0.07408339, -0.16960429, 0.9647118)
-bones/36/rotation = Quaternion(-0.06319554, 0.060713977, 0.26242888, 0.96096367)
-bones/37/rotation = Quaternion(-0.046647687, 0.030096877, 0.08470805, 0.99485815)
+bones/31/rotation = Quaternion(0.54369146, -0.44734338, 0.5559261, 0.44184807)
+bones/32/rotation = Quaternion(-0.105447836, -0.036418412, -0.0053629386, 0.99374324)
+bones/33/rotation = Quaternion(2.9634396e-07, -6.7042776e-05, 4.293807e-07, 1)
+bones/34/rotation = Quaternion(0.011131124, 0.030261878, 0.027561933, 0.99909997)
+bones/35/rotation = Quaternion(0.22647145, -0.058631964, -0.2635736, 0.93584293)
+bones/36/rotation = Quaternion(9.6172094e-05, 0.0039219623, 0.02620138, 0.99964905)
+bones/37/rotation = Quaternion(-1.8626454e-09, -5.375769e-06, -0.05037386, 0.9987305)
 bones/39/rotation = Quaternion(-0.0104548, -0.0054100915, -0.025684075, 0.99960077)
 bones/40/rotation = Quaternion(1.523644e-06, 0.00015985763, 0.0056399503, 0.99998415)
 bones/41/rotation = Quaternion(-6.593764e-07, 0.0002043423, -0.019327879, 0.9998132)
@@ -51,15 +103,82 @@ bones/49/rotation = Quaternion(-3.4220513e-05, 0.0013897909, -0.020217534, 0.999
 bones/51/rotation = Quaternion(-0.010352287, -0.0025998063, -0.031923037, 0.9994334)
 bones/52/rotation = Quaternion(1.223525e-07, -1.2957024e-05, 0.00040143522, 0.99999994)
 bones/53/rotation = Quaternion(1.6875565e-06, 0.00022730062, 0.013144371, 0.99991363)
-bones/55/rotation = Quaternion(0.073393196, 0.07794362, 0.9905578, 0.085636534)
-bones/56/rotation = Quaternion(-0.2300972, -0.09321771, -0.03474304, 0.96806955)
-bones/57/rotation = Quaternion(0.4641877, -0.1549623, 0.066864535, 0.8695088)
-bones/58/rotation = Quaternion(0.6182766, -1.21071935e-08, 1.2200326e-07, 0.7859607)
-bones/60/rotation = Quaternion(-0.06578738, 0.32566753, 0.94318724, -0.003268328)
-bones/61/rotation = Quaternion(-0.35376248, 0.04274716, -0.0015167329, 0.9343568)
-bones/62/rotation = Quaternion(0.5564019, 0.10185146, 0.04375825, 0.8234856)
-bones/63/rotation = Quaternion(0.34299925, 4.0512536e-08, -2.5785997e-08, 0.93933576)
+bones/55/rotation = Quaternion(-0.00056128035, -0.004508382, 0.9999623, 0.007409245)
+bones/56/rotation = Quaternion(-0.020012302, -0.00017629813, 0.014254363, 0.99969816)
+bones/57/rotation = Quaternion(0.4655436, 0.011364197, 0.021060873, 0.88470143)
+bones/58/rotation = Quaternion(0.4871157, 0.022343807, -0.049106702, 0.8716694)
+bones/60/rotation = Quaternion(0.0005521226, -0.0070445435, 0.9999481, -0.0073446985)
+bones/61/rotation = Quaternion(-0.015375495, 0.00014279416, -0.014261386, 0.9997801)
+bones/62/rotation = Quaternion(0.4577378, -0.0113234045, -0.021094387, 0.88876486)
+bones/63/rotation = Quaternion(0.49113327, 0.071421415, 0.07180578, 0.86517686)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=677508003]
+[node name="Character_Monster" parent="Skeleton3D" index="0" unique_id=1996533655]
+surface_material_override/0 = SubResource("ShaderMaterial_8ffd7")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=860763169]
+transform = Transform3D(-0.06772035, 0.99767184, 0.0080471, 0.54379445, 0.043671783, -0.838081, -0.83648133, -0.052379206, -0.545486, 0.7295457, 1.4591526, 0.034435306)
+bone_name = "mixamorig_LeftHand"
+bone_idx = 10
+
+[node name="DamagingArea" type="Area3D" parent="Skeleton3D/BoneAttachment3D" index="0" unique_id=116695431]
+transform = Transform3D(0.63918674, -0.23119518, -0.73347735, -0.3042162, -0.9519614, 0.03495395, -0.70632356, 0.20079347, -0.67881453, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D/DamagingArea" index="0" unique_id=260210734]
+shape = SubResource("SphereShape3D_l00eo")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Skeleton3D" index="2" unique_id=1135438178]
+transform = Transform3D(-0.03775513, -0.9980251, 0.050203044, -0.50472033, -0.024314491, -0.8629405, 0.862457, -0.057918847, -0.50280553, -0.73633677, 1.409025, 0.03426977)
+bone_name = "mixamorig_RightHand"
+bone_idx = 34
+
+[node name="DamagingArea" type="Area3D" parent="Skeleton3D/BoneAttachment3D2" index="0" unique_id=1782330614]
+transform = Transform3D(0.63918674, -0.23119518, -0.73347735, -0.3042162, -0.9519614, 0.03495395, -0.70632356, 0.20079347, -0.67881453, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D2/DamagingArea" index="0" unique_id=198530618]
+shape = SubResource("SphereShape3D_l00eo")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1871926099]
+"libraries/Brutal Assassination" = ExtResource("2_nfb52")
+"libraries/Fast Run" = ExtResource("3_yypfn")
 "libraries/Hip Hop Dancing" = ExtResource("2_bekvb")
-autoplay = &"Hip Hop Dancing/mixamo_com"
+"libraries/Kidney Hit" = ExtResource("4_w266o")
+"libraries/Mutant Punch" = ExtResource("5_2ttam")
+"libraries/Receiving An Uppercut" = ExtResource("6_h4fa3")
+"libraries/left turn 45" = ExtResource("7_st5et")
+"libraries/mutant breathing idle" = ExtResource("8_yypfn")
+"libraries/mutant dying" = ExtResource("9_dhqst")
+"libraries/mutant flexing muscles" = ExtResource("10_8ffd7")
+"libraries/mutant idle" = ExtResource("11_2cjtd")
+"libraries/mutant jumping" = ExtResource("12_jb84e")
+"libraries/mutant right turn 45" = ExtResource("14_ffw0s")
+"libraries/mutant run" = ExtResource("16_b18o1")
+"libraries/mutant swiping" = ExtResource("17_3hrk1")
+"libraries/mutant walking" = ExtResource("18_pki8n")
+autoplay = &"mutant breathing idle/mixamo_com"
+
+[node name="Hurtbox" type="Area3D" parent="." index="2" unique_id=1148798330]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0" unique_id=267703959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_hurt")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="." index="3" unique_id=1230017162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Footsteps" type="Node3D" parent="." index="4" unique_id=580772731]
+script = ExtResource("20_step")
+material_streams = Dictionary[int, AudioStream]({
+0: ExtResource("21_conc"),
+1: ExtResource("22_grass"),
+2: ExtResource("23_carp"),
+3: ExtResource("24_wood"),
+4: ExtResource("25_metal")
+})
+
+[node name="FootChecker" type="RayCast3D" parent="Footsteps" index="0" unique_id=1427349183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+target_position = Vector3(0, -1.2, 0)
+
+[node name="StepAudio" type="AudioStreamPlayer3D" parent="Footsteps" index="1" unique_id=1459044931]
+bus = &"SFX"
