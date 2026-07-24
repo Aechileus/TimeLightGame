@@ -23,24 +23,26 @@
 			"tasks": [
 				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
 				"30b1278a-f8c2-493e-be8c-b9339701a74d",
-				"5bf10403-7344-4ac2-aa57-b600a050817d",
 				"8c770334-87e0-4ed2-869e-99e65035d45f",
 				"bca5f523-8eba-42a1-aa97-4d7f3aebe4dd",
 				"1e7e6b8d-ad2c-43a7-b269-8b65678b1397",
-				"0f6dde44-7dc7-4d4c-a4e4-6500ee2e4d78"
+				"0f6dde44-7dc7-4d4c-a4e4-6500ee2e4d78",
+				"6dc3b77f-fdd5-4204-8d1f-1284750a8844"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing - Aech",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+				"41f3cc74-3252-484f-9aa2-1d3657db3ee5"
 			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
 			"title": "Done",
 			"tasks": [
+				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
 				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
 				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
 				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
@@ -63,7 +65,9 @@
 		{
 			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
 			"title": "Doing - Snake",
-			"tasks": []
+			"tasks": [
+				"5bf10403-7344-4ac2-aa57-b600a050817d"
+			]
 		},
 		{
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
@@ -79,12 +83,9 @@
 			"uuid": "a382d40d-47a3-42c7-9c5e-451ed7717993",
 			"title": "Todo: Bugfixes",
 			"tasks": [
-				"41f3cc74-3252-484f-9aa2-1d3657db3ee5",
 				"0a111623-6452-45ac-a99c-af14f782f009",
 				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
-				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d",
-				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
-				"ec518d3c-483b-4cf7-905f-11ee437595f9"
+				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d"
 			]
 		}
 	],
@@ -383,10 +384,10 @@
 			"steps": []
 		},
 		{
-			"uuid": "ec518d3c-483b-4cf7-905f-11ee437595f9",
-			"title": "Jumping while sliding doesn't stand you up",
+			"uuid": "6dc3b77f-fdd5-4204-8d1f-1284750a8844",
+			"title": "Add a death screen",
 			"description": "",
-			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}
 	],
