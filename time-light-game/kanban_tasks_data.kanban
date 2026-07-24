@@ -19,29 +19,27 @@
 	"stages": [
 		{
 			"uuid": "c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
-			"title": "Todo",
+			"title": "Todo - Features",
 			"tasks": [
 				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
 				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
 				"457b560e-4fed-4848-9603-70901284c62b",
-				"30b1278a-f8c2-493e-be8c-b9339701a74d",
-				"9b9252f9-fa64-4367-96f4-e921e829b854",
-				"0c4de1ed-2625-4ded-b79a-3557244a975d"
+				"30b1278a-f8c2-493e-be8c-b9339701a74d"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
-			"title": "Doing",
+			"title": "Doing - Aech",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
-				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
 			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
 			"title": "Done",
 			"tasks": [
+				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
 				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
 				"053942a6-64b7-4843-a33a-9fcb29746a2e",
 				"90cc72e9-143b-4cfd-a2c2-44899877eb31",
@@ -54,6 +52,26 @@
 				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
 				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
 			]
+		},
+		{
+			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
+			"title": "Doing - Snake",
+			"tasks": []
+		},
+		{
+			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
+			"title": "Todo: Polish",
+			"tasks": [
+				"9b9252f9-fa64-4367-96f4-e921e829b854",
+				"0c4de1ed-2625-4ded-b79a-3557244a975d",
+				"a7306602-e9a9-4c98-9210-220b43db50b5",
+				"b010702a-0840-4a6c-aad9-4e076fed2ee8"
+			]
+		},
+		{
+			"uuid": "a382d40d-47a3-42c7-9c5e-451ed7717993",
+			"title": "Todo: Bugfixes",
+			"tasks": []
 		}
 	],
 	"tasks": [
@@ -180,7 +198,7 @@
 			"uuid": "9b9252f9-fa64-4367-96f4-e921e829b854",
 			"title": "I think we should refactor the level_timer",
 			"description": "When you scroll to set time until next pause, I think it should actively remove that time from the level timer.  Once the time in the bottom right is gone and the level timer is gone.  GGS.  ",
-			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
 		},
 		{
@@ -196,15 +214,74 @@
 			"description": "The border seems to be offset byhalf a pixel downwards and to the right (+ve x, +ve y)",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
+		},
+		{
+			"uuid": "a7306602-e9a9-4c98-9210-220b43db50b5",
+			"title": "Tune movement to feel great",
+			"description": "Use the playground! If needed, I can do this lol",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": [
+				{
+					"details": "Make the gravity feel fluid and poppy",
+					"done": false
+				},
+				{
+					"details": "Make ground movement feel inertia much less",
+					"done": false
+				},
+				{
+					"details": "Balance air manouverability with realism",
+					"done": false
+				},
+				{
+					"details": "Handle the camera changing positions when time stops and resumes?",
+					"done": false
+				},
+				{
+					"details": "Make sliding give you a speed boost when you start",
+					"done": false
+				},
+				{
+					"details": "Accelerate while sliding down ramps",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "b010702a-0840-4a6c-aad9-4e076fed2ee8",
+			"title": "Properly implement the playground for movement testing",
+			"description": "This would be great so we can send off a quick demo build to some people to get feedback",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": [
+				{
+					"details": "Make pausing instant but still trigger the animation",
+					"done": false
+				},
+				{
+					"details": "Make the time limit infinite",
+					"done": false
+				},
+				{
+					"details": "Add some more obstacles/parts to demonstrate all the mechanics (sliding, wall jumping, etc)",
+					"done": false
+				},
+				{
+					"details": "Make the player settings tunable from ingame ",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {
 		"columns": [
 			[
-				"c65051d6-580c-4ecf-9c68-95bbc66d7b4b"
+				"c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
+				"a0f6e42c-25ba-40d7-bca2-0341b98761eb",
+				"a382d40d-47a3-42c7-9c5e-451ed7717993"
 			],
 			[
-				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d"
+				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
+				"c7b63abb-9e44-4f11-8d82-04d832c35522"
 			],
 			[
 				"0612e6e4-ce27-4508-9e27-7cd7181ae9fa"
