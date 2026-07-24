@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://batc8cpgqtu6k"]
+
+[ext_resource type="Texture2D" uid="uid://bwaf5ignkj1vr" path="res://Assets/StructurePieces/CSG/pipe_mp_1.png" id="1_ekv8v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6io0"]
+albedo_texture = ExtResource("1_ekv8v")
+uv1_triplanar = true
+
+[node name="Spike" type="CSGPolygon3D" unique_id=1366038293]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0.705, 0, 0, 1, 0, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 4
+material = SubResource("StandardMaterial3D_q6io0")

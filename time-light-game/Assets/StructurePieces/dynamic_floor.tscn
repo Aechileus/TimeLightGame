@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmgij5qx2gxfb"]
+
+[ext_resource type="Texture2D" uid="uid://bxw2lxfhkhrtu" path="res://Assets/PSXPack2/floor_ceiling_rx_1_tile_floor_mx_3.png" id="1_l2sdq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btdev"]
+albedo_texture = ExtResource("1_l2sdq")
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+uv1_offset = Vector3(0, 0.125, 0.125)
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqhqm"]
+material = SubResource("StandardMaterial3D_btdev")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n52p5"]
+
+[node name="DynamicFloor" type="Node3D" unique_id=662585592]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1908294345]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -2.9802322e-07, 0, 0)
+mesh = SubResource("BoxMesh_tqhqm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=762625064]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=629357822]
+shape = SubResource("BoxShape3D_n52p5")

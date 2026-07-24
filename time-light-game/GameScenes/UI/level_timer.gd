@@ -7,8 +7,10 @@ extends CanvasLayer
 
 @export_range(5.0, 600.0, 5.0) var level_time: float = 60.0
 @export var infinite_time: bool = false
+@export var paused: bool = false
 
 var _time_left: float = 0.0
+
 
 @onready var _label: Label = $TimerLabel
 
@@ -21,7 +23,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if infinite_time: # If the time is infinite, just update the label
+	if infinite_time or paused: # If the time is infinite, just update the label
 		_update_label()
 		return
 		

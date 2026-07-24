@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d33flyojl0kr7"]
+[gd_scene format=3 uid="uid://tfaffth3wjx2"]
 
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="1_n1wo0"]
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="2_t46kt"]
@@ -54,7 +54,6 @@ level_time = 600.0
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_b5gd2")]
 transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 0, 0, 0)
-overspeed_deceleration = 1.8
 free_time_control = true
 
 [node name="LevelRestarterTemp" type="Node" parent="." unique_id=1763049882]

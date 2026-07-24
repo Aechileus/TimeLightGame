@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bshp17roirwgh"]
+
+[ext_resource type="PackedScene" uid="uid://mdyqw1de1kw0" path="res://Assets/PSXPack2/wall_hr_1.glb" id="1_k8km7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(4, 3, 0.403)
+
+[node name="wall_hr_12" unique_id=1710775366 instance=ExtResource("1_k8km7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1584242462]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=930921921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_l00eo")

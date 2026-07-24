@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TimeLightGame"
-run/main_scene="uid://dcfxcv67ffmmo"
+run/main_scene="uid://d33flyojl0kr7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Resources/icon.svg"
 
@@ -49,6 +49,10 @@ folder_colors={
 [global_group]
 
 enemy=""
+ramp=""
+player=""
+wood=""
+metal=""
 
 [input]
 

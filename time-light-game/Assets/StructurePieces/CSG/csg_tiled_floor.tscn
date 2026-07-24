@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3xsfjaaojfis"]
+
+[ext_resource type="Texture2D" uid="uid://3pxf641vn6ys" path="res://Assets/StructurePieces/tiles_floor_hr_1.png" id="1_t6kia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfp4"]
+albedo_texture = ExtResource("1_t6kia")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="CSGTiledFloor" type="CSGBox3D" unique_id=2002669847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pjfp4")

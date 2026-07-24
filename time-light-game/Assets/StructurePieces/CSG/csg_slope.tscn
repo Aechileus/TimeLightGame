@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://tfwp5nchgtp1"]
+
+[ext_resource type="Texture2D" uid="uid://cfe4t0u81jcep" path="res://Assets/StructurePieces/CSG/concrete_wall_mx_1.png" id="1_fxw8v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nusbu"]
+albedo_texture = ExtResource("1_fxw8v")
+uv1_triplanar = true
+
+[node name="CSGSlope" type="CSGPolygon3D" unique_id=1742819448 groups=["ramp"]]
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 0)
+material = SubResource("StandardMaterial3D_nusbu")
