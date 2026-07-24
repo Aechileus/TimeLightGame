@@ -50,6 +50,7 @@ var click_to_capture_mouse: bool = true
 @export_range(1.0, 8.0, 0.5) var normal_pixel_size: float = 3.0
 @export var frozen_tint: Color = Color(1.0, 0.302, 0.302, 0.38)
 @export var resume_flash_tint: Color = Color(0.349, 1.0, 0.4, 0.318)
+@export var free_time_control: bool = false
 
 @onready var character_body: CharacterBody3D = $PlayerCharacterBody3D
 @onready var player_camera: Camera3D = $PlayerCharacterBody3D/PlayerCamera
@@ -106,6 +107,8 @@ func _ready() -> void:
 
 	_health = max_health
 	_update_health_label()
+	
+	time_manipulation._free_time_control = free_time_control
 
 	if capture_mouse_on_start:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
