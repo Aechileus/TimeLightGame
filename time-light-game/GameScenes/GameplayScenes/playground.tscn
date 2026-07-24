@@ -37,25 +37,25 @@ infinite_time = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("3_e68fa")]
 _gravity = 20.0
-walk_speed = 30.0
 ground_acceleration = 50.0
 ground_deceleration = 50.0
 air_acceleration = 20.0
+jump_velocity = 8.0
+overspeed_deceleration = 4.0
 minimum_look_angle = -89.0
 maximum_look_angle = 89.0
 economy_enabled = false
 free_time_control = true
 
 [node name="WallMovement" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="0" unique_id=264129517]
-gravity_multiplier = 1.0
-max_fall_speed = 1.0
-jump_vertical_velocity = 8.0
-jump_horizontal_velocity = 4.5
+jump_vertical_velocity = 7.8999999999999995
+jump_horizontal_velocity = 4.1
 contact_grace_time = 0.15
 
 [node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
 slide_minimum_entry_speed = 6.0
 slide_start_speed = 8.0
+ramp_acceleration = 23.5
 max_slide_speed = 60.0
 slam_speed = 10.0
 slide_jump_boost = 1.6

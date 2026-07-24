@@ -108,7 +108,7 @@ func _ready() -> void:
 	# during time stop, movement gets gated in _physics_process instead
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	_gravity = float(ProjectSettings.get_setting("physics/3d/default_gravity", 9.8))
+	#_gravity = float(ProjectSettings.get_setting("physics/3d/default_gravity", 9.8))
 	_camera_base_height = player_camera.position.y
 	_camera_current_height = _camera_base_height
 
