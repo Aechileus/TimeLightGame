@@ -44,6 +44,7 @@ var _selected: int = 0
 var _aiming: bool = false
 var _stuck: bool = false
 var _aim_distance: float = 0.0
+var _aim_time: float = 0.0
 var _queued: bool = false
 var _queued_point: Vector3 = Vector3.ZERO
 var _queued_ability: Ability
@@ -83,11 +84,14 @@ func _physics_process(delta: float) -> void:
 ### TODO might want to consider a refactor here so it just casts it faster but invisibly at the same time repeatedly and
 ### if it escapes and gets through on the invisible recast it moves the circle through and to the new location.
 func _push_marker_out(delta: float) -> void:
-	var x = aim_or_max_distance(_abilities[_selected].cast_range)
+	_aim_time += delta
+	var x = aiming_at_or_max_distance(_abilities[_selected].cast_range)
 	print(x)
 	_marker.global_position = x
 
-func aim_or_max_distance(max_distance: float) -> Vector3:
+### Given a max distance, returns either the first point that the raycast hits,
+### or the end of the raycast.
+func aiming_at_or_max_distance(max_distance: float) -> Vector3:
 	var position = _aim_ray.global_position
 	var target = _aim_ray.get_collision_point()
 	var distance = position.distance_to(target)
@@ -118,6 +122,16 @@ func aim_or_max_distance(max_distance: float) -> Vector3:
 	#else:
 		#_marker.global_position = from + direction * _aim_distance
 
+### Given a max distance, returns the first point the raycast hits, or null if
+### it doesn't reach anything
+func aiming_at_or_null(max_distance: float):
+	var position = _aim_ray.global_position
+	var target = _aim_ray.get_collision_point()
+	var distance = position.distance_to(target)
+	if !_aim_ray.is_colliding() or distance > max_distance:
+		return null
+	else:
+		return aiming_at_or_max_distance(max_distance)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# no swapping slots mid aim, finish or cancel the cast first
@@ -154,6 +168,7 @@ func _start_aiming() -> void:
 		return
 	_aiming = true
 	_stuck = false
+	_aim_time = 0.0
 	_aim_distance = 0.0
 	_queued = false
 
@@ -219,7 +234,7 @@ func _fire(ability: Ability, point: Vector3) -> void:
 	# only deals with aiming and queueing
 	var effect := get_node_or_null(ability.effect_node)
 	if effect != null:
-		effect.cast(ability, point)
+		effect.cast(ability, point, _aim_time)
 	else:
 		print("no effect node called '", ability.effect_node, "' under Abilities")
 

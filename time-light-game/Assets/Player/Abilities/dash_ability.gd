@@ -10,7 +10,7 @@ extends Node
 @onready var _controller: Node = $"../../.."
 
 
-func cast(ability: Ability, point: Vector3) -> void:
+func cast(ability: Ability, point: Vector3, strength: float) -> void:
 	# shove scales with distance so short dashes dont overshoot, the 4 just
 	# means the trip takes about a quarter second, capped by ability speed
 	# ^ this no longer applies since you changed it to not push
