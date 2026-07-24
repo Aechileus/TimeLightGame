@@ -11,7 +11,7 @@ enum Mode { IDLE, ATTACK_RUN }
 @export var radius: float = 8.0
 @export var mode: Mode = Mode.IDLE
 
-@export var spawn_on_ready: bool = true
+@export var spawn_on_ready: bool = false
 # spawn the batch as soon as the level loads ^
 
 func _ready() -> void:

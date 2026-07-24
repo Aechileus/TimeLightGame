@@ -26,7 +26,8 @@
 				"5bf10403-7344-4ac2-aa57-b600a050817d",
 				"8c770334-87e0-4ed2-869e-99e65035d45f",
 				"bca5f523-8eba-42a1-aa97-4d7f3aebe4dd",
-				"1e7e6b8d-ad2c-43a7-b269-8b65678b1397"
+				"1e7e6b8d-ad2c-43a7-b269-8b65678b1397",
+				"0f6dde44-7dc7-4d4c-a4e4-6500ee2e4d78"
 			]
 		},
 		{
@@ -330,6 +331,13 @@
 			"uuid": "1e7e6b8d-ad2c-43a7-b269-8b65678b1397",
 			"title": "Breakable crates",
 			"description": "They're always a fun idea, so why not",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "0f6dde44-7dc7-4d4c-a4e4-6500ee2e4d78",
+			"title": "Ability: Blast type thing",
+			"description": "You target a point, and it explodes after (in my head) .4-.5 seconds, but locks you in an animation while it charges",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

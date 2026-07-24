@@ -98,7 +98,6 @@ slam_speed = 7.5
 
 [node name="TimeManipulation" type="Node" parent="Components" unique_id=1307419024]
 script = ExtResource("13_timemanip")
-_free_time_control = false
 
 [node name="TimeUI" type="CanvasLayer" parent="Components/TimeManipulation" unique_id=147271438]
 layer = 10

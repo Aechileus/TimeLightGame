@@ -1,26 +1,43 @@
 extends Node3D
 
 @export_group("Movement")
+## The maximum speed that the player reaches while walking
 @export_range(0.1, 30.0, 0.1) var walk_speed: float = 5.0
+## The maximum speed that the player reaches while sprinting
 @export_range(0.1, 40.0, 0.1) var sprint_speed: float = 8.0
+## How fast the player accelerates to their max speed while grounded
 @export_range(0.1, 100.0, 0.1) var ground_acceleration: float = 28.0
+## How fast the player decelerates while grounded
 @export_range(0.1, 100.0, 0.1) var ground_deceleration: float = 34.0
+## How fast the player accelerates to their max speed while airbourne
 @export_range(0.1, 50.0, 0.1) var air_acceleration: float = 8.0
+## A simple multiplier for the gravity
 @export_range(0.0, 5.0, 0.05) var gravity_multiplier: float = 1.0
+## How much upward velocity is instantly applied when jumping
 @export_range(0.1, 20.0, 0.1) var jump_velocity: float = 5.5
 
 @export_group("Sprint Momentum")
+## No idea
 @export_range(0.0, 1.0, 0.01) var sprint_release_grace_time: float = 0.2
+## How fast the player decelerates to walking speed after stopping sprinting
 @export_range(0.1, 50.0, 0.1) var sprint_deceleration: float = 8.0
+## How fast the player decelerates maximum sprinting speed when moving faster
 @export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 2.0
+## No idea
 @export_range(0.0, 20.0, 0.1) var momentum_steering: float = 3.0
 
 @export_group("Camera")
+## How high the camera should be while crouching
 @export_range(0.2, 1.5, 0.05) var crouch_camera_height: float = 0.6
+## No idea
 @export_range(0.1, 20.0, 0.1) var crouch_camera_speed: float = 5.0
+## No idea
 @export_range(0.1, 20.0, 0.1) var step_camera_smoothing: float = 8.0
+## It's the mouse sensitivity. What did you think it was gonna be?
 @export_range(0.0001, 0.02, 0.0001) var mouse_sensitivity: float = 0.0025
+## The minimum you're able to look..?
 @export_range(-89.0, 0.0, 1.0) var minimum_look_angle: float = -85.0
+## The maximum you're able to look..?
 @export_range(0.0, 89.0, 1.0) var maximum_look_angle: float = 85.0
 var capture_mouse_on_start: bool = true
 var click_to_capture_mouse: bool = true
