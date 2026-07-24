@@ -2,9 +2,20 @@ extends Node3D
 
 @export var _gravity: float = 9.8
 
+@export_group("UI")
+@export var _hide_level_timer: bool = false
+@onready var _level_timer: CanvasLayer = $"../LevelTimer"
+@export var _hide_health: bool = false
+@onready var _health_label: Label = $PlayerHealthUI/HealthLabel
+@export var _hide_abilities: bool = false
+@onready var _abilities_ui: CanvasLayer = $Components/Abilities/AbilitiesUI
+@export var _hide_time_manipulation: bool = false
+@onready var _time_manipulation_ui: CanvasLayer = $Components/TimeManipulation/TimeUI
+
+signal update_show_hide_ui
+
+
 @export_group("Movement")
-
-
 ## Hard ceiling on horizontal speed no matter how much momentum you build
 @export_range(1.0, 200.0, 1.0) var max_horizontal_speed: float = 50.0
 ## How far the body snaps down to the floor while sliding. Bigger keeps you stuck
@@ -105,7 +116,6 @@ var click_to_capture_mouse: bool = true
 @onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
 @onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/PlayerCamera/arms_rig/AnimationPlayer
 @onready var arms_rig = $PlayerCharacterBody3D/PlayerCamera/arms_rig
-@onready var _health_label: Label = $PlayerHealthUI/HealthLabel
 # the vhs post effect handles the screen tint and flashes now
 @onready var _vhs_material: ShaderMaterial = $PlayerCharacterBody3D/PlayerCamera/CanvasLayer/ColorRect.material
 @onready var _hurt_audio: AudioStreamPlayer3D = $PlayerCharacterBody3D/HurtSFX
@@ -152,6 +162,10 @@ func _ready() -> void:
 	_update_health_label()
 	
 	time_manipulation._free_time_control = free_time_control
+	
+	# Listen for UI changes and update them when needed
+	update_show_hide_ui.connect(show_hide_ui)
+	show_hide_ui()
 
 	if capture_mouse_on_start:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -162,6 +176,7 @@ func _ready() -> void:
 	elif Global.is_time_stopped():
 		# stale stop hanging around from a previous scene, clear it
 		Global.force_time_flow.call_deferred()
+
 
 
 func _physics_process(delta: float) -> void:
@@ -471,3 +486,24 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 		await arms_animation_player.animation_finished
 		arms_rig.visible = false
 		return
+		
+func show_hide_ui():
+	if _hide_level_timer and _level_timer.visible:
+		_level_timer.hide()
+	elif !_level_timer.visible:
+		_level_timer.show()
+		
+	if _hide_health and _health_label.visible:
+		_health_label.hide()
+	elif !_health_label.visible:
+		_health_label.show()
+		
+	if _hide_time_manipulation and _time_manipulation_ui.visible:
+		_time_manipulation_ui.hide()
+	elif !_time_manipulation_ui.visible:
+		_time_manipulation_ui.show()
+		
+	if _hide_abilities and _abilities_ui.visible:
+		_abilities_ui.hide()
+	elif !_abilities_ui.visible:
+		_abilities_ui.show()

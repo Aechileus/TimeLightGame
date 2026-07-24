@@ -58,9 +58,10 @@ func try_wall_jump(jump_pressed: bool) -> bool:
 	var jump_direction := _last_wall_normal
 	jump_direction.y = 0.0
 	jump_direction = jump_direction.normalized()
-	_body.velocity.x = jump_direction.x * jump_horizontal_velocity
-	_body.velocity.z = jump_direction.z * jump_horizontal_velocity
-	_body.velocity.y = jump_vertical_velocity
+	_body.velocity.x += jump_direction.x * jump_horizontal_velocity
+	_body.velocity.z += jump_direction.z * jump_horizontal_velocity
+	_body.velocity.y = maxf(jump_vertical_velocity, _body.velocity.y + jump_vertical_velocity) 
+	# ^ Will still add a boost without cancelling other vertical momentum
 	_contact_time_left = 0.0
 	_control_time_left = control_lock_time
 	return true
