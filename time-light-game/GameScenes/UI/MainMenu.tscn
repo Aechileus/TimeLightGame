@@ -46,15 +46,15 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1993986090]
-custom_minimum_size = Vector2(150, 80)
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1993986090]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_qvhnw")
 theme_override_font_sizes/font_size = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Button" unique_id=1842042191]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayButton" unique_id=1842042191]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,12 +63,40 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Button/MarginContainer" unique_id=132383494]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PlayButton/MarginContainer" unique_id=132383494]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_qvhnw")
 theme_override_font_sizes/normal_font_size = 48
 text = "Play"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaygroundButton" type="Button" parent="VBoxContainer" unique_id=947768922]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_qvhnw")
+theme_override_font_sizes/font_size = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlaygroundButton" unique_id=1670817037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PlaygroundButton/MarginContainer" unique_id=1728766761]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_qvhnw")
+theme_override_font_sizes/normal_font_size = 48
+text = "Playground"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

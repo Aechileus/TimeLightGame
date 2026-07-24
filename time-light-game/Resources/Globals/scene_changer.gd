@@ -7,8 +7,10 @@ func change_to(new_scene : Util.GAME_SCENES):
 	match new_scene:
 		Util.GAME_SCENES.GAME:
 			new_scene_path = Util.GAME_PATH
-		Util.GAME_SCENES.MENU:
-			new_scene_path = Util.MENU_PATH
+		Util.GAME_SCENES.MAIN_MENU:
+			new_scene_path = Util.MAIN_MENU_PATH
+		Util.GAME_SCENES.PLAYGROUND:
+			new_scene_path = Util.PLAYGROUND_PATH
 	_new_scene()
 		
 func _new_scene():

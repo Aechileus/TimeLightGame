@@ -41,4 +41,5 @@ func spawn_one() -> void:
 
 	# 3. Defer the addition to avoid scene locks
 	### SNAKE DO NOT TOUCH THIS, IT IS SO STUPIDLY FRAGILE, I HAD TO DO SO MUCH GOOGLE FU
+	# ...noted XD
 	get_tree().current_scene.add_child.call_deferred(monster)

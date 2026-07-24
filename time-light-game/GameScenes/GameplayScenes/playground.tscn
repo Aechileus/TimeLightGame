@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="10_idn6t"]
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="11_hpdln"]
 [ext_resource type="PackedScene" path="res://Assets/Creatures/monster_spawner.tscn" id="11_idn6t"]
+[ext_resource type="PackedScene" uid="uid://kvtvwbq1w1se" path="res://Assets/Props/wooden_crate_1.tscn" id="11_o1qbv"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="12_13id2"]
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="12_kdjov"]
 
@@ -2447,8 +2448,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.760403, -0.89401865, -2.94
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.803867, -0.89401865, 1.216919)
 
 [node name="MonsterSpawner" parent="." unique_id=1035364215 instance=ExtResource("11_idn6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, -1.0060177, 15.192966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, 0.9939823, 15.192966)
 mode = 1
+
+[node name="wooden_crate_1" parent="MonsterSpawner" unique_id=57569319 instance=ExtResource("11_o1qbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1966422214]
 process_mode = 3
