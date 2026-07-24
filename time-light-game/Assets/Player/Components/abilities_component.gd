@@ -86,7 +86,6 @@ func _physics_process(delta: float) -> void:
 func _push_marker_out(delta: float) -> void:
 	_aim_time += delta
 	var x = aiming_at_or_max_distance(_abilities[_selected].cast_range)
-	print(x)
 	_marker.global_position = x
 
 ### Given a max distance, returns either the first point that the raycast hits,
