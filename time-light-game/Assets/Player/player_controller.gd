@@ -2,6 +2,12 @@ extends Node3D
 
 @export var _gravity: float = 9.8
 @export_group("Movement")
+## Hard ceiling on horizontal speed no matter how much momentum you build
+@export_range(1.0, 200.0, 1.0) var max_horizontal_speed: float = 50.0
+## How far the body snaps down to the floor while sliding. Bigger keeps you stuck
+## to ramps at high speed so you dont skip
+## fixes that dumbass bug we had earlier with ramps
+@export_range(0.1, 4.0, 0.1) var slide_floor_snap_length: float = 1.5
 ## The maximum speed that the player reaches while walking
 @export_range(0.1, 30.0, 0.1) var walk_speed: float = 5.0
 ## The maximum speed that the player reaches while sprinting
@@ -22,10 +28,18 @@ extends Node3D
 @export_range(0.0, 1.0, 0.01) var sprint_release_grace_time: float = 0.2
 ## How fast the player decelerates to walking speed after stopping sprinting
 @export_range(0.1, 50.0, 0.1) var sprint_deceleration: float = 8.0
-## How fast the player decelerates maximum sprinting speed when moving faster
-@export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 2.0
-## No idea
-@export_range(0.0, 20.0, 0.1) var momentum_steering: float = 3.0
+## Starting coast deceleration while overspeed with no movement key held. Stays
+## gentle at first then ramps up exponentially the longer you hold nothing
+@export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 3.0
+## How fast the coast deceleration ramps up per second of holding no input
+@export_range(0.0, 6.0, 0.1) var overspeed_decel_growth: float = 2.5
+## Degrees per second you can freely curve your momentum. Turn within this and
+## you keep all your speed, whip the camera faster than this and youre fighting
+## the "inertia" so it bleeds the speed
+@export_range(30.0, 720.0, 5.0) var momentum_turn_rate: float = 200.0
+## Speed lost per radian you over force the turn past the free rate. Higher means
+## hard whip turns kill your speed faster
+@export_range(0.0, 40.0, 0.5) var turn_scrub: float = 8.0
 
 @export_group("Camera")
 ## How high the camera should be while crouching
@@ -95,6 +109,9 @@ var _invuln_time: float = 0.0
 
 var _is_sprinting: bool = false
 var _sprint_grace_time_left: float = 0.0
+# how long youve been coasting overspeed with no input, drives the exponential decel
+var _overspeed_coast_time: float = 0.0
+var _base_floor_snap: float = 0.1
 var _camera_base_height: float = 0.0
 var _camera_current_height: float = 0.0
 var _camera_step_offset: float = 0.0
@@ -109,6 +126,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	#_gravity = float(ProjectSettings.get_setting("physics/3d/default_gravity", 9.8))
+	_base_floor_snap = character_body.floor_snap_length
 	_camera_base_height = player_camera.position.y
 	_camera_current_height = _camera_base_height
 
@@ -161,12 +179,17 @@ func _physics_process(delta: float) -> void:
 	_update_sprint_state(delta, input_vector)
 	crouch_slide.update_input(delta, was_on_floor, move_direction, _is_sprinting)
 	_update_horizontal_movement(delta, move_direction, was_on_floor)
+	_clamp_horizontal_speed()
 
 	var jumped := _update_jump_and_gravity(delta, was_on_floor)
 	var horizontal_motion := Vector3(character_body.velocity.x, 0.0, character_body.velocity.z) * delta
 	var step_height := 0.0
 	if was_on_floor and not jumped:
 		step_height = stair_step.try_step_up(horizontal_motion)
+
+	# a longer snap while sliding keeps you glued to ramps at high speed instead
+	# of skipping off the lip, normal movement uses the base snap
+	character_body.floor_snap_length = slide_floor_snap_length if crouch_slide.is_sliding() else _base_floor_snap
 
 	var saved_floor_snap := character_body.floor_snap_length
 	if step_height > 0.0:
@@ -195,6 +218,14 @@ func _update_sprint_state(delta: float, input_vector: Vector2) -> void:
 	)
 
 
+func _clamp_horizontal_speed() -> void:
+	var flat := Vector2(character_body.velocity.x, character_body.velocity.z)
+	if flat.length() > max_horizontal_speed:
+		flat = flat.normalized() * max_horizontal_speed
+		character_body.velocity.x = flat.x
+		character_body.velocity.z = flat.y
+
+
 func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_floor: bool) -> void:
 	if crouch_slide.apply_slide_motion(delta, move_direction):
 		return
@@ -210,13 +241,15 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 	var horizontal_velocity := Vector3(character_body.velocity.x, 0.0, character_body.velocity.z)
 	var current_speed := horizontal_velocity.length()
 	if current_speed > sprint_speed + 0.001:
-		_apply_preserved_speed(horizontal_velocity, move_direction, sprint_speed, overspeed_deceleration, delta)
+		_apply_preserved_speed(horizontal_velocity, move_direction, sprint_speed, delta)
 		return
 
 	# Sprint speed eases back to the active movement speed after the grace window.
 	if not move_direction.is_zero_approx() and current_speed > target_speed + 0.001:
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, sprint_deceleration, delta)
+		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, delta)
 		return
+
+	_overspeed_coast_time = 0.0
 
 	var target_velocity := move_direction * target_speed
 	var acceleration := ground_acceleration if was_on_floor else air_acceleration
@@ -231,17 +264,38 @@ func _apply_preserved_speed(
 	current_velocity: Vector3,
 	move_direction: Vector3,
 	target_speed: float,
-	deceleration: float,
 	delta: float
 ) -> void:
-	var preserved_direction := current_velocity.normalized()
-	if not move_direction.is_zero_approx() and momentum_steering > 0.0:
-		var steer_amount := clampf(momentum_steering * delta, 0.0, 1.0)
-		preserved_direction = preserved_direction.lerp(move_direction, steer_amount).normalized()
+	var speed := current_velocity.length()
+	var vel_dir := current_velocity.normalized()
+	var preserved_direction := vel_dir
 
-	var preserved_speed := move_toward(current_velocity.length(), target_speed, deceleration * delta)
-	character_body.velocity.x = preserved_direction.x * preserved_speed
-	character_body.velocity.z = preserved_direction.z * preserved_speed
+	if move_direction.is_zero_approx():
+		# no input, so the momentum coasts. deceleration starts gentle and ramps
+		# up exponentially the longer you hold nothing, so a light tap of speed
+		# lingers but a long coast winds down hard
+		_overspeed_coast_time += delta
+		var decel := overspeed_deceleration * exp(overspeed_decel_growth * _overspeed_coast_time)
+		speed = move_toward(speed, target_speed, decel * delta)
+	else:
+		# if you are moving this will just reset preventing intertia loss
+		_overspeed_coast_time = 0.0
+		# how far you want to swing your momentum this frame vs how far you can
+		# swing it for free. curving within the free rate keeps all your speed,
+		# whipping the camera harder than that means youre fighting the inertia
+		var turn := vel_dir.signed_angle_to(move_direction, Vector3.UP)
+		var wanted := absf(turn)
+		var free_turn := deg_to_rad(momentum_turn_rate) * delta
+		# rotate the velocity toward your input, but only as fast as the free rate,
+		# so heavy momentum actually resists a hard snap instead of following instantly
+		preserved_direction = vel_dir.rotated(Vector3.UP, signf(turn) * minf(wanted, free_turn))
+		# every radian you tried to force past the free rate scrubs speed
+		var excess := wanted - free_turn
+		if excess > 0.0:
+			speed = maxf(speed - turn_scrub * excess, target_speed)
+
+	character_body.velocity.x = preserved_direction.x * speed
+	character_body.velocity.z = preserved_direction.z * speed
 
 func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 	var jump_pressed := Input.is_action_just_pressed(&"ui_accept")

@@ -26,8 +26,12 @@ class_name PlayerCrouchSlideComponent
 @export_group("Air Slam")
 # how hard crouching in the air yanks you down
 @export_range(1.0, 40.0, 0.5) var slam_speed: float = 14.0
+# how much faster the slam yanks you down per second you keep holding it
+@export_range(0.0, 120.0, 1.0) var slam_ramp: float = 20.0
+# ceiling on the slam pull so it doesnt grow forever
+@export_range(1.0, 120.0, 1.0) var slam_max_speed: float = 60.0
 # little reward for slamming into a slide, multiplies landing speed
-@export_range(1.0, 2.0, 0.05) var slam_landing_boost: float = 1.1
+@export_range(1.0, 2.0, 0.05) var slam_landing_boost: float = 1.05
 
 @export_group("Slide Jump")
 # horizontal speed multiplier when jumping out of a slide
@@ -43,6 +47,8 @@ var _is_crouching: bool = false
 var _is_sliding: bool = false
 var _slide_air_time: float = 0.0
 var _is_slamming: bool = false
+# how long the current slam has been held, ramps the downward pull
+var _slam_time: float = 0.0
 
 
 # Duplicates the capsule so we can remember the bottom position. Keeping that bottom fixed
@@ -70,6 +76,7 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 		else:
 			# crouching in the air starts a slam, no more floaty crouch drag
 			_is_slamming = true
+			_slam_time = 0.0
 
 	# letting go of crouch bails out of the slam early
 	if _is_slamming and not crouch_held:
@@ -77,13 +84,15 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 
 	if _is_slamming:
 		if was_on_floor:
-			# touchdown, convert the slam into a slide if theres enough momentum
+			# touchdown always drops you into a slide now, no speed needed
 			_is_slamming = false
-			if horizontal_speed >= slide_minimum_entry_speed:
-				_start_slide(move_direction, horizontal_speed * slam_landing_boost)
+			_start_slide(move_direction, horizontal_speed * slam_landing_boost)
 		else:
-			# keep the pull applied every frame so gravity tweaks cant soften it
-			_body.velocity.y = minf(_body.velocity.y, -slam_speed)
+			# the pull ramps up the longer you hold it, capped so it stays sane.
+			# reapplied every frame so gravity tweaks cant soften it
+			_slam_time += delta
+			var pull := minf(slam_speed + slam_ramp * _slam_time, slam_max_speed)
+			_body.velocity.y = minf(_body.velocity.y, -pull)
 
 	# STUPID ASS BUG WHERE IT COUNTS US AS NOT ON THE GROUND WHEN SLIDING ONRAMP
 	# THIS FIXES IT BY GIVING TEENY TINY AIR TIME ALLOWS

@@ -4,14 +4,12 @@
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="2_t46kt"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="3_etv3f"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_b5gd2"]
-[ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ramp_slim.tscn" id="5_c1fl4"]
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/wall_1.tscn" id="6_l8w0q"]
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="7_qayq0"]
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="8_5ii3m"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_8gve0"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="10_taht6"]
-[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="11_f8ydy"]
-[ext_resource type="PackedScene" path="res://Assets/Creatures/monster_spawner.tscn" id="12_jxma5"]
+[ext_resource type="PackedScene" uid="uid://bparslbjshcjh" path="res://Assets/Creatures/monster_spawner.tscn" id="12_jxma5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ohwbu"]
 panorama = ExtResource("9_8gve0")
@@ -56,9 +54,8 @@ level_time = 600.0
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_b5gd2")]
 transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 0, 0, 0)
-
-[node name="RampSlim" parent="." unique_id=1221947856 groups=["ramp"] instance=ExtResource("5_c1fl4")]
-transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, -27.519165, -0.9999995, 0.69943523)
+overspeed_deceleration = 1.8
+free_time_control = true
 
 [node name="LevelRestarterTemp" type="Node" parent="." unique_id=1763049882]
 script = ExtResource("8_5ii3m")
@@ -72,9 +69,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4921002, -0.8940191, -0.163
 [node name="MeshInstance3D" parent="FinishLine" index="2" unique_id=199921983]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 mesh = SubResource("TorusMesh_n1wo0")
-
-[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("11_f8ydy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.803867, -0.89401865, 1.216919)
 
 [node name="MonsterSpawner" parent="." unique_id=1288297899 instance=ExtResource("12_jxma5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, -1.0060177, 15.192966)
