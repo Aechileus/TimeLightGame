@@ -67,9 +67,10 @@ shader_parameter/flash = Color(1, 1, 1, 0)
 [node name="PlayerController" type="Node3D" unique_id=440292127 groups=["player"]]
 script = ExtResource("1_player")
 max_horizontal_speed = 30.0
-sprint_deceleration = 12.0
-overspeed_decel_growth = 1.5
-momentum_turn_rate = 240.0
+overspeed_deceleration = 8.799999999999999
+walk_momentum_bleed = 3.0
+sprint_momentum_bleed = 1.5
+momentum_turn_rate = 510.0
 turn_scrub = 1.5
 mouse_sensitivity = 0.00999999999999999
 hurt_sfx = ExtResource("24_bdrri")

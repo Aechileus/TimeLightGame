@@ -33,6 +33,11 @@ extends Node3D
 @export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 3.0
 ## How fast the coast deceleration ramps up per second of holding no input
 @export_range(0.0, 6.0, 0.1) var overspeed_decel_growth: float = 2.5
+## How fast walking bleeds off extra momentum toward walk speed
+@export_range(0.0, 50.0, 0.5) var walk_momentum_bleed: float = 10.0
+## How fast sprinting bleeds off extra momentum toward sprint speed. Keep it
+## lower than the walk bleed so sprinting holds momentum longer
+@export_range(0.0, 50.0, 0.5) var sprint_momentum_bleed: float = 3.0
 ## Degrees per second you can freely curve your momentum. Turn within this and
 ## you keep all your speed, whip the camera faster than this and youre fighting
 ## the "inertia" so it bleeds the speed
@@ -241,12 +246,14 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 	var horizontal_velocity := Vector3(character_body.velocity.x, 0.0, character_body.velocity.z)
 	var current_speed := horizontal_velocity.length()
 	if current_speed > sprint_speed + 0.001:
-		_apply_preserved_speed(horizontal_velocity, move_direction, sprint_speed, delta)
+		# momentum bleed for sprint and walk
+		var bleed := sprint_momentum_bleed if _is_sprinting else walk_momentum_bleed
+		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, bleed, delta)
 		return
 
 	# Sprint speed eases back to the active movement speed after the grace window.
 	if not move_direction.is_zero_approx() and current_speed > target_speed + 0.001:
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, delta)
+		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, sprint_deceleration, delta)
 		return
 
 	_overspeed_coast_time = 0.0
@@ -264,6 +271,7 @@ func _apply_preserved_speed(
 	current_velocity: Vector3,
 	move_direction: Vector3,
 	target_speed: float,
+	bleed: float,
 	delta: float
 ) -> void:
 	var speed := current_velocity.length()
@@ -293,6 +301,10 @@ func _apply_preserved_speed(
 		var excess := wanted - free_turn
 		if excess > 0.0:
 			speed = maxf(speed - turn_scrub * excess, target_speed)
+
+		# gentle bleed toward your movement target while holding input. zero while
+		# sprinting so momentum is kept, positive while walking so it winds down
+		speed = move_toward(speed, target_speed, bleed * delta)
 
 	character_body.velocity.x = preserved_direction.x * speed
 	character_body.velocity.z = preserved_direction.z * speed
