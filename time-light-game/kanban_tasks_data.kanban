@@ -22,16 +22,15 @@
 			"title": "Todo - Features",
 			"tasks": [
 				"b5e8f963-61a8-4cc8-bde9-9471fb35de3f",
-				"30b1278a-f8c2-493e-be8c-b9339701a74d"
+				"30b1278a-f8c2-493e-be8c-b9339701a74d",
+				"5bf10403-7344-4ac2-aa57-b600a050817d"
 			]
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing - Aech",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
-				"0c4de1ed-2625-4ded-b79a-3557244a975d"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
 			]
 		},
 		{
@@ -46,7 +45,10 @@
 				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
 				"06596bd5-cd59-47f8-ade3-9075b1847e37",
 				"6b581247-698f-497d-8297-ad055f9d70d7",
+				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
 				"35f83554-786e-4e04-9bed-dd81372c9e03",
+				"0c4de1ed-2625-4ded-b79a-3557244a975d",
+				"9b9252f9-fa64-4367-96f4-e921e829b854",
 				"457b560e-4fed-4848-9603-70901284c62b",
 				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
 				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
@@ -58,15 +60,15 @@
 			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
 			"title": "Doing - Snake",
 			"tasks": [
-				"b010702a-0840-4a6c-aad9-4e076fed2ee8"
+				"b010702a-0840-4a6c-aad9-4e076fed2ee8",
+				"a7306602-e9a9-4c98-9210-220b43db50b5"
 			]
 		},
 		{
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
 			"title": "Todo: Polish",
 			"tasks": [
-				"9b9252f9-fa64-4367-96f4-e921e829b854",
-				"a7306602-e9a9-4c98-9210-220b43db50b5"
+				"e1653b3c-4933-4916-ae85-1d2184863784"
 			]
 		},
 		{
@@ -198,7 +200,7 @@
 		{
 			"uuid": "9b9252f9-fa64-4367-96f4-e921e829b854",
 			"title": "I think we should refactor the level_timer",
-			"description": "When you scroll to set time until next pause, I think it should actively remove that time from the level timer.  Once the time in the bottom right is gone and the level timer is gone.  GGS.  ",
+			"description": "Changed my mind, it works in a non confusing way",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
 		},
@@ -271,6 +273,20 @@
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "e1653b3c-4933-4916-ae85-1d2184863784",
+			"title": "UI Improvements",
+			"description": "",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
+		},
+		{
+			"uuid": "5bf10403-7344-4ac2-aa57-b600a050817d",
+			"title": "Make Levls With billboards for tutorials",
+			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
 		}
 	],
 	"layout": {
