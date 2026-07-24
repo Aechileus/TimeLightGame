@@ -79,7 +79,11 @@
 		{
 			"uuid": "a382d40d-47a3-42c7-9c5e-451ed7717993",
 			"title": "Todo: Bugfixes",
-			"tasks": []
+			"tasks": [
+				"41f3cc74-3252-484f-9aa2-1d3657db3ee5",
+				"0a111623-6452-45ac-a99c-af14f782f009",
+				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d"
+			]
 		}
 	],
 	"tasks": [
@@ -271,7 +275,7 @@
 				},
 				{
 					"details": "Add some more obstacles/parts to demonstrate all the mechanics (sliding, wall jumping, etc)",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Make the player settings tunable from ingame ",
@@ -330,15 +334,36 @@
 		{
 			"uuid": "1e7e6b8d-ad2c-43a7-b269-8b65678b1397",
 			"title": "Breakable crates",
-			"description": "They're always a fun idea, so why not",
+			"description": "They're always a fun idea, so why not. Should we attempt to make breakable composable across different level props?",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
 		{
 			"uuid": "0f6dde44-7dc7-4d4c-a4e4-6500ee2e4d78",
-			"title": "Ability: Blast type thing",
+			"title": "Ability: delayed blast type thing",
 			"description": "You target a point, and it explodes after (in my head) .4-.5 seconds, but locks you in an animation while it charges",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "41f3cc74-3252-484f-9aa2-1d3657db3ee5",
+			"title": "Slide kicks you out half way down the long ramp",
+			"description": "",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "0a111623-6452-45ac-a99c-af14f782f009",
+			"title": "Sliding doesn't actually make you faster than sprinting",
+			"description": "",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
+			"title": "Deceleration rates are inconsistent",
+			"description": "",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
 			"steps": []
 		}
 	],
