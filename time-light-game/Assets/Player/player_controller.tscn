@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://dl54ghqtnroo4" path="res://Resources/Abilities/shoot.tres" id="21_shoot"]
 [ext_resource type="Script" uid="uid://kv08viwre6ny" path="res://Assets/Player/Abilities/dash_hitbox.gd" id="22_dashhit"]
 [ext_resource type="Shader" uid="uid://b7haaf5d6c832" path="res://Assets/Player/VHSMode.gdshader" id="23_gyfsl"]
+[ext_resource type="AudioStream" uid="uid://1bbgk4h0cclw" path="res://Resources/SFX/PlaceholderSFX/classic_hurt.mp3" id="24_bdrri"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
 render_priority = 1
@@ -68,6 +69,8 @@ script = ExtResource("1_player")
 sprint_deceleration = 12.0
 overspeed_deceleration = 1.8
 mouse_sensitivity = 0.00999999999999999
+hurt_sfx = ExtResource("24_bdrri")
+economy_enabled = true
 frozen_tint = Color(1, 0.3019608, 0.3019608, 0.6745098)
 resume_flash_tint = Color(0.34901962, 1, 0.4, 0.6313726)
 
@@ -107,9 +110,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -106.0
-offset_top = -90.0
+offset_top = -181.0
 offset_right = -24.0
-offset_bottom = -24.0
+offset_bottom = -115.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.35, 1, 0.4, 1)
@@ -149,6 +152,19 @@ script = ExtResource("20_shootfx")
 
 [node name="AbilitiesUI" type="CanvasLayer" parent="Components/Abilities" unique_id=609597676]
 layer = 10
+
+[node name="ActionPointsLabel" type="Label" parent="Components/Abilities/AbilitiesUI" unique_id=1851501473]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -142.0
+offset_right = 300.0
+offset_bottom = -102.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.45, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "AP: 3"
 
 [node name="SlotList" type="VBoxContainer" parent="Components/Abilities/AbilitiesUI" unique_id=107169694]
 anchors_preset = 4
@@ -216,6 +232,22 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "4  ----"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Components/Abilities/AbilitiesUI" unique_id=1298266138]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]."
 
 [node name="StairStep" type="Node" parent="Components" unique_id=1084148814]
 script = ExtResource("7_stairs")
@@ -360,6 +392,8 @@ bus = &"SFX"
 
 [node name="CastSFX" type="AudioStreamPlayer3D" parent="PlayerCharacterBody3D" unique_id=1821193795]
 bus = &"SFX"
+
+[node name="HurtSFX" type="AudioStreamPlayer3D" parent="PlayerCharacterBody3D" unique_id=13888713]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacterBody3D" unique_id=199843824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.611211, 0)

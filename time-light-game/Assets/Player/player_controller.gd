@@ -26,8 +26,22 @@ var capture_mouse_on_start: bool = true
 var click_to_capture_mouse: bool = true
 
 @export_group("Health")
-# monsters hit for 1 each, so three of them and youre done
-@export var max_health: int = 3
+# changed this to 5 because 3 felt bad
+@export var max_health: int = 5
+# invulnerable window after a hit
+@export_range(0.0, 3.0, 0.05) var hit_invuln_time: float = 0.6
+
+@export_group("Hurt SFX")
+# played when the player takes a hit
+@export var hurt_sfx: AudioStream
+@export_range(0.5, 1.5, 0.01) var hurt_pitch_min: float = 0.95
+@export_range(0.5, 1.5, 0.01) var hurt_pitch_max: float = 1.05
+
+@export_group("Action Economy")
+# when on, abilities can only be used while time is paused, and each pause hands
+# out this many action points that abilities spend by their economy_cost
+@export var economy_enabled: bool = false
+@export_range(1, 50, 1) var economy_amount: int = 3
 
 @export_group("Time Stop")
 # per scene choice for whether the player wakes up frozen
@@ -53,6 +67,7 @@ var click_to_capture_mouse: bool = true
 @onready var _health_label: Label = $PlayerHealthUI/HealthLabel
 # the vhs post effect handles the screen tint and flashes now
 @onready var _vhs_material: ShaderMaterial = $PlayerCharacterBody3D/PlayerCamera/CanvasLayer/ColorRect.material
+@onready var _hurt_audio: AudioStreamPlayer3D = $PlayerCharacterBody3D/HurtSFX
 
 var _health: int = 0
 var _hit_flash_tween: Tween
@@ -269,14 +284,25 @@ func start_dash_immunity(duration: float) -> void:
 
 
 func take_damage(amount) -> void:
-	# untouchable mid dash, or already down
+	# untouchable mid dash or mid i frames, or already down
 	if _invuln_time > 0.0 or _health <= 0:
 		return
 	_health = maxi(_health - int(amount), 0)
+	# i frames so a swarm cant chain hits in one instant
+	_invuln_time = maxf(_invuln_time, hit_invuln_time)
 	_update_health_label()
 	_flash_hit()
+	_play_hurt_sfx()
 	if _health <= 0:
 		_die()
+
+
+func _play_hurt_sfx() -> void:
+	if hurt_sfx == null:
+		return
+	_hurt_audio.stream = hurt_sfx
+	_hurt_audio.pitch_scale = randf_range(hurt_pitch_min, hurt_pitch_max)
+	_hurt_audio.play()
 
 
 func _die() -> void:

@@ -56,6 +56,7 @@ height = 1.7
 [node name="LevelEnemy" unique_id=819955731 groups=["enemy"] instance=ExtResource("1_xem20")]
 collision_layer = 4
 script = ExtResource("19_ai")
+move_speed = 10.0
 
 [node name="Skeleton3D" parent="." index="0" unique_id=1500189834]
 bones/0/position = Vector3(-1.6801059e-06, 1.1428092, -0.004664318)

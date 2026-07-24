@@ -48,9 +48,15 @@ var _queued: bool = false
 var _queued_point: Vector3 = Vector3.ZERO
 var _queued_ability: Ability
 
+# the player controller holds the economy toggle and size, we just spend from it here
+@onready var _controller = $"../.."
+@onready var _ap_label: Label = $AbilitiesUI/ActionPointsLabel
+var _economy_left: int = 0
+
 
 func _ready() -> void:
 	_abilities = [slot_1, slot_2, slot_3, slot_4]
+	_economy_left = _controller.economy_amount
 	_update_ui()
 	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
 
@@ -128,7 +134,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				_release_cast()
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed and _queued:
-			# changed their mind, scrap the queued cast
+			# changed their mind, scrap the queued cast, this now also refunds the ap points here
+			if _controller.economy_enabled and _queued_ability != null:
+				_economy_left = mini(_economy_left + _queued_ability.economy_cost, _controller.economy_amount)
 			_queued = false
 			_update_ui()
 
@@ -136,6 +144,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _start_aiming() -> void:
 	var ability := _abilities[_selected]
 	if ability == null:
+		return
+	# with the economy on, abilities are pause only and cost action points
+	if not _can_use(ability):
 		return
 	if not ability.needs_target:
 		# no circle for this one, it just casts on the spot
@@ -147,6 +158,16 @@ func _start_aiming() -> void:
 	_queued = false
 
 
+# Whether the selected ability can be started right now. cast as much as timer allows when the
+# economy is off, otherwise it has to be paused with available AP (ACTION POINTS)
+func _can_use(ability: Ability) -> bool:
+	if not _controller.economy_enabled:
+		return true
+	if not Global.is_time_stopped():
+		return false
+	return _economy_left >= ability.economy_cost
+
+
 func _release_cast() -> void:
 	if not _aiming:
 		return
@@ -155,6 +176,12 @@ func _release_cast() -> void:
 
 
 func _cast_at(ability: Ability, point: Vector3) -> void:
+	# spend the action points at the commit, if not enough, just return
+	if _controller.economy_enabled:
+		if _economy_left < ability.economy_cost:
+			return
+		_economy_left -= ability.economy_cost
+
 	if Global.is_time_stopped() and not ability.cast_while_frozen:
 		# frozen, the cast waits until time comes back
 		_queued = true
@@ -167,6 +194,10 @@ func _cast_at(ability: Ability, point: Vector3) -> void:
 
 
 func _on_game_speed_state_changed(new_state) -> void:
+	if new_state == Global.TimeState.STOPPED:
+		# fresh pause hands out a new batch of action points
+		_economy_left = _controller.economy_amount
+		_update_ui()
 	if new_state == Global.TimeState.FLOWING and _queued:
 		_queued = false
 		_update_ui()
@@ -205,15 +236,24 @@ func _fire(ability: Ability, point: Vector3) -> void:
 
 
 func _update_ui() -> void:
+	# only show the action points readout while the economy is actually on
+	_ap_label.visible = _controller.economy_enabled
+	_ap_label.text = "AP: %d" % _economy_left
+
 	for i in _slot_boxes.size():
 		var box := _slot_boxes[i]
 		var ability := _abilities[i]
 		var icon: TextureRect = box.get_node("Icon")
 		var slot_name: Label = box.get_node("SlotName")
 		icon.texture = ability.icon if ability else null
-		slot_name.text = str(i + 1) + "  " + (ability.display_name if ability else "----")
+		# show the action point cost right after the name, like "1  Dash (2)"
+		var cost_text := " (%d AP)" % ability.economy_cost if ability else ""
+		slot_name.text = str(i + 1) + "  " + (ability.display_name if ability else "----") + cost_text
 		# selected slot pops, everything else sits dim, queued goes green
 		var tint := Color.WHITE if i == _selected and ability != null else Color(1.0, 1.0, 1.0, 0.35)
 		if _queued and ability == _queued_ability:
 			tint = queued_color
+		# if you cant afford it this pause, grey out the ability
+		if ability != null and _controller.economy_enabled and _economy_left < ability.economy_cost:
+			tint = Color(1.0, 1.0, 1.0, 0.15)
 		box.modulate = tint

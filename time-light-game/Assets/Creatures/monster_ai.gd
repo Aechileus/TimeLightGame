@@ -42,6 +42,7 @@ var _swing_time_left: float = 0.0  # time left in the current swing anim
 var _attack_elapsed: float = 0.0
 var _hit_landed: bool = false
 var _dissolve_mat: ShaderMaterial
+var _hit_tween: Tween
 var _gravity: float = 9.8
 
 
@@ -169,6 +170,23 @@ func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0.0:
 		_die()
+	else:
+		_flash_dissolve()
+
+
+# Quick pop of the dissolve on a hit, kick t up to 0.5 then straight back down.
+func _flash_dissolve() -> void:
+	if _dissolve_mat == null:
+		return
+	if _hit_tween:
+		_hit_tween.kill()
+	_dissolve_mat.set_shader_parameter("enabled", true)
+	_hit_tween = create_tween()
+	_hit_tween.tween_property(_dissolve_mat, "shader_parameter/t", 0.5, 0.05)
+	_hit_tween.tween_property(_dissolve_mat, "shader_parameter/t", 0.0, 0.12)
+	_hit_tween.tween_callback(func() -> void:
+		_dissolve_mat.set_shader_parameter("enabled", false)
+	)
 
 
 func _die() -> void:

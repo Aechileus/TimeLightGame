@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://oooklpjssfy5" path="res://Assets/Props/fish.tscn" id="7_yk13y"]
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="8_y2afc"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="9_6rgnf"]
+[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="9_muffle"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="10_leveltimer"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="11_qa46d"]
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="12_84hxp"]
@@ -217,6 +218,8 @@ stream = ExtResource("8_y2afc")
 attenuation_model = 3
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
+script = ExtResource("9_muffle")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638862342]
 environment = SubResource("Environment_l00eo")

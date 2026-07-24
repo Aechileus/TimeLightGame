@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="11_hpdln"]
 [ext_resource type="PackedScene" path="res://Assets/Creatures/monster_spawner.tscn" id="11_idn6t"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="12_13id2"]
+[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="12_kdjov"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("12_13id2")
@@ -2436,13 +2437,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -42,
 [node name="LevelRestarterTemp" type="Node" parent="." unique_id=1803876332]
 script = ExtResource("9_fqs8f")
 
-[node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1260528991]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
-stream = ExtResource("11_hpdln")
-attenuation_model = 3
-volume_db = -10.0
-autoplay = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=638862342]
 environment = SubResource("Environment_l00eo")
 
@@ -2455,3 +2449,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.803867, -0.89401865, 1.21
 [node name="MonsterSpawner" parent="." unique_id=1035364215 instance=ExtResource("11_idn6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.11463, -1.0060177, 15.192966)
 mode = 1
+
+[node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1966422214]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
+stream = ExtResource("11_hpdln")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("12_kdjov")

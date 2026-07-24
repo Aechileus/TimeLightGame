@@ -17,6 +17,8 @@ extends Resource
 
 # seconds pulled off the level clock when this gets cast
 @export_range(0.0, 30.0, 0.25) var time_cost: float = 1.0
+# how many action points this eats from the per pause economy, if its enabled
+@export_range(1, 20, 1) var economy_cost: int = 1
 
 # movement style abilities like the dash use these two
 @export_range(1.0, 100.0, 0.5) var speed: float = 18.0
