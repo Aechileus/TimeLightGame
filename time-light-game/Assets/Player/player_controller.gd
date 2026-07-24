@@ -1,7 +1,10 @@
 extends Node3D
 
 @export var _gravity: float = 9.8
+
 @export_group("Movement")
+
+
 ## Hard ceiling on horizontal speed no matter how much momentum you build
 @export_range(1.0, 200.0, 1.0) var max_horizontal_speed: float = 50.0
 ## How far the body snaps down to the floor while sliding. Bigger keeps you stuck

@@ -314,7 +314,7 @@ mesh = SubResource("QuadMesh_l00eo")
 [node name="arms_rig" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=920561538 instance=ExtResource("12_7pvar")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.7043787, 0)
 
-[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 807248929) index="0" unique_id=488035488]
+[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -378,7 +378,7 @@ bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
 bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 bones/51/rotation = Quaternion(0.34815243, -0.6154591, 0.6154591, -0.34815246)
 
-[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=54383545]
+[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=641917606]
 autoplay = &"relax"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=1570128987]
