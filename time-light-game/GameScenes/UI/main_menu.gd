@@ -13,4 +13,3 @@ func play_button_pressed():
 func playground_button_pressed():
 	SceneChanger.change_to(Util.GAME_SCENES.PLAYGROUND)
 	
-

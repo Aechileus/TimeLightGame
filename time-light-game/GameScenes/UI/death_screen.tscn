@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://dyslhn2avmsdb"]
+
+[ext_resource type="Script" uid="uid://m4bui6lkurf" path="res://GameScenes/UI/death_screen.gd" id="1_j8dit"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="1_lwj58"]
+[ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="2_j8dit"]
+
+[node name="DeathScreen" type="Control" unique_id=1668699806]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j8dit")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1915549805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lwj58")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2" unique_id=1274719661]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 17.015)
+theme = ExtResource("1_lwj58")
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "You failed..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2" unique_id=2073142545]
+layout_mode = 2
+theme = ExtResource("1_lwj58")
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=2061595446]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_lwj58")
+theme_override_font_sizes/font_size = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/RestartButton" unique_id=1530487404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/RestartButton/MarginContainer" unique_id=1711262366]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_lwj58")
+theme_override_font_sizes/normal_font_size = 32
+text = "Restart Level"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=60325823]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_lwj58")
+theme_override_font_sizes/font_size = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/MainMenuButton" unique_id=1032182430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/MainMenuButton/MarginContainer" unique_id=1277968700]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_lwj58")
+theme_override_font_sizes/normal_font_size = 32
+text = "Main Menu"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer2/VBoxContainer" unique_id=1204107233]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=213454786]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j8dit")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

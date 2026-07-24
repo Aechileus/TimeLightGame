@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bf5yxy6xevmlb"]
+
+[ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="1_ukwsx"]
+[ext_resource type="FontFile" uid="uid://dm26hrqfk1jj1" path="res://Resources/UI/Fear 11.ttf" id="2_58ue7"]
+[ext_resource type="PackedScene" uid="uid://bbqi710m5274k" path="res://GameScenes/UI/level_icon.tscn" id="3_gkwew"]
+
+[node name="LevelSelection" type="Control" unique_id=528120181]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=540288781]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ukwsx")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=855695144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer" unique_id=36614818]
+custom_minimum_size = Vector2(0, 79.135)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_58ue7")
+bbcode_enabled = true
+text = "Level Selection"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer" unique_id=1692746116]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer" unique_id=524327640]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer" unique_id=748963779]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelIcon" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=864815639 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1865042256 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=257658812 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="LevelIcon4" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1222712788 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="LevelIcon5" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1810911014 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2025677713]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelIcon" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=188641312 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+
+[node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1053034516 instance=ExtResource("3_gkwew")]
+layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d33flyojl0kr7"]
+[gd_scene format=3 uid="uid://dfwyt3jj10gc3"]
 
 [ext_resource type="AudioStream" uid="uid://cqc3reinewbvj" path="res://Resources/Music/Jesse Spillane - Space Bomb.mp3" id="1_y78cj"]
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="2_molmv"]
