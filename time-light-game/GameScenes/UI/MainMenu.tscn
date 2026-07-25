@@ -47,7 +47,7 @@ size_flags_vertical = 0
 theme = ExtResource("1_qvhnw")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 128
-text = "Fortnite"
+text = "John Time"
 horizontal_alignment = 1
 vertical_alignment = 1
 

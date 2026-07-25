@@ -81,7 +81,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -5620,8 +5620,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.944092, -2.125, 0)
 size = Vector3(10.111816, 0.2, 4)
 
 [node name="CSGTiledFloor5" parent="CSGCombiner3D/Part1" unique_id=382045422 instance=ExtResource("3_kfubd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.417863, 2.1003246, 0)
-size = Vector3(29.300001, 0.2, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7106366, 2.1003246, 0)
+size = Vector3(32.714455, 0.2, 4)
 
 [node name="CSGSlope" parent="CSGCombiner3D/Part1" unique_id=1742819448 instance=ExtResource("25_ecqmf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, -20.9, 1.9)
@@ -5889,6 +5889,26 @@ shape = SubResource("BoxShape3D_ojccq")
 
 [node name="ceiling_lamp_1_off4" parent="." unique_id=799153348 instance=ExtResource("4_kfubd")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 65.6, -23.699999, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2072616211]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 36.53502, -30.479954, 1.1938472)
+light_color = Color(1, 0, 0.20392157, 1)
+light_energy = 5.357
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1523926202]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 36.53502, -30.479954, -1.4218355)
+light_color = Color(1, 0, 0.20392157, 1)
+light_energy = 5.357
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=635136718]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.974804, -30.479954, 1.1938472)
+light_color = Color(1, 0, 0.20392157, 1)
+light_energy = 5.357
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=820216220]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.974804, -30.479954, -1.4218355)
+light_color = Color(1, 0, 0.20392157, 1)
+light_energy = 5.357
 
 [connection signal="pressed" from="Button" to="FloorCeilingTiled" method="_on_button_pressed"]
 

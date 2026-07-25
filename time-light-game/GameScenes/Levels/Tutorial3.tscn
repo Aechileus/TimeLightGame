@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="1_yyxq6"]
 [ext_resource type="AudioStream" uid="uid://vkeqnlmryxy6" path="res://Resources/Music/test4.mp3" id="2_twjlp"]
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="3_s4lkw"]
+[ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="6_4hjkk"]
+[ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_floor.tscn" id="7_rq76t"]
+[ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="8_nhyk8"]
+[ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="9_qplw4"]
+[ext_resource type="PackedScene" uid="uid://coxe4scig51tt" path="res://Assets/PSXPack2/doorway_hr_1.glb" id="10_rq76t"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="18_o8khr"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="22_iimvo"]
 
@@ -34,7 +39,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -99,7 +104,7 @@ bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 light_energy = 0.399
 
 [node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]
-transform = Transform3D(0.0025749928, 0, -0.99999654, 0, 1, 0, 0.99999654, 0, 0.0025749928, 1.1073582, 1.6759896, 65.005844)
+transform = Transform3D(0.0025749928, 0, -0.99999654, 0, 1, 0, 0.99999654, 0, 0.0025749928, 0, 0, 0)
 stream = ExtResource("2_twjlp")
 attenuation_model = 3
 volume_db = -10.0
@@ -109,6 +114,103 @@ script = ExtResource("3_s4lkw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1444573399]
 environment = SubResource("Environment_0u41m")
+
+[node name="CSGCombiner" type="CSGCombiner3D" parent="." unique_id=783266183]
+
+[node name="CSGWall" parent="CSGCombiner" unique_id=2002669847 instance=ExtResource("6_4hjkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8274536, 0.39042974, -8.789925)
+size = Vector3(12.404419, 4.5, 0.2)
+
+[node name="CSGWall2" parent="CSGCombiner" unique_id=1015706835 instance=ExtResource("6_4hjkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8274536, 0.39042974, 4.7857637)
+size = Vector3(12.404419, 4.5, 0.2)
+
+[node name="CSGWall3" parent="CSGCombiner" unique_id=2035698912 instance=ExtResource("6_4hjkk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.067277, 0.39042974, -2.1725893)
+size = Vector3(14.135315, 4.5, 0.2)
+
+[node name="CSGWall4" parent="CSGCombiner" unique_id=1345292418 instance=ExtResource("6_4hjkk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.756581, 0.39042974, 2.3061323)
+size = Vector3(5.1778717, 4.5, 0.2)
+
+[node name="CSGWall5" parent="CSGCombiner" unique_id=84663144 instance=ExtResource("6_4hjkk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.756581, 0.39042974, -6.3315363)
+size = Vector3(4.586563, 4.5, 0.2)
+
+[node name="CSGTiledFloor" parent="CSGCombiner" unique_id=294499504 instance=ExtResource("7_rq76t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77838075, -1.9876589, -2.0305026)
+size = Vector3(12.422241, 0.2, 13.966263)
+
+[node name="CSGTiledFloor2" parent="CSGCombiner" unique_id=87833761 instance=ExtResource("7_rq76t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77838075, 1.084846, -2.0305026)
+size = Vector3(12.422241, 0.2, 13.966263)
+
+[node name="SpikePits" type="CSGCombiner3D" parent="CSGCombiner" unique_id=238329295]
+
+[node name="Spike218" parent="CSGCombiner/SpikePits" unique_id=1366038293 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, -15.140236, -8.877501, -24.348824)
+
+[node name="SpikeRow" type="Node3D" parent="CSGCombiner/SpikePits" unique_id=414425881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3572083, -11.871145, -26.300001)
+metadata/_edit_group_ = true
+
+[node name="SpikeGang" type="Node3D" parent="CSGCombiner/SpikePits/SpikeRow" unique_id=1669304240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5258789e-05, 3.8146973e-06, 3)
+metadata/_edit_group_ = true
+
+[node name="Spike" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1614569189 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.5062332, -7.6293945e-06, 0.4999981)
+
+[node name="Spike2" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=671336308 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.5062332, -7.6293945e-06, 1.5)
+
+[node name="Spike3" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1362181703 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.5062332, -7.6293945e-06, -1.5000019)
+
+[node name="Spike4" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1894465 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.5062332, -7.6293945e-06, -0.5000019)
+
+[node name="Spike5" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=2083556027 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5062332, -7.6293945e-06, 0.4999981)
+
+[node name="Spike6" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1003860817 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5062332, -7.6293945e-06, 1.5)
+
+[node name="Spike7" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1776491467 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5062332, -7.6293945e-06, -1.5000019)
+
+[node name="Spike8" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1879754904 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.5062332, -7.6293945e-06, -0.5000019)
+
+[node name="Spike9" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=558426437 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.49376678, -7.6293945e-06, 0.4999981)
+
+[node name="Spike10" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1900290315 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.49376678, -7.6293945e-06, 1.5)
+
+[node name="Spike11" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=62408863 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.49376678, -7.6293945e-06, -1.5000019)
+
+[node name="Spike12" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=2002573843 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.49376678, -7.6293945e-06, -0.5000019)
+
+[node name="Spike13" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=2005006099 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.4937668, -7.6293945e-06, 0.4999981)
+
+[node name="Spike14" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1035749242 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.4937668, -7.6293945e-06, 1.5)
+
+[node name="Spike15" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=1505297184 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.4937668, -7.6293945e-06, -1.5000019)
+
+[node name="Spike16" parent="CSGCombiner/SpikePits/SpikeRow/SpikeGang" unique_id=207322303 instance=ExtResource("8_nhyk8")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.4937668, -7.6293945e-06, -0.5000019)
+
+[node name="ceiling_lamp_1_off5" parent="CSGCombiner" unique_id=1948616355 instance=ExtResource("9_qplw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.942795, -1.571146, -25.699999)
+
+[node name="doorway_hr_12" parent="." unique_id=1570751701 instance=ExtResource("10_rq76t")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 6.7611294, -2, -2.1743772)
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

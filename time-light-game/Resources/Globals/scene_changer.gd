@@ -15,6 +15,8 @@ func change_to(new_scene : Util.GAME_SCENES):
 			new_scene_path = Util.LEVELSELECT_PATH
 		Util.GAME_SCENES.TUTORIALONE:
 			new_scene_path = Util.TUTORIAL_PATH
+		Util.GAME_SCENES.INTRO:
+			new_scene_path = Util.INTRO_PATH
 	_new_scene()
 
 func _new_scene():
