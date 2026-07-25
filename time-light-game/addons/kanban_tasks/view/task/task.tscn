@@ -54,7 +54,7 @@ focus_mode = 0
 
 [node name="Title" type="VBoxContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=562777166]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 34.1)
+custom_minimum_size = Vector2(0, 28.6)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rvg8y2xlnq2y"]
+
+[ext_resource type="PackedScene" uid="uid://b1yuoolq231fi" path="res://Assets/PSXPack2/ceiling_lamp_1_off.glb" id="1_hlsit"]
+[ext_resource type="Script" uid="uid://j3415wr1mbqb" path="res://Assets/Effects/light_flicker.gd" id="2_hbq86"]
+[ext_resource type="AudioStream" uid="uid://duwhckyfhiu8x" path="res://Resources/SFX/lightflicker.mp3" id="3_hbq86"]
+
+[node name="ceiling_lamp_1_off2" unique_id=1948616355 instance=ExtResource("1_hlsit")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=391855518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20961373, 0)
+light_color = Color(1, 0.8235294, 0.77254903, 1)
+light_energy = 0.845
+omni_range = 6.078
+omni_attenuation = 2.033
+script = ExtResource("2_hbq86")
+sfx = ExtResource("3_hbq86")

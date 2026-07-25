@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5dk4lnyiag3w"]
+[gd_scene format=3 uid="uid://c5dk4lnyiag3w"]
 
 [ext_resource type="Script" uid="uid://5hks8mhjyp62" path="res://addons/kanban_tasks/view/board/board.gd" id="1_p7lf4"]
 [ext_resource type="PackedScene" uid="uid://dh1yunmhipirg" path="res://addons/kanban_tasks/view/settings/settings.tscn" id="2_by8mq"]
 
-[node name="BoardView" type="VBoxContainer"]
+[node name="BoardView" type="VBoxContainer" unique_id=470934449]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,68 +15,68 @@ mouse_filter = 0
 theme_override_constants/separation = 5
 script = ExtResource("1_p7lf4")
 
-[node name="Header" type="HBoxContainer" parent="."]
+[node name="Header" type="HBoxContainer" parent="." unique_id=1268019741]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="SearchBar" type="LineEdit" parent="Header"]
+[node name="SearchBar" type="LineEdit" parent="Header" unique_id=411344562]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search"
 clear_button_enabled = true
 
-[node name="AdvancedSearch" type="Button" parent="Header"]
+[node name="AdvancedSearch" type="Button" parent="Header" unique_id=814874779]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Search in details."
 toggle_mode = true
 
-[node name="VSeparator" type="VSeparator" parent="Header"]
+[node name="VSeparator" type="VSeparator" parent="Header" unique_id=1481288487]
 layout_mode = 2
 tooltip_text = "Show categories"
 theme_override_constants/separation = 0
 
-[node name="ShowCategories" type="Button" parent="Header"]
+[node name="ShowCategories" type="Button" parent="Header" unique_id=946772668]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 toggle_mode = true
 
-[node name="ShowDescriptions" type="Button" parent="Header"]
+[node name="ShowDescriptions" type="Button" parent="Header" unique_id=680342032]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Show descriptions."
 toggle_mode = true
 
-[node name="ShowSteps" type="Button" parent="Header"]
+[node name="ShowSteps" type="Button" parent="Header" unique_id=161785456]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Show steps."
 toggle_mode = true
 
-[node name="VSeparator2" type="VSeparator" parent="Header"]
+[node name="VSeparator2" type="VSeparator" parent="Header" unique_id=253082479]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Documentation" type="Button" parent="Header"]
+[node name="Documentation" type="Button" parent="Header" unique_id=46221551]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Open documentation."
 flat = true
 
-[node name="Settings" type="Button" parent="Header"]
+[node name="Settings" type="Button" parent="Header" unique_id=2075563257]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Manage board settings."
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1509471672]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 vertical_scroll_mode = 0
 
-[node name="ColumnHolder" type="HBoxContainer" parent="ScrollContainer"]
+[node name="ColumnHolder" type="HBoxContainer" parent="ScrollContainer" unique_id=619086896]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -84,6 +84,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="SettingsView" parent="." instance=ExtResource("2_by8mq")]
+[node name="SettingsView" parent="." unique_id=624625140 instance=ExtResource("2_by8mq")]
 unique_name_in_owner = true
 visible = false

@@ -46,7 +46,7 @@ theme_override_constants/separation = 0
 
 [node name="Title" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer" unique_id=68481716]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 34.1)
+custom_minimum_size = Vector2(0, 28.6)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4

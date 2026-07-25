@@ -4,7 +4,7 @@
 
 [node name="arms" unique_id=1023741619 instance=ExtResource("1_rj2ua")]
 
-[node name="Skeleton3D" parent="ArmsRig" parent_id_path=PackedInt32Array(807248929) index="0" unique_id=488035488]
+[node name="Skeleton3D" parent="ArmsRig" parent_id_path=PackedInt32Array(54437740) index="0" unique_id=409042480]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)

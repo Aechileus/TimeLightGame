@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://0xa0pckns15e"]
+
+[ext_resource type="Script" uid="uid://j7ko47rfxbmc" path="res://Assets/Interactables/interaction_area.gd" id="1_limih"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(0.2167511, 0.17456055, 0.17407227)
+
+[node name="InteractionArea" type="Area3D" unique_id=1066557971]
+script = ExtResource("1_limih")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=913579683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005622864, 0.0037841797, 0.006469734)
+shape = SubResource("BoxShape3D_l00eo")

@@ -124,6 +124,11 @@ var click_to_capture_mouse: bool = true
 @onready var overlay_mesh: MeshInstance3D = $PlayerCharacterBody3D/PlayerCamera/MeshInstance3D
 @onready var arms_animation_player: AnimationPlayer = $PlayerCharacterBody3D/PlayerCamera/arms_rig/AnimationPlayer
 @onready var arms_rig = $PlayerCharacterBody3D/PlayerCamera/arms_rig
+## Arms drop back to this animation after sitting idle for a bit
+@export var arms_idle_animation: String = "relax"
+## Seconds without a new arm animation before returning to idle
+@export_range(0.0, 5.0, 0.1) var arms_idle_delay: float = 1.5
+var _arms_idle_timer: float = 0.0
 # the vhs post effect handles the screen tint and flashes now
 @onready var _vhs_material: ShaderMaterial = $PlayerCharacterBody3D/PlayerCamera/CanvasLayer/ColorRect.material
 @onready var _hurt_audio: AudioStreamPlayer3D = $PlayerCharacterBody3D/HurtSFX
@@ -132,6 +137,9 @@ var _health: int = 0
 var _hit_flash_tween: Tween
 # counts down while a dash is making the player untouchable
 var _invuln_time: float = 0.0
+## How far the aim ray reaches to interact with things youre looking at
+@export var interact_range: float = 1.5
+@onready var _aim_ray: RayCast3D = $PlayerCharacterBody3D/PlayerCamera/AimRay
 
 # the pause menu, spawned on escape while in a level. its own layer so it sits
 # on top of everything and keeps working while the tree is paused
@@ -194,6 +202,29 @@ func _ready() -> void:
 		# stale stop hanging around from a previous scene, clear it
 		Global.force_time_flow.call_deferred()
 
+
+func _process(delta: float) -> void:
+	if _dead or _pause_layer != null:
+		return
+	# no relaxing to idle mid freeze
+	if Global.is_time_stopped():
+		return
+	if not arms_rig.visible:
+		return
+
+	var current := arms_animation_player.current_animation
+	# a non idle animation is actively playing, wait
+	if arms_animation_player.is_playing() and current != arms_idle_animation:
+		_arms_idle_timer = 0.0
+		return
+	# already idle, nothing to do
+	if current == arms_idle_animation:
+		return
+
+	_arms_idle_timer += delta
+	if _arms_idle_timer >= arms_idle_delay:
+		_arms_idle_timer = 0.0
+		arms_animation_player.play(arms_idle_animation)
 
 
 func _physics_process(delta: float) -> void:
@@ -401,6 +432,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	# no input while playing out the death sequence
 	if _dead:
 		return
+	if event.is_action_pressed(&"interact"):
+		_try_interact()
+		return
 	if event.is_action_pressed(&"time_stop"):
 		# Time can always stop if free_time_control is on, and we can stop the countdown too
 		#if time_manipulation._free_time_control: # !! Doesn't work, seems to immediately unpause
@@ -485,6 +519,49 @@ func get_floor_material() -> Util.FLOOR_MATERIAL:
 # Dashing sets an immunity window, so blasting through a monster shrugs off hits.
 func start_dash_immunity(duration: float) -> void:
 	_invuln_time = maxf(_invuln_time, duration)
+
+
+# Casts the aim ray out to interact_range and interacts with the first thing that
+# has an interact method. Walls block it since bodies count too.
+func _try_interact() -> void:
+	var from := _aim_ray.global_position
+	var to := from - _aim_ray.global_transform.basis.z * interact_range
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	# see interaction areas as well as solid geometry that would block the look
+	query.collide_with_areas = true
+	query.exclude = [character_body.get_rid()]
+	var hit := character_body.get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return
+
+	# walk up from what we hit in case its a child collider of the interactable
+	var node := hit.collider as Node
+	while node:
+		if node.has_method("interact"):
+			node.interact()
+			return
+		node = node.get_parent()
+
+
+const HEAL_SFX := preload("res://Resources/SFX/PlaceholderSFX/heal.wav")
+
+# Pickups like the first aid kit call this to top the player back up.
+func heal_to_full() -> void:
+	_health = max_health
+	_update_health_label()
+	_flash_heal()
+	_hurt_audio.stream = HEAL_SFX
+	_hurt_audio.pitch_scale = 1.0
+	_hurt_audio.play()
+
+
+# Quick green pulse through the vhs effect on a heal.
+func _flash_heal() -> void:
+	if _hit_flash_tween:
+		_hit_flash_tween.kill()
+	_vhs_material.set_shader_parameter("flash", Color(0.2, 1.0, 0.3, 0.45))
+	_hit_flash_tween = create_tween()
+	_hit_flash_tween.tween_property(_vhs_material, "shader_parameter/flash", Color(0.2, 1.0, 0.3, 0.0), 0.35)
 
 
 func take_damage(amount) -> void:
@@ -619,8 +696,7 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 	if Global.is_time_stopped() == false:
 		arms_rig.visible = true
 		arms_animation_player.play("push_R")
-		await arms_animation_player.animation_finished
-		arms_rig.visible = false
+		# arms stay up now, the idle timeout eases them back to idle after
 		return
 	if Global.is_time_stopped() == true:
 		# a queued ability with its own animation will override the time push/wave thing
@@ -630,8 +706,6 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 		arms_rig.visible = true
 		# DO NOT CHANGE THIS, WE PLAY THE ANIMATION OF ABILITIES IN TIME STOP BASED OFF OF THE RESOURCE!
 		arms_animation_player.play(anim)
-		await arms_animation_player.animation_finished
-		arms_rig.visible = false
 		return
 		
 func show_hide_ui():

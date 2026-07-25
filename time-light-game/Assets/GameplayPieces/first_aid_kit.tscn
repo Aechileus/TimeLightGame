@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bjxgfknnjyo3h"]
+
+[ext_resource type="PackedScene" uid="uid://dtx8plpowrvrk" path="res://Assets/PSXPack2/first_aid_kit_hr_1.glb" id="1_ymegn"]
+[ext_resource type="Script" uid="uid://c1u1tqjkfetve" path="res://Assets/GameplayPieces/first_aid_kit.gd" id="2_heal"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+
+[node name="FirstAidKit" unique_id=825883076 instance=ExtResource("1_ymegn")]
+script = ExtResource("2_heal")
+bob_height = 0.19
+spin_speed = 1.23
+
+[node name="first_aid_kit_hr_1" parent="." index="0" unique_id=1980657049]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="first_aid_kit_hr_1" index="0" unique_id=226805590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027769795, 0.1296012)
+layers = 3
+light_color = Color(0.1254902, 1, 0.24705882, 1)
+light_energy = 3.154
+light_indirect_energy = 0.505
+omni_range = 1.314
+omni_attenuation = 0.33
+
+[node name="Pickup" type="Area3D" parent="." index="1" unique_id=188664591]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup" index="0" unique_id=1784303277]
+shape = SubResource("SphereShape3D_pickup")

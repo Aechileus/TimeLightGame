@@ -245,8 +245,6 @@ func _fire(ability: Ability, point: Vector3) -> void:
 	if ability.cast_animation != "" and _arms_anim.current_animation != ability.cast_animation:
 		_arms.visible = true
 		_arms_anim.play(ability.cast_animation)
-		await _arms_anim.animation_finished
-		_arms.visible = false
 
 
 func _update_ui() -> void:

@@ -70,7 +70,17 @@ alignment = 1
 
 [node name="LevelIcon" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=864815639 instance=ExtResource("3_gkwew")]
 layout_mode = 2
-label_text = "T"
+label_text = "T1"
+level_scene = ExtResource("4_gkwew")
+
+[node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1348206164 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+label_text = "T2"
+level_scene = ExtResource("4_gkwew")
+
+[node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=683660083 instance=ExtResource("3_gkwew")]
+layout_mode = 2
+label_text = "T3"
 level_scene = ExtResource("4_gkwew")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1924165608]
