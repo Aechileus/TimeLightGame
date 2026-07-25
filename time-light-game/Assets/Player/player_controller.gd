@@ -278,7 +278,7 @@ func _update_arm_bob(delta: float) -> void:
 
 # Crouch, slide and slam all raise the guard, dropping slide or crouch reverses the raise
 func _update_guard_animation() -> void:
-	var guard_now := crouch_slide.is_crouching() or crouch_slide.is_sliding() or crouch_slide.is_slamming()
+	var guard_now := crouch_slide.is_crouching or crouch_slide.is_sliding or crouch_slide.is_slamming
 
 	if guard_now and not _guarding:
 		_guarding = true
@@ -303,47 +303,51 @@ func _on_arms_animation_finished(anim_name: StringName) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# tick the dash immunity down here so it always drains
-	# !! See below
 
-	# pause menu is up, the player runs at process always so the tree pause cant
-	# stop it, this hard freezes everything until the menu closes
-	if _pause_layer != null:
-		return
-
-	if _dead:
-		return
-
-	# frozen in time, no moving around. queueing ended up living in the
-	# abilities component instead so this just gates movement now. Oh well, composition wins.
-	if Global.is_time_stopped():
+	# Pause player physics if the pause menu is up, time is stopped, or they're dead
+	if _pause_layer != null or _dead or Global.is_time_stopped():
 		return
 	
-	# I don't think it makes sense for the dash invuln to be canceled by time stop?
+	var input_vector := Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
+	
+	# Sets sprint state and updates sprint grace
+	_update_sprint_state(delta, input_vector)
+
+	# Get a vector representing the direction the player's currently moving in
+	# TODO: this could be cached?
+	var current_move_direction := character_body.global_transform.basis * Vector3(input_vector.x, 0.0, input_vector.y)
+	if current_move_direction.y != 0.0:
+		print("Hard setting move_direction's Y is needed")
+		current_move_direction.y = 0.0
+	else:
+		print("Hard setting move_direction's Y is not needed")
+	current_move_direction = current_move_direction.normalized()
+	
+	var is_on_floor := character_body.is_on_floor()
+	
+	crouch_slide.update_input(delta, is_on_floor, current_move_direction, _is_sprinting)
+
+	# ---------------------------------------------------------------------- #
+	
+	# Decrement i-time
 	_invuln_time = maxf(_invuln_time - delta, 0.0)
 
 	wall_movement.begin_frame(delta)
-
-	var input_vector := Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down")
-	var move_direction := character_body.global_transform.basis * Vector3(input_vector.x, 0.0, input_vector.y)
-	move_direction.y = 0.0
-	move_direction = move_direction.normalized()
-
-	var was_on_floor := character_body.is_on_floor() # <- so is it or was it, huh?
-	_update_sprint_state(delta, input_vector)
-	crouch_slide.update_input(delta, was_on_floor, move_direction, _is_sprinting)
-	_update_horizontal_movement(delta, move_direction, was_on_floor)
+	
+	# ---------------------------------------------------------------------- #
+	
+	_update_horizontal_movement(delta, current_move_direction, is_on_floor)
 	_clamp_horizontal_speed()
 
-	var jumped := _update_jump_and_gravity(delta, was_on_floor)
+	var jumped := _update_jump_and_gravity(delta, is_on_floor)
 	var horizontal_motion := Vector3(character_body.velocity.x, 0.0, character_body.velocity.z) * delta
 	var step_height := 0.0
-	if was_on_floor and not jumped:
+	if is_on_floor and not jumped:
 		step_height = stair_step.try_step_up(horizontal_motion)
 
 	# a longer snap while sliding keeps you glued to ramps at high speed instead
 	# of skipping off the lip, normal movement uses the base snap
-	character_body.floor_snap_length = slide_floor_snap_length if crouch_slide.is_sliding() else _base_floor_snap
+	character_body.floor_snap_length = slide_floor_snap_length if crouch_slide.is_sliding else _base_floor_snap
 
 	var saved_floor_snap := character_body.floor_snap_length
 	if step_height > 0.0:
@@ -357,27 +361,29 @@ func _physics_process(delta: float) -> void:
 
 	# landing mpact camera bob, dip the camera a bit if it was a
 	# real drop. scaled by how hard we hit and capped so it stays subtle
-	if not was_on_floor and character_body.is_on_floor() and impact_speed > land_bob_min_speed:
+	if not is_on_floor and character_body.is_on_floor() and impact_speed > land_bob_min_speed: # <- this is never true 
 		var dip := minf((impact_speed - land_bob_min_speed) * land_bob_scale, land_bob_max)
 		_camera_land_offset = -dip
 
-	wall_movement.refresh_contact()
 	var horizontal_speed := Vector2(character_body.velocity.x, character_body.velocity.z).length()
 	footsteps.post_move_update(delta, horizontal_speed > 0.1, _is_sprinting)
 	_update_camera_height(delta)
 
 
+## Increments/resets sprint grace, and sets whether or not the player is sprinting
+## REFERENCES CROUCH_SLIDE
 func _update_sprint_state(delta: float, input_vector: Vector2) -> void:
 	var has_movement_input := input_vector.length_squared() > 0.0
 	var sprint_pressed := Input.is_physical_key_pressed(KEY_SHIFT) and has_movement_input
-	if sprint_pressed and not crouch_slide.is_crouching():
+	
+	# Handle sprint grace
+	if sprint_pressed and not crouch_slide.is_crouching:
 		_sprint_grace_time_left = sprint_release_grace_time
 	else:
 		_sprint_grace_time_left = maxf(_sprint_grace_time_left - delta, 0.0)
 
-	_is_sprinting = has_movement_input and not crouch_slide.is_crouching() and (
-		sprint_pressed or _sprint_grace_time_left > 0.0
-	)
+	_is_sprinting = (Input.is_physical_key_pressed(KEY_SHIFT) or _sprint_grace_time_left > 0.0) and !crouch_slide.is_crouching
+
 
 
 func _clamp_horizontal_speed() -> void:
@@ -388,15 +394,19 @@ func _clamp_horizontal_speed() -> void:
 		character_body.velocity.z = flat.y
 
 
-func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_floor: bool) -> void:
-	if crouch_slide.apply_slide_motion(delta, move_direction):
+func _update_horizontal_movement(delta: float, current_move_direction: Vector3, was_on_floor: bool) -> void:
+	
+	# ---------------------------------------------------------------------- #
+	
+	if crouch_slide.is_sliding:
+		crouch_slide.apply_slide_motion(delta, current_move_direction)
 		return
 	if wall_movement.controls_locked():
 		return
 
 	# crouch speed only matters on the ground, airborne crouching keeps momentum
 	# so the slam actually carries into the landing
-	var target_speed := crouch_slide.movement_speed if (crouch_slide.is_crouching() and was_on_floor) else walk_speed
+	var target_speed := crouch_slide.movement_speed if (crouch_slide.is_crouching and was_on_floor) else walk_speed
 	if _is_sprinting:
 		target_speed = sprint_speed
 
@@ -407,21 +417,21 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 		var bleed := 0.0
 		if was_on_floor:
 			bleed = sprint_momentum_bleed if _is_sprinting else walk_momentum_bleed
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, bleed, was_on_floor, delta)
+		_apply_preserved_speed(horizontal_velocity, current_move_direction, target_speed, bleed, was_on_floor, delta)
 		return
 
 	# Sprint speed eases back to the active movement speed after the grace window,
 	# again only on the ground so air momentum sticks
-	if not move_direction.is_zero_approx() and current_speed > target_speed + 0.001:
+	if not current_move_direction.is_zero_approx() and current_speed > target_speed + 0.001:
 		var ease_bleed := sprint_deceleration if was_on_floor else 0.0
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, ease_bleed, was_on_floor, delta)
+		_apply_preserved_speed(horizontal_velocity, current_move_direction, target_speed, ease_bleed, was_on_floor, delta)
 		return
 
 	_overspeed_coast_time = 0.0
 
-	var target_velocity := move_direction * target_speed
+	var target_velocity := current_move_direction * target_speed
 	var acceleration := ground_acceleration if was_on_floor else air_acceleration
-	if move_direction.is_zero_approx():
+	if current_move_direction.is_zero_approx():
 		# no input in the air keeps your momentum, on the ground it decelerates
 		acceleration = ground_deceleration if was_on_floor else 0.0
 
@@ -479,7 +489,7 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 	var jump_pressed := Input.is_action_just_pressed(&"ui_accept")
 	if jump_pressed and was_on_floor:
 		# hopping out of a slide keeps the speed and stacks a little extra on top
-		if crouch_slide.is_sliding():
+		if crouch_slide.is_sliding:
 			crouch_slide.apply_slide_jump_boost()
 		crouch_slide.stop_slide()
 		character_body.velocity.y = jump_velocity
@@ -499,7 +509,7 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 	var active_gravity := wall_movement.get_gravity_multiplier(gravity_multiplier)
 	character_body.velocity.y -= _gravity * active_gravity * delta
 	# the wall slide fall cap would eat the slam, so the slam wins while its active
-	if not crouch_slide.is_slamming():
+	if not crouch_slide.is_slamming:
 		wall_movement.clamp_fall_speed()
 	return false
 
@@ -756,7 +766,7 @@ func _update_camera_height(delta: float) -> void:
 	_camera_step_offset = move_toward(_camera_step_offset, 0.0, step_camera_smoothing * delta)
 	# impact bob for landing
 	_camera_land_offset = lerp(_camera_land_offset, 0.0, clampf(land_bob_recovery * delta, 0.0, 1.0))
-	var target_height := crouch_camera_height if crouch_slide.is_crouching() else _camera_base_height
+	var target_height := crouch_camera_height if crouch_slide.is_crouching else _camera_base_height
 	_camera_current_height = move_toward(_camera_current_height, target_height, crouch_camera_speed * delta)
 	var camera_position := player_camera.position
 	camera_position.y = _camera_current_height + _camera_step_offset + _camera_land_offset
