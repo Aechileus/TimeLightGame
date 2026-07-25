@@ -33,15 +33,16 @@
 			"title": "Doing - Aech",
 			"tasks": [
 				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"63559c3b-4bf4-4a5e-a537-4f7a80ddcef5"
+				"e1653b3c-4933-4916-ae85-1d2184863784",
+				"a7306602-e9a9-4c98-9210-220b43db50b5"
 			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
 			"title": "Done",
 			"tasks": [
-				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
 				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+				"63559c3b-4bf4-4a5e-a537-4f7a80ddcef5",
 				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
 				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
 				"053942a6-64b7-4843-a33a-9fcb29746a2e",
@@ -51,6 +52,7 @@
 				"41f3cc74-3252-484f-9aa2-1d3657db3ee5",
 				"6b581247-698f-497d-8297-ad055f9d70d7",
 				"6dc3b77f-fdd5-4204-8d1f-1284750a8844",
+				"b010702a-0840-4a6c-aad9-4e076fed2ee8",
 				"8c770334-87e0-4ed2-869e-99e65035d45f",
 				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
 				"35f83554-786e-4e04-9bed-dd81372c9e03",
@@ -59,6 +61,7 @@
 				"457b560e-4fed-4848-9603-70901284c62b",
 				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
 				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
+				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
 				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
 				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
 			]
@@ -67,17 +70,17 @@
 			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
 			"title": "Doing - Snake",
 			"tasks": [
-				"5bf10403-7344-4ac2-aa57-b600a050817d"
+				"5bf10403-7344-4ac2-aa57-b600a050817d",
+				"df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
+				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
+				"90f71804-98cb-48e0-98c1-ffeb74751ef4"
 			]
 		},
 		{
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
 			"title": "Todo: Polish",
 			"tasks": [
-				"e1653b3c-4933-4916-ae85-1d2184863784",
-				"71dd28a6-560a-414c-94ec-5a642ecac30b",
-				"b010702a-0840-4a6c-aad9-4e076fed2ee8",
-				"a7306602-e9a9-4c98-9210-220b43db50b5"
+				"71dd28a6-560a-414c-94ec-5a642ecac30b"
 			]
 		},
 		{
@@ -85,8 +88,8 @@
 			"title": "Todo: Bugfixes",
 			"tasks": [
 				"0a111623-6452-45ac-a99c-af14f782f009",
-				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
-				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d"
+				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d",
+				"3be0ebde-f941-4e39-b9e9-ababa08876fb"
 			]
 		}
 	],
@@ -239,15 +242,15 @@
 			"steps": [
 				{
 					"details": "Make the gravity feel fluid and poppy",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Make ground movement feel inertia much less",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Balance air manouverability with realism",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Handle the camera changing positions when time stops and resumes?",
@@ -283,7 +286,7 @@
 				},
 				{
 					"details": "Make the player settings tunable from ingame ",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -359,7 +362,7 @@
 		{
 			"uuid": "0a111623-6452-45ac-a99c-af14f782f009",
 			"title": "Sliding doesn't actually make you faster than sprinting",
-			"description": "",
+			"description": "it has a 1.1x speed multiplier, just crank it up, but we are yet to use it in a level, so it might feel fine.",
 			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
 			"steps": []
 		},
@@ -380,7 +383,7 @@
 		{
 			"uuid": "3be0ebde-f941-4e39-b9e9-ababa08876fb",
 			"title": "(Wall)jumping while dashing cancels speed",
-			"description": "",
+			"description": "Very very tough fix, I ran out of time to look at this, its hard because wall jumping is entirely programmed to be a set force away from the wall and up, maybe I could change it to add it to the current velocities instead, but idk.",
 			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
 			"steps": []
 		},
@@ -395,6 +398,27 @@
 			"uuid": "63559c3b-4bf4-4a5e-a537-4f7a80ddcef5",
 			"title": "Tutorial Enabler",
 			"description": "Make a area3d that can enable the hud elements for abilities and pauses.  It should also have toggles that when its entered can give the ability to resume time, stop time, the dash, and the shoot.  I should export these so I can set which area3d gives what parts back for tutorial2.  By default we want to have these all enabled unless its a level group and a tutorial group on the tree root",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
+			"title": "Wrap up tutorial 2",
+			"description": "Tutorial 2 will need some type of spike pit at the end, I ran out of time.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
+			"title": "Make Tutorial 3",
+			"description": "You will have to put a unlock_area at the start of tutorial 3 that gives everything other than pause time.  3 should then teach the player about pause time and fighting mechanics.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "90f71804-98cb-48e0-98c1-ffeb74751ef4",
+			"title": "READ ME",
+			"description": "If you use the unlock area, YOU MUST MUST MUST MUST MUST, make the collision shape unique each time.  If you dont after copying it you will edit it for all previous implementations of those copies you make. DONT LEARN THE HARD WAY HERE.\n\nThe unlock area gates tutorial progression.  Tutorial levels get the root node assigned to the groups level, and tutorial.  if they have both the unlock areas are needed to progress abilities.  If they only have level you will get everything.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

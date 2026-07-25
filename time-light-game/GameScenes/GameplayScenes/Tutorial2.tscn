@@ -322,7 +322,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BillboardSign4" type="Sprite3D" parent="Billboards" unique_id=302834979]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 18.144659, -7.9125543, 0.059835613)
+transform = Transform3D(-0.96592593, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, -0.96592593, 10.58504, -7.2394924, -0.05733651)
+billboard = 1
 double_sided = false
 render_priority = 4
 texture = SubResource("ViewportTexture_3cm0x")

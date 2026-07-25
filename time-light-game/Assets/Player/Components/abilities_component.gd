@@ -277,7 +277,7 @@ func _update_ui() -> void:
 		icon.texture = ability.icon if ability else null
 		# show the action point cost right after the name, like "1  Dash (2)"
 		var cost_text := " (%d AP)" % ability.economy_cost if ability else ""
-		slot_name.text = str(i + 1) + "  " + (ability.display_name if ability else "----") + cost_text
+		slot_name.text = str(i + 1) + "  " + (ability.display_name if ability else " ") + cost_text
 		# selected slot pops, everything else sits dim, queued goes green
 		var tint := Color.WHITE if i == _selected and ability != null else Color(1.0, 1.0, 1.0, 0.35)
 		if _queued and ability == _queued_ability:
