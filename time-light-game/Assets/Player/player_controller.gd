@@ -44,18 +44,18 @@ signal update_show_hide_ui
 @export_range(0.1, 50.0, 0.1) var sprint_deceleration: float = 8.0
 ## Starting coast deceleration while overspeed with no movement key held. Stays
 ## gentle at first then ramps up exponentially the longer you hold nothing
-@export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 3.0
+@export_range(0.1, 50.0, 0.1) var overspeed_deceleration: float = 8.0
 ## How fast the coast deceleration ramps up per second of holding no input
 @export_range(0.0, 6.0, 0.1) var overspeed_decel_growth: float = 2.5
 ## How fast walking bleeds off extra momentum toward walk speed
-@export_range(0.0, 50.0, 0.5) var walk_momentum_bleed: float = 10.0
+@export_range(0.0, 50.0, 0.5) var walk_momentum_bleed: float = 50.0
 ## How fast sprinting bleeds off extra momentum toward sprint speed. Keep it
 ## lower than the walk bleed so sprinting holds momentum longer
-@export_range(0.0, 50.0, 0.5) var sprint_momentum_bleed: float = 3.0
+@export_range(0.0, 50.0, 0.5) var sprint_momentum_bleed: float = 50.0
 ## Degrees per second you can freely curve your momentum. Turn within this and
 ## you keep all your speed, whip the camera faster than this and youre fighting
-## the "inertia" so it bleeds the speed
-@export_range(30.0, 720.0, 5.0) var momentum_turn_rate: float = 200.0
+## the "inertia" so it bleeds the speedW
+@export_range(30.0, 720.0, 5.0) var momentum_turn_rate: float = 135
 ## Speed lost per radian you over force the turn past the free rate. Higher means
 ## hard whip turns kill your speed faster
 @export_range(0.0, 40.0, 0.5) var turn_scrub: float = 8.0

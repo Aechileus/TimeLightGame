@@ -65,12 +65,6 @@ shader_parameter/flash = Color(1, 1, 1, 0)
 
 [node name="PlayerController" type="Node3D" unique_id=440292127 groups=["player"]]
 script = ExtResource("1_player")
-max_horizontal_speed = 30.0
-overspeed_deceleration = 8.799999999999999
-walk_momentum_bleed = 3.0
-sprint_momentum_bleed = 1.5
-momentum_turn_rate = 510.0
-turn_scrub = 1.5
 land_bob_min_speed = 2.0
 mouse_sensitivity = 0.00999999999999999
 hurt_sfx = ExtResource("2_bdrri")
@@ -93,17 +87,16 @@ text = "HP: 3"
 
 [node name="WallMovement" type="Node" parent="Components" unique_id=264129517]
 script = ExtResource("5_wall")
-jump_horizontal_velocity = 2.5
 
 [node name="CrouchSlide" type="Node" parent="Components" unique_id=1120910197]
 script = ExtResource("6_crouch")
 movement_speed = 6.0
-slide_start_speed = 6.0
 max_slide_speed = 40.0
 slide_coyote_time = 0.35
 allow_air_slide = true
-slam_speed = 7.5
-slide_jump_boost = 1.1
+slam_speed = 4.0
+slam_ramp = 4.0
+slam_landing_boost = 1.2
 
 [node name="TimeManipulation" type="Node" parent="Components" unique_id=1307419024]
 script = ExtResource("13_timemanip")
@@ -310,7 +303,7 @@ mesh = SubResource("QuadMesh_l00eo")
 [node name="arms_rig" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=920561538 instance=ExtResource("12_7pvar")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.7043787, 0)
 
-[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.5928686, 0.39416394, 0.38195568, 0.5892805)
 bones/2/position = Vector3(-0.02355089, 0.21400495, -0.011285845)
 bones/2/rotation = Quaternion(0.04998686, -0.51578665, 0.67870986, 0.5204021)
@@ -374,7 +367,7 @@ bones/50/rotation = Quaternion(-0.29782498, 0.8596414, 0.27339354, 0.31236702)
 bones/51/position = Vector3(0.42295846, 1.3333434, -0.30978692)
 bones/51/rotation = Quaternion(0.34815243, -0.6154591, 0.6154591, -0.34815246)
 
-[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=1153155381]
+[node name="AnimationPlayer" parent="PlayerCharacterBody3D/PlayerCamera/arms_rig" index="1" unique_id=641917606]
 autoplay = &"relax"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerCharacterBody3D/PlayerCamera" unique_id=1570128987]

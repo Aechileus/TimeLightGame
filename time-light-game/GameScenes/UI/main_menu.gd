@@ -8,7 +8,7 @@ func _ready() -> void:
 	playground_button.pressed.connect(playground_button_pressed)
 	
 func play_button_pressed():
-	SceneChanger.change_to(Util.GAME_SCENES.GAME)
+	SceneChanger.change_to(Util.GAME_SCENES.PLAYGROUND)
 	
 func playground_button_pressed():
 	get_tree().quit()

@@ -11,30 +11,30 @@ class_name PlayerCrouchSlideComponent
 @export_range(0.0, 10.0, 0.1) var slide_steering: float = 2.5
 
 @export_group("Ramp Slide")
-# how hard a downhill slide pulls you along the slope, bigger means it builds
-# speed faster. gets scaled by how steep the ramp is
+## how hard a downhill slide pulls you along the slope, bigger means it builds
+## speed faster. gets scaled by how steep the ramp is
 @export_range(0.0, 40.0, 0.5) var ramp_acceleration: float = 14.0
-# ceiling on slide speed so a long ramp doesnt fling you to the moon
+## ceiling on slide speed so a long ramp doesnt fling you to the moon
 @export_range(1.0, 60.0, 0.5) var max_slide_speed: float = 30.0
-# how long the slide survives brief airtime, otherwise skipping off a ramp
-# lip instantly cancels the slide
+## how long the slide survives brief airtime, otherwise skipping off a ramp
+## lip instantly cancels the slide
 @export_range(0.0, 0.5, 0.01) var slide_coyote_time: float = 0.15
-# lets a slide keep going in the air instead of the coyote window ending it,
-# we can turn this off here if it feels bad or causes issues
+## lets a slide keep going in the air instead of the coyote window ending it,
+## we can turn this off here if it feels bad or causes issues
 @export var allow_air_slide: bool = false
 
 @export_group("Air Slam")
-# how hard crouching in the air yanks you down
-@export_range(1.0, 40.0, 0.5) var slam_speed: float = 14.0
-# how much faster the slam yanks you down per second you keep holding it
+## how hard crouching in the air *INITIALLY* yanks you down
+@export_range(0.0, 40.0, 0.5) var slam_speed: float = 14.0
+## how much faster the slam yanks you down per second you keep holding it
 @export_range(0.0, 120.0, 1.0) var slam_ramp: float = 20.0
-# ceiling on the slam pull so it doesnt grow forever
+## ceiling on the slam pull so it doesnt grow forever
 @export_range(1.0, 120.0, 1.0) var slam_max_speed: float = 60.0
-# little reward for slamming into a slide, multiplies landing speed
+## little reward for slamming into a slide, multiplies landing speed
 @export_range(1.0, 2.0, 0.05) var slam_landing_boost: float = 1.05
 
 @export_group("Slide Jump")
-# horizontal speed multiplier when jumping out of a slide
+## horizontal speed multiplier when jumping out of a slide
 @export_range(1.0, 2.0, 0.05) var slide_jump_boost: float = 1.15
 
 @onready var _body: CharacterBody3D = $"../../PlayerCharacterBody3D"
@@ -47,12 +47,12 @@ var _is_crouching: bool = false
 var _is_sliding: bool = false
 var _slide_air_time: float = 0.0
 var _is_slamming: bool = false
-# how long the current slam has been held, ramps the downward pull
+## how long the current slam has been held, ramps the downward pull
 var _slam_time: float = 0.0
 
 
-# Duplicates the capsule so we can remember the bottom position. Keeping that bottom fixed
-# lets the collider change height without making the player's feet jump when done crouching.
+## Duplicates the capsule so we can remember the bottom position. Keeping that bottom fixed
+## lets the collider change height without making the player's feet jump when done crouching.
 func _ready() -> void:
 	_capsule = _collision.shape.duplicate() as CapsuleShape3D
 	_collision.shape = _capsule
@@ -60,8 +60,8 @@ func _ready() -> void:
 	_collision_bottom = _collision.position.y - (_standing_height * 0.5)
 
 
-# Read crouch input before the controller applies horizontal movement. This starts or
-# stops a slide, updates crouch state, and eases the capsule toward its target height.
+## Read crouch input before the controller applies horizontal movement. This starts or
+## stops a slide, updates crouch state, and eases the capsule toward its target height.
 func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_sprinting: bool) -> void:
 	var crouch_held := Input.is_action_pressed(&"crouch")
 	var horizontal_speed := Vector2(_body.velocity.x, _body.velocity.z).length()
@@ -75,8 +75,7 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 				_start_slide(move_direction, horizontal_speed)
 		else:
 			# crouching in the air starts a slam, no more floaty crouch drag
-			_is_slamming = true
-			_slam_time = 0.0
+			start_slam()
 
 	# letting go of crouch bails out of the slam early
 	if _is_slamming and not crouch_held:
@@ -91,8 +90,9 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 			# the pull ramps up the longer you hold it, capped so it stays sane.
 			# reapplied every frame so gravity tweaks cant soften it
 			_slam_time += delta
-			var pull := minf(slam_speed + slam_ramp * _slam_time, slam_max_speed)
-			_body.velocity.y = minf(_body.velocity.y, -pull)
+			var pull := minf(slam_ramp * _slam_time, slam_max_speed) * delta
+			if _body.velocity.y > -slam_max_speed:
+				_body.velocity.y -= pull
 
 	# STUPID ASS BUG WHERE IT COUNTS US AS NOT ON THE GROUND WHEN SLIDING ONRAMP
 	# THIS FIXES IT BY GIVING TEENY TINY AIR TIME ALLOWS
@@ -114,9 +114,15 @@ func update_input(delta: float, was_on_floor: bool, move_direction: Vector3, is_
 	var target_height := maxf(crouch_height, _capsule.radius * 2.0) if _is_crouching else _standing_height
 	_set_height(move_toward(_capsule.height, target_height, resize_speed * delta))
 
+## Resets slam timer and applies initial slam yank
+func start_slam():
+	_is_slamming = true
+	_slam_time = 0.0
+	_body.velocity.y -= slam_speed 
+	
 
-# Apply steering and friction while a slide is active. Returning true tells the
-# controller that this component handled horizontal velocity for the current frame.
+## Apply steering and friction while a slide is active. Returning true tells the
+## controller that this component handled horizontal velocity for the current frame.
 func apply_slide_motion(delta: float, move_direction: Vector3) -> bool:
 	if not _is_sliding:
 		return false
@@ -145,35 +151,36 @@ func apply_slide_motion(delta: float, move_direction: Vector3) -> bool:
 	return true
 
 
-# Lets the player controller figure out crouch state.
+## Lets the player controller figure out crouch state.
 func is_crouching() -> bool:
 	return _is_crouching
 
-# Lets the footstepper figure out slide state.
+## Lets the footstepper figure out slide state.
 func is_sliding() -> bool:
 	return _is_sliding
 
-# Lets the controller know a slam is pulling the player down, mostly so the
-# wall slide fall cap knows to stay out of the way.
+## Lets the controller know a slam is pulling the player down, mostly so the
+## wall slide fall cap knows to stay out of the way.
 func is_slamming() -> bool:
 	return _is_slamming
 
 
-# Called by the controller when the player jumps out of a slide.
-# Scales horizontal velocity so slide hopping is a real way to build speed.
+
+## Called by the controller when the player jumps out of a slide.
+## Scales horizontal velocity so slide hopping is a real way to build speed.
 func apply_slide_jump_boost() -> void:
-	_body.velocity.x *= slide_jump_boost
-	_body.velocity.z *= slide_jump_boost
+	_body.velocity *= slide_jump_boost
+	#_body.velocity.z *= slide_jump_boost
 
 
-# Clear the slide state. Crouching can stay active as long as the input is held.
+## Clear the slide state. Crouching can stay active as long as the input is held.
 func stop_slide() -> void:
 	_is_sliding = false
 
 
-# Scan the floor contacts from the last move for anything in the ramp group.
-# The rest of it just makes sure the parents might also be ramp since sometimes I set it
-# as the parent for group, (keeps it simple since we can just set a tscn as it
+## Scan the floor contacts from the last move for anything in the ramp group.
+## The rest of it just makes sure the parents might also be ramp since sometimes I set it
+## as the parent for group, (keeps it simple since we can just set a tscn as it
 func _is_on_ramp() -> bool:
 	for i in _body.get_slide_collision_count():
 		var node := _body.get_slide_collision(i).get_collider() as Node
@@ -184,8 +191,8 @@ func _is_on_ramp() -> bool:
 	return false
 
 
-# Take the player's current travel direction and get any useful momentum.
-# Input direction is a fallback for the first frame where horizontal speed is tiny.
+## Take the player's current travel direction and get any useful momentum.
+## Input direction is a fallback for the first frame where horizontal speed is tiny.
 func _start_slide(move_direction: Vector3, current_speed: float) -> void:
 	var direction := Vector3(_body.velocity.x, 0.0, _body.velocity.z).normalized()
 	if direction.is_zero_approx():
@@ -200,14 +207,14 @@ func _start_slide(move_direction: Vector3, current_speed: float) -> void:
 	_slide_air_time = 0.0
 
 
-# Resize the capsule and move its center so the cached foot position stays planted.
+## Resize the capsule and move its center so the cached foot position stays planted.
 func _set_height(height: float) -> void:
 	_capsule.height = height
 	_collision.position.y = _collision_bottom + (height * 0.5)
 
 
-# Checks if you can stand by taking the player height and removing a tiny ammount. A clear sweep
-# means the collider can safely go back to normal without getting stuck in a ceiling.
+## Checks if you can stand by taking the player height and removing a tiny ammount. A clear sweep
+## means the collider can safely go back to normal without getting stuck in a ceiling.
 func _can_stand() -> bool:
 	if _capsule.height >= _standing_height - 0.001:
 		return true

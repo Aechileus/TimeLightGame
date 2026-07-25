@@ -19,3 +19,6 @@ signal ability_time_spent(seconds)
 
 # fires when the progression unlocks change, so huds and gating can refresh
 signal unlocks_changed
+
+# Fires when the level timer reaches zero
+signal out_of_time

@@ -11,8 +11,7 @@ extends CanvasLayer
 
 var _time_left: float = 0.0
 
-
-@onready var _label: Label = $TimerLabel
+@onready var _label: RichTextLabel = $TimerLabel
 
 
 func _ready() -> void:
@@ -31,7 +30,7 @@ func _process(delta: float) -> void:
 	_update_label()
 	if _time_left <= 0.0:
 		# out of time, run it back
-		get_tree().reload_current_scene()
+		SignalBus.out_of_time.emit()
 
 
 func _on_ability_time_spent(seconds: float) -> void:

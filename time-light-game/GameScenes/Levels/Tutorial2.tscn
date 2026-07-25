@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="3_40cht"]
 [ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_tiled_floor.tscn" id="3_kfubd"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="4_kfubd"]
-[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="6_8y5v2"]
+[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="6_8y5v2"]
 [ext_resource type="PackedScene" uid="uid://bdfehsah66sav" path="res://Assets/Props/FakeDoor.tscn" id="6_iwhby"]
-[ext_resource type="Script" uid="uid://cmsixcfnamnt" path="res://Assets/StructurePieces/floortileinteractionmove.gd" id="7_0ct3m"]
+[ext_resource type="Script" uid="uid://cmsixcfnamnt" path="res://Assets/StructurePieces/ProbsShouldntUse/floortileinteractionmove.gd" id="7_0ct3m"]
 [ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="7_s61d0"]
 [ext_resource type="AudioStream" uid="uid://b3fn8avbd0mah" path="res://Resources/SFX/alarmlonger.mp3" id="8_27x7b"]
 [ext_resource type="Script" uid="uid://c4r5kupy1emw7" path="res://Assets/GameplayPieces/billboard_sign.gd" id="8_bma1b"]
@@ -60,23 +60,13 @@ _hide_level_timer = true
 _hide_health = true
 _hide_abilities = true
 _hide_time_manipulation = true
-max_horizontal_speed = 50.0
-sprint_deceleration = 12.0
-overspeed_deceleration = 8.0
-walk_momentum_bleed = 50.0
-sprint_momentum_bleed = 50.0
-momentum_turn_rate = 135.0
-turn_scrub = 8.0
 start_time_stopped = false
 free_time_control = true
-
-[node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
-max_slide_speed = 30.0
 
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="3" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)

@@ -16,8 +16,7 @@
 [ext_resource type="Script" uid="uid://kh1d6okfpyeu" path="res://GameScenes/Levels/level_timer_toggle.gd" id="10_vhie8"]
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="11_molmv"]
 [ext_resource type="PackedScene" uid="uid://tfwp5nchgtp1" path="res://Assets/StructurePieces/CSG/csg_slope.tscn" id="13_d0bxx"]
-[ext_resource type="Texture2D" uid="uid://bd17uif1iwrog" path="res://Assets/StructurePieces/CSG/wall_hr_2.png" id="17_fv4n6"]
-[ext_resource type="PackedScene" uid="uid://bjxgfknnjyo3h" path="res://Assets/GameplayPieces/first_aid_kit.tscn" id="17_sltlx"]
+[ext_resource type="PackedScene" uid="uid://d1dgff00nklef" path="res://GameScenes/Levels/Tutorial2.tscn" id="19_fv4n6"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="19_mxhpp"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="20_fv4n6"]
 
@@ -49,17 +48,10 @@ size = Vector3(8, 1, 4)
 size = Vector3(27.5, 1, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8dkko"]
-size = Vector3(4, 1, 8)
+size = Vector3(4, 1, 19.9)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sltlx"]
-size = Vector3(4, 1, 8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfp4"]
-albedo_texture = ExtResource("17_fv4n6")
-uv1_scale = Vector3(0.25, 0.25, 0.25)
-uv1_offset = Vector3(0, 0.5, 0.05)
-uv1_triplanar = true
-uv1_world_triplanar = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpnh3"]
+size = Vector3(324.5, 1, 308.80002)
 
 [node name="Tutorial" type="Node3D" unique_id=1911214141 groups=["level", "tutorial"]]
 
@@ -88,20 +80,14 @@ _hide_level_timer = true
 _hide_health = true
 _hide_abilities = true
 _hide_time_manipulation = true
-max_horizontal_speed = 50.0
 sprint_deceleration = 12.0
-overspeed_deceleration = 8.0
-walk_momentum_bleed = 50.0
-sprint_momentum_bleed = 50.0
-momentum_turn_rate = 135.0
-turn_scrub = 8.0
 start_time_stopped = false
 free_time_control = true
 
 [node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
 max_slide_speed = 30.0
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -174,6 +160,146 @@ mode = 1
 
 [node name="Billboards" type="Node" parent="." unique_id=285636523]
 
+[node name="BillboardSign5" type="Sprite3D" parent="Billboards" unique_id=1174559606]
+transform = Transform3D(-1.0000001, 0, -8.742279e-08, 0, 1, 0, 8.742279e-08, 0, -1.0000001, 58.033833, -11.949081, 55.81965)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_n1wo0")
+script = ExtResource("8_scude")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign5" unique_id=165299135]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign5/SubViewport" unique_id=753077170]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign5/SubViewport/ColorRect" unique_id=1213332407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_sltlx")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 100
+text = "^ ^ ^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign8" type="Sprite3D" parent="Billboards" unique_id=221077461]
+transform = Transform3D(-1.0000001, 0, -8.742279e-08, 0, 1, 0, 8.742279e-08, 0, -1.0000001, 58.033833, -14.049081, 55.81965)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_n1wo0")
+script = ExtResource("8_scude")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign8" unique_id=1616850503]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign8/SubViewport" unique_id=1018394438]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign8/SubViewport/ColorRect" unique_id=141310161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_sltlx")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 100
+text = "^ ^ ^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign6" type="Sprite3D" parent="Billboards" unique_id=2041704929]
+transform = Transform3D(-1.0000001, 0, -8.742279e-08, 0, 1, 0, 8.742279e-08, 0, -1.0000001, 58.033833, -10.049081, 55.81965)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_n1wo0")
+script = ExtResource("8_scude")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign6" unique_id=1789517751]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign6/SubViewport" unique_id=980924219]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign6/SubViewport/ColorRect" unique_id=736588885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_sltlx")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 100
+text = "^ ^ ^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign7" type="Sprite3D" parent="Billboards" unique_id=1146070885]
+transform = Transform3D(-1.0000001, 0, -8.742279e-08, 0, 1, 0, 8.742279e-08, 0, -1.0000001, 58.033833, -8.049081, 55.81965)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_n1wo0")
+script = ExtResource("8_scude")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign7" unique_id=1099163930]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign7/SubViewport" unique_id=1969972661]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign7/SubViewport/ColorRect" unique_id=319605869]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_sltlx")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 100
+text = "^ ^ ^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BillboardSign" type="Sprite3D" parent="Billboards" unique_id=1014450508]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, -1.8661673, -0.6490812, 0.019646347)
 double_sided = false
@@ -235,76 +361,6 @@ grow_vertical = 2
 color = Color(0.27, 0.27, 0.27, 0)
 
 [node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign2/SubViewport2/ColorRect" unique_id=1218577054]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("8_sltlx")
-theme_override_font_sizes/normal_font_size = 32
-text = "RUN AND JUMP!
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BillboardSign5" type="Sprite3D" parent="Billboards" unique_id=1930953361]
-transform = Transform3D(-1.0000001, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1.0000001, 58.08313, -17, 39.275944)
-double_sided = false
-render_priority = 4
-texture = SubResource("ViewportTexture_n1wo0")
-script = ExtResource("8_scude")
-
-[node name="SubViewport2" type="SubViewport" parent="Billboards/BillboardSign5" unique_id=2038505758]
-own_world_3d = true
-transparent_bg = true
-size = Vector2i(400, 321)
-render_target_update_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign5/SubViewport2" unique_id=1591098239]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.27, 0.27, 0.27, 0)
-
-[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign5/SubViewport2/ColorRect" unique_id=432373409]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("8_sltlx")
-theme_override_font_sizes/normal_font_size = 32
-text = "RUN AND JUMP!
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BillboardSign6" type="Sprite3D" parent="Billboards" unique_id=2052571711]
-transform = Transform3D(-1.0000001, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1.0000001, 58.08313, -17, 51.775944)
-double_sided = false
-render_priority = 4
-texture = SubResource("ViewportTexture_n1wo0")
-script = ExtResource("8_scude")
-
-[node name="SubViewport2" type="SubViewport" parent="Billboards/BillboardSign6" unique_id=54973075]
-own_world_3d = true
-transparent_bg = true
-size = Vector2i(400, 321)
-render_target_update_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign6/SubViewport2" unique_id=1283672391]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.27, 0.27, 0.27, 0)
-
-[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign6/SubViewport2/ColorRect" unique_id=1983755763]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,15 +468,16 @@ depth = 4.0
 polygon = PackedVector2Array(0, 0, 0.5, 0, 0, 1)
 
 [node name="Pit3" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=208677307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -14, 35.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -12.9, 45.95)
 shape = SubResource("BoxShape3D_8dkko")
 
-[node name="Pit4" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=29068415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -17, 48)
-shape = SubResource("BoxShape3D_sltlx")
+[node name="OutOfBounds" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=244486450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.45001, -17.7, -17.90001)
+shape = SubResource("BoxShape3D_dpnh3")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=833726451]
 use_collision = true
+metadata/_edit_lock_ = true
 
 [node name="SpikePits" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=56622999]
 
@@ -521,196 +578,244 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 16.5, -6, -1.5)
 
 [node name="Spike145" parent="CSGCombiner3D/SpikePits" unique_id=379287642 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 31.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 36.392883)
 
 [node name="Spike146" parent="CSGCombiner3D/SpikePits" unique_id=1176625270 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 32.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 37.392883)
 
 [node name="Spike147" parent="CSGCombiner3D/SpikePits" unique_id=1530480958 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 33.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 38.392883)
 
 [node name="Spike148" parent="CSGCombiner3D/SpikePits" unique_id=1492503711 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 34.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 39.392883)
 
 [node name="Spike149" parent="CSGCombiner3D/SpikePits" unique_id=184636889 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 34.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 39.392883)
 
 [node name="Spike150" parent="CSGCombiner3D/SpikePits" unique_id=714854561 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 34.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 39.392883)
 
 [node name="Spike151" parent="CSGCombiner3D/SpikePits" unique_id=1120135183 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 34.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 39.392883)
 
 [node name="Spike152" parent="CSGCombiner3D/SpikePits" unique_id=1425415336 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 33.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 38.392883)
 
 [node name="Spike153" parent="CSGCombiner3D/SpikePits" unique_id=143103904 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 33.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 38.392883)
 
 [node name="Spike154" parent="CSGCombiner3D/SpikePits" unique_id=228624614 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 33.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 38.392883)
 
 [node name="Spike155" parent="CSGCombiner3D/SpikePits" unique_id=796690637 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 32.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 37.392883)
 
 [node name="Spike156" parent="CSGCombiner3D/SpikePits" unique_id=770151212 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 31.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 36.392883)
 
 [node name="Spike157" parent="CSGCombiner3D/SpikePits" unique_id=2143870501 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 31.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 36.392883)
 
 [node name="Spike158" parent="CSGCombiner3D/SpikePits" unique_id=1223870660 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 32.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 37.392883)
 
 [node name="Spike159" parent="CSGCombiner3D/SpikePits" unique_id=1675968537 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 32.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 37.392883)
 
 [node name="Spike160" parent="CSGCombiner3D/SpikePits" unique_id=610573212 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 31.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 36.392883)
 
 [node name="Spike161" parent="CSGCombiner3D/SpikePits" unique_id=1196741257 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 35.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 40.392883)
 
 [node name="Spike162" parent="CSGCombiner3D/SpikePits" unique_id=612080394 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 36.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 41.392883)
 
 [node name="Spike163" parent="CSGCombiner3D/SpikePits" unique_id=1299094303 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 37.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 42.392883)
 
 [node name="Spike164" parent="CSGCombiner3D/SpikePits" unique_id=1268022064 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 38.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 43.392883)
 
 [node name="Spike165" parent="CSGCombiner3D/SpikePits" unique_id=787803130 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 38.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 43.392883)
 
 [node name="Spike166" parent="CSGCombiner3D/SpikePits" unique_id=184088944 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 38.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 43.392883)
 
 [node name="Spike167" parent="CSGCombiner3D/SpikePits" unique_id=239796883 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 38.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 43.392883)
 
 [node name="Spike168" parent="CSGCombiner3D/SpikePits" unique_id=51949741 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 37.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 42.392883)
 
 [node name="Spike169" parent="CSGCombiner3D/SpikePits" unique_id=2073576925 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 37.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 42.392883)
 
 [node name="Spike170" parent="CSGCombiner3D/SpikePits" unique_id=197955028 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 37.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 42.392883)
 
 [node name="Spike171" parent="CSGCombiner3D/SpikePits" unique_id=1602499855 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 36.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 41.392883)
 
 [node name="Spike172" parent="CSGCombiner3D/SpikePits" unique_id=205458651 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 35.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 40.392883)
 
 [node name="Spike173" parent="CSGCombiner3D/SpikePits" unique_id=1716432643 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 35.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 40.392883)
 
 [node name="Spike174" parent="CSGCombiner3D/SpikePits" unique_id=946456239 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 36.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 41.392883)
 
 [node name="Spike175" parent="CSGCombiner3D/SpikePits" unique_id=686215765 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 36.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 41.392883)
 
 [node name="Spike176" parent="CSGCombiner3D/SpikePits" unique_id=240352437 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 35.892883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 40.392883)
 
 [node name="Spike177" parent="CSGCombiner3D/SpikePits" unique_id=1782284286 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 44.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 44.392883)
 
 [node name="Spike178" parent="CSGCombiner3D/SpikePits" unique_id=1831866263 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 45.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 45.392883)
 
 [node name="Spike179" parent="CSGCombiner3D/SpikePits" unique_id=915745872 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 46.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 46.392883)
 
 [node name="Spike180" parent="CSGCombiner3D/SpikePits" unique_id=1730748536 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 47.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 47.392883)
 
 [node name="Spike181" parent="CSGCombiner3D/SpikePits" unique_id=2032846203 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 47.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 47.392883)
 
 [node name="Spike182" parent="CSGCombiner3D/SpikePits" unique_id=514075446 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 47.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 47.392883)
 
 [node name="Spike183" parent="CSGCombiner3D/SpikePits" unique_id=364793298 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 47.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 47.392883)
 
 [node name="Spike184" parent="CSGCombiner3D/SpikePits" unique_id=290299255 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 46.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 46.392883)
 
 [node name="Spike185" parent="CSGCombiner3D/SpikePits" unique_id=1630579745 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 46.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 46.392883)
 
 [node name="Spike186" parent="CSGCombiner3D/SpikePits" unique_id=171746152 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 46.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 46.392883)
 
 [node name="Spike187" parent="CSGCombiner3D/SpikePits" unique_id=1217812489 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 45.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 45.392883)
 
 [node name="Spike188" parent="CSGCombiner3D/SpikePits" unique_id=1299481821 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 44.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 44.392883)
 
 [node name="Spike189" parent="CSGCombiner3D/SpikePits" unique_id=990266603 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 44.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 44.392883)
 
 [node name="Spike190" parent="CSGCombiner3D/SpikePits" unique_id=1045847985 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 45.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 45.392883)
 
 [node name="Spike191" parent="CSGCombiner3D/SpikePits" unique_id=1763637040 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 45.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 45.392883)
 
 [node name="Spike192" parent="CSGCombiner3D/SpikePits" unique_id=1142578217 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 44.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 44.392883)
 
 [node name="Spike193" parent="CSGCombiner3D/SpikePits" unique_id=1513177893 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 48.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 48.392883)
 
 [node name="Spike194" parent="CSGCombiner3D/SpikePits" unique_id=1356751876 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 49.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 49.392883)
 
 [node name="Spike195" parent="CSGCombiner3D/SpikePits" unique_id=755868750 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 50.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 50.392883)
 
 [node name="Spike196" parent="CSGCombiner3D/SpikePits" unique_id=1707604645 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -17, 51.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 51.392883)
 
 [node name="Spike197" parent="CSGCombiner3D/SpikePits" unique_id=2039840511 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 51.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 51.392883)
 
 [node name="Spike198" parent="CSGCombiner3D/SpikePits" unique_id=1176131663 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 51.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 51.392883)
 
 [node name="Spike199" parent="CSGCombiner3D/SpikePits" unique_id=473786714 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 51.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 51.392883)
 
 [node name="Spike200" parent="CSGCombiner3D/SpikePits" unique_id=1370020388 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 50.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 50.392883)
 
 [node name="Spike201" parent="CSGCombiner3D/SpikePits" unique_id=622609760 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 50.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 50.392883)
 
 [node name="Spike202" parent="CSGCombiner3D/SpikePits" unique_id=1103634741 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 50.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 50.392883)
 
 [node name="Spike203" parent="CSGCombiner3D/SpikePits" unique_id=1386465604 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 49.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 49.392883)
 
 [node name="Spike204" parent="CSGCombiner3D/SpikePits" unique_id=720563539 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -17, 48.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 48.392883)
 
 [node name="Spike205" parent="CSGCombiner3D/SpikePits" unique_id=800168137 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 48.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 48.392883)
 
 [node name="Spike206" parent="CSGCombiner3D/SpikePits" unique_id=782254212 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -17, 49.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 49.392883)
 
 [node name="Spike207" parent="CSGCombiner3D/SpikePits" unique_id=899294706 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 49.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 49.392883)
 
 [node name="Spike208" parent="CSGCombiner3D/SpikePits" unique_id=98026978 instance=ExtResource("11_molmv")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -17, 48.392883)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 48.392883)
+
+[node name="Spike209" parent="CSGCombiner3D/SpikePits" unique_id=1411915405 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 52.392883)
+
+[node name="Spike210" parent="CSGCombiner3D/SpikePits" unique_id=2007076859 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 53.392883)
+
+[node name="Spike211" parent="CSGCombiner3D/SpikePits" unique_id=203624028 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 54.392883)
+
+[node name="Spike212" parent="CSGCombiner3D/SpikePits" unique_id=2024281262 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 56.602776, -18, 55.392883)
+
+[node name="Spike213" parent="CSGCombiner3D/SpikePits" unique_id=1267605802 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 55.392883)
+
+[node name="Spike214" parent="CSGCombiner3D/SpikePits" unique_id=352353381 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 55.392883)
+
+[node name="Spike215" parent="CSGCombiner3D/SpikePits" unique_id=1300799210 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 55.392883)
+
+[node name="Spike216" parent="CSGCombiner3D/SpikePits" unique_id=1857187102 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 54.392883)
+
+[node name="Spike217" parent="CSGCombiner3D/SpikePits" unique_id=1024521583 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 54.392883)
+
+[node name="Spike218" parent="CSGCombiner3D/SpikePits" unique_id=936076953 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 54.392883)
+
+[node name="Spike219" parent="CSGCombiner3D/SpikePits" unique_id=1673226477 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 53.392883)
+
+[node name="Spike220" parent="CSGCombiner3D/SpikePits" unique_id=497693730 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 57.602776, -18, 52.392883)
+
+[node name="Spike221" parent="CSGCombiner3D/SpikePits" unique_id=2110330473 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 52.392883)
+
+[node name="Spike222" parent="CSGCombiner3D/SpikePits" unique_id=1000094417 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 58.602776, -18, 53.392883)
+
+[node name="Spike223" parent="CSGCombiner3D/SpikePits" unique_id=1651689495 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 53.392883)
+
+[node name="Spike224" parent="CSGCombiner3D/SpikePits" unique_id=989412595 instance=ExtResource("11_molmv")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 59.602776, -18, 52.392883)
 
 [node name="Spike33" parent="CSGCombiner3D/SpikePits" unique_id=739698177 instance=ExtResource("11_molmv")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 28.5, -6, 1.5)
@@ -1078,17 +1183,6 @@ size = Vector3(8, 4, 0.25)
 [node name="CSGWall6" parent="CSGCombiner3D" unique_id=1411697448 instance=ExtResource("9_dpnh3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -4, 0)
 
-[node name="CSGWall7" parent="CSGCombiner3D" unique_id=2006013087 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 60.102776, -17, 35.392883)
-size = Vector3(8, 4, 0.25)
-
-[node name="CSGWall13" parent="CSGCombiner3D" unique_id=1265963734 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56.102776, -17, 35.392883)
-size = Vector3(8, 4, 0.25)
-
-[node name="CSGWall14" parent="CSGCombiner3D" unique_id=95257929 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.102776, -17, 31.392883)
-
 [node name="CSGWall8" parent="CSGCombiner3D" unique_id=1986351441 instance=ExtResource("9_dpnh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -4, -2)
 size = Vector3(32, 4, 0.25)
@@ -1104,8 +1198,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -6.1, 0)
 
 [node name="CSGWall11" parent="CSGCombiner3D" unique_id=820137374 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 60, -7.5, 27.15)
-size = Vector3(58.5, 19, 0.2)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 60.1, -8, 28.9)
+size = Vector3(62, 20, 0.2)
 
 [node name="CSGTiledFloor5" parent="CSGCombiner3D" unique_id=1099732847 instance=ExtResource("10_mxhpp")]
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 29, 1.9, 0)
@@ -1117,51 +1211,31 @@ polygon = PackedVector2Array(0, -10, 0, 1, 23.5, -10)
 depth = 4.0
 
 [node name="CSGWall12" parent="CSGCombiner3D" unique_id=195697150 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 56, -7.5, 26.9)
-size = Vector3(50, 19, 0.2)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 56, -8, 30.9)
+size = Vector3(58, 20, 0.2)
 
 [node name="CSGTiledFloor2" parent="CSGCombiner3D" unique_id=868049316 instance=ExtResource("10_mxhpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.9, 16.75)
-size = Vector3(4, 0.2, 29.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.9, 30.95)
+size = Vector3(4, 0.2, 57.9)
 
 [node name="CSGWall15" parent="CSGCombiner3D" unique_id=43697426 instance=ExtResource("9_dpnh3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, -4, -0.099999994)
 
-[node name="CSGWall16" parent="CSGCombiner3D" unique_id=1005785738 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.202774, -17, 39.392883)
-
-[node name="CSGWall21" parent="CSGCombiner3D" unique_id=1462836007 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.202774, -15, 56.392883)
-material = SubResource("StandardMaterial3D_pjfp4")
-
-[node name="CSGWall17" parent="CSGCombiner3D" unique_id=2065113252 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 60.102776, -17, 47.892883)
-size = Vector3(8, 4, 0.25)
-
-[node name="CSGWall18" parent="CSGCombiner3D" unique_id=1666439881 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 56.102776, -17, 47.892883)
-size = Vector3(8, 4, 0.25)
-
-[node name="CSGWall19" parent="CSGCombiner3D" unique_id=1582609415 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.102776, -17, 43.892883)
-
-[node name="CSGWall20" parent="CSGCombiner3D" unique_id=347116346 instance=ExtResource("9_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.202774, -17, 51.892883)
-
 [node name="CSGTiledFloor6" parent="CSGCombiner3D" unique_id=1732081208 instance=ExtResource("10_mxhpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17, 28.5)
-size = Vector3(4, 0.2, 6)
-
-[node name="CSGTiledFloor7" parent="CSGCombiner3D" unique_id=1299722643 instance=ExtResource("10_mxhpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17, 41.75)
-size = Vector3(4, 0.2, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17.1, 30.7)
+size = Vector3(4, 0.2, 10.400001)
 
 [node name="CSGTiledFloor8" parent="CSGCombiner3D" unique_id=1917442548 instance=ExtResource("10_mxhpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17, 54.25)
-size = Vector3(4, 0.2, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -6.2000003, 57.9)
 
-[node name="FirstAidKit" parent="." unique_id=825883076 instance=ExtResource("17_sltlx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65827, -0.98202133, 0.0037926435)
+[node name="CSGSlope" parent="CSGCombiner3D" unique_id=1656058496 instance=ExtResource("13_d0bxx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 60, -17.000002, 35.9)
+polygon = PackedVector2Array(0, 0, 0, 1.6, 3.9, 0)
+depth = 4.0
+
+[node name="CSGWall7" parent="CSGCombiner3D" unique_id=1325666298 instance=ExtResource("9_dpnh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.100002, -3.0999994, 60.000004)
+size = Vector3(4, 10, 0.2)
 
 [node name="ceiling_lamp_1_off2" parent="." unique_id=1948616355 instance=ExtResource("19_mxhpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.265491, 1.7861294, 0.03652811)
@@ -1172,8 +1246,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.194885, 1.7861294, 0.03652
 [node name="ceiling_lamp_1_off4" parent="." unique_id=409993138 instance=ExtResource("19_mxhpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.19214, 1.7861294, -0.411425)
 
-[node name="FinishLine" parent="." unique_id=8209525 instance=ExtResource("20_fv4n6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.92515, -16.788002, 54.01415)
+[node name="FinishLine" parent="." unique_id=8209525 node_paths=PackedStringArray("level_timer") instance=ExtResource("20_fv4n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.02515, -5.9, 57.914146)
+next_level = ExtResource("19_fv4n6")
+level_timer = NodePath("../LevelTimer")
+
+[node name="CSGWall" parent="." unique_id=10052078 instance=ExtResource("9_dpnh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -12.199999, 56.000004)
+size = Vector3(4, 12, 0.2)
+
+[node name="CSGWall2" parent="." unique_id=1338195759 instance=ExtResource("9_dpnh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17.4, 36.000004)
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

@@ -33,8 +33,7 @@
 			"title": "Doing - Aech",
 			"tasks": [
 				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"e1653b3c-4933-4916-ae85-1d2184863784",
-				"a7306602-e9a9-4c98-9210-220b43db50b5"
+				"e1653b3c-4933-4916-ae85-1d2184863784"
 			]
 		},
 		{
@@ -80,7 +79,10 @@
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
 			"title": "Todo: Polish",
 			"tasks": [
-				"71dd28a6-560a-414c-94ec-5a642ecac30b"
+				"71dd28a6-560a-414c-94ec-5a642ecac30b",
+				"a7306602-e9a9-4c98-9210-220b43db50b5",
+				"f0f51e34-9ef3-453c-af0e-8ee75fdd742b",
+				"83e02859-43ab-40a1-bc69-33701a281a41"
 			]
 		},
 		{
@@ -263,6 +265,10 @@
 				{
 					"details": "Accelerate while sliding down ramps",
 					"done": true
+				},
+				{
+					"details": "Increase vertical boost from walljumps just a tad",
+					"done": false
 				}
 			]
 		},
@@ -420,6 +426,20 @@
 			"title": "READ ME",
 			"description": "If you use the unlock area, YOU MUST MUST MUST MUST MUST, make the collision shape unique each time.  If you dont after copying it you will edit it for all previous implementations of those copies you make. DONT LEARN THE HARD WAY HERE.\n\nThe unlock area gates tutorial progression.  Tutorial levels get the root node assigned to the groups level, and tutorial.  if they have both the unlock areas are needed to progress abilities.  If they only have level you will get everything.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "f0f51e34-9ef3-453c-af0e-8ee75fdd742b",
+			"title": "Air resistance feels too big when chaining ramp slide into wallrunning",
+			"description": "May not be a big thing but ya know\n",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
+		},
+		{
+			"uuid": "83e02859-43ab-40a1-bc69-33701a281a41",
+			"title": "Swap to a monospace font for the timer",
+			"description": "",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
 		}
 	],

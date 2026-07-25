@@ -4,7 +4,7 @@ class_name PlayerWallMovementComponent
 @export_range(0.0, 1.0, 0.05) var gravity_multiplier: float = 0.25
 @export_range(0.1, 20.0, 0.1) var max_fall_speed: float = 2.5
 @export_range(0.1, 20.0, 0.1) var jump_vertical_velocity: float = 5.5
-@export_range(0.1, 20.0, 0.1) var jump_horizontal_velocity: float = 6.5
+@export_range(0.1, 20.0, 0.1) var jump_horizontal_velocity: float = 2.5
 @export_range(0.0, 0.5, 0.01) var contact_grace_time: float = 0.12
 @export_range(0.0, 0.5, 0.01) var control_lock_time: float = 0.15
 

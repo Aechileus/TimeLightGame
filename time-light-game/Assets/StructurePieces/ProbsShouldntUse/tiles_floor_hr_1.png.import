@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e6ixv27he3qr"
-path.s3tc="res://.godot/imported/bricks_mx_2.png-654ee8c53b65b47d7f33aaad7f777761.s3tc.ctex"
+uid="uid://3pxf641vn6ys"
+path.s3tc="res://.godot/imported/tiles_floor_hr_1.png-cf57fca3d0003a4ac1f59c795763bcf4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/StructurePieces/bricks_mx_2.png"
-dest_files=["res://.godot/imported/bricks_mx_2.png-654ee8c53b65b47d7f33aaad7f777761.s3tc.ctex"]
+source_file="res://Assets/StructurePieces/ProbsShouldntUse/tiles_floor_hr_1.png"
+dest_files=["res://.godot/imported/tiles_floor_hr_1.png-cf57fca3d0003a4ac1f59c795763bcf4.s3tc.ctex"]
 
 [params]
 
