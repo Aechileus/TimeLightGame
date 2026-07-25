@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://jvytufebye48" path="res://Assets/Creatures/Character_Monster.fbx" id="1_xem20"]
 [ext_resource type="AnimationLibrary" uid="uid://b56k5ydxyhia2" path="res://Assets/Creatures/Hip Hop Dancing.fbx" id="2_bekvb"]
 [ext_resource type="AnimationLibrary" uid="uid://beq3peghexot0" path="res://Assets/Creatures/Brutal Assassination.fbx" id="2_nfb52"]
+[ext_resource type="AudioStream" uid="uid://bdj5sksvjjbjx" path="res://Assets/Creatures/monstercry_faded.mp3" id="3_86dw8"]
 [ext_resource type="Shader" uid="uid://b7uibk0akn171" path="res://Assets/Creatures/dissolve.gdshader" id="3_dhqst"]
 [ext_resource type="Texture2D" uid="uid://dbfqea1qe54mt" path="res://Assets/Creatures/Character_Monster.png" id="3_skin"]
 [ext_resource type="AnimationLibrary" uid="uid://d2m1fiev3hby5" path="res://Assets/Creatures/animations/Fast Run.fbx" id="3_yypfn"]
 [ext_resource type="AnimationLibrary" uid="uid://b0jrhk0d0wgvf" path="res://Assets/Creatures/Kidney Hit.fbx" id="4_w266o"]
 [ext_resource type="AnimationLibrary" uid="uid://kpsta7cnthpm" path="res://Assets/Creatures/Mutant Punch.fbx" id="5_2ttam"]
 [ext_resource type="AnimationLibrary" uid="uid://cvkma4lepihva" path="res://Assets/Creatures/Receiving An Uppercut.fbx" id="6_h4fa3"]
+[ext_resource type="AudioStream" uid="uid://dans4vyhxmnfr" path="res://Assets/Creatures/monsterattack.mp3" id="6_vef0j"]
 [ext_resource type="AnimationLibrary" uid="uid://b4eq2tw02tul8" path="res://Assets/Creatures/animations/left turn 45.fbx" id="7_st5et"]
 [ext_resource type="AnimationLibrary" uid="uid://bd1fuf25dghft" path="res://Assets/Creatures/animations/mutant breathing idle.fbx" id="8_yypfn"]
 [ext_resource type="AnimationLibrary" uid="uid://dkrgc4cabkjlf" path="res://Assets/Creatures/animations/mutant dying.fbx" id="9_dhqst"]
@@ -56,7 +58,10 @@ height = 1.7
 [node name="LevelEnemy" unique_id=819955731 groups=["enemy"] instance=ExtResource("1_xem20")]
 collision_layer = 4
 script = ExtResource("19_ai")
-move_speed = 10.0
+monster_noises = Array[AudioStream]([ExtResource("3_86dw8")])
+noise_min_interval = 2.0
+noise_max_interval = 8.1
+attack_noise = ExtResource("6_vef0j")
 
 [node name="Skeleton3D" parent="." index="0" unique_id=461418735]
 bones/0/position = Vector3(-1.6801059e-06, 1.1428092, -0.004664318)
@@ -182,4 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 target_position = Vector3(0, -1.2, 0)
 
 [node name="StepAudio" type="AudioStreamPlayer3D" parent="Footsteps" index="1" unique_id=1459044931]
+bus = &"SFX"
+
+[node name="VoiceAudio" type="AudioStreamPlayer3D" parent="." index="5" unique_id=1459044932]
 bus = &"SFX"

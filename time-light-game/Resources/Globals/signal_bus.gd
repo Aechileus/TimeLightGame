@@ -15,3 +15,7 @@ signal time_stop_winding_up(stopping)
 
 # abilities pay their cost in seconds via this signal, the level timer listens for this to subtract
 signal ability_time_spent(seconds)
+
+
+# fires when the progression unlocks change, so huds and gating can refresh
+signal unlocks_changed

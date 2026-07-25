@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TimeLightGame"
-run/main_scene="uid://d33flyojl0kr7"
+run/main_scene="uid://b6sdnn32gsh07"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Resources/icon.svg"
 
@@ -54,6 +54,7 @@ player=""
 wood=""
 metal=""
 level=""
+tutorial=""
 
 [gui]
 

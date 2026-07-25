@@ -13,6 +13,77 @@ enum TimeState { FLOWING, STOPPED }
 var time_state: TimeState = TimeState.FLOWING
 var _time_toggle_busy: bool = false
 
+# Progression unlocks. Default everything on, a tutorial locks them all.
+# the ui ones each drive their own hud element so unlock areas can hand back
+# specific pieces of the hud one at a time
+var can_stop_time: bool = true
+var can_resume_time: bool = true
+var has_dash: bool = true
+var has_shoot: bool = true
+var ui_abilities: bool = true
+var ui_time: bool = true
+var ui_level_timer: bool = true
+
+
+# Called on level start, locks everything so a tutorial can grant it piece by piece.
+func lock_all_unlocks() -> void:
+	can_stop_time = false
+	can_resume_time = false
+	has_dash = false
+	has_shoot = false
+	ui_abilities = false
+	ui_time = false
+	ui_level_timer = false
+	SignalBus.unlocks_changed.emit()
+
+
+# Called on level start for normal levels, everything available.
+func unlock_all() -> void:
+	can_stop_time = true
+	can_resume_time = true
+	has_dash = true
+	has_shoot = true
+	ui_abilities = true
+	ui_time = true
+	ui_level_timer = true
+	SignalBus.unlocks_changed.emit()
+
+
+# Unlock areas call this, each true flag flips its piece on, never back off.
+func grant_unlocks(abilities_ui: bool, time_ui: bool, level_timer_ui: bool, resume_time: bool, stop_time: bool, dash: bool, shoot: bool) -> void:
+	if abilities_ui:
+		ui_abilities = true
+	if time_ui:
+		ui_time = true
+	if level_timer_ui:
+		ui_level_timer = true
+	if resume_time:
+		can_resume_time = true
+	if stop_time:
+		can_stop_time = true
+	if dash:
+		has_dash = true
+	if shoot:
+		has_shoot = true
+	SignalBus.unlocks_changed.emit()
+
+
+# Named single piece grants so callers dont have to line up a row of bools.
+# Each just flips its own flag on and refreshes, never turns anything back off.
+func grant_ui_abilities() -> void:
+	ui_abilities = true
+	SignalBus.unlocks_changed.emit()
+
+
+func grant_ui_time() -> void:
+	ui_time = true
+	SignalBus.unlocks_changed.emit()
+
+
+func grant_ui_level_timer() -> void:
+	ui_level_timer = true
+	SignalBus.unlocks_changed.emit()
+
 const _HIGH_BEEP := preload("res://Resources/SFX/PlaceholderSFX/highpitchbeep.wav")
 const _LOW_BEEP := preload("res://Resources/SFX/PlaceholderSFX/lowpitchbeep.wav")
 const _ONE_BEEP := preload("res://Resources/SFX/PlaceholderSFX/One.wav")

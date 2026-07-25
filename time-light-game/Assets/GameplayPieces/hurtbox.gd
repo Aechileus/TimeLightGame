@@ -10,7 +10,7 @@ func _enter_tree() -> void:
 ## We need to check that its a player entering otherwise we just reload constantly if its 
 ## anything else entering including its own taurus ring
 func _on_body_entered(body: Node3D) -> void:
-			if not body.is_in_group("player"):
+			if not body.is_in_group("player") or body.is_in_group("enemy"):
 				return
 			var node := body as Node
 			while node:

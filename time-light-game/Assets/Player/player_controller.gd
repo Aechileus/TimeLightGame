@@ -129,6 +129,18 @@ var click_to_capture_mouse: bool = true
 ## Seconds without a new arm animation before returning to idle
 @export_range(0.0, 5.0, 0.1) var arms_idle_delay: float = 1.5
 var _arms_idle_timer: float = 0.0
+## Drawn up when the player crouches, slides or crouch slams, then held on guard_idle
+@export var guard_draw_animation: String = "guard_draw"
+## Held pose after the guard draw finishes
+@export var guard_idle_animation: String = "guard_idle"
+# true while a crouch, slide or slam has the guard up
+var _guarding: bool = false
+## how far the arms bob up and down while running on the idle pose
+@export_range(0.0, 0.2, 0.001) var arms_bob_amount: float = 0.03
+## how fast that running bob cycles
+@export_range(0.1, 30.0, 0.1) var arms_bob_speed: float = 11.0
+var _arms_bob_phase: float = 0.0
+var _arms_rig_base_y: float = 0.0
 # the vhs post effect handles the screen tint and flashes now
 @onready var _vhs_material: ShaderMaterial = $PlayerCharacterBody3D/PlayerCamera/CanvasLayer/ColorRect.material
 @onready var _hurt_audio: AudioStreamPlayer3D = $PlayerCharacterBody3D/HurtSFX
@@ -192,6 +204,20 @@ func _ready() -> void:
 	update_show_hide_ui.connect(show_hide_ui)
 	show_hide_ui()
 
+	# once the guard draw lands, settle onto the held guard idle pose
+	arms_animation_player.animation_finished.connect(_on_arms_animation_finished)
+	# remember where the arms sit so the running bob can offset from it
+	_arms_rig_base_y = arms_rig.position.y
+
+	# progression unlocks. a level thats also tagged tutorial starts everything
+	# locked, if the level isnt tagged tutorial you can use anything
+	SignalBus.unlocks_changed.connect(_on_unlocks_changed)
+	var scene_root := get_tree().current_scene
+	if scene_root != null and scene_root.is_in_group("level") and scene_root.is_in_group("tutorial"):
+		Global.lock_all_unlocks()
+	else:
+		Global.unlock_all()
+
 	if capture_mouse_on_start:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -212,6 +238,12 @@ func _process(delta: float) -> void:
 	if not arms_rig.visible:
 		return
 
+	_update_guard_animation()
+	_update_arm_bob(delta)
+	# while the guard is up the crouch anims own the arms
+	if _guarding:
+		return
+
 	var current := arms_animation_player.current_animation
 	# a non idle animation is actively playing, wait
 	if arms_animation_player.is_playing() and current != arms_idle_animation:
@@ -225,6 +257,45 @@ func _process(delta: float) -> void:
 	if _arms_idle_timer >= arms_idle_delay:
 		_arms_idle_timer = 0.0
 		arms_animation_player.play(arms_idle_animation)
+
+
+# Little vertical bob on the arms while running with the plain idle pose out, so
+# they dont just sit dead still. eases back to rest when youre not running.
+func _update_arm_bob(delta: float) -> void:
+	var horizontal_speed := Vector2(character_body.velocity.x, character_body.velocity.z).length()
+	var bobbing := character_body.is_on_floor() and horizontal_speed > 5.1 \
+		and arms_animation_player.current_animation == arms_idle_animation
+	if bobbing:
+		_arms_bob_phase += delta * arms_bob_speed
+		arms_rig.position.y = _arms_rig_base_y + sin(_arms_bob_phase) * arms_bob_amount
+	else:
+		arms_rig.position.y = move_toward(arms_rig.position.y, _arms_rig_base_y, arms_bob_amount * 8.0 * delta)
+
+
+# Crouch, slide and slam all raise the guard, dropping slide or crouch reverses the raise
+func _update_guard_animation() -> void:
+	var guard_now := crouch_slide.is_crouching() or crouch_slide.is_sliding() or crouch_slide.is_slamming()
+
+	if guard_now and not _guarding:
+		_guarding = true
+		if arms_animation_player.has_animation(guard_draw_animation):
+			arms_animation_player.play(guard_draw_animation)
+		return
+
+	if not guard_now and _guarding:
+		_guarding = false
+		# reverse the draw
+		if arms_animation_player.has_animation(guard_draw_animation):
+			arms_animation_player.play_backwards(guard_draw_animation)
+		return
+
+
+# The guard draw finishing forward means we settle onto the held pose. The reverse
+# sheath also fires this but guarding is already off by then so it gets ignored.
+func _on_arms_animation_finished(anim_name: StringName) -> void:
+	if anim_name == guard_draw_animation and _guarding:
+		if arms_animation_player.has_animation(guard_idle_animation):
+			arms_animation_player.play(guard_idle_animation)
 
 
 func _physics_process(delta: float) -> void:
@@ -439,8 +510,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Time can always stop if free_time_control is on, and we can stop the countdown too
 		#if time_manipulation._free_time_control: # !! Doesn't work, seems to immediately unpause
 			#Global.force_time_stop()
-		# resuming is always fine, stopping needs a charge left in the tank
-		if Global.is_time_stopped() or time_manipulation.can_pause():
+		# resuming needs the resume unlock, stopping needs the stop unlock plus a charge
+		if Global.is_time_stopped():
+			if Global.can_resume_time:
+				Global.toggle_time_stop()
+		elif Global.can_stop_time and time_manipulation.can_pause():
 			Global.toggle_time_stop()
 		return
 	if event.is_action_pressed(&"ui_cancel"):
@@ -708,6 +782,14 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 		arms_animation_player.play(anim)
 		return
 		
+# What pieces of UI are unlocked are decided here
+func _on_unlocks_changed() -> void:
+	_hide_abilities = not Global.ui_abilities
+	_hide_time_manipulation = not Global.ui_time
+	_hide_level_timer = not Global.ui_level_timer
+	show_hide_ui()
+
+
 func show_hide_ui():
 	if !_level_timer:
 		print("Couldn't find level timer ui")

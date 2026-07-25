@@ -60,6 +60,7 @@ func _ready() -> void:
 	_economy_left = _controller.economy_amount
 	_update_ui()
 	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
+	SignalBus.unlocks_changed.connect(_update_ui)
 
 
 func _physics_process(delta: float) -> void:
@@ -154,9 +155,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			_update_ui()
 
 
+# dash and shoot can be locked by the progression here
+func _is_ability_unlocked(ability: Ability) -> bool:
+	var effect := String(ability.effect_node)
+	if effect == "Dash":
+		return Global.has_dash
+	if effect == "Shoot":
+		return Global.has_shoot
+	return true
+
+
 func _start_aiming() -> void:
 	var ability := _abilities[_selected]
 	if ability == null:
+		return
+	# locked abilities cant be used until an unlock area gives them back
+	if not _is_ability_unlocked(ability):
 		return
 	# with the economy on, abilities are pause only and cost action points
 	if not _can_use(ability):
@@ -255,6 +269,9 @@ func _update_ui() -> void:
 	for i in _slot_boxes.size():
 		var box := _slot_boxes[i]
 		var ability := _abilities[i]
+		box.visible = ability == null or _is_ability_unlocked(ability)
+		if not box.visible:
+			continue
 		var icon: TextureRect = box.get_node("Icon")
 		var slot_name: Label = box.get_node("SlotName")
 		icon.texture = ability.icon if ability else null

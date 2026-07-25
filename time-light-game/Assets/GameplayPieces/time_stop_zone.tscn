@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cyos8iattwg6b" path="res://Assets/GameplayPieces/time_stop_zone.gd" id="1_l3hfb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_zone"]
-size = Vector3(4, 4, 4)
+size = Vector3(4, 0.6644287, 4)
 
 [sub_resource type="Curve" id="Curve_tspgt"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -54,6 +54,7 @@ rings = 7
 script = ExtResource("1_l3hfb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019348145, 0)
 shape = SubResource("BoxShape3D_zone")
 
 [node name="CPUParticles3D" type="GPUParticles3D" parent="." unique_id=504264376]

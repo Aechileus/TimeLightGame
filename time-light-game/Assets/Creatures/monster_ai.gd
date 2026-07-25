@@ -15,6 +15,18 @@ extends CharacterBody3D
 # how long the dissolve takes when it dies
 @export var death_dissolve_time: float = 1.2
 
+@export_group("Noises")
+## random monster noises it can pick
+@export var monster_noises: Array[AudioStream] = []
+## shortest gap between noises
+@export_range(0.1, 20.0, 0.1) var noise_min_interval: float = 1.0
+## longest gap between noises
+@export_range(0.1, 20.0, 0.1) var noise_max_interval: float = 6.0
+@export_range(0.5, 1.5, 0.01) var noise_min_pitch: float = 0.9
+@export_range(0.5, 1.5, 0.01) var noise_max_pitch: float = 1.1
+## played when it starts a swing
+@export var attack_noise: AudioStream
+
 const ANIM_IDLE := "mutant breathing idle/mixamo_com"
 const ANIM_RUN := "Fast Run/mixamo_com"
 const ANIM_SWIPE := "mutant swiping/mixamo_com"
@@ -26,6 +38,9 @@ enum State { IDLE, AGGRO, DEAD }
 @onready var _anim: AnimationPlayer = $AnimationPlayer
 @onready var _mesh: MeshInstance3D = $Skeleton3D/Character_Monster
 @onready var _footsteps: MonsterFootstepComponent = $Footsteps
+@onready var _voice_audio: AudioStreamPlayer3D = $VoiceAudio
+# counts down to the next random noise
+var _noise_time: float = 0.0
 # every hitbox riding the hands, grabbed by name so it works no matter which
 # bone attachment they hang off of. a swing only lands if one overlaps you
 # ready sets this
@@ -60,6 +75,9 @@ func _ready() -> void:
 		_dissolve_mat.set_shader_parameter("t", 0.0)
 		_mesh.set_surface_override_material(0, _dissolve_mat)
 
+	# stagger the first noise so a whole pack doesnt shout in sync
+	_noise_time = randf_range(noise_min_interval, noise_max_interval)
+
 	if start_aggroed:
 		_state = State.AGGRO
 		_play(ANIM_RUN)
@@ -73,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	_attack_cd = maxf(_attack_cd - delta, 0.0)
+	_update_noise(delta)
 
 	# recomputed every frame so it always retargets wherever you moved
 	var to_player := _player.global_position - global_position
@@ -122,10 +141,34 @@ func _physics_process(delta: float) -> void:
 	_update_anim(distance)
 
 
+# random time noise picker, rolls down rand time and then chooses one.  Since we leave this
+# in the physics process it gets paused with time
+func _update_noise(delta: float) -> void:
+	if monster_noises.is_empty():
+		return
+	# still mid noise (or mid attack shout), let it finish before the next one
+	if _voice_audio.playing:
+		return
+	_noise_time -= delta
+	if _noise_time > 0.0:
+		return
+	_noise_time = randf_range(noise_min_interval, noise_max_interval)
+	var stream := monster_noises.pick_random() as AudioStream
+	if stream == null:
+		return
+	_voice_audio.stream = stream
+	_voice_audio.pitch_scale = randf_range(noise_min_pitch, noise_max_pitch)
+	_voice_audio.play()
+
+
 func _start_swing() -> void:
 	_swinging = true
 	_attack_elapsed = 0.0
 	_hit_landed = false
+	if attack_noise != null:
+		_voice_audio.stream = attack_noise
+		_voice_audio.pitch_scale = randf_range(noise_min_pitch, noise_max_pitch)
+		_voice_audio.play()
 	var anim := ANIM_JUMP if randf() < 0.3 else ANIM_SWIPE
 	var speed := maxf(attack_anim_speed, 0.1)
 	if _anim.has_animation(anim):

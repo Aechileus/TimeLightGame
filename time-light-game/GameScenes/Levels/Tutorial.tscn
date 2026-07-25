@@ -19,16 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://bd17uif1iwrog" path="res://Assets/StructurePieces/CSG/wall_hr_2.png" id="17_fv4n6"]
 [ext_resource type="PackedScene" uid="uid://bjxgfknnjyo3h" path="res://Assets/GameplayPieces/first_aid_kit.tscn" id="17_sltlx"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="19_mxhpp"]
+[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="20_fv4n6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ohwbu"]
 panorama = ExtResource("6_vhie8")
 
-[sub_resource type="Sky" id="Sky_0r82h"]
+[sub_resource type="Sky" id="Sky_6ewu6"]
 sky_material = SubResource("PanoramaSkyMaterial_ohwbu")
 
 [sub_resource type="Environment" id="Environment_iaph3"]
 background_mode = 2
-sky = SubResource("Sky_0r82h")
+sky = SubResource("Sky_6ewu6")
 ambient_light_color = Color(0.22745098, 0, 0, 1)
 ambient_light_sky_contribution = 0.48
 volumetric_fog_length = 65.65
@@ -39,7 +40,7 @@ volumetric_fog_sky_affect = 0.67
 viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tqhqm"]
-size = Vector3(4, 18.5, 2)
+size = Vector3(4, 19.020508, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhie8"]
 size = Vector3(8, 1, 4)
@@ -60,7 +61,7 @@ uv1_offset = Vector3(0, 0.5, 0.05)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="Tutorial" type="Node3D" unique_id=1911214141 groups=["level"]]
+[node name="Tutorial" type="Node3D" unique_id=1911214141 groups=["level", "tutorial"]]
 
 [node name="Button" parent="." unique_id=163315669 instance=ExtResource("1_dpnh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.584934, -4.563736, -1.8833785)
@@ -100,12 +101,66 @@ free_time_control = true
 [node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
 max_slide_speed = 30.0
 
-[node name="Abilities" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="3" unique_id=765798903]
-frozen_push_speed = 3.0
-flowing_push_speed = 10.0
-aiming_color = Color(0.26, 0.585, 0.65, 1)
-aiming_miss_color = Color(0.26, 0.585, 0.65, 0.502)
-queued_color = Color(0.4, 1, 0.55, 1)
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
+bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
+bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
+bones/3/rotation = Quaternion(0.77868235, 0.1321288, -0.11484339, 0.60250044)
+bones/4/rotation = Quaternion(-0.3546577, 0.2457679, 0.005192899, 0.9021026)
+bones/5/position = Vector3(0.0051893583, 0.03854346, 0.026435515)
+bones/5/rotation = Quaternion(-0.031584688, -0.77200973, -0.058316298, 0.6321414)
+bones/6/rotation = Quaternion(0.18252927, 0.045718785, 0.013374152, 0.9820458)
+bones/7/rotation = Quaternion(-0.3981077, -0.09131578, 0.055767536, 0.91107726)
+bones/8/rotation = Quaternion(-0.38888395, -0.0047410736, 0.0027742414, 0.9212704)
+bones/9/position = Vector3(0.006497577, -0.0017490541, 0.0040312745)
+bones/9/rotation = Quaternion(-0.13234298, -0.32770208, -0.41104832, 0.84031904)
+bones/10/rotation = Quaternion(0.015525818, -0.00033932534, 0.022715976, 0.9996214)
+bones/11/rotation = Quaternion(-0.20142831, -0.11571191, -0.0025870411, 0.97264117)
+bones/12/position = Vector3(0.006900218, 0.04115174, 0.0076276283)
+bones/12/rotation = Quaternion(-0.052620545, -0.7302971, -0.054594576, 0.6789084)
+bones/13/rotation = Quaternion(0.15831354, 0.012791915, 0.028674737, 0.9868896)
+bones/14/rotation = Quaternion(-0.021372102, 0.12693223, 0.25726017, 0.95773107)
+bones/15/rotation = Quaternion(0.35638347, 0.042665068, -0.25784585, 0.897043)
+bones/16/rotation = Quaternion(0.0033799517, 0.6954603, -0.08253683, 0.7138006)
+bones/17/rotation = Quaternion(-0.021179331, 0.58664876, -0.80936337, -0.018045299)
+bones/18/rotation = Quaternion(0.70421606, -0.00047219195, 0.006509401, 0.7099558)
+bones/19/rotation = Quaternion(0.7341175, 0.029628186, -0.025593346, 0.6778928)
+bones/20/rotation = Quaternion(-0.12909606, -0.6619, 0.042750552, 0.73715335)
+bones/21/rotation = Quaternion(0.80449915, -0.0071714325, 0.013305768, 0.5937615)
+bones/22/rotation = Quaternion(0.72640914, 0.034148183, -0.0075298166, 0.6863723)
+bones/23/rotation = Quaternion(0.6846562, -0.018174239, 0.0169784, 0.7284417)
+bones/24/rotation = Quaternion(-0.6143471, -0.35155362, -0.35051805, 0.61329013)
+bones/25/position = Vector3(0.008628923, 0.20224895, -0.01098562)
+bones/25/rotation = Quaternion(-0.075615175, 0.74666226, -0.27990544, 0.5986909)
+bones/26/rotation = Quaternion(0.21969278, 0.0027334683, -0.0054172277, 0.9755503)
+bones/27/rotation = Quaternion(-0.057798643, -0.010611214, -0.03225602, 0.9977507)
+bones/28/position = Vector3(-0.0040957937, 0.038309406, 0.02635711)
+bones/28/rotation = Quaternion(0.010038007, 0.7703345, 0.09816913, 0.62995785)
+bones/29/rotation = Quaternion(0.18016109, -0.046207957, -0.02235077, 0.98229694)
+bones/30/rotation = Quaternion(-0.016746147, 0.020631447, -0.007952876, 0.99961525)
+bones/31/rotation = Quaternion(-0.0020922024, 0.0032981832, -0.004392738, 0.9999827)
+bones/32/rotation = Quaternion(0.01223311, 0.41402316, 0.3092526, 0.8560362)
+bones/33/rotation = Quaternion(0.17710981, -0.0033418601, -0.022471411, 0.98392886)
+bones/34/rotation = Quaternion(0.0922622, 0.11139583, -0.03141504, 0.9889853)
+bones/35/position = Vector3(-0.006900219, 0.04115167, 0.0076272306)
+bones/35/rotation = Quaternion(-0.03296654, 0.73012906, 0.07126371, 0.67878306)
+bones/36/rotation = Quaternion(0.15924488, -0.011448696, -0.012672285, 0.98709136)
+bones/37/rotation = Quaternion(0.0091846585, -0.0105109345, -0.00463776, 0.9998918)
+bones/38/rotation = Quaternion(0.004179832, -0.0045297523, -0.0012190373, 0.9999803)
+bones/39/rotation = Quaternion(0.0033822544, -0.69546026, 0.08253459, 0.7138009)
+bones/40/rotation = Quaternion(0.0022129142, 0.98712975, -0.15748288, 0.027736556)
+bones/41/rotation = Quaternion(-0.004058715, 0.0049367393, -0.0042689596, 0.9999705)
+bones/42/rotation = Quaternion(0.039756704, -0.039047536, -0.0028530806, 0.99844205)
+bones/43/rotation = Quaternion(-0.12909606, 0.6619, -0.04275055, 0.7371534)
+bones/44/rotation = Quaternion(0.14901388, 0.01447939, -0.0043376265, 0.9887196)
+bones/45/rotation = Quaternion(0.028310329, -0.029470792, -0.018822037, 0.99898744)
+bones/46/rotation = Quaternion(-0.030961199, 0.024856672, 0.0008456027, 0.99921113)
+bones/48/position = Vector3(-0.2473867, 1.5739123, 0.2378781)
+bones/48/rotation = Quaternion(0.00062826276, 0.77854145, 0.62626046, -0.04087417)
+bones/49/position = Vector3(-0.30957562, 1.4495264, -0.020980656)
+bones/50/position = Vector3(0.6604739, 1.3061002, -0.05074787)
+bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
+bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 
 [node name="LevelRestarterTemp" type="Node" parent="." unique_id=1763049882]
 script = ExtResource("5_scude")
@@ -335,7 +390,7 @@ vertical_alignment = 1
 script = ExtResource("10_vhie8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTimerToggle" unique_id=1177306623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -7.25, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -7.510254, 27)
 shape = SubResource("BoxShape3D_tqhqm")
 
 [node name="SpikeKillboxes" type="Area3D" parent="." unique_id=856096975]
@@ -1116,6 +1171,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.194885, 1.7861294, 0.03652
 
 [node name="ceiling_lamp_1_off4" parent="." unique_id=409993138 instance=ExtResource("19_mxhpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.19214, 1.7861294, -0.411425)
+
+[node name="FinishLine" parent="." unique_id=8209525 instance=ExtResource("20_fv4n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.92515, -16.788002, 54.01415)
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

@@ -1,0 +1,432 @@
+[gd_scene format=3 uid="uid://d1dgff00nklef"]
+
+[ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="1_6bfng"]
+[ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="1_iwhby"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="2_0ct3m"]
+[ext_resource type="AudioStream" uid="uid://vkeqnlmryxy6" path="res://Resources/Music/test4.mp3" id="2_lbemy"]
+[ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="2_trajx"]
+[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="3_40cht"]
+[ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_tiled_floor.tscn" id="3_kfubd"]
+[ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="4_kfubd"]
+[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/floor_ceiling_tiled.tscn" id="6_8y5v2"]
+[ext_resource type="PackedScene" uid="uid://bdfehsah66sav" path="res://Assets/Props/FakeDoor.tscn" id="6_iwhby"]
+[ext_resource type="Script" uid="uid://cmsixcfnamnt" path="res://Assets/StructurePieces/floortileinteractionmove.gd" id="7_0ct3m"]
+[ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="7_s61d0"]
+[ext_resource type="AudioStream" uid="uid://b3fn8avbd0mah" path="res://Resources/SFX/alarmlonger.mp3" id="8_27x7b"]
+[ext_resource type="Script" uid="uid://c4r5kupy1emw7" path="res://Assets/GameplayPieces/billboard_sign.gd" id="8_bma1b"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="9_27x7b"]
+[ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="13_cyq3a"]
+[ext_resource type="PackedScene" uid="uid://5psjb43ot4um" path="res://Assets/Interactables/unlock_area.tscn" id="15_bdr4q"]
+[ext_resource type="PackedScene" uid="uid://bparslbjshcjh" path="res://Assets/Creatures/monster_spawner.tscn" id="16_0u41m"]
+[ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="17_m07hs"]
+[ext_resource type="Script" uid="uid://kh1d6okfpyeu" path="res://GameScenes/Levels/level_timer_toggle.gd" id="18_4yths"]
+[ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="19_4yths"]
+[ext_resource type="PackedScene" uid="uid://crnws1je2racs" path="res://Assets/Creatures/DefaultMonster.tscn" id="19_qlc7j"]
+[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="23_40cht"]
+[ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="24_13i0x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3cm0x"]
+viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bdr4q"]
+panorama = ExtResource("13_cyq3a")
+
+[sub_resource type="Sky" id="Sky_0r82h"]
+sky_material = SubResource("PanoramaSkyMaterial_bdr4q")
+
+[sub_resource type="Environment" id="Environment_0u41m"]
+background_mode = 2
+sky = SubResource("Sky_0r82h")
+ambient_light_color = Color(0.22745098, 0, 0, 1)
+ambient_light_sky_contribution = 0.08
+volumetric_fog_length = 65.65
+volumetric_fog_detail_spread = 2.7991006
+volumetric_fog_sky_affect = 0.67
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdr4q"]
+size = Vector3(4.118408, 2, 3.4058228)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbemy"]
+size = Vector3(4.6692505, 2, 5.388565)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlc7j"]
+size = Vector3(4, 4.1497803, 2)
+
+[node name="Tutorial2" type="Node3D" unique_id=1211365698 groups=["level", "tutorial"]]
+
+[node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("1_iwhby")]
+transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, -0.4870273, -1.3620076, -0.2133292)
+_hide_level_timer = true
+_hide_health = true
+_hide_abilities = true
+_hide_time_manipulation = true
+max_horizontal_speed = 50.0
+sprint_deceleration = 12.0
+overspeed_deceleration = 8.0
+walk_momentum_bleed = 50.0
+sprint_momentum_bleed = 50.0
+momentum_turn_rate = 135.0
+turn_scrub = 8.0
+start_time_stopped = false
+free_time_control = true
+
+[node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
+max_slide_speed = 30.0
+
+[node name="PlayerCharacterBody3D" parent="PlayerController" index="3" unique_id=641531457]
+transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
+
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
+bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
+bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
+bones/3/rotation = Quaternion(0.77868235, 0.1321288, -0.11484339, 0.60250044)
+bones/4/rotation = Quaternion(-0.3546577, 0.2457679, 0.005192899, 0.9021026)
+bones/5/position = Vector3(0.0051893583, 0.03854346, 0.026435515)
+bones/5/rotation = Quaternion(-0.031584688, -0.77200973, -0.058316298, 0.6321414)
+bones/6/rotation = Quaternion(0.18252927, 0.045718785, 0.013374152, 0.9820458)
+bones/7/rotation = Quaternion(-0.3981077, -0.09131578, 0.055767536, 0.91107726)
+bones/8/rotation = Quaternion(-0.38888395, -0.0047410736, 0.0027742414, 0.9212704)
+bones/9/position = Vector3(0.006497577, -0.0017490541, 0.0040312745)
+bones/9/rotation = Quaternion(-0.13234298, -0.32770208, -0.41104832, 0.84031904)
+bones/10/rotation = Quaternion(0.015525818, -0.00033932534, 0.022715976, 0.9996214)
+bones/11/rotation = Quaternion(-0.20142831, -0.11571191, -0.0025870411, 0.97264117)
+bones/12/position = Vector3(0.006900218, 0.04115174, 0.0076276283)
+bones/12/rotation = Quaternion(-0.052620545, -0.7302971, -0.054594576, 0.6789084)
+bones/13/rotation = Quaternion(0.15831354, 0.012791915, 0.028674737, 0.9868896)
+bones/14/rotation = Quaternion(-0.021372102, 0.12693223, 0.25726017, 0.95773107)
+bones/15/rotation = Quaternion(0.35638347, 0.042665068, -0.25784585, 0.897043)
+bones/16/rotation = Quaternion(0.0033799517, 0.6954603, -0.08253683, 0.7138006)
+bones/17/rotation = Quaternion(-0.021179331, 0.58664876, -0.80936337, -0.018045299)
+bones/18/rotation = Quaternion(0.70421606, -0.00047219195, 0.006509401, 0.7099558)
+bones/19/rotation = Quaternion(0.7341175, 0.029628186, -0.025593346, 0.6778928)
+bones/20/rotation = Quaternion(-0.12909606, -0.6619, 0.042750552, 0.73715335)
+bones/21/rotation = Quaternion(0.80449915, -0.0071714325, 0.013305768, 0.5937615)
+bones/22/rotation = Quaternion(0.72640914, 0.034148183, -0.0075298166, 0.6863723)
+bones/23/rotation = Quaternion(0.6846562, -0.018174239, 0.0169784, 0.7284417)
+bones/24/rotation = Quaternion(-0.6143471, -0.35155362, -0.35051805, 0.61329013)
+bones/25/position = Vector3(0.008628923, 0.20224895, -0.01098562)
+bones/25/rotation = Quaternion(-0.075615175, 0.74666226, -0.27990544, 0.5986909)
+bones/26/rotation = Quaternion(0.21969278, 0.0027334683, -0.0054172277, 0.9755503)
+bones/27/rotation = Quaternion(-0.057798643, -0.010611214, -0.03225602, 0.9977507)
+bones/28/position = Vector3(-0.0040957937, 0.038309406, 0.02635711)
+bones/28/rotation = Quaternion(0.010038007, 0.7703345, 0.09816913, 0.62995785)
+bones/29/rotation = Quaternion(0.18016109, -0.046207957, -0.02235077, 0.98229694)
+bones/30/rotation = Quaternion(-0.016746147, 0.020631447, -0.007952876, 0.99961525)
+bones/31/rotation = Quaternion(-0.0020922024, 0.0032981832, -0.004392738, 0.9999827)
+bones/32/rotation = Quaternion(0.01223311, 0.41402316, 0.3092526, 0.8560362)
+bones/33/rotation = Quaternion(0.17710981, -0.0033418601, -0.022471411, 0.98392886)
+bones/34/rotation = Quaternion(0.0922622, 0.11139583, -0.03141504, 0.9889853)
+bones/35/position = Vector3(-0.006900219, 0.04115167, 0.0076272306)
+bones/35/rotation = Quaternion(-0.03296654, 0.73012906, 0.07126371, 0.67878306)
+bones/36/rotation = Quaternion(0.15924488, -0.011448696, -0.012672285, 0.98709136)
+bones/37/rotation = Quaternion(0.0091846585, -0.0105109345, -0.00463776, 0.9998918)
+bones/38/rotation = Quaternion(0.004179832, -0.0045297523, -0.0012190373, 0.9999803)
+bones/39/rotation = Quaternion(0.0033822544, -0.69546026, 0.08253459, 0.7138009)
+bones/40/rotation = Quaternion(0.0022129142, 0.98712975, -0.15748288, 0.027736556)
+bones/41/rotation = Quaternion(-0.004058715, 0.0049367393, -0.0042689596, 0.9999705)
+bones/42/rotation = Quaternion(0.039756704, -0.039047536, -0.0028530806, 0.99844205)
+bones/43/rotation = Quaternion(-0.12909606, 0.6619, -0.04275055, 0.7371534)
+bones/44/rotation = Quaternion(0.14901388, 0.01447939, -0.0043376265, 0.9887196)
+bones/45/rotation = Quaternion(0.028310329, -0.029470792, -0.018822037, 0.99898744)
+bones/46/rotation = Quaternion(-0.030961199, 0.024856672, 0.0008456027, 0.99921113)
+bones/48/position = Vector3(-0.2473867, 1.5739123, 0.2378781)
+bones/48/rotation = Quaternion(0.00062826276, 0.77854145, 0.62626046, -0.04087417)
+bones/49/position = Vector3(-0.30957562, 1.4495264, -0.020980656)
+bones/50/position = Vector3(0.6604739, 1.3061002, -0.05074787)
+bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
+bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
+
+[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="9" unique_id=130594368]
+light_energy = 0.399
+
+[node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]
+transform = Transform3D(0.0025749928, 0, -0.99999654, 0, 1, 0, 0.99999654, 0, 0.0025749928, 1.1073582, 1.6759896, 65.005844)
+stream = ExtResource("2_lbemy")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_40cht")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=342632448]
+use_collision = true
+
+[node name="SpikePits" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=565153054]
+
+[node name="Spike5" parent="CSGCombiner3D/SpikePits" unique_id=425883436 instance=ExtResource("1_6bfng")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -5.4969897, -10.006356, -5.8673415)
+
+[node name="CSGWall" parent="CSGCombiner3D" unique_id=2002669847 instance=ExtResource("2_trajx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -2.6243896, 0)
+size = Vector3(4, 9.248779, 0.2)
+
+[node name="CSGWall5" parent="CSGCombiner3D" unique_id=1182751516 instance=ExtResource("2_trajx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.392612, -3.958191, 0)
+size = Vector3(4, 11.916382, 0.2)
+
+[node name="CSGWall4" parent="CSGCombiner3D" unique_id=1336189866 instance=ExtResource("2_trajx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.04399, -2.4566956, 0)
+size = Vector3(4, 8.913391, 0.2)
+
+[node name="CSGWall2" parent="CSGCombiner3D" unique_id=1477979992 instance=ExtResource("2_trajx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.4476929, -3.996338, -1.9999999)
+size = Vector3(26.745972, 11.992676, 0.2)
+
+[node name="CSGWall3" parent="CSGCombiner3D" unique_id=575050291 instance=ExtResource("2_trajx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3759155, -3.9816895, 2.0000002)
+size = Vector3(26.67517, 11.963379, 0.2)
+
+[node name="CSGTiledFloor" parent="CSGCombiner3D" unique_id=209038271 groups=["metal"] instance=ExtResource("3_kfubd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.944092, -2.125, 0)
+size = Vector3(10.111816, 0.2, 4)
+
+[node name="CSGTiledFloor3" parent="CSGCombiner3D" unique_id=1889930400 groups=["metal"] instance=ExtResource("3_kfubd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7217937, -10.050324, 0)
+size = Vector3(22.192139, 0.2, 4)
+
+[node name="CSGTiledFloor4" parent="CSGCombiner3D" unique_id=839257653 groups=["metal"] instance=ExtResource("3_kfubd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7217937, 1.7639484, 0)
+size = Vector3(22.192139, 0.2, 4)
+
+[node name="CSGTiledFloor2" parent="CSGCombiner3D" unique_id=79181228 groups=["metal"] instance=ExtResource("3_kfubd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.1119493, 0)
+size = Vector3(14, 0.2, 4)
+
+[node name="ceiling_lamp_1_off2" parent="." unique_id=1948616355 instance=ExtResource("4_kfubd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010287881, 1.0189781, -0.2133292)
+
+[node name="OmniLight3D" parent="ceiling_lamp_1_off2" index="1" unique_id=391855518]
+light_color = Color(0.9999953, 0.46030867, 0.30677614, 1)
+light_energy = 0.068
+
+[node name="FloorCeilingTiled" parent="." unique_id=2090689099 instance=ExtResource("6_8y5v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011427641, -2.018527, -0.023450375)
+script = ExtResource("7_0ct3m")
+
+[node name="Button" parent="." unique_id=163315669 instance=ExtResource("7_s61d0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.7223191, -0.6164292, -0.7498045)
+press_sfx = ExtResource("8_27x7b")
+one_shot = true
+change_light_on_interact = true
+interact_light_color = Color(1, 0, 0.011764706, 1)
+
+[node name="Billboards" type="Node" parent="." unique_id=62445838]
+
+[node name="BillboardSign" type="Sprite3D" parent="Billboards" unique_id=1129395760]
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 1.6028507, 0.26385677, 0.019646347)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_3cm0x")
+script = ExtResource("8_bma1b")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign" unique_id=952303960]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign/SubViewport" unique_id=1065550517]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign/SubViewport/ColorRect" unique_id=143292276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_27x7b")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 20
+text = "Press E to interact with objects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign2" type="Sprite3D" parent="Billboards" unique_id=122901003]
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 1.9025584, -5.7464685, 0.019646347)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_3cm0x")
+script = ExtResource("8_bma1b")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign2" unique_id=35556681]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign2/SubViewport" unique_id=97730858]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign2/SubViewport/ColorRect" unique_id=532339144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_27x7b")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 20
+text = "Blue Rings can stop time.
+Pressing F resumes time.
+
+RUN FROM THE MONSTER BEHIND YOU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign3" type="Sprite3D" parent="Billboards" unique_id=123590979]
+transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, -13.201598, -8.76008, 0.059711635)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_3cm0x")
+script = ExtResource("8_bma1b")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign3" unique_id=1883302820]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign3/SubViewport" unique_id=454271971]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign3/SubViewport/ColorRect" unique_id=332896498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_27x7b")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 20
+text = "Fortnite"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign4" type="Sprite3D" parent="Billboards" unique_id=302834979]
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 18.144659, -7.9125543, 0.059835613)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_3cm0x")
+script = ExtResource("8_bma1b")
+
+[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign4" unique_id=418258270]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign4/SubViewport" unique_id=145610095]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign4/SubViewport/ColorRect" unique_id=1062184783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_27x7b")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 20
+text = "You can queue up a punch when time is paused
+
+Press 1 to select Dash
+Press right click to select a target
+
+On unpause you will thrust forward to your destination."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FakeDoor" parent="." unique_id=1570751701 instance=ExtResource("6_iwhby")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 1.9174066, -2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1444573399]
+environment = SubResource("Environment_0u41m")
+
+[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("2_0ct3m")]
+transform = Transform3D(0.99999976, 0, 6.9849193e-10, 0, 1, 0, -6.9849193e-10, 0, 0.99999976, 0.07907367, -7.036694, 0.017867208)
+
+[node name="TimeStopZone2" parent="." unique_id=1980119356 instance=ExtResource("2_0ct3m")]
+transform = Transform3D(0.99999976, 0, 6.9849193e-10, 0, 1, 0, -6.9849193e-10, 0, 0.99999976, 15.349942, -8.352818, 0.017991185)
+
+[node name="UnlockArea" parent="." unique_id=233979303 instance=ExtResource("15_bdr4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3207667, -4.16897, -0.2849648)
+grant_resume_time = true
+
+[node name="CollisionShape3D" parent="UnlockArea" index="0" unique_id=1742873466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33581543, 0, 0.138031)
+shape = SubResource("BoxShape3D_bdr4q")
+
+[node name="UnlockArea2" parent="." unique_id=1535733991 instance=ExtResource("15_bdr4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.446033, -8.236366, -0.030364096)
+grant_abilities_ui = true
+grant_time_ui = true
+grant_level_timer_ui = true
+grant_dash = true
+
+[node name="CollisionShape3D" parent="UnlockArea2" index="0" unique_id=1742873466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09701538, 0, -0.10053253)
+shape = SubResource("BoxShape3D_lbemy")
+
+[node name="MonsterSpawner" parent="." unique_id=472522181 node_paths=PackedStringArray("monster_template", "trigger_area") instance=ExtResource("16_0u41m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.724474, -9.950325, 0.21209514)
+monster_template = NodePath("../DONTREMOVEME")
+count = 1
+radius = 2.0
+mode = 1
+trigger_area = NodePath("../UnlockArea")
+
+[node name="LevelTimer" parent="." unique_id=390761727 instance=ExtResource("17_m07hs")]
+level_time = 30.0
+paused = true
+
+[node name="LevelTimerToggle" type="Area3D" parent="." unique_id=252193385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02308482, -9.649549, 0.21209514)
+script = ExtResource("18_4yths")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTimerToggle" unique_id=1596477031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3214722, 0)
+shape = SubResource("BoxShape3D_qlc7j")
+
+[node name="DONTREMOVEME" parent="." unique_id=819955731 instance=ExtResource("19_qlc7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.17157, 0, 0)
+move_speed = 6.66
+
+[node name="LevelRestarterTemp" type="Node" parent="." unique_id=49842819]
+script = ExtResource("19_4yths")
+
+[node name="FinishLine" parent="." unique_id=8209525 instance=ExtResource("23_40cht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.130903, -6.6430206, 0.39453077)
+next_level = ExtResource("24_13i0x")
+
+[connection signal="pressed" from="Button" to="FloorCeilingTiled" method="_on_button_pressed"]
+
+[editable path="PlayerController"]
+[editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
+[editable path="ceiling_lamp_1_off2"]
+[editable path="UnlockArea"]
+[editable path="UnlockArea2"]

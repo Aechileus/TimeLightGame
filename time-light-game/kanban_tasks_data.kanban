@@ -32,7 +32,8 @@
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
 			"title": "Doing - Aech",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+				"63559c3b-4bf4-4a5e-a537-4f7a80ddcef5"
 			]
 		},
 		{
@@ -387,6 +388,13 @@
 			"uuid": "6dc3b77f-fdd5-4204-8d1f-1284750a8844",
 			"title": "Add a death screen",
 			"description": "",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "63559c3b-4bf4-4a5e-a537-4f7a80ddcef5",
+			"title": "Tutorial Enabler",
+			"description": "Make a area3d that can enable the hud elements for abilities and pauses.  It should also have toggles that when its entered can give the ability to resume time, stop time, the dash, and the shoot.  I should export these so I can set which area3d gives what parts back for tutorial2.  By default we want to have these all enabled unless its a level group and a tutorial group on the tree root",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}

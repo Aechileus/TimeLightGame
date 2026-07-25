@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bi5m5xaah2oxr"]
 
 [ext_resource type="Script" uid="uid://e3knjvxsg4wb" path="res://Assets/GameplayPieces/finish_line.gd" id="1_7r3gb"]
+[ext_resource type="PackedScene" uid="uid://b12gem5j60jxu" path="res://GameScenes/UI/LevelComplete.tscn" id="2_6cnrg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1kwc"]
 size = Vector3(3.6326904, 1, 3.736908)
@@ -52,6 +53,7 @@ rings = 7
 [node name="FinishLine" type="Area3D" unique_id=8209525]
 collision_layer = 0
 script = ExtResource("1_7r3gb")
+level_complete_scene = ExtResource("2_6cnrg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1530298276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07684326, 0, -0.1252594)
