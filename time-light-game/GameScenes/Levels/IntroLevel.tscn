@@ -447,19 +447,15 @@ start_time_stopped = false
 [node name="MeshInstance3D" parent="wall4/PlayerController/PlayerCharacterBody3D/PlayerCamera" parent_id_path=PackedInt32Array(440292127, 1213490484) index="1" unique_id=2041865859]
 mesh = SubResource("QuadMesh_8605v")
 
-[node name="OmniLight3D" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="8" unique_id=199843824]
+[node name="OmniLight3D" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="9" unique_id=199843824]
 visible = false
 
-[node name="OmniLight3D2" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="9" unique_id=130594368]
+[node name="OmniLight3D2" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="10" unique_id=130594368]
 visible = false
 
 [node name="cell_phone_32" parent="." unique_id=1735592454 instance=ExtResource("16_if310")]
 transform = Transform3D(-0.06016765, 0, 2.1268086, 0, 2.1276596, 0, -2.1268086, 0, -0.06016765, -4.7890654, 2.0172558, -1.603561)
 script = ExtResource("20_ak7xc")
-
-[node name="Johntimeintro" type="AudioStreamPlayer" parent="cell_phone_32" unique_id=1989366033]
-stream = ExtResource("20_wa2rh")
-bus = &"SFX"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="cell_phone_32" unique_id=288951174]
 transform = Transform3D(-0.028278796, 0, -0.99960005, 0, 1, 0, 0.99960005, 0, -0.028278796, 0.03083843, 0.05075872, -0.079371214)
@@ -470,6 +466,9 @@ flickers_per_second = 0.25
 dim_factor = 0.16
 flicker_time = 0.35000000000000003
 max_dips = 6
+
+[node name="Johntimeintro" type="AudioStreamPlayer3D" parent="cell_phone_32" unique_id=1756630848]
+stream = ExtResource("20_wa2rh")
 
 [node name="light_switch_12" parent="." unique_id=250296937 instance=ExtResource("17_ch6rl")]
 transform = Transform3D(0.1135035, 0, -2.1246297, 0, 2.1276596, 0, 2.1246297, 0, 0.1135035, 6.546276, 3.8632586, -1.0529077)
