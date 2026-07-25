@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="9_dpnh3"]
 [ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="9_sq6oc"]
 [ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_floor.tscn" id="10_mxhpp"]
-[ext_resource type="Script" uid="uid://kh1d6okfpyeu" path="res://GameScenes/Levels/level_timer_toggle.gd" id="10_vhie8"]
+[ext_resource type="Script" uid="uid://kh1d6okfpyeu" path="res://Assets/GameplayPieces/level_timer_toggle.gd" id="10_vhie8"]
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="11_molmv"]
 [ext_resource type="PackedScene" uid="uid://tfwp5nchgtp1" path="res://Assets/StructurePieces/CSG/csg_slope.tscn" id="13_d0bxx"]
 [ext_resource type="PackedScene" uid="uid://d1dgff00nklef" path="res://GameScenes/Levels/Tutorial2.tscn" id="19_fv4n6"]

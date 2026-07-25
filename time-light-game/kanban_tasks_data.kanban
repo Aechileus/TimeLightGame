@@ -54,7 +54,8 @@
 				"a7306602-e9a9-4c98-9210-220b43db50b5",
 				"f0f51e34-9ef3-453c-af0e-8ee75fdd742b",
 				"83e02859-43ab-40a1-bc69-33701a281a41",
-				"88346907-8f04-487d-aebe-f5d2f1e03f8b"
+				"88346907-8f04-487d-aebe-f5d2f1e03f8b",
+				"8d662409-cb6c-4bc7-8567-f105100f5df8"
 			]
 		},
 		{
@@ -102,8 +103,7 @@
 			"uuid": "356adc85-abbc-4362-bca0-d9fe5af2229e",
 			"title": "Doing - Snake",
 			"tasks": [
-				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
-				"90f71804-98cb-48e0-98c1-ffeb74751ef4"
+				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce"
 			]
 		}
 	],
@@ -492,6 +492,13 @@
 		{
 			"uuid": "88346907-8f04-487d-aebe-f5d2f1e03f8b",
 			"title": "Change collider shape on finish line and time stop rings to fit the mesh better",
+			"description": "",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
+		},
+		{
+			"uuid": "8d662409-cb6c-4bc7-8567-f105100f5df8",
+			"title": "Redo abilities UI",
 			"description": "",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []

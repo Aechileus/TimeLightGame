@@ -9,7 +9,9 @@ class_name PlayerTimeManipulationComponent
 @export_range(0.25, 5.0, 0.25) var min_flow_time: float = 0.25
 @export_range(0.25, 60.0, 0.25) var starting_flow_time: float = 3.0
 # how many times time gets to lock back up, runs out and the world just keeps going
-@export_range(0, 99, 1) var pause_charges: int = 3
+@export_range(1, 99, 1) var pause_charges: int = 3
+## Whether or not to limit the number of charges
+@export var use_charge_limit: bool = true
 
 @export_group("UI")
 # readout starts green with a full clock and drains toward red as it ticks down
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		_next_tick += 1.0
 
 	if _flow_elapsed >= _flow_target:
-		if _charges_left > 0:
+		if _charges_left > 0 or !use_charge_limit:
 			# clock ran out, pause everything
 			# the signal handler below takes care of spending the charge
 			Global.force_time_stop()
@@ -85,7 +87,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Lets the controller check if stopping time is still on the table.
 func can_pause() -> bool:
-	return _charges_left > 0 or _free_time_control
+	return _charges_left > 0 or _free_time_control or !use_charge_limit
 
 
 func _adjust_flow_time(direction: int) -> void:
@@ -109,7 +111,8 @@ func _on_game_speed_state_changed(new_state) -> void:
 		#  the scene start freeze never had a window so it stays free
 		if _flow_window_active:
 			_flow_window_active = false
-			_charges_left = maxi(_charges_left - 1, 0)
+			if use_charge_limit:
+				_charges_left = maxi(_charges_left - 1, 0)
 	_update_label()
 
 
@@ -122,7 +125,8 @@ func _update_label() -> void:
 		_pauses_remain_label.hide()
 		_flowtime_label.hide()
 	else:
-		_pauses_remain_label.show()
+		if use_charge_limit:
+			_pauses_remain_label.show()
 		_flowtime_label.show()
 		
 

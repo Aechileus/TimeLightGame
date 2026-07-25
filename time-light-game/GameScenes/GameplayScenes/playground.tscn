@@ -32,12 +32,15 @@ volumetric_fog_sky_affect = 0.67
 [node name="TestScene" type="Node3D" unique_id=585908160]
 
 [node name="LevelTimer" parent="." unique_id=798731190 instance=ExtResource("2_oc1th")]
-level_time = 600.0
+level_time = 30.0
 infinite_time = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("3_e68fa")]
 economy_enabled = false
 free_time_control = true
+
+[node name="TimeManipulation" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="2" unique_id=1307419024]
+pause_charges = -1
 
 [node name="RampContainer" type="Node" parent="." unique_id=450792952]
 

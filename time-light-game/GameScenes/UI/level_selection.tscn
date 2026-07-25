@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="1_ukwsx"]
 [ext_resource type="FontFile" uid="uid://dm26hrqfk1jj1" path="res://Resources/Fonts/Fear 11.ttf" id="2_58ue7"]
 [ext_resource type="PackedScene" uid="uid://bbqi710m5274k" path="res://GameScenes/UI/level_icon.tscn" id="3_gkwew"]
-[ext_resource type="PackedScene" uid="uid://d33flyojl0kr7" path="res://GameScenes/Levels/Tutorial.tscn" id="4_gkwew"]
+[ext_resource type="PackedScene" uid="uid://d33flyojl0kr7" path="res://GameScenes/Levels/Tutorial1.tscn" id="4_gkwew"]
 [ext_resource type="PackedScene" uid="uid://d1dgff00nklef" path="res://GameScenes/Levels/Tutorial2.tscn" id="5_h8v04"]
 [ext_resource type="PackedScene" uid="uid://tfaffth3wjx2" path="res://GameScenes/Levels/Level1.tscn" id="5_mt1uy"]
 [ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="5_pb481"]
