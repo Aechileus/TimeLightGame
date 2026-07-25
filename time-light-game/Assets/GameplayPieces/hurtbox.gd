@@ -26,8 +26,7 @@ func _on_body_entered(body: Node3D) -> void:
 				return
 	
 	
-	
-	if !body.get_groups().any(func (x: StringName): (x as String) in affected_groups):
+	if !body.get_groups().any(func (x: StringName): return (x as String) in affected_groups):
 		print("Body enetered with groups ", body.get_groups())
 		return
 	var node := body as Node

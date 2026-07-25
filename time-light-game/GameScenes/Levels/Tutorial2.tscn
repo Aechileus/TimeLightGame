@@ -81,7 +81,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -5869,7 +5869,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -14.
 [node name="SpikePits" type="Area3D" parent="." unique_id=661555882]
 script = ExtResource("26_njssb")
 damage = 10.0
-affected_groups = Array[String](["enemy"])
+affected_groups = Array[String](["enemy", "player"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpikePits" unique_id=804099387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.15, -33.4, -0.4000001)
