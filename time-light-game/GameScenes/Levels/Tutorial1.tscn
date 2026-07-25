@@ -75,7 +75,7 @@ level_time = 15.0
 paused = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_d0bxx")]
-transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, -0.49731517, -2.171372, 0)
+transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 57.552197, -4.59774, -0.0065801144)
 _hide_level_timer = true
 _hide_health = true
 _hide_abilities = true
@@ -87,7 +87,7 @@ free_time_control = true
 [node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
 max_slide_speed = 30.0
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -453,7 +453,6 @@ shape = SubResource("BoxShape3D_tqhqm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -4.5, 0)
 script = ExtResource("9_sq6oc")
 damage = 10.0
-affected_groups = Array[String](["player", "enemy"])
 
 [node name="Pit1" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=1569269645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)

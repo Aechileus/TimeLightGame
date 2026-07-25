@@ -38,6 +38,8 @@ signal update_show_hide_ui
 @export_range(0.0, 5.0, 0.05) var gravity_multiplier: float = 1.0
 ## How much upward velocity is instantly applied when jumping
 @export_range(0.1, 20.0, 0.1) var jump_velocity: float = 5.5
+## how much of your up the ramp speed gets turned into launch when you jump off it
+@export_range(0.0, 3.0, 0.05) var ramp_launch_boost: float = 1.0
 
 @export_group("Sprint Momentum")
 ## No idea
@@ -481,6 +483,7 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 			crouch_slide.apply_slide_jump_boost()
 		crouch_slide.stop_slide()
 		character_body.velocity.y = jump_velocity
+		_apply_ramp_launch()
 		return true
 
 	if wall_movement.try_wall_jump(jump_pressed):
@@ -499,6 +502,24 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 	if not crouch_slide.is_slamming():
 		wall_movement.clamp_fall_speed()
 	return false
+
+
+func _apply_ramp_launch() -> void:
+	if not character_body.is_on_floor():
+		return
+	var normal := character_body.get_floor_normal()
+	if normal.y >= 0.999 or normal.y <= 0.01:
+		return
+	var uphill := Vector3(-normal.x, 0.0, -normal.z)
+	if uphill.length() < 0.001:
+		return
+	uphill = uphill.normalized()
+	var horizontal_vel := Vector3(character_body.velocity.x, 0.0, character_body.velocity.z)
+	var up_slope_speed := horizontal_vel.dot(uphill)
+	if up_slope_speed <= 0.0:
+		return
+	var slope_tan := sqrt(1.0 - normal.y * normal.y) / normal.y
+	character_body.velocity.y += up_slope_speed * slope_tan * ramp_launch_boost
 
 
 func _unhandled_input(event: InputEvent) -> void:
