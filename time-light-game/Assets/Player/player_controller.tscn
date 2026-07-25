@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dqbhxw6fxpd8r" path="res://Assets/Player/Components/abilities_component.gd" id="14_abilities"]
 [ext_resource type="Resource" uid="uid://dbyk6uiln76e1" path="res://Resources/Abilities/dash.tres" id="15_dash"]
 [ext_resource type="Script" uid="uid://djkbao4rpejm8" path="res://Assets/Player/Abilities/test_ability.gd" id="17_testfx"]
+[ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="19_bdrri"]
 [ext_resource type="Script" uid="uid://bqkrrnrg1ncyh" path="res://Assets/Player/aim_ray.gd" id="19_leoma"]
 [ext_resource type="Script" uid="uid://l3cswguovi1y" path="res://Assets/Player/Abilities/shoot_ability.gd" id="20_shootfx"]
 [ext_resource type="Resource" uid="uid://dl54ghqtnroo4" path="res://Resources/Abilities/shoot.tres" id="21_shoot"]
@@ -34,12 +35,11 @@ albedo_color = Color(0.4, 0.9, 1, 1)
 radius = 0.2
 height = 0.4
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
+height = 1.7
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dashhit"]
 radius = 0.6
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oss0h"]
-radius = 0.3
-height = 1.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vlwju"]
 render_priority = 0
@@ -276,6 +276,14 @@ material_override = SubResource("StandardMaterial3D_marker")
 mesh = SubResource("SphereMesh_6ywho")
 
 [node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." unique_id=641531457 groups=["player"]]
+
+[node name="BreakablesHurtbox" type="Area3D" parent="PlayerCharacterBody3D" unique_id=516996005]
+script = ExtResource("19_bdrri")
+affected_groups = Array[String](["breakables"])
+
+[node name="PlayerCollisionShape2" type="CollisionShape3D" parent="PlayerCharacterBody3D/BreakablesHurtbox" unique_id=1906374989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_oss0h")
 
 [node name="DashHitbox" type="Area3D" parent="PlayerCharacterBody3D" unique_id=1823255711]
 monitoring = false
