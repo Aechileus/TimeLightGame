@@ -488,22 +488,34 @@ func _on_time_stop_winding_up(_stopping: bool) -> void:
 		return
 		
 func show_hide_ui():
-	if _hide_level_timer and _level_timer.visible:
+	if !_level_timer:
+		print("Couldn't find level timer ui")
+		pass
+	elif _hide_level_timer and _level_timer.visible:
 		_level_timer.hide()
-	elif !_level_timer.visible:
+	elif !_hide_level_timer and !_level_timer.visible:
 		_level_timer.show()
-		
-	if _hide_health and _health_label.visible:
+	
+	if !_health_label:
+		print("Couldn't find health ui")
+		pass
+	elif _hide_health and _health_label.visible:
 		_health_label.hide()
-	elif !_health_label.visible:
+	elif !_hide_health and !_health_label.visible:
 		_health_label.show()
 		
-	if _hide_time_manipulation and _time_manipulation_ui.visible:
+	if !_time_manipulation_ui:
+		print("Couldn't find time manipulation ui")
+		pass
+	elif _hide_time_manipulation and _time_manipulation_ui.visible:
 		_time_manipulation_ui.hide()
-	elif !_time_manipulation_ui.visible:
+	elif !_hide_time_manipulation and !_time_manipulation_ui.visible:
 		_time_manipulation_ui.show()
-		
-	if _hide_abilities and _abilities_ui.visible:
+	
+	if 	!_abilities_ui:
+		print("Couldn't find abilities ui")
+		pass
+	elif _hide_abilities and _abilities_ui.visible:
 		_abilities_ui.hide()
-	elif !_abilities_ui.visible:
+	elif !_hide_abilities and !_abilities_ui.visible:
 		_abilities_ui.show()
