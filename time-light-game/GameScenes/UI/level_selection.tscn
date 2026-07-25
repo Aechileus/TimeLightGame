@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d1dgff00nklef" path="res://GameScenes/Levels/Tutorial2.tscn" id="5_h8v04"]
 [ext_resource type="PackedScene" uid="uid://tfaffth3wjx2" path="res://GameScenes/Levels/Level1.tscn" id="5_mt1uy"]
 [ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="5_pb481"]
+[ext_resource type="PackedScene" uid="uid://cs8lxvcdxl7px" path="res://GameScenes/Levels/Tutorial3.tscn" id="6_h8v04"]
 
 [node name="LevelSelection" type="Control" unique_id=528120181]
 layout_mode = 3
@@ -82,7 +83,7 @@ level_scene = ExtResource("5_h8v04")
 [node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=683660083 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "T3"
-level_scene = ExtResource("4_gkwew")
+level_scene = ExtResource("6_h8v04")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1924165608]
 layout_mode = 2

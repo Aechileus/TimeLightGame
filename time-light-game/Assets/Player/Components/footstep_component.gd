@@ -96,7 +96,7 @@ func _update_footsteps(delta: float, is_moving: bool, is_sprinting: bool, materi
 ### sound playback variance.
 func _play_footstep() -> void:
 	var selected_stream := material_streams.get(current_material) as AudioStream
-	if crouch_slide.is_sliding() == true:
+	if crouch_slide.is_sliding == true:
 		_audio.stream = preload("res://Resources/SFX/Footsteps/slide.wav")
 	elif selected_stream:
 		_audio.stream = selected_stream

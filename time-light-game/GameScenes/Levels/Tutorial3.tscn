@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="8_nhyk8"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="9_qplw4"]
 [ext_resource type="PackedScene" uid="uid://coxe4scig51tt" path="res://Assets/PSXPack2/doorway_hr_1.glb" id="10_rq76t"]
+[ext_resource type="Script" uid="uid://c18ojmvtutbii" path="res://GameScenes/Levels/dooropen.gd" id="11_qplw4"]
+[ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="12_aefbl"]
+[ext_resource type="PackedScene" uid="uid://5psjb43ot4um" path="res://Assets/Interactables/unlock_area.tscn" id="12_gmjid"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="18_o8khr"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="22_iimvo"]
 
@@ -212,5 +215,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.942795, -1.571146, -25.699
 [node name="doorway_hr_12" parent="." unique_id=1570751701 instance=ExtResource("10_rq76t")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 6.7611294, -2, -2.1743772)
 
+[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="0" unique_id=1411703438]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
+script = ExtResource("11_qplw4")
+
+[node name="UnlockArea" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="1" unique_id=233979303 instance=ExtResource("12_gmjid")]
+transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -1.7137187, 1.3595173, -7.212011)
+grant_abilities_ui = true
+grant_time_ui = true
+grant_level_timer_ui = true
+grant_resume_time = true
+grant_stop_time = true
+grant_dash = true
+grant_shoot = true
+
+[node name="Button" parent="." unique_id=163315669 instance=ExtResource("12_aefbl")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.3628635, -0.43873495, -1.2629765)
+one_shot = true
+
+[connection signal="pressed" from="Button" to="doorway_hr_12/doorway_hr_1/metal_door_1" method="_on_button_pressed"]
+
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
+[editable path="doorway_hr_12"]
