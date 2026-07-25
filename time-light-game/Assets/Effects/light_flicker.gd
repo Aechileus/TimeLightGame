@@ -54,3 +54,7 @@ func _do_flicker() -> void:
 		tween.tween_property(self, "light_energy", dim, flicker_time)
 		tween.tween_property(self, "light_energy", _base_energy, flicker_time)
 	tween.tween_callback(func() -> void: _flickering = false)
+
+
+func _on_interaction_area_interacted():
+	visible = !visible
