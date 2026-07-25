@@ -49,12 +49,13 @@ folder_colors={
 [global_group]
 
 enemy=""
-ramp=""
+ramp="Should this be counted as a ramp wrt slides?"
 player=""
 wood=""
 metal=""
 level=""
 tutorial=""
+wall_climbable="Should this be climbable?"
 
 [gui]
 

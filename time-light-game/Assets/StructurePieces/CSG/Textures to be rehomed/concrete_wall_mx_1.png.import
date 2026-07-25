@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch0vjnn68gmak"
-path.s3tc="res://.godot/imported/pipe_hr_3.png-a1413395bed9fdaa5f2582503108b406.s3tc.ctex"
+uid="uid://cfe4t0u81jcep"
+path.s3tc="res://.godot/imported/concrete_wall_mx_1.png-524cef935294b90590e1c580b57b8ad5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/StructurePieces/CSG/pipe_hr_3.png"
-dest_files=["res://.godot/imported/pipe_hr_3.png-a1413395bed9fdaa5f2582503108b406.s3tc.ctex"]
+source_file="res://Assets/StructurePieces/CSG/Textures to be rehomed/concrete_wall_mx_1.png"
+dest_files=["res://.godot/imported/concrete_wall_mx_1.png-524cef935294b90590e1c580b57b8ad5.s3tc.ctex"]
 
 [params]
 

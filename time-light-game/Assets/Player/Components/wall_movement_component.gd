@@ -35,6 +35,7 @@ func refresh_contact() -> void:
 		_contact_time_left = 0.0
 		return
 	if not _body.is_on_wall():
+		
 		return
 
 	var wall_normal := _body.get_wall_normal()

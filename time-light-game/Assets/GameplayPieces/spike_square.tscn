@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://skxvfc7a54hv"]
 
-[ext_resource type="Texture2D" uid="uid://bwaf5ignkj1vr" path="res://Assets/StructurePieces/CSG/pipe_mp_1.png" id="1_q7ivo"]
+[ext_resource type="Texture2D" uid="uid://bwaf5ignkj1vr" path="res://Assets/StructurePieces/CSG/Textures to be rehomed/pipe_mp_1.png" id="1_q7ivo"]
 [ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="2_q7ivo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdl76"]

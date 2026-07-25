@@ -42,7 +42,9 @@ material = SubResource("StandardMaterial3D_6cnrg")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2xsg"]
-albedo_color = Color(0, 1, 1, 1)
+render_priority = 1
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.39215687)
 
 [sub_resource type="TorusMesh" id="TorusMesh_l00eo"]
 material = SubResource("StandardMaterial3D_w2xsg")
@@ -65,3 +67,7 @@ draw_pass_1 = SubResource("QuadMesh_8x8ej")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=218311376]
 mesh = SubResource("TorusMesh_l00eo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=788690261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10906243)
+light_color = Color(0, 1, 1, 0.654902)

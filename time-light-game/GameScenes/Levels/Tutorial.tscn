@@ -12,7 +12,7 @@
 [ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="8_sltlx"]
 [ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="9_dpnh3"]
 [ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="9_sq6oc"]
-[ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_tiled_floor.tscn" id="10_mxhpp"]
+[ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_floor.tscn" id="10_mxhpp"]
 [ext_resource type="Script" uid="uid://kh1d6okfpyeu" path="res://GameScenes/Levels/level_timer_toggle.gd" id="10_vhie8"]
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="11_molmv"]
 [ext_resource type="PackedScene" uid="uid://tfwp5nchgtp1" path="res://Assets/StructurePieces/CSG/csg_slope.tscn" id="13_d0bxx"]
@@ -71,7 +71,7 @@ bus = &"Music"
 script = ExtResource("2_molmv")
 
 [node name="LevelTimer" parent="." unique_id=390761727 instance=ExtResource("3_sq6oc")]
-level_time = 30.0
+level_time = 15.0
 paused = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_d0bxx")]
@@ -453,6 +453,7 @@ shape = SubResource("BoxShape3D_tqhqm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -4.5, 0)
 script = ExtResource("9_sq6oc")
 damage = 10.0
+affected_groups = Array[String](["player", "enemy"])
 
 [node name="Pit1" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=1569269645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)

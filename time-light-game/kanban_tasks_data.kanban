@@ -30,49 +30,20 @@
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
-			"title": "Doing - Aech",
+			"title": "IMPORTANT",
 			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"e1653b3c-4933-4916-ae85-1d2184863784"
+				"4c8caa30-bf34-43eb-a77a-7be6c8caef8c",
+				"d2ab0628-2a01-419e-8eba-06d669fd32b8",
+				"db50e9d0-3e69-4fd0-bcb6-9b255d539b9d",
+				"540b444c-33cb-42eb-9160-bcd6fd811fd9"
 			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
-			"title": "Done",
+			"title": "Doing - Aech",
 			"tasks": [
-				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
-				"63559c3b-4bf4-4a5e-a537-4f7a80ddcef5",
-				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
-				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
-				"053942a6-64b7-4843-a33a-9fcb29746a2e",
-				"90cc72e9-143b-4cfd-a2c2-44899877eb31",
-				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
-				"06596bd5-cd59-47f8-ade3-9075b1847e37",
-				"41f3cc74-3252-484f-9aa2-1d3657db3ee5",
-				"6b581247-698f-497d-8297-ad055f9d70d7",
-				"6dc3b77f-fdd5-4204-8d1f-1284750a8844",
-				"b010702a-0840-4a6c-aad9-4e076fed2ee8",
-				"8c770334-87e0-4ed2-869e-99e65035d45f",
-				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
-				"35f83554-786e-4e04-9bed-dd81372c9e03",
-				"0c4de1ed-2625-4ded-b79a-3557244a975d",
-				"9b9252f9-fa64-4367-96f4-e921e829b854",
-				"457b560e-4fed-4848-9603-70901284c62b",
-				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
-				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
-				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
-				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
-				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb"
-			]
-		},
-		{
-			"uuid": "c7b63abb-9e44-4f11-8d82-04d832c35522",
-			"title": "Doing - Snake",
-			"tasks": [
-				"5bf10403-7344-4ac2-aa57-b600a050817d",
-				"df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
-				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
-				"90f71804-98cb-48e0-98c1-ffeb74751ef4"
+				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
+				"e1653b3c-4933-4916-ae85-1d2184863784"
 			]
 		},
 		{
@@ -82,7 +53,8 @@
 				"71dd28a6-560a-414c-94ec-5a642ecac30b",
 				"a7306602-e9a9-4c98-9210-220b43db50b5",
 				"f0f51e34-9ef3-453c-af0e-8ee75fdd742b",
-				"83e02859-43ab-40a1-bc69-33701a281a41"
+				"83e02859-43ab-40a1-bc69-33701a281a41",
+				"88346907-8f04-487d-aebe-f5d2f1e03f8b"
 			]
 		},
 		{
@@ -91,7 +63,47 @@
 			"tasks": [
 				"0a111623-6452-45ac-a99c-af14f782f009",
 				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d",
-				"3be0ebde-f941-4e39-b9e9-ababa08876fb"
+				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
+				"6f535da0-5467-4fbe-a685-9160672ddb67"
+			]
+		},
+		{
+			"uuid": "e217d85f-87ef-4bfa-8e5a-45f59656f907",
+			"title": "Done",
+			"tasks": [
+				"df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
+				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
+				"5bf10403-7344-4ac2-aa57-b600a050817d",
+				"053942a6-64b7-4843-a33a-9fcb29746a2e",
+				"6dc3b77f-fdd5-4204-8d1f-1284750a8844",
+				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
+				"35f83554-786e-4e04-9bed-dd81372c9e03",
+				"3ab6d0c5-dc68-43bc-b18f-937d68dd0e9d",
+				"7a32599e-90a3-48c1-ab7e-f5e77cf433cb",
+				"d5ef252e-c4be-4b57-9476-6badf78ab7a0",
+				"0dec7a52-dcab-406a-9af0-80f80dec30bf",
+				"c04cc7ec-19f1-44ff-98b4-7809b8e6b967",
+				"7ada93f1-5714-4961-9d8e-41acfc1014c5",
+				"457b560e-4fed-4848-9603-70901284c62b",
+				"9b9252f9-fa64-4367-96f4-e921e829b854",
+				"0c4de1ed-2625-4ded-b79a-3557244a975d",
+				"b0d90b95-1bc1-4abe-968f-10193f4f6f44",
+				"b010702a-0840-4a6c-aad9-4e076fed2ee8",
+				"8c770334-87e0-4ed2-869e-99e65035d45f",
+				"6b581247-698f-497d-8297-ad055f9d70d7",
+				"06596bd5-cd59-47f8-ade3-9075b1847e37",
+				"41f3cc74-3252-484f-9aa2-1d3657db3ee5",
+				"90cc72e9-143b-4cfd-a2c2-44899877eb31",
+				"6a42236a-ef82-4ec4-a045-971b5a6bbf4e",
+				"63559c3b-4bf4-4a5e-a537-4f7a80ddcef5"
+			]
+		},
+		{
+			"uuid": "356adc85-abbc-4362-bca0-d9fe5af2229e",
+			"title": "Doing - Snake",
+			"tasks": [
+				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
+				"90f71804-98cb-48e0-98c1-ffeb74751ef4"
 			]
 		}
 	],
@@ -305,7 +317,7 @@
 		},
 		{
 			"uuid": "5bf10403-7344-4ac2-aa57-b600a050817d",
-			"title": "Make Levls With billboards for tutorials",
+			"title": "Tutorial 1",
 			"description": "",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
@@ -441,6 +453,48 @@
 			"description": "",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
+		},
+		{
+			"uuid": "4c8caa30-bf34-43eb-a77a-7be6c8caef8c",
+			"title": "Jumping out of slides doesn't work when going up ramps",
+			"description": "",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "d2ab0628-2a01-419e-8eba-06d669fd32b8",
+			"title": "Change enemy swing sound ",
+			"description": "It sounds like you get hit every time they swing",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
+		},
+		{
+			"uuid": "db50e9d0-3e69-4fd0-bcb6-9b255d539b9d",
+			"title": "Add a ticking effect that follows level timer",
+			"description": "See messages in the group chat for proposed spec",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
+		},
+		{
+			"uuid": "540b444c-33cb-42eb-9160-bcd6fd811fd9",
+			"title": "ENEMIES DON'T SPAWN WITH ENEMY GROUP",
+			"description": "I can't kill them with spikes because when checked they never seem to have the enemy group",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "6f535da0-5467-4fbe-a685-9160672ddb67",
+			"title": "Unfreezing time doesn't stop aiming actions",
+			"description": "",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "88346907-8f04-487d-aebe-f5d2f1e03f8b",
+			"title": "Change collider shape on finish line and time stop rings to fit the mesh better",
+			"description": "",
+			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
 		}
 	],
 	"layout": {
@@ -451,11 +505,14 @@
 				"a382d40d-47a3-42c7-9c5e-451ed7717993"
 			],
 			[
-				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
-				"c7b63abb-9e44-4f11-8d82-04d832c35522"
+				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d"
 			],
 			[
-				"0612e6e4-ce27-4508-9e27-7cd7181ae9fa"
+				"0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
+				"356adc85-abbc-4362-bca0-d9fe5af2229e"
+			],
+			[
+				"e217d85f-87ef-4bfa-8e5a-45f59656f907"
 			]
 		]
 	}

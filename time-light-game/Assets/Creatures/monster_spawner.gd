@@ -69,3 +69,4 @@ func spawn_one() -> void:
 	### SNAKE DO NOT TOUCH THIS, IT IS SO STUPIDLY FRAGILE, I HAD TO DO SO MUCH GOOGLE FU
 	# ...noted XD
 	get_tree().current_scene.add_child.call_deferred(monster)
+	monster.add_to_group.call_deferred("enemy") # Yo I spent ages trying to kill these bastards with spikes

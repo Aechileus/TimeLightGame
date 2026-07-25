@@ -3,6 +3,8 @@ extends Node3D
 @export var _gravity: float = 9.8
 
 @export_group("UI")
+@export var _hide_reticle: bool = false
+@onready var _reticle: CanvasLayer = $Reticle
 @export var _hide_level_timer: bool = false
 @onready var _level_timer: CanvasLayer = $"../LevelTimer"
 @export var _hide_health: bool = false
@@ -791,6 +793,14 @@ func _on_unlocks_changed() -> void:
 
 
 func show_hide_ui():
+	if !_reticle:
+		print("Couldn't find reticle ui")
+		pass
+	elif _hide_reticle and _reticle.visible:
+		_reticle.hide()
+	elif !_hide_reticle and !_reticle.visible:
+		_reticle.show()
+		
 	if !_level_timer:
 		print("Couldn't find level timer ui")
 		pass

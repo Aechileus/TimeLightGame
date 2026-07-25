@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0cyu8b1k44m4"]
 
-[ext_resource type="Texture2D" uid="uid://bd17uif1iwrog" path="res://Assets/StructurePieces/CSG/wall_hr_2.png" id="1_sfsvc"]
+[ext_resource type="Texture2D" uid="uid://bd17uif1iwrog" path="res://Assets/StructurePieces/CSG/Textures to be rehomed/wall_hr_2.png" id="1_sfsvc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfp4"]
 albedo_texture = ExtResource("1_sfsvc")
