@@ -316,11 +316,6 @@ func _physics_process(delta: float) -> void:
 	# Get a vector representing the direction the player's currently moving in
 	# TODO: this could be cached?
 	var current_move_direction := character_body.global_transform.basis * Vector3(input_vector.x, 0.0, input_vector.y)
-	if current_move_direction.y != 0.0:
-		print("Hard setting move_direction's Y is needed")
-		current_move_direction.y = 0.0
-	else:
-		print("Hard setting move_direction's Y is not needed")
 	current_move_direction = current_move_direction.normalized()
 	
 	var is_on_floor := character_body.is_on_floor()
