@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dm26hrqfk1jj1"
-path="res://.godot/imported/Fear 11.ttf-0b85cc05ed937412fb41b5531080c879.fontdata"
+path="res://.godot/imported/Fear 11.ttf-876569f50bdf8d8442d168fa3bd39f42.fontdata"
 
 [deps]
 
-source_file="res://Resources/UI/Fear 11.ttf"
-dest_files=["res://.godot/imported/Fear 11.ttf-0b85cc05ed937412fb41b5531080c879.fontdata"]
+source_file="res://Resources/Fonts/Fear 11.ttf"
+dest_files=["res://.godot/imported/Fear 11.ttf-876569f50bdf8d8442d168fa3bd39f42.fontdata"]
 
 [params]
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbqi710m5274k"]
 
-[ext_resource type="FontFile" uid="uid://dm26hrqfk1jj1" path="res://Resources/UI/Fear 11.ttf" id="1_rq35d"]
+[ext_resource type="Script" uid="uid://cdqdb12p1wlrf" path="res://GameScenes/UI/level_icon.gd" id="1_bgf5v"]
+[ext_resource type="FontFile" uid="uid://dm26hrqfk1jj1" path="res://Resources/Fonts/Fear 11.ttf" id="1_rq35d"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgf5v"]
 load_path = "res://.godot/imported/Panel.png-3e17577c7ee6386fa3e8267c4dc4c332.ctex"
@@ -19,6 +20,7 @@ anchors_preset = 0
 offset_right = 50.0
 offset_bottom = 50.0
 size_flags_vertical = 4
+script = ExtResource("1_bgf5v")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=820993829]
 texture_filter = 1

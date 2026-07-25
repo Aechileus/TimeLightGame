@@ -11,5 +11,9 @@ func play_button_pressed():
 	SceneChanger.change_to(Util.GAME_SCENES.GAME)
 	
 func playground_button_pressed():
-	SceneChanger.change_to(Util.GAME_SCENES.PLAYGROUND)
+	get_tree().quit()
 	
+
+
+func _on_level_select_button_pressed():
+	SceneChanger.change_to(Util.GAME_SCENES.LEVELSELECT)

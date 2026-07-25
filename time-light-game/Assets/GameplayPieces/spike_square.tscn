@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://skxvfc7a54hv"]
+
+[ext_resource type="Texture2D" uid="uid://bwaf5ignkj1vr" path="res://Assets/StructurePieces/CSG/pipe_mp_1.png" id="1_q7ivo"]
+[ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="2_q7ivo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdl76"]
+albedo_texture = ExtResource("1_q7ivo")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4h1bt"]
+material = SubResource("StandardMaterial3D_pdl76")
+top_radius = 0.0
+height = 0.7
+radial_segments = 4
+rings = 82
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpnh3"]
+size = Vector3(2.838379, 0.7678516, 2.8476563)
+
+[node name="SpikeSquare" type="Node3D" unique_id=630083072]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1679450923]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35103196, 0.5, -0.3499107)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=916686860]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35103196, 0.5, -1.0556207)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=598110354]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35103196, 0.5, 1.061028)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1021570494]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.35103196, 0.5, 0.35483763)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=947261532]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.0509062, 0.5, -0.3499107)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=841493777]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.0509062, 0.5, -1.0556207)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=654555038]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.0509062, 0.5, 1.061028)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=2109780470]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.0509062, 0.5, 0.35483763)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." unique_id=963230707]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.0508325, 0.5, -0.3499107)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="." unique_id=740353730]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.0508325, 0.5, -1.0556207)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="." unique_id=192018325]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.0508325, 0.5, 1.061028)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="." unique_id=1958656249]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.0508325, 0.5, 0.35483763)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="." unique_id=2035219519]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35095823, 0.5, -0.3499107)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="." unique_id=499890606]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35095823, 0.5, -1.0556207)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="." unique_id=634903284]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35095823, 0.5, 1.061028)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="." unique_id=1808490979]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.35095823, 0.5, 0.35483763)
+mesh = SubResource("CylinderMesh_4h1bt")
+
+[node name="SpikeKillboxes" type="Area3D" parent="." unique_id=1655532072]
+script = ExtResource("2_q7ivo")
+damage = 10.0
+
+[node name="Pit1" type="CollisionShape3D" parent="SpikeKillboxes" unique_id=2092360211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007080078, 0.46107423, -0.0029296875)
+shape = SubResource("BoxShape3D_dpnh3")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpkofxkfi6ad8" path="res://GameScenes/UI/main_menu.gd" id="1_bc6al"]
 [ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="1_qvhnw"]
+[ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="2_1icvx"]
 
 [node name="MainMenu" type="Control" unique_id=1360614335]
 layout_mode = 3
@@ -12,14 +13,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bc6al")
 
-[node name="Panel" type="Panel" parent="." unique_id=108056101]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2026089347]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_qvhnw")
+texture = ExtResource("2_1icvx")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1259851720]
 layout_mode = 1
@@ -29,7 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qvhnw")
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="RichTextLabel" type="Label" parent="VBoxContainer" unique_id=675150675]
@@ -42,12 +50,8 @@ text = "Fortnite"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1288231343]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1993986090]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(150, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -55,16 +59,24 @@ theme = ExtResource("1_qvhnw")
 theme_override_font_sizes/font_size = 64
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayButton" unique_id=1842042191]
+custom_maximum_size = Vector2(147.18, -1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -27.0
+offset_right = 54.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PlayButton/MarginContainer" unique_id=132383494]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 theme = ExtResource("1_qvhnw")
 theme_override_font_sizes/normal_font_size = 48
@@ -74,8 +86,36 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlaygroundButton" type="Button" parent="VBoxContainer" unique_id=947768922]
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer" unique_id=1329716465]
 custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_qvhnw")
+theme_override_font_sizes/font_size = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/LevelSelectButton" unique_id=179250429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/LevelSelectButton/MarginContainer" unique_id=711782721]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_qvhnw")
+theme_override_font_sizes/normal_font_size = 40
+text = "Level Select"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaygroundButton" type="Button" parent="VBoxContainer" unique_id=947768922]
+custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -96,8 +136,10 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_qvhnw")
 theme_override_font_sizes/normal_font_size = 48
-text = "Playground"
+text = "Exit"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

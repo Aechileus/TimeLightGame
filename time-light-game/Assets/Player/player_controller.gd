@@ -67,6 +67,14 @@ signal update_show_hide_ui
 @export_range(0.1, 20.0, 0.1) var crouch_camera_speed: float = 5.0
 ## No idea
 @export_range(0.1, 20.0, 0.1) var step_camera_smoothing: float = 8.0
+## Fall speed you have to hit the ground at before the camera bobs on landing
+@export_range(0.0, 30.0, 0.5) var land_bob_min_speed: float = 6.0
+## How much the camera dips per unit of fall speed past the minimum
+@export_range(0.0, 0.1, 0.001) var land_bob_scale: float = 0.02
+## Cap on the landing dip so a big fall stays a small bob
+@export_range(0.0, 1.0, 0.01) var land_bob_max: float = 0.2
+## How fast the camera settles back up after a landing bob
+@export_range(1.0, 30.0, 0.5) var land_bob_recovery: float = 9.0
 ## It's the mouse sensitivity. What did you think it was gonna be?
 @export_range(0.0001, 0.02, 0.0001) var mouse_sensitivity: float = 0.0025
 ## The minimum you're able to look..?
@@ -125,6 +133,13 @@ var _hit_flash_tween: Tween
 # counts down while a dash is making the player untouchable
 var _invuln_time: float = 0.0
 
+# the pause menu, spawned on escape while in a level. its own layer so it sits
+# on top of everything and keeps working while the tree is paused
+const PAUSE_MENU := preload("res://GameScenes/UI/pause_menu.tscn")
+const DEATH_SCREEN := preload("res://GameScenes/UI/death_screen.tscn")
+var _pause_layer: CanvasLayer = null
+var _dead: bool = false
+
 var _is_sprinting: bool = false
 var _sprint_grace_time_left: float = 0.0
 # how long youve been coasting overspeed with no input, drives the exponential decel
@@ -133,6 +148,8 @@ var _base_floor_snap: float = 0.1
 var _camera_base_height: float = 0.0
 var _camera_current_height: float = 0.0
 var _camera_step_offset: float = 0.0
+# downward camera dip from a hard landing, eases back to 0
+var _camera_land_offset: float = 0.0
 var _overlay_material: ShaderMaterial
 var _overlay_was_visible: bool = false
 var _overlay_tween: Tween
@@ -183,6 +200,14 @@ func _physics_process(delta: float) -> void:
 	# tick the dash immunity down here so it always drains
 	# !! See below
 
+	# pause menu is up, the player runs at process always so the tree pause cant
+	# stop it, this hard freezes everything until the menu closes
+	if _pause_layer != null:
+		return
+
+	if _dead:
+		return
+
 	# frozen in time, no moving around. queueing ended up living in the
 	# abilities component instead so this just gates movement now. Oh well, composition wins.
 	if Global.is_time_stopped():
@@ -219,8 +244,16 @@ func _physics_process(delta: float) -> void:
 		_camera_step_offset -= step_height
 		character_body.floor_snap_length = 0.0
 
+	# how fast we were dropping right before the move, used to sense hard landings
+	var impact_speed := maxf(-character_body.velocity.y, 0.0)
 	character_body.move_and_slide()
 	character_body.floor_snap_length = saved_floor_snap
+
+	# landing mpact camera bob, dip the camera a bit if it was a
+	# real drop. scaled by how hard we hit and capped so it stays subtle
+	if not was_on_floor and character_body.is_on_floor() and impact_speed > land_bob_min_speed:
+		var dip := minf((impact_speed - land_bob_min_speed) * land_bob_scale, land_bob_max)
+		_camera_land_offset = -dip
 
 	wall_movement.refresh_contact()
 	var horizontal_speed := Vector2(character_body.velocity.x, character_body.velocity.z).length()
@@ -265,13 +298,17 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 	var current_speed := horizontal_velocity.length()
 	if current_speed > sprint_speed + 0.001:
 		# momentum bleed for sprint and walk
-		var bleed := sprint_momentum_bleed if _is_sprinting else walk_momentum_bleed
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, bleed, delta)
+		var bleed := 0.0
+		if was_on_floor:
+			bleed = sprint_momentum_bleed if _is_sprinting else walk_momentum_bleed
+		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, bleed, was_on_floor, delta)
 		return
 
-	# Sprint speed eases back to the active movement speed after the grace window.
+	# Sprint speed eases back to the active movement speed after the grace window,
+	# again only on the ground so air momentum sticks
 	if not move_direction.is_zero_approx() and current_speed > target_speed + 0.001:
-		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, sprint_deceleration, delta)
+		var ease_bleed := sprint_deceleration if was_on_floor else 0.0
+		_apply_preserved_speed(horizontal_velocity, move_direction, target_speed, ease_bleed, was_on_floor, delta)
 		return
 
 	_overspeed_coast_time = 0.0
@@ -279,7 +316,8 @@ func _update_horizontal_movement(delta: float, move_direction: Vector3, was_on_f
 	var target_velocity := move_direction * target_speed
 	var acceleration := ground_acceleration if was_on_floor else air_acceleration
 	if move_direction.is_zero_approx():
-		acceleration = ground_deceleration if was_on_floor else air_acceleration
+		# no input in the air keeps your momentum, on the ground it decelerates
+		acceleration = ground_deceleration if was_on_floor else 0.0
 
 	character_body.velocity.x = move_toward(character_body.velocity.x, target_velocity.x, acceleration * delta)
 	character_body.velocity.z = move_toward(character_body.velocity.z, target_velocity.z, acceleration * delta)
@@ -290,6 +328,7 @@ func _apply_preserved_speed(
 	move_direction: Vector3,
 	target_speed: float,
 	bleed: float,
+	grounded: bool,
 	delta: float
 ) -> void:
 	var speed := current_velocity.length()
@@ -297,12 +336,15 @@ func _apply_preserved_speed(
 	var preserved_direction := vel_dir
 
 	if move_direction.is_zero_approx():
-		# no input, so the momentum coasts. deceleration starts gentle and ramps
-		# up exponentially the longer you hold nothing, so a light tap of speed
-		# lingers but a long coast winds down hard
-		_overspeed_coast_time += delta
-		var decel := overspeed_deceleration * exp(overspeed_decel_growth * _overspeed_coast_time)
-		speed = move_toward(speed, target_speed, decel * delta)
+		if grounded:
+			# no input on the ground, so the momentum coasts. deceleration starts
+			# gentle and ramps up exponentially the longer you hold nothing
+			_overspeed_coast_time += delta
+			var decel := overspeed_deceleration * exp(overspeed_decel_growth * _overspeed_coast_time)
+			speed = move_toward(speed, target_speed, decel * delta)
+		else:
+			# airborne with no input keeps flying, no drag in the air
+			_overspeed_coast_time = 0.0
 	else:
 		# if you are moving this will just reset preventing intertia loss
 		_overspeed_coast_time = 0.0
@@ -356,6 +398,9 @@ func _update_jump_and_gravity(delta: float, was_on_floor: bool) -> bool:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# no input while playing out the death sequence
+	if _dead:
+		return
 	if event.is_action_pressed(&"time_stop"):
 		# Time can always stop if free_time_control is on, and we can stop the countdown too
 		#if time_manipulation._free_time_control: # !! Doesn't work, seems to immediately unpause
@@ -365,7 +410,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			Global.toggle_time_stop()
 		return
 	if event.is_action_pressed(&"ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if _pause_layer != null:
+			_close_pause_menu()
+		elif _level_is_pausable():
+			_open_pause_menu()
+		else:
+			# not in a level, just free the mouse like before
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
+	# swallow everything else while the pause menu is up
+	if _pause_layer != null:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		character_body.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -377,6 +431,49 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.pressed and click_to_capture_mouse:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+# The pause menu only works inside an actual level, gated by the scene root being
+# in the "level" group.
+func _level_is_pausable() -> bool:
+	var scene := get_tree().current_scene
+	return scene != null and scene.is_in_group("level")
+
+
+func _open_pause_menu() -> void:
+	_pause_layer = CanvasLayer.new()
+	_pause_layer.layer = 100
+	# always so its buttons work while the tree is paused
+	_pause_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_pause_layer)
+
+	var menu := PAUSE_MENU.instantiate()
+	menu.resume_pressed.connect(_close_pause_menu)
+	menu.restart_pressed.connect(_restart_level)
+	_pause_layer.add_child(menu)
+
+	# freeze the whole world, and disable the player itself since it runs at
+	# process always
+	get_tree().paused = true
+	process_mode = Node.PROCESS_MODE_DISABLED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _close_pause_menu() -> void:
+	if _pause_layer != null:
+		_pause_layer.queue_free()
+		_pause_layer = null
+	# back to running always so time stop camera works again
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	# hand pause back to whatever time stop wants, so unpausing here doesnt undo
+	# a frozen world
+	get_tree().paused = Global.is_time_stopped()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _restart_level() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene.call_deferred()
 
 
 func get_floor_material() -> Util.FLOOR_MATERIAL:
@@ -413,10 +510,58 @@ func _play_hurt_sfx() -> void:
 
 
 func _die() -> void:
-	# make sure time isnt frozen on the reload, then run the level back. deferred
-	# since a hit can land during a physics callback and you cant free bodies then
+	if _dead:
+		return
+	_dead = true
 	Global.force_time_flow()
-	get_tree().reload_current_scene.call_deferred()
+
+	if _hit_flash_tween:
+		_hit_flash_tween.kill()
+	if _flash_tween:
+		_flash_tween.kill()
+	if _overlay_tween:
+		_overlay_tween.kill()
+
+	# collapse into a crouch, camera drops to crouch height. if already crouched
+	# the tween just holds there
+	var collapse := create_tween()
+	collapse.tween_property(player_camera, "position:y", crouch_camera_height, 0.15)
+
+	# blood filter
+	_vhs_material.set_shader_parameter("tint", Color(1, 1, 1, 0))
+	_vhs_material.set_shader_parameter("flash", Color(0.75, 0.0, 0.0, 0.6))
+
+	# tiny timeout so players have feedback for their mistake
+	await get_tree().create_timer(0.6).timeout
+	if is_instance_valid(self):
+		_show_death_screen()
+
+
+func _show_death_screen() -> void:
+	# reuse the pause layer slot, same always process trick so it works while the
+	# tree is paused and the player is disabled
+	if _pause_layer != null:
+		return
+	# clear the screen effects now, otherwise their tweens freeze when the player
+	# gets disabled below and the red hit flash stays stuck over the death screen
+	if _hit_flash_tween:
+		_hit_flash_tween.kill()
+	if _flash_tween:
+		_flash_tween.kill()
+	if _overlay_tween:
+		_overlay_tween.kill()
+	_vhs_material.set_shader_parameter("flash", Color(1, 1, 1, 0))
+	_vhs_material.set_shader_parameter("tint", Color(1, 1, 1, 0))
+
+	_pause_layer = CanvasLayer.new()
+	_pause_layer.layer = 100
+	_pause_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_pause_layer)
+	_pause_layer.add_child(DEATH_SCREEN.instantiate())
+
+	get_tree().paused = true
+	process_mode = Node.PROCESS_MODE_DISABLED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 # Punch a quick red flash through the vhs effect so a hit reads.
@@ -435,10 +580,12 @@ func _update_health_label() -> void:
 
 func _update_camera_height(delta: float) -> void:
 	_camera_step_offset = move_toward(_camera_step_offset, 0.0, step_camera_smoothing * delta)
+	# impact bob for landing
+	_camera_land_offset = lerp(_camera_land_offset, 0.0, clampf(land_bob_recovery * delta, 0.0, 1.0))
 	var target_height := crouch_camera_height if crouch_slide.is_crouching() else _camera_base_height
 	_camera_current_height = move_toward(_camera_current_height, target_height, crouch_camera_speed * delta)
 	var camera_position := player_camera.position
-	camera_position.y = _camera_current_height + _camera_step_offset
+	camera_position.y = _camera_current_height + _camera_step_offset + _camera_land_offset
 	player_camera.position = camera_position
 
 

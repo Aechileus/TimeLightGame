@@ -11,6 +11,8 @@ func change_to(new_scene : Util.GAME_SCENES):
 			new_scene_path = Util.MAIN_MENU_PATH
 		Util.GAME_SCENES.PLAYGROUND:
 			new_scene_path = Util.PLAYGROUND_PATH
+		Util.GAME_SCENES.LEVELSELECT:
+			new_scene_path = Util.LEVELSELECT_PATH
 	_new_scene()
 		
 func _new_scene():

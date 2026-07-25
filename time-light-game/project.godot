@@ -53,6 +53,11 @@ ramp=""
 player=""
 wood=""
 metal=""
+level=""
+
+[gui]
+
+theme/custom_font="uid://dm26hrqfk1jj1"
 
 [input]
 
