@@ -75,7 +75,7 @@ level_time = 15.0
 paused = true
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_d0bxx")]
-transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 57.552197, -4.59774, -0.0065801144)
+transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, -0.68069327, -1.7440779, 0.03708905)
 _hide_level_timer = true
 _hide_health = true
 _hide_abilities = true
