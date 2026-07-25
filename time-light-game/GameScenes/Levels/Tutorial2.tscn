@@ -81,7 +81,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -142,7 +142,7 @@ bones/50/position = Vector3(0.6604739, 1.3061002, -0.05074787)
 bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
 bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 
-[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="9" unique_id=130594368]
+[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="10" unique_id=130594368]
 light_energy = 0.399
 
 [node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]
