@@ -11,6 +11,11 @@
 [ext_resource type="Script" uid="uid://c18ojmvtutbii" path="res://GameScenes/Levels/dooropen.gd" id="11_qplw4"]
 [ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="12_aefbl"]
 [ext_resource type="PackedScene" uid="uid://5psjb43ot4um" path="res://Assets/Interactables/unlock_area.tscn" id="12_gmjid"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="14_gmjid"]
+[ext_resource type="Script" uid="uid://dwv5vq7tjhldt" path="res://Assets/Interactables/teachingtimestop.gd" id="14_y86sm"]
+[ext_resource type="PackedScene" uid="uid://skxvfc7a54hv" path="res://Assets/GameplayPieces/spike_square.tscn" id="16_6135q"]
+[ext_resource type="Script" uid="uid://c4r5kupy1emw7" path="res://Assets/GameplayPieces/billboard_sign.gd" id="17_vfvgi"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="18_7c05f"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="18_o8khr"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="22_iimvo"]
 
@@ -29,6 +34,27 @@ volumetric_fog_length = 65.65
 volumetric_fog_detail_spread = 2.7991006
 volumetric_fog_sky_affect = 0.67
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c05f"]
+size = Vector3(1.7419052, 2.9630432, 0.47058105)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0r82h"]
+size = Vector3(1.665863, 2.9332275, 0.32885742)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5otgx"]
+size = Vector3(4.3846893, 0.8825073, 0.32885742)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aefbl"]
+size = Vector3(30, 30, 30)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5otgx"]
+viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfvgi"]
+size = Vector3(4, 0.6644287, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
+size = Vector3(1.1525732, 4.7685547, 1.622467)
+
 [node name="Tutorial3" type="Node3D" unique_id=1211365698 groups=["level", "tutorial"]]
 
 [node name="LevelTimer" parent="." unique_id=390761727 instance=ExtResource("22_iimvo")]
@@ -37,6 +63,7 @@ volumetric_fog_sky_affect = 0.67
 transform = Transform3D(-0.0025749062, 0, -0.9999967, 0, 1, 0, 0.9999967, 0, -0.0025749062, -0.4870273, -1.3620076, -0.2133292)
 _hide_health = true
 _hide_time_manipulation = true
+start_time_stopped = false
 free_time_control = true
 
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
@@ -119,6 +146,7 @@ script = ExtResource("3_s4lkw")
 environment = SubResource("Environment_0u41m")
 
 [node name="CSGCombiner" type="CSGCombiner3D" parent="." unique_id=783266183]
+use_collision = true
 
 [node name="CSGWall" parent="CSGCombiner" unique_id=2002669847 instance=ExtResource("6_4hjkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8274536, 0.39042974, -8.789925)
@@ -219,22 +247,103 @@ transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 6.7611294, -
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
 script = ExtResource("11_qplw4")
 
-[node name="UnlockArea" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="1" unique_id=233979303 instance=ExtResource("12_gmjid")]
-transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -1.7137187, 1.3595173, -7.212011)
+[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="1" unique_id=1883383215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3269768, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=1539351836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3551826, 0.17533875, -0.023986816)
+shape = SubResource("BoxShape3D_7c05f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=554894978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3544941, 0.19024658, -0.09484863)
+shape = SubResource("BoxShape3D_0r82h")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=1805008258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004919052, 1.2156067, -0.09484863)
+shape = SubResource("BoxShape3D_5otgx")
+
+[node name="UnlockArea" parent="." unique_id=233979303 instance=ExtResource("12_gmjid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45088243, -0.17686155, -0.24228239)
 grant_abilities_ui = true
 grant_time_ui = true
 grant_level_timer_ui = true
 grant_resume_time = true
 grant_stop_time = true
 grant_dash = true
-grant_shoot = true
+
+[node name="CollisionShape3D" parent="UnlockArea" index="0" unique_id=1742873466]
+shape = SubResource("BoxShape3D_aefbl")
 
 [node name="Button" parent="." unique_id=163315669 instance=ExtResource("12_aefbl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.3628635, -0.43873495, -1.2629765)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.56453, -0.43873495, -1.2629765)
 one_shot = true
 
+[node name="Node3D" type="Node3D" parent="." unique_id=545044944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.640985, 1.7451025, -2.059231)
+script = ExtResource("14_y86sm")
+
+[node name="BillboardSign5" type="Sprite3D" parent="Node3D" unique_id=650656219]
+transform = Transform3D(-4.3711392e-08, 0, -1, 0, 0.9999998, 0, 1.0000001, 0, -4.371139e-08, -0.35453367, -0.046792388, 0)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_5otgx")
+script = ExtResource("17_vfvgi")
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/BillboardSign5" unique_id=610117413]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Node3D/BillboardSign5/SubViewport" unique_id=1634331827]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Node3D/BillboardSign5/SubViewport/ColorRect" unique_id=775013973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_7c05f")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "You can also pause
+time using the F key.
+Might want to dash out of the way"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeStopZone" parent="Node3D" unique_id=150785596 instance=ExtResource("14_gmjid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10906243)
+visible = false
+
+[node name="CollisionShape3D" parent="Node3D/TimeStopZone" index="0" unique_id=1741277066]
+shape = SubResource("BoxShape3D_vfvgi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/TimeStopZone" unique_id=2003079987]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/TimeStopZone/StaticBody3D" unique_id=1977234554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35871363, -1.8842773, -0.07298279)
+shape = SubResource("BoxShape3D_l00eo")
+
+[node name="SpikeSquare" parent="Node3D" unique_id=630083072 instance=ExtResource("16_6135q")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -1.1026359, 1.6743196, -0.084034204)
+
+[node name="Billboards" type="Node" parent="." unique_id=1524756149]
+
 [connection signal="pressed" from="Button" to="doorway_hr_12/doorway_hr_1/metal_door_1" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Node3D" method="_on_button_pressed"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
 [editable path="doorway_hr_12"]
+[editable path="UnlockArea"]
+[editable path="Node3D/TimeStopZone"]
