@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bb0qfdbj7l4un"]
+
+[ext_resource type="Script" uid="uid://chvrwdwpxgqc1" path="res://Assets/GameplayPieces/breakable.gd" id="1_p1lsj"]
+[ext_resource type="PackedScene" uid="uid://d12nav1vgihyr" path="res://Assets/PSXPack2/wooden_crate_hx_5_1.glb" id="2_qpucj"]
+
+[sub_resource type="Curve" id="Curve_qpucj"]
+_data = [Vector2(0.009732366, 0), 0.0, 0.0, 0, 0, Vector2(0.06326034, 1), 0.13505144, 0.13505144, 0, 0, Vector2(0.6593674, 0.6844107), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qpucj"]
+curve = SubResource("Curve_qpucj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqhqm"]
+emission_shape_offset = Vector3(0, 0.5, 0)
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(0, 0, 0)
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.29999998
+scale_curve = SubResource("CurveTexture_qpucj")
+collision_mode = 1
+collision_friction = 0.3
+collision_bounce = 0.68
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cffix"]
+render_priority = 1
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.28, 0.21812, 0.1372, 0.7921569)
+
+[sub_resource type="SphereMesh" id="SphereMesh_n52p5"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_cffix")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n52p5"]
+size = Vector3(1.4043579, 1.4385681, 1.4034668)
+
+[node name="BreakableCrate" type="Node3D" unique_id=1684908171 node_paths=PackedStringArray("particles", "body") groups=["breakables"]]
+script = ExtResource("1_p1lsj")
+particles = NodePath("GPUParticles3D")
+body = NodePath("RigidBody3D")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1188495646]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.96
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_tqhqm")
+draw_pass_1 = SubResource("SphereMesh_n52p5")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1425007049 groups=["breakables"]]
+
+[node name="wooden_crate_hx_5_12" parent="RigidBody3D" unique_id=1367885763 instance=ExtResource("2_qpucj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=775481294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0017273426, 0.7164459, 0.0017334372)
+shape = SubResource("BoxShape3D_n52p5")

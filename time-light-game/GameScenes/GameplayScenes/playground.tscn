@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="2_oc1th"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="3_e68fa"]
+[ext_resource type="PackedScene" uid="uid://bb0qfdbj7l4un" path="res://Assets/GameplayPieces/breakable_crate.tscn" id="3_lees4"]
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="4_fydap"]
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/ProbsShouldntUse/wall_1.tscn" id="5_174kx"]
 [ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ProbsShouldntUse/ramp_slim.tscn" id="6_y42g5"]
@@ -41,6 +42,15 @@ free_time_control = true
 
 [node name="TimeManipulation" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="2" unique_id=1307419024]
 pause_charges = -1
+
+[node name="BreakableCrate" parent="PlayerController/Components/TimeManipulation/TimeUI" parent_id_path=PackedInt32Array(440292127, 147271438) index="2" unique_id=1684908171 instance=ExtResource("3_lees4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.948847, -0.9960177, 24.07956)
+
+[node name="BreakableCrate2" parent="PlayerController/Components/TimeManipulation/TimeUI" parent_id_path=PackedInt32Array(440292127, 147271438) index="3" unique_id=1474991160 instance=ExtResource("3_lees4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.101109, -0.9960177, 24.174423)
+
+[node name="BreakableCrate3" parent="PlayerController/Components/TimeManipulation/TimeUI" parent_id_path=PackedInt32Array(440292127, 147271438) index="4" unique_id=291250280 instance=ExtResource("3_lees4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.771012, 0.449712, 23.957764)
 
 [node name="RampContainer" type="Node" parent="." unique_id=450792952]
 

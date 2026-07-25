@@ -95,7 +95,7 @@ bones/50/position = Vector3(0.6604739, 1.3061002, -0.05074787)
 bones/50/rotation = Quaternion(-0.02143595, 0.04266431, 0.8901127, -0.4532325)
 bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 
-[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="9" unique_id=130594368]
+[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="10" unique_id=130594368]
 light_energy = 0.399
 
 [node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]

@@ -55,7 +55,7 @@ wood=""
 metal=""
 level=""
 tutorial=""
-wall_climbable="Should this be climbable?"
+breakables="Is this object breakable"
 
 [gui]
 
