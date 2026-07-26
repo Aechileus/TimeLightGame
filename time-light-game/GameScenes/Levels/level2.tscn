@@ -1,45 +1,1641 @@
-[gd_scene format=3 uid="uid://dygf4d0tk65j2"]
+[gd_scene format=4 uid="uid://dygf4d0tk65j2"]
 
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/ProbsShouldntUse/wall_1.tscn" id="1_7wtxk"]
+[ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="1_sate7"]
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="2_sate7"]
-[ext_resource type="PackedScene" uid="uid://c14c4sldypskb" path="res://Assets/Props/ball.tscn" id="3_raua4"]
+[ext_resource type="Texture2D" uid="uid://cmcj2scw50ycx" path="res://Resources/Skyboxes/skybox_emx_14.png" id="4_raua4"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_sate7"]
-[ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="5_raua4"]
-[ext_resource type="AudioStream" uid="uid://hslbbxaa8lqe" path="res://Resources/SFX/JohnNoTime.mp3" id="6_by0le"]
+[ext_resource type="Script" uid="uid://fk0ehen66bw3" path="res://Assets/Interactables/target_hit_reveal.gd" id="5_0kgrt"]
+[ext_resource type="Texture2D" uid="uid://ckkcnc5vijn68" path="res://Assets/PSXPack2/doorway_hr_1_wall_hr_2.png" id="5_1wwgg"]
+[ext_resource type="Script" uid="uid://c4r5kupy1emw7" path="res://Assets/GameplayPieces/billboard_sign.gd" id="5_by0le"]
+[ext_resource type="Texture2D" uid="uid://dko7veffm7pjc" path="res://Assets/PSXPack2/doorway_hr_1_concrete_hr_1.png" id="6_0m5jh"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="6_m81tk"]
+[ext_resource type="Texture2D" uid="uid://bh1gbtng17tkk" path="res://Assets/PSXPack2/doorway_hr_1_concrete_hr_3.png" id="7_l47tf"]
+[ext_resource type="PackedScene" uid="uid://b5v2bvan8vyyb" path="res://target.tscn" id="7_r1ige"]
+[ext_resource type="Texture2D" uid="uid://b6mipbvwpnu1c" path="res://Assets/PSXPack2/doorway_hr_1_door_hr_1.png" id="8_pvv2j"]
+[ext_resource type="PackedScene" uid="uid://cy6pt2nb25j3" path="res://Assets/GameplayPieces/fleshwall.tscn" id="8_r5sh6"]
+[ext_resource type="Script" uid="uid://bo2n8aquvtgq" path="res://Assets/Interactables/button_door.gd" id="9_03b2x"]
+[ext_resource type="PackedScene" uid="uid://bp4owgpd7drpt" path="res://Assets/GameplayPieces/clock_pickup.tscn" id="9_r5sh6"]
+[ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="10_agx7n"]
+[ext_resource type="Script" uid="uid://cec2snlg80o5e" path="res://GameScenes/Levels/fleshwallchaser.gd" id="11_yxo03"]
+[ext_resource type="AudioStream" uid="uid://bio76oscajwn3" path="res://Resources/SFX/Fleshwall.mp3" id="12_jg4x7"]
+[ext_resource type="AudioStream" uid="uid://dbht4k7pd56ow" path="res://Resources/SFX/Roar.mp3" id="13_agx7n"]
 
-[node name="Level2" type="Node3D" unique_id=856644861]
+[sub_resource type="ViewportTexture" id="ViewportTexture_r1ige"]
+viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hr6j4"]
+resource_name = "wall_hr_2"
+cull_mode = 2
+albedo_texture = ExtResource("5_1wwgg")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkb7j"]
+resource_name = "concrete_hr_1"
+cull_mode = 2
+albedo_texture = ExtResource("6_0m5jh")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4dtq"]
+resource_name = "concrete_hr_3"
+cull_mode = 2
+albedo_texture = ExtResource("7_l47tf")
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a0imd"]
+_surfaces = [{
+"aabb": AABB(-2, -1.4305215e-08, -0.20000133, 4, 3, 0.40000236),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQABQAAAAQAAAAGAAEABQAEAAcACAAFAAcACAAHAAkACAAKAAUACAALAAoACgALAAwACgAMAA0ABgAKAA0ABgANAA4AAQAGAA4AAQAOAA8A"),
+"name": "wall_hr_2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/58yswAAAAD/nwAA/v8AAP+fAAAAAAAA//8AAAAAAAD/////AAAAAP9fMrMAAAAA/58ys/7/AAAAAP//AAAAAP9fAAAAAAAAAAAAAAAAAAD/XzKz/v8AAP9fAAD+/wAAAAAAAP7/AAAAAP////8AAP/////+/wAA//8AAP7/AAA=")
+}, {
+"aabb": AABB(-0.8, 2.1, -0.2100001, 1.6, 0.20000005, 0.42000008),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "concrete_hr_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}, {
+"aabb": AABB(-2, 3, -0.20000133, 4, 1e-05, 0.40000236),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "concrete_hr_3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n175j"]
+resource_name = "doorway_hr_1_doorway_hr_1"
+_surfaces = [{
+"aabb": AABB(-2, -1.4305215e-08, -0.20000133, 4, 3, 0.40000236),
+"attribute_data": PackedByteArray("/4eqTP+f////h////5+qTNZfzEwAAP//AAAAANZf/v8ooMxM/v8AACig/v/+////1l/MTAAA//8AAAAA1l/+/yigzEz+/wAAKKD+//7/////d////1+qTP93qkz/X///"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAEAAYACAAGAAkACgAIAAkACgAJAAsADAANAA4ADAAPAA0AEAAMAA4AEAAOABEAEgAQABEAEgARABMAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_hr6j4"),
+"name": "wall_hr_2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/58yswAAvb//nwAA/v+DwP+fAAAAAL2//58ys/7/g8D/XzKz/v8AgAAAAAD+/wCAAAD/////AID/XwAA/v8AgP+fMrP+/wCA//////7/AID/nwAA/v8AgP//AAD+/wCA/58yswAA/////wAAAAD///////8AAP///58AAAAA////XzKzAAD//wAA//8AAP///18AAAAA//8AAAAAAAD///9fAAAAAHq//18ys/7/QcD/XzKzAAB6v/9fAAD+/0HACYDr//9///8JgOv//3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAAE4AJAP9/AAATgAkA")
+}, {
+"aabb": AABB(-0.8, 2.1, -0.2100001, 1.6, 0.20000005, 0.42000008),
+"attribute_data": PackedByteArray("xAjKvZEVq9iRFcq9xAir2MQIq9iRFcq9kRWr2MQIyr3ECF32kRX3j5EVXfbECPePqyT3j8oJXfarJF32ygn3j6skXfbKCfePqyT3j8oJXfbECF32kRX3j5EVXfbECPeP"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_kkb7j"),
+"name": "concrete_hr_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//qioAAP//AACqKgAA/////6oqAAAAAAAAqir//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1f//AAD///+/AAD//////7//////////vwAAAAD///+/AAAAAAAAqir//wAA//+qKv//AAAAAKoqAAAAAP//qir/////AABU1QAA/////1TVAAD//wAAVNX///////9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNVU1VTVVNVU1VTVVNVU1aoqqiqqKqoqqiqqKqoqqir/////////////////////VFVVVVRVVFVUVVRVVFVVVVTVqipU1aoqVNWqKlTVqir/v/+//7//v/+//7//v/+/")
+}, {
+"aabb": AABB(-2, 3, -0.20000133, 4, 1e-05, 0.40000236),
+"attribute_data": PackedByteArray("///+/6qquej//7noqqr//w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_j4dtq"),
+"name": "concrete_hr_3",
+"primitive": 3,
+"uv_scale": Vector4(3, 1.1000005, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP7//78AAAAAAAD/v///AAAAAP+/AAAAAP///7/+//9/////f/7//3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a0imd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7421"]
+resource_name = "door_hr_1"
+cull_mode = 2
+albedo_texture = ExtResource("8_pvv2j")
+texture_filter = 2
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ldf68"]
+_surfaces = [{
+"aabb": AABB(-1, -2.1234115e-08, -2.2204393e-15, 1, 2.1000001, 0.050000496),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "door_hr_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD+/wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fcrgv"]
+resource_name = "doorway_hr_1_metal_door_1"
+_surfaces = [{
+"aabb": AABB(-1, -2.1234115e-08, -2.2204393e-15, 1, 2.1000001, 0.050000496),
+"attribute_data": PackedByteArray("kvH//zH+AACS8QAAMf7//wAA//8q7AAAAAAAACrs//8x/v//kvEAADH+AACS8f//Kuz//wAAAAAq7AAAAAD//5Lx8fkx/v9/kvH/fzH+8fmS8YQGMf52gJLxdoAx/oQG"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_f7421"),
+"name": "door_hr_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAP//AAAAAP+//////////7//////AAD/v///AAD+//+///8AAP7/AIAAAP////8AgP///////wCAAAAAAP7/AIAAAAAAAACqKv//AAD+/6oq//8AAAAAqioAAAAA/v+qKv////8AAFTVAAD/////VNUAAP//AABU1f///////1TV/z//f/8//3//P/9//z//f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/3////9/////f////3///6oqVNWqKlTVqipU1aoqVNWqqqqqqqqqqqqqqqqqqqqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ldf68")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lixqr"]
+size = Vector3(1.0024414, 2.0842285, 0.05810547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tokg4"]
+size = Vector3(1.7419052, 2.9630432, 0.47058105)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ve80v"]
+size = Vector3(1.665863, 2.9332275, 0.32885742)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gox48"]
+size = Vector3(4.3846893, 0.8825073, 0.32885742)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_by0le"]
+panorama = ExtResource("4_raua4")
+
+[sub_resource type="Sky" id="Sky_m81tk"]
+sky_material = SubResource("PanoramaSkyMaterial_by0le")
+
+[sub_resource type="Environment" id="Environment_r1ige"]
+background_mode = 2
+sky = SubResource("Sky_m81tk")
+ambient_light_color = Color(0.22745098, 0, 0, 1)
+ambient_light_sky_contribution = 0.48
+volumetric_fog_length = 65.65
+volumetric_fog_detail_spread = 2.7991006
+volumetric_fog_sky_affect = 0.67
+
+[sub_resource type="BoxMesh" id="BoxMesh_r1ige"]
+size = Vector3(8.63623, 0.1, 17.683746)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5sh6"]
+resource_local_to_scene = true
+size = Vector3(8.936231, 0.4, 17.983746)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yxo03"]
+size = Vector3(7.1968994, 0.1, 11.489868)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tt1k"]
+resource_local_to_scene = true
+size = Vector3(7.4968996, 0.4, 11.789868)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0kgrt"]
+size = Vector3(8.704102, 0.1, 26.028152)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxo03"]
+resource_local_to_scene = true
+size = Vector3(9.004102, 0.4, 26.328152)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4tt1k"]
+size = Vector3(8.884766, 0.1, 24.01535)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg4x7"]
+resource_local_to_scene = true
+size = Vector3(9.184766, 0.4, 24.31535)
+
+[sub_resource type="BoxMesh" id="BoxMesh_agx7n"]
+size = Vector3(8.529297, 0.1, 24.10588)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akrfa"]
+resource_local_to_scene = true
+size = Vector3(8.829297, 0.4, 24.40588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_akrfa"]
+size = Vector3(8.820343, 0.1, 11.489868)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_knwdd"]
+resource_local_to_scene = true
+size = Vector3(9.120343, 0.4, 11.789868)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jg4x7"]
+size = Vector3(11.984619, 0.1, 12.781494)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agx7n"]
+resource_local_to_scene = true
+size = Vector3(12.284619, 0.4, 13.081494)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n43bq"]
+resource_local_to_scene = true
+size = Vector3(7.4968996, 0.4, 11.789868)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eypuj"]
+resource_local_to_scene = true
+size = Vector3(7.4968996, 0.4, 11.789868)
+
+[node name="Level2" type="Node3D" unique_id=856644861 groups=["level"]]
+
+[node name="BillBoards" type="Node3D" parent="." unique_id=35572509]
+
+[node name="BillboardSign10" type="Sprite3D" parent="BillBoards" unique_id=1383449405]
+transform = Transform3D(1.0000002, 0, -7.5497894e-08, 0, 0.9999998, 0, 7.549788e-08, 0, 1.0000001, -0.07590771, 2.8825746, -1.2127451)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign10" unique_id=25632650]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign10/SubViewport2" unique_id=1192475360]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign10/SubViewport2/ColorRect" unique_id=346719913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Adjust your time!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign11" type="Sprite3D" parent="BillBoards" unique_id=814068947]
+transform = Transform3D(1.0000002, 0, -7.549789e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 3.8053116e-15, -0.9999998, -4.3711392e-08, -0.07590771, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign11" unique_id=290093577]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign11/SubViewport2" unique_id=765362580]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign11/SubViewport2/ColorRect" unique_id=1277902292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign12" type="Sprite3D" parent="BillBoards" unique_id=1276747457]
+transform = Transform3D(0.42914265, 0.90323657, 7.082388e-09, 7.549787e-08, -4.371138e-08, 1.0000001, 0.903237, -0.42914248, -8.695088e-08, 0.8831931, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign12" unique_id=1335742252]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign12/SubViewport2" unique_id=940644167]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign12/SubViewport2/ColorRect" unique_id=1693877898]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Adjust your time!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign13" type="Sprite3D" parent="BillBoards" unique_id=1515021366]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, 0.8831931, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign13" unique_id=922302597]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign13/SubViewport2" unique_id=1180325428]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign13/SubViewport2/ColorRect" unique_id=2097839759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign14" type="Sprite3D" parent="BillBoards" unique_id=404650218]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, -1.1881545, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign14" unique_id=1969798968]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign14/SubViewport2" unique_id=1635341444]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign14/SubViewport2/ColorRect" unique_id=1442337353]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Adjust your time!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign15" type="Sprite3D" parent="BillBoards" unique_id=144451663]
+transform = Transform3D(-0.65991676, -0.7513388, 1.6980232e-08, 7.549787e-08, -4.3711385e-08, 1.0000001, -0.7513391, 0.6599165, 8.5570356e-08, -1.1881545, 1.594716, 0.51267433)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign15" unique_id=837332203]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign15/SubViewport2" unique_id=1161937798]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign15/SubViewport2/ColorRect" unique_id=303572758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign16" type="Sprite3D" parent="BillBoards" unique_id=1852268461]
+transform = Transform3D(0.71349627, -0.70065916, -8.449422e-08, 7.5497866e-08, -4.3711392e-08, 1.0000001, -0.7006594, -0.71349597, 2.1710369e-08, -0.21642846, 1.594716, 0.9306176)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards/BillboardSign16" unique_id=1399302551]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards/BillboardSign16/SubViewport2" unique_id=96152814]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards/BillboardSign16/SubViewport2/ColorRect" unique_id=2083498369]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Adjust your time!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillBoards2" type="Node3D" parent="." unique_id=740614311]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 4.2888613)
+
+[node name="BillboardSign10" type="Sprite3D" parent="BillBoards2" unique_id=1903791819]
+transform = Transform3D(1.0000002, 0, -7.5497894e-08, 0, 0.9999998, 0, 7.549788e-08, 0, 1.0000001, -0.07590771, 2.8825746, -1.2127451)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign10" unique_id=584313772]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign10/SubViewport2" unique_id=902752360]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign10/SubViewport2/ColorRect" unique_id=469958722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign11" type="Sprite3D" parent="BillBoards2" unique_id=1148898396]
+transform = Transform3D(1.0000002, 0, -7.549789e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 3.8053116e-15, -0.9999998, -4.3711392e-08, -0.07590771, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign11" unique_id=673160519]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign11/SubViewport2" unique_id=524462681]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign11/SubViewport2/ColorRect" unique_id=84644011]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign12" type="Sprite3D" parent="BillBoards2" unique_id=1461094105]
+transform = Transform3D(0.42914265, 0.90323657, 7.082388e-09, 7.549787e-08, -4.371138e-08, 1.0000001, 0.903237, -0.42914248, -8.695088e-08, 0.8831931, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign12" unique_id=1716402359]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign12/SubViewport2" unique_id=2002948441]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign12/SubViewport2/ColorRect" unique_id=362780672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign13" type="Sprite3D" parent="BillBoards2" unique_id=867822648]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, 0.8831931, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign13" unique_id=2110115218]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign13/SubViewport2" unique_id=1873578866]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign13/SubViewport2/ColorRect" unique_id=782163190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign14" type="Sprite3D" parent="BillBoards2" unique_id=43444592]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, -1.1881545, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign14" unique_id=1529624159]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign14/SubViewport2" unique_id=198571833]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign14/SubViewport2/ColorRect" unique_id=1700155667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign15" type="Sprite3D" parent="BillBoards2" unique_id=651127896]
+transform = Transform3D(-0.65991676, -0.7513388, 1.6980232e-08, 7.549787e-08, -4.3711385e-08, 1.0000001, -0.7513391, 0.6599165, 8.5570356e-08, -1.1881545, 1.594716, 0.51267433)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign15" unique_id=661192272]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign15/SubViewport2" unique_id=303115509]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign15/SubViewport2/ColorRect" unique_id=1067875987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign16" type="Sprite3D" parent="BillBoards2" unique_id=1116973005]
+transform = Transform3D(0.71349627, -0.70065916, -8.449422e-08, 7.5497866e-08, -4.3711392e-08, 1.0000001, -0.7006594, -0.71349597, 2.1710369e-08, -0.21642846, 1.594716, 0.9306176)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards2/BillboardSign16" unique_id=1038354124]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards2/BillboardSign16/SubViewport2" unique_id=1579685657]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards2/BillboardSign16/SubViewport2/ColorRect" unique_id=1869035076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillBoards3" type="Node3D" parent="." unique_id=2020366790]
+transform = Transform3D(-0.7843474, 0, -0.62032175, 0, 1, 0, 0.62032175, 0, -0.7843474, 3.4783912, 0, 3.0720785)
+
+[node name="BillboardSign10" type="Sprite3D" parent="BillBoards3" unique_id=1875935941]
+transform = Transform3D(1.0000002, 0, -7.5497894e-08, 0, 0.9999998, 0, 7.549788e-08, 0, 1.0000001, -0.07590771, 2.8825746, -1.2127451)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign10" unique_id=110137529]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign10/SubViewport2" unique_id=1226492408]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign10/SubViewport2/ColorRect" unique_id=89674467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign11" type="Sprite3D" parent="BillBoards3" unique_id=1300230265]
+transform = Transform3D(1.0000002, 0, -7.549789e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 3.8053116e-15, -0.9999998, -4.3711392e-08, -0.07590771, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign11" unique_id=2112979643]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign11/SubViewport2" unique_id=894992762]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign11/SubViewport2/ColorRect" unique_id=1404115605]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign12" type="Sprite3D" parent="BillBoards3" unique_id=882361544]
+transform = Transform3D(0.42914265, 0.90323657, 7.082388e-09, 7.549787e-08, -4.371138e-08, 1.0000001, 0.903237, -0.42914248, -8.695088e-08, 0.8831931, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign12" unique_id=706543036]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign12/SubViewport2" unique_id=617339204]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign12/SubViewport2/ColorRect" unique_id=2007903012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Adjust your time!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign13" type="Sprite3D" parent="BillBoards3" unique_id=1871681662]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, 0.8831931, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign13" unique_id=723793242]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign13/SubViewport2" unique_id=734426234]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign13/SubViewport2/ColorRect" unique_id=2135296491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign14" type="Sprite3D" parent="BillBoards3" unique_id=1937549191]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, -1.1881545, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign14" unique_id=1540157993]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign14/SubViewport2" unique_id=1600398976]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign14/SubViewport2/ColorRect" unique_id=1752917310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign15" type="Sprite3D" parent="BillBoards3" unique_id=100266601]
+transform = Transform3D(-0.65991676, -0.7513388, 1.6980232e-08, 7.549787e-08, -4.3711385e-08, 1.0000001, -0.7513391, 0.6599165, 8.5570356e-08, -1.1881545, 1.594716, 0.51267433)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign15" unique_id=515002731]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign15/SubViewport2" unique_id=713597300]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign15/SubViewport2/ColorRect" unique_id=840500608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign16" type="Sprite3D" parent="BillBoards3" unique_id=593724347]
+transform = Transform3D(0.71349627, -0.70065916, -8.449422e-08, 7.5497866e-08, -4.3711392e-08, 1.0000001, -0.7006594, -0.71349597, 2.1710369e-08, -0.21642846, 1.594716, 0.9306176)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards3/BillboardSign16" unique_id=1749679417]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards3/BillboardSign16/SubViewport2" unique_id=441172446]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards3/BillboardSign16/SubViewport2/ColorRect" unique_id=268292897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillBoards4" type="Node3D" parent="." unique_id=649290331]
+transform = Transform3D(-0.29980147, 0, -0.9540016, 0, 1, 0, 0.9540016, 0, -0.29980147, 4.312668, 0, -1.2281365)
+
+[node name="BillboardSign10" type="Sprite3D" parent="BillBoards4" unique_id=1684147223]
+transform = Transform3D(1.0000002, 0, -7.5497894e-08, 0, 0.9999998, 0, 7.549788e-08, 0, 1.0000001, -0.07590771, 2.8825746, -1.2127451)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign10" unique_id=1037967346]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign10/SubViewport2" unique_id=1805395781]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign10/SubViewport2/ColorRect" unique_id=680225745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign11" type="Sprite3D" parent="BillBoards4" unique_id=1495307141]
+transform = Transform3D(1.0000002, 0, -7.549789e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 3.8053116e-15, -0.9999998, -4.3711392e-08, -0.07590771, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign11" unique_id=1553631929]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign11/SubViewport2" unique_id=1149318956]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign11/SubViewport2/ColorRect" unique_id=1030086659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign12" type="Sprite3D" parent="BillBoards4" unique_id=1818459780]
+transform = Transform3D(0.42914265, 0.90323657, 7.082388e-09, 7.549787e-08, -4.371138e-08, 1.0000001, 0.903237, -0.42914248, -8.695088e-08, 0.8831931, 1.594716, -1.6149355)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign12" unique_id=1154851211]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign12/SubViewport2" unique_id=885217127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign12/SubViewport2/ColorRect" unique_id=1547110889]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign13" type="Sprite3D" parent="BillBoards4" unique_id=1818401875]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, 0.8831931, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign13" unique_id=101114610]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign13/SubViewport2" unique_id=1862737617]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign13/SubViewport2/ColorRect" unique_id=30502602]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign14" type="Sprite3D" parent="BillBoards4" unique_id=1379700302]
+transform = Transform3D(-0.89261645, 0.45081732, 8.709648e-08, 7.549787e-08, -4.371138e-08, 1.0000001, 0.4508175, 0.89261603, 4.9817457e-09, -1.1881545, 1.594716, -0.41294074)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign14" unique_id=855346988]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign14/SubViewport2" unique_id=933235959]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign14/SubViewport2/ColorRect" unique_id=1614938269]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign15" type="Sprite3D" parent="BillBoards4" unique_id=1225610428]
+transform = Transform3D(-0.65991676, -0.7513388, 1.6980232e-08, 7.549787e-08, -4.3711385e-08, 1.0000001, -0.7513391, 0.6599165, 8.5570356e-08, -1.1881545, 1.594716, 0.51267433)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign15" unique_id=408381884]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign15/SubViewport2" unique_id=873185430]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign15/SubViewport2/ColorRect" unique_id=454575877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BillboardSign16" type="Sprite3D" parent="BillBoards4" unique_id=13372321]
+transform = Transform3D(0.71349627, -0.70065916, -8.449422e-08, 7.5497866e-08, -4.3711392e-08, 1.0000001, -0.7006594, -0.71349597, 2.1710369e-08, -0.21642846, 1.594716, 0.9306176)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_r1ige")
+script = ExtResource("5_by0le")
+
+[node name="SubViewport2" type="SubViewport" parent="BillBoards4/BillboardSign16" unique_id=428426920]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="BillBoards4/BillboardSign16/SubViewport2" unique_id=1333647215]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="BillBoards4/BillboardSign16/SubViewport2/ColorRect" unique_id=1209572792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m81tk")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "Look Up!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelTimer" parent="." unique_id=390761727 instance=ExtResource("1_sate7")]
+level_time = 30.0
 
 [node name="walls" type="Node3D" parent="." unique_id=1477592370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5578375, 0, 0)
 
-[node name="wall_hr_15" parent="walls" unique_id=1710775366 instance=ExtResource("1_7wtxk")]
-transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 1.6092701, 1.7826322)
+[node name="wall_hr_16" parent="walls" unique_id=1710775366 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -15.387693, 19.473408, 7.6535044)
 
-[node name="wall_hr_13" parent="walls" unique_id=1563012468 instance=ExtResource("1_7wtxk")]
-transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.7984548, 1.6131401, -2.2175486)
+[node name="wall_hr_18" parent="walls" unique_id=1728700755 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -15.387693, 22.345, 1.4194155)
 
-[node name="wall_hr_17" parent="walls" unique_id=247419616 instance=ExtResource("1_7wtxk")]
-transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 4.60927, -2.2173676)
+[node name="wall_hr_17" parent="walls" unique_id=1978569838 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -15.387693, 19.426777, -7.165244)
 
-[node name="wall_hr_20" parent="walls" unique_id=1821038232 instance=ExtResource("1_7wtxk")]
-transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -2.203095, 1.5310013, -2.2173676)
+[node name="doorway_hr_3" type="MeshInstance3D" parent="walls" unique_id=491907579]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -15.592317, 19.366203, 0.14404798)
+mesh = SubResource("ArrayMesh_n175j")
 
-[node name="wall_hr_21" parent="walls" unique_id=101841875 instance=ExtResource("1_7wtxk")]
-transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, 2.092444, 1.5310013, -2.2173676)
+[node name="metal_door_1" type="MeshInstance3D" parent="walls/doorway_hr_3" unique_id=428538472 node_paths=PackedStringArray("buttons")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
+mesh = SubResource("ArrayMesh_fcrgv")
+script = ExtResource("9_03b2x")
+buttons = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+open_time = 0.3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls/doorway_hr_3/metal_door_1" unique_id=1740711923]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/doorway_hr_3/metal_door_1/StaticBody3D" unique_id=1022886668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5109864, 1.0533447, 0.025146484)
+shape = SubResource("BoxShape3D_lixqr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walls/doorway_hr_3" unique_id=996991088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3269768, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/doorway_hr_3/StaticBody3D" unique_id=988115009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3551826, 0.17533875, -0.023986816)
+shape = SubResource("BoxShape3D_tokg4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="walls/doorway_hr_3/StaticBody3D" unique_id=1344627382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3544941, 0.19024658, -0.09484863)
+shape = SubResource("BoxShape3D_ve80v")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="walls/doorway_hr_3/StaticBody3D" unique_id=280919785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004919052, 1.2156067, -0.09484863)
+shape = SubResource("BoxShape3D_gox48")
 
 [node name="FloorsandCeilings" type="Node3D" parent="." unique_id=1263265896]
 
 [node name="FloorCeilingTiled2" parent="FloorsandCeilings" unique_id=2090689099 instance=ExtResource("2_sate7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015747547, 1.5459077, -0.27836752)
 
-[node name="FloorCeilingTiled5" parent="FloorsandCeilings" unique_id=275751851 instance=ExtResource("2_sate7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.580515, 0)
+[node name="FloorCeilingTiled6" parent="FloorsandCeilings" unique_id=1830745880 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9842525, 1.5459077, -0.27836752)
 
-[node name="Ball" parent="." unique_id=1396288196 instance=ExtResource("3_raua4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9545519, 1.0656488)
+[node name="FloorCeilingTiled4" parent="FloorsandCeilings" unique_id=2005161649 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015747547, 1.5459077, 3.7216325)
+
+[node name="FloorCeilingTiled5" parent="FloorsandCeilings" unique_id=2046747242 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9842525, 1.5459077, 3.7216325)
+
+[node name="FloorCeilingTiled3" parent="FloorsandCeilings" unique_id=140187436 node_paths=PackedStringArray("target", "toggled_node") instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0015202, 11.672182, -2.14076)
+visible = false
+script = ExtResource("5_0kgrt")
+target = NodePath("../../Target")
+toggled_node = NodePath(".")
+
+[node name="FloorCeilingTiled7" parent="FloorsandCeilings" unique_id=1622780872 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8272543, 19.347021, -0.58148265)
+script = ExtResource("5_0kgrt")
+
+[node name="FloorCeilingTiled8" parent="FloorsandCeilings" unique_id=320799840 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1727457, 19.347021, -0.58148265)
+
+[node name="FloorCeilingTiled9" parent="FloorsandCeilings" unique_id=1650500184 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1727457, 19.347021, 3.4185174)
+
+[node name="FloorCeilingTiled11" parent="FloorsandCeilings" unique_id=1253658920 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1727457, 19.347021, 3.4185174)
+
+[node name="FloorCeilingTiled10" parent="FloorsandCeilings" unique_id=1009240330 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1727457, 19.347021, 7.418517)
 
 [node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_sate7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62621117, 1.5555229, -0.5366185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7111624, 1.5634512, -1.378634)
 
-[node name="Button" parent="." unique_id=163315669 instance=ExtResource("5_raua4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11899173, 2.9652076, -2.032762)
-press_sfx = ExtResource("6_by0le")
+[node name="TimeManipulation" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="2" unique_id=1307419024]
+pause_charges = 10
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1877311117]
+environment = SubResource("Environment_r1ige")
+
+[node name="Target" parent="." unique_id=544498001 instance=ExtResource("7_r1ige")]
+transform = Transform3D(4.371139e-08, 3.821371e-15, 1, 8.742278e-08, -1, 0, 1, 8.742278e-08, -4.371139e-08, 2.104516, 11.168115, -1.1800466)
+
+[node name="Target2" parent="." unique_id=1225639018 instance=ExtResource("7_r1ige")]
+transform = Transform3D(4.371139e-08, 3.821371e-15, 1, 0.8606958, -0.5091197, -3.7622204e-08, 0.5091197, 0.8606958, -2.2254332e-08, 4.8427157, 23.358, 1.4158635)
+
+[node name="FleshWalls" type="Node3D" parent="." unique_id=1769204893]
+
+[node name="Fleshwall" parent="FleshWalls" unique_id=13372753 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, -2.0102239, 5.3075633, -0.14145863)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6394044, 0, -4.852616)
+mesh = SubResource("BoxMesh_r1ige")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall/StaticBody3D" parent_id_path=PackedInt32Array(13372753, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6394044, 0, -4.852616)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall/KillArea" parent_id_path=PackedInt32Array(13372753, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6394044, 0, -4.852616)
+shape = SubResource("BoxShape3D_r5sh6")
+
+[node name="Fleshwall5" parent="FleshWalls" unique_id=641037180 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -2.0102239, 11.3849945, 1.7055364)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall5" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -2.4122648, 0, -2.4014893)
+mesh = SubResource("BoxMesh_yxo03")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall5/StaticBody3D" parent_id_path=PackedInt32Array(641037180, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.4014893)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall5/KillArea" parent_id_path=PackedInt32Array(641037180, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.4014893)
+shape = SubResource("BoxShape3D_4tt1k")
+
+[node name="Fleshwall2" parent="FleshWalls" unique_id=653401087 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 5.7600346, 5.3075633, 1.6316739)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall2" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, -7.0693746)
+mesh = SubResource("BoxMesh_0kgrt")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall2/StaticBody3D" parent_id_path=PackedInt32Array(653401087, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, -7.0693746)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall2/KillArea" parent_id_path=PackedInt32Array(653401087, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, -7.0693746)
+shape = SubResource("BoxShape3D_yxo03")
+
+[node name="Fleshwall3" parent="FleshWalls" unique_id=479822587 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(-1, -8.742278e-08, -4.371139e-08, 4.371139e-08, 1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 0.09499282, 5.3075633, 5.743783)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall3" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 1.6703743e-22, 0, 1, 0, 1.6703743e-22, 0, 1, -1.7636724, 0, -8.018417)
+mesh = SubResource("BoxMesh_4tt1k")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall3/StaticBody3D" parent_id_path=PackedInt32Array(479822587, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7636724, 0, -8.018417)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall3/KillArea" parent_id_path=PackedInt32Array(479822587, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7636724, 0, -8.018417)
+shape = SubResource("BoxShape3D_jg4x7")
+
+[node name="Fleshwall4" parent="FleshWalls" unique_id=707411912 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(-1, -8.742278e-08, -4.371139e-08, 4.371139e-08, 1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 0.09499282, 5.3075633, -2.289685)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall4" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 1.6703743e-22, 0, 1, 0, 1.6703743e-22, 0, 1, -1.5859377, 0, -8.063683)
+mesh = SubResource("BoxMesh_agx7n")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall4/StaticBody3D" parent_id_path=PackedInt32Array(707411912, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5859377, 0, -8.063683)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall4/KillArea" parent_id_path=PackedInt32Array(707411912, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5859377, 0, -8.063683)
+shape = SubResource("BoxShape3D_akrfa")
+
+[node name="Fleshwall8" parent="FleshWalls" unique_id=1801237848 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -1.2796326, 25.07326, -0.95995736)
+
+[node name="MeshInstance3D" parent="FleshWalls/Fleshwall8" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -2.956682, 0, -2.4014893)
+mesh = SubResource("BoxMesh_akrfa")
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall8/StaticBody3D" parent_id_path=PackedInt32Array(1801237848, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.956682, 0, -2.4014893)
+
+[node name="CollisionShape3D" parent="FleshWalls/Fleshwall8/KillArea" parent_id_path=PackedInt32Array(1801237848, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.956682, 0, -2.4014893)
+shape = SubResource("BoxShape3D_knwdd")
+
+[node name="ClockPickup" parent="." unique_id=819259799 instance=ExtResource("9_r5sh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0074017, 12.276343, -1.2186545)
+
+[node name="ClockPickup2" parent="." unique_id=354969751 instance=ExtResource("9_r5sh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4866805, 19.251152, -1.2186545)
+bonus_time = 5.0
+
+[node name="ClockPickup3" parent="." unique_id=2138802884 instance=ExtResource("9_r5sh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8835387, 22.190767, 4.148146)
+bonus_time = 5.0
+
+[node name="Lights" type="Node3D" parent="." unique_id=431793684]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=670488818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3235344, 2.231757, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=134157670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3235344, 6.4398413, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1693887067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3235344, 11.242609, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=1276431088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 2.231757, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=1738712150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 6.4398413, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" unique_id=1242027809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 11.242609, 5.176253)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" unique_id=71603330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 2.231757, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" unique_id=2130635383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 6.4398413, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" unique_id=663002697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.613934, 11.242609, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights" unique_id=180443291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1651378, 2.231757, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights" unique_id=1686562201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1651378, 6.4398413, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lights" unique_id=1059904047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1651378, 11.242609, -0.94780207)
+light_color = Color(1, 0.011764706, 0.101960786, 1)
+omni_range = 3.68
+
+[node name="FlashwallChaser" type="Node3D" parent="." unique_id=384364888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12711143, 0)
+script = ExtResource("11_yxo03")
+speed = 3.0
+axis = 1
+
+[node name="Fleshwall" parent="FlashwallChaser" unique_id=589773393 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -2.0102239, 13.179628, 1.3929543)
+
+[node name="MeshInstance3D" parent="FlashwallChaser/Fleshwall" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -0.73807096, 15.056343, -2.40149)
+mesh = SubResource("BoxMesh_jg4x7")
+
+[node name="CollisionShape3D" parent="FlashwallChaser/Fleshwall/StaticBody3D" parent_id_path=PackedInt32Array(589773393, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73807096, 15.056343, -2.40149)
+
+[node name="CollisionShape3D" parent="FlashwallChaser/Fleshwall/KillArea" parent_id_path=PackedInt32Array(589773393, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73807096, 15.056343, -2.40149)
+shape = SubResource("BoxShape3D_agx7n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FlashwallChaser/Fleshwall" unique_id=69332929]
+stream = ExtResource("12_jg4x7")
+max_db = -6.0
+autoplay = true
+max_distance = 20.0
+
+[node name="roar" type="AudioStreamPlayer3D" parent="FlashwallChaser/Fleshwall" unique_id=1126322432]
+stream = ExtResource("13_agx7n")
+max_db = -6.0
+max_distance = 100.0
+
+[node name="fleshwallstoremove" type="Node3D" parent="." unique_id=1610415096 node_paths=PackedStringArray("target", "toggled_node")]
+script = ExtResource("5_0kgrt")
+target = NodePath("../Target2")
+toggled_node = NodePath(".")
+
+[node name="Fleshwall6" parent="fleshwallstoremove" unique_id=1703972401 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -0.2585178, 18.966913, -1.993773)
+
+[node name="MeshInstance3D" parent="fleshwallstoremove/Fleshwall6" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -0.9520607, 0, -2.4014907)
+mesh = SubResource("BoxMesh_yxo03")
+
+[node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall6/StaticBody3D" parent_id_path=PackedInt32Array(1703972401, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9520607, 0, -2.4014907)
+
+[node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall6/KillArea" parent_id_path=PackedInt32Array(1703972401, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9520607, 0, -2.4014907)
+shape = SubResource("BoxShape3D_n43bq")
+
+[node name="TimeStopZone" parent="fleshwallstoremove/Fleshwall6" unique_id=150785596 instance=ExtResource("10_agx7n")]
+transform = Transform3D(4.3711392e-08, 4.3711385e-08, -1, -4.3711385e-08, -1, -4.371139e-08, -1, 4.371139e-08, -4.371139e-08, -7.13915, 6.7511415, -5.1423845)
+
+[node name="TimeStopZone3" parent="fleshwallstoremove/Fleshwall6" unique_id=1405950036 instance=ExtResource("10_agx7n")]
+transform = Transform3D(4.3711392e-08, 4.3711385e-08, -1, -4.3711385e-08, -1, -4.371139e-08, -1, 4.371139e-08, -4.371139e-08, -7.1391497, -1.341404, -5.1423836)
+
+[node name="TimeStopZone2" parent="fleshwallstoremove/Fleshwall6" unique_id=180228417 instance=ExtResource("10_agx7n")]
+transform = Transform3D(4.3711392e-08, 4.3711385e-08, -1, -4.3711385e-08, -1, -4.371139e-08, -1, 4.371139e-08, -4.371139e-08, -7.1391497, 1.6035118, -5.142384)
+
+[node name="Fleshwall7" parent="fleshwallstoremove" unique_id=1100060420 instance=ExtResource("8_r5sh6")]
+transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -4.772675, 18.966913, 1.2657139)
+
+[node name="MeshInstance3D" parent="fleshwallstoremove/Fleshwall7" index="0" unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -2.4122648, 0, -1.7556772)
+mesh = SubResource("BoxMesh_yxo03")
+
+[node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall7/StaticBody3D" parent_id_path=PackedInt32Array(1100060420, 986591082) index="0" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -1.7556772)
+
+[node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall7/KillArea" parent_id_path=PackedInt32Array(1100060420, 771003561) index="0" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -1.7556772)
+shape = SubResource("BoxShape3D_eypuj")
+
+[connection signal="hit" from="Target" to="FlashwallChaser" method="_on_target_hit"]
+[connection signal="hit" from="Target2" to="FlashwallChaser" method="_on_target_hit"]
+
+[editable path="PlayerController"]
+[editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
+[editable path="FleshWalls/Fleshwall"]
+[editable path="FleshWalls/Fleshwall5"]
+[editable path="FleshWalls/Fleshwall2"]
+[editable path="FleshWalls/Fleshwall3"]
+[editable path="FleshWalls/Fleshwall4"]
+[editable path="FleshWalls/Fleshwall8"]
+[editable path="FlashwallChaser/Fleshwall"]
+[editable path="fleshwallstoremove/Fleshwall6"]
+[editable path="fleshwallstoremove/Fleshwall7"]

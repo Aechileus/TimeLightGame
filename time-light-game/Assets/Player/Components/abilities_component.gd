@@ -270,7 +270,7 @@ func _update_ui() -> void:
 	for i in _slot_boxes.size():
 		var box := _slot_boxes[i]
 		var ability := _abilities[i]
-		box.visible = ability == null or _is_ability_unlocked(ability)
+		box.visible = ability != null and _is_ability_unlocked(ability)
 		if not box.visible:
 			continue
 		var icon: TextureRect = box.get_node("Icon")
