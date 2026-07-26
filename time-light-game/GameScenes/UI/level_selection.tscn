@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="5_pb481"]
 [ext_resource type="PackedScene" uid="uid://cs8lxvcdxl7px" path="res://GameScenes/Levels/Tutorial3.tscn" id="6_h8v04"]
 [ext_resource type="PackedScene" uid="uid://ckcdl10n03g6d" path="res://GameScenes/Levels/level_unused.tscn" id="9_jtfi2"]
+[ext_resource type="PackedScene" uid="uid://dygf4d0tk65j2" path="res://GameScenes/Levels/level2.tscn" id="9_m17i5"]
 
 [node name="LevelSelection" type="Control" unique_id=528120181]
 layout_mode = 3
@@ -122,7 +123,7 @@ level_scene = ExtResource("5_mt1uy")
 [node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1865042256 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "II"
-level_scene = ExtResource("9_jtfi2")
+level_scene = ExtResource("9_m17i5")
 
 [node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=257658812 instance=ExtResource("3_gkwew")]
 layout_mode = 2

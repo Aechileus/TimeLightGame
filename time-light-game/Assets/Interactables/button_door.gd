@@ -38,3 +38,7 @@ func _open() -> void:
 	var tween = create_tween()
 	var target_rotation_y = deg_to_rad(open_angle)
 	tween.tween_property(self, "rotation:y", target_rotation_y, open_time)
+
+
+func _on_target_2_hit():
+	_open()
