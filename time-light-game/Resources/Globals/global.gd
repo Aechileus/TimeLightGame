@@ -90,8 +90,8 @@ const _ONE_BEEP := preload("res://Resources/SFX/PlaceholderSFX/One.wav")
 const _TWO_BEEP := preload("res://Resources/SFX/PlaceholderSFX/Two.wav")
 const _THREE_BEEP := preload("res://Resources/SFX/PlaceholderSFX/Three.wav")
 const _THREE_ALT_BEEP := preload("res://Resources/SFX/PlaceholderSFX/ThreeAlt.wav")
-const _TIMESTOPSTART := preload("res://Resources/SFX/PlaceholderSFX/timestopstart.wav")
-const _TIMESTOPSTARTALT : AudioStream = preload("res://Resources/SFX/PlaceholderSFX/timestopstartalt.wav")
+const _TIMESTOPSTART := preload("res://Resources/SFX/PauseEffect.mp3")
+const _TIMESTOPSTARTALT : AudioStream = preload("res://Resources/SFX/PauseEffect2.mp3")
 
 
 var _beep_player: AudioStreamPlayer

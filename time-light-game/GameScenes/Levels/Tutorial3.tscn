@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cs8lxvcdxl7px"]
 
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="1_yyxq6"]
-[ext_resource type="AudioStream" uid="uid://vkeqnlmryxy6" path="res://Resources/Music/test4.mp3" id="2_twjlp"]
-[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="3_s4lkw"]
 [ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="6_4hjkk"]
 [ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_floor.tscn" id="7_rq76t"]
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="8_nhyk8"]
@@ -14,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="14_gmjid"]
 [ext_resource type="Script" uid="uid://dwv5vq7tjhldt" path="res://Assets/Interactables/teachingtimestop.gd" id="14_y86sm"]
 [ext_resource type="PackedScene" uid="uid://skxvfc7a54hv" path="res://Assets/GameplayPieces/spike_square.tscn" id="16_6135q"]
+[ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="17_6135q"]
 [ext_resource type="Script" uid="uid://c4r5kupy1emw7" path="res://Assets/GameplayPieces/billboard_sign.gd" id="17_vfvgi"]
 [ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="18_7c05f"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="18_o8khr"]
@@ -132,15 +131,6 @@ bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 
 [node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="10" unique_id=130594368]
 light_energy = 0.399
-
-[node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]
-transform = Transform3D(0.0025749928, 0, -0.99999654, 0, 1, 0, 0.99999654, 0, 0.0025749928, 0, 0, 0)
-stream = ExtResource("2_twjlp")
-attenuation_model = 3
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
-script = ExtResource("3_s4lkw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1444573399]
 environment = SubResource("Environment_0u41m")
@@ -324,6 +314,45 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BillboardSign6" type="Sprite3D" parent="Node3D" unique_id=1019031174]
+transform = Transform3D(1.3113417e-07, 0, 1, 0, 0.9999998, 0, -1.0000001, 0, 1.3113416e-07, -2.257882, -0.046792388, 0)
+double_sided = false
+render_priority = 4
+texture = SubResource("ViewportTexture_5otgx")
+script = ExtResource("17_vfvgi")
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/BillboardSign6" unique_id=1775267730]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(400, 321)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Node3D/BillboardSign6/SubViewport" unique_id=536891133]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0)
+
+[node name="Label" type="RichTextLabel" parent="Node3D/BillboardSign6/SubViewport/ColorRect" unique_id=615419377]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_7c05f")
+theme_type_variation = &"WorldLabel"
+theme_override_font_sizes/normal_font_size = 16
+text = "You can also pause
+time using the F key.
+Might want to dash out of the way"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TimeStopZone" parent="Node3D" unique_id=150785596 instance=ExtResource("14_gmjid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10906243)
 visible = false
@@ -341,6 +370,8 @@ shape = SubResource("BoxShape3D_l00eo")
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, -1.1026359, 1.6743196, -0.084034204)
 
 [node name="Billboards" type="Node" parent="." unique_id=1524756149]
+
+[node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("17_6135q")]
 
 [connection signal="pressed" from="Button" to="doorway_hr_12/doorway_hr_1/metal_door_1" method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="Node3D" method="_on_button_pressed"]

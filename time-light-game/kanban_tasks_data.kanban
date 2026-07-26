@@ -43,7 +43,8 @@
 			"title": "Doing - Aech",
 			"tasks": [
 				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"e1653b3c-4933-4916-ae85-1d2184863784"
+				"e1653b3c-4933-4916-ae85-1d2184863784",
+				"c77181e6-c372-4b8b-a616-a06b20798749"
 			]
 		},
 		{
@@ -501,6 +502,13 @@
 			"title": "Redo abilities UI",
 			"description": "",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"steps": []
+		},
+		{
+			"uuid": "c77181e6-c372-4b8b-a616-a06b20798749",
+			"title": "Music Implementation",
+			"description": "inside level_music is a interactive audio player, it will need to start with playing LevelIntro, and once LevelIntro is done transition directly to LevelMain and loop.  If at any point in time the world is paused, it should transition to one of the three LevelMainPauseX.mp3s at random.  Once it is done if it was still in level intro it should resume level intro where it was at, or it should just transition at the same playback time it is at over to LevelMain again.",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}
 	],
