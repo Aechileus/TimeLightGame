@@ -38,7 +38,7 @@ func _show_level_complete() -> void:
 
 	var screen := level_complete_scene.instantiate()
 	screen.next_level = next_level
-	screen.time_left = level_timer._time_left
+	screen.time_left = level_timer.time_left
 	layer.add_child(screen)
 
 	# freeze the world, and disable the player root since it runs at process always

@@ -195,6 +195,7 @@ func _ready() -> void:
 	_overlay_was_visible = overlay_mesh.visible
 	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
 	SignalBus.time_stop_winding_up.connect(_on_time_stop_winding_up)
+	SignalBus.out_of_time.connect(die)
 
 	wall_movement.setup(character_body)
 	footsteps.setup(character_body, footstep_checker, footstep_audio)
@@ -295,7 +296,8 @@ func _update_guard_animation() -> void:
 
 
 # The guard draw finishing forward means we settle onto the held pose. The reverse
-# sheath also fires this but guarding is already off by then so it gets ignored.
+# sheath also fires this time * bob_speed) * bob_height
+	#rotate_y(spin_speed * delta)but guarding is already off by then so it gets ignored.
 func _on_arms_animation_finished(anim_name: StringName) -> void:
 	if anim_name == guard_draw_animation and _guarding:
 		if arms_animation_player.has_animation(guard_idle_animation):
@@ -677,7 +679,7 @@ func take_damage(amount) -> void:
 	_flash_hit()
 	_play_hurt_sfx()
 	if _health <= 0:
-		_die()
+		die()
 
 
 func _play_hurt_sfx() -> void:
@@ -688,7 +690,7 @@ func _play_hurt_sfx() -> void:
 	_hurt_audio.play()
 
 
-func _die() -> void:
+func die() -> void:
 	if _dead:
 		return
 	_dead = true

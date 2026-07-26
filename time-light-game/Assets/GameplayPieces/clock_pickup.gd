@@ -30,8 +30,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	time += delta
 	# bob around the placed height, spin keeps ticking on top of it
-	#position.y = _base_y + sin(_time * bob_speed) * bob_height
-	#rotate_y(spin_speed * delta)
+	position.y = base_y + sin(time * bob_speed) * bob_height
+	rotate_y(spin_speed * delta)
 	minutes_hand.rotate_z(2 * PI * hand_spin_speed * delta)
 	hours_hand.rotate_z(-2 * PI * hand_spin_speed/3.0 * delta)
 
@@ -40,3 +40,4 @@ func on_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("player"):
 		return
 	SignalBus.change_level_time.emit(bonus_time)
+	queue_free()

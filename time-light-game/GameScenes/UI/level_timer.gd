@@ -46,3 +46,9 @@ func update_label() -> void:
 	var secs: int = floori(time_left)
 	var milis: int = floori((time_left - secs) * 1000)
 	label.text = String.num(secs, 0) + ":" + String.num(milis, 0).pad_zeros(3)
+	
+	if time_left <= 15.0:
+		var colour_lerp = inverse_lerp(0.0, 15.0, time_left)
+		label.add_theme_color_override("default_color", Color.from_rgba8(255, 255 * colour_lerp, 355 * colour_lerp, 255))
+	else:
+		label.remove_theme_color_override("default_color")
