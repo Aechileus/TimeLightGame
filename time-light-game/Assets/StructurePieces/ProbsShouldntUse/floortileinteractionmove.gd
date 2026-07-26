@@ -5,7 +5,7 @@ extends Node3D
 @onready var press_sfx_alt = get_node_or_null("../Button3/PressSFX")
 
 @export var animation_length: float = 1.0
-@export var target_offset: Vector3 
+@export var target_offset: Vector3
 
 func _ready():
 	
@@ -34,6 +34,3 @@ func _on_button_3_pressed():
 		await press_sfx_alt.finished
 	var tween = create_tween()
 	tween.tween_property(floor, "position", target_position, animation_length)
-
-
-

@@ -154,7 +154,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999917, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 0.99999917, -17.238106, 24.894688, -12.748523)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -1096,6 +1096,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010287881, 1.9189781, -0.21
 [node name="FloorCeilingTiled" parent="." unique_id=2090689099 instance=ExtResource("6_8y5v2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011427641, -2.018527, -0.023450375)
 script = ExtResource("7_0ct3m")
+target_offset = Vector3(13.435, 0, 0)
 
 [node name="Button" parent="." unique_id=163315669 instance=ExtResource("7_s61d0")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.7223191, -0.9164292, 0.6501956)
