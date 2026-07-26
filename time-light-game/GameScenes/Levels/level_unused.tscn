@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://ckcdl10n03g6d"]
 
 [ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/ProbsShouldntUse/wall_1.tscn" id="1_3xqgk"]
+[ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="1_4fk0q"]
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="2_4br1n"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="2_unbae"]
 [ext_resource type="PackedScene" uid="uid://c14c4sldypskb" path="res://Assets/Props/ball.tscn" id="3_cyca4"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_idmgp"]
 [ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="5_4fk0q"]
 [ext_resource type="AudioStream" uid="uid://hslbbxaa8lqe" path="res://Resources/SFX/JohnNoTime.mp3" id="6_unbae"]
 [ext_resource type="Script" uid="uid://dsxkkmq6xgfbs" path="res://GameScenes/Levels/levelmute.gd" id="7_cyca4"]
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="8_idmgp"]
+[ext_resource type="Script" uid="uid://caod3t3del4x5" path="res://GameScenes/Levels/canvas_layer.gd" id="9_unbae"]
 
 [node name="LevelUnused" type="Node3D" unique_id=856644861 groups=["level"]]
 
@@ -58,5 +61,88 @@ transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.00
 start_time_stopped = false
 free_time_control = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1081450726]
+script = ExtResource("9_unbae")
+
+[node name="MainMenu" type="Control" parent="CanvasLayer" unique_id=1360614335]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MainMenu" unique_id=2026089347]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4fk0q")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu" unique_id=1259851720]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_unbae")
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="CanvasLayer/MainMenu/VBoxContainer" unique_id=675150675]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_unbae")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "John Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="Label" parent="CanvasLayer/MainMenu/VBoxContainer" unique_id=340517515]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_unbae")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "WILL RETURN..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="Label" parent="CanvasLayer/MainMenu/VBoxContainer" unique_id=215966938]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_unbae")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "THANK YOU FOR PLAYING!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel4" type="Label" parent="CanvasLayer/MainMenu/VBoxContainer" unique_id=695175787]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_unbae")
+theme_override_colors/font_color = Color(0.87, 0.435, 0.435, 1)
+theme_override_font_sizes/font_size = 16
+text = "(there isn't anything else here, go back to the main menu)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="Button"]
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
