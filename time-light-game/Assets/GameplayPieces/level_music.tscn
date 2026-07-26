@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://clqdgjtfxxege"]
+
+[ext_resource type="AudioStream" uid="uid://c7mjuoylp4yqp" path="res://Resources/Music/LevelIntro.mp3" id="1_2cnbm"]
+[ext_resource type="AudioStream" uid="uid://dku6vl3wj7q5b" path="res://Resources/Music/LevelMain.mp3" id="2_m5p30"]
+[ext_resource type="AudioStream" uid="uid://dhxp14dbwl3cp" path="res://Resources/Music/LevelMainPause.mp3" id="3_8l8um"]
+[ext_resource type="AudioStream" uid="uid://bg6axnw4fipah" path="res://Resources/Music/LevelMainPauseNoBass.mp3" id="4_ufvb1"]
+[ext_resource type="AudioStream" uid="uid://i4xh23i06dkd" path="res://Resources/Music/LevelMainPauseNoBassAlt.mp3" id="5_xvtw8"]
+[ext_resource type="AudioStream" uid="uid://6s74plee4b0b" path="res://Resources/Music/LevelIntroPause.mp3" id="6_8l8um"]
+[ext_resource type="Script" uid="uid://b42nuyv0h7xtn" path="res://Assets/GameplayPieces/level_music.gd" id="6_music"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_l00eo"]
+clip_count = 6
+clip_0/name = &"Level Intro"
+clip_0/stream = ExtResource("1_2cnbm")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Level Main"
+clip_1/stream = ExtResource("2_m5p30")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+clip_2/name = &"Level Main Pause"
+clip_2/stream = ExtResource("3_8l8um")
+clip_2/auto_advance = 1
+clip_2/next_clip = 2
+clip_3/name = &"Level Main Pause No Bass"
+clip_3/stream = ExtResource("4_ufvb1")
+clip_3/auto_advance = 1
+clip_3/next_clip = 3
+clip_4/name = &"Level Main Pause No Bass Alt"
+clip_4/stream = ExtResource("5_xvtw8")
+clip_4/auto_advance = 1
+clip_4/next_clip = 4
+clip_5/name = &"Level Intro Pause"
+clip_5/stream = ExtResource("6_8l8um")
+clip_5/auto_advance = 1
+clip_5/next_clip = 5
+
+[node name="LevelMusic" type="AudioStreamPlayer3D" unique_id=6172196]
+stream = SubResource("AudioStreamInteractive_l00eo")
+attenuation_model = 3
+script = ExtResource("6_music")

@@ -35,8 +35,7 @@
 				"4c8caa30-bf34-43eb-a77a-7be6c8caef8c",
 				"d2ab0628-2a01-419e-8eba-06d669fd32b8",
 				"db50e9d0-3e69-4fd0-bcb6-9b255d539b9d",
-				"540b444c-33cb-42eb-9160-bcd6fd811fd9",
-				"0549192b-b5bc-4804-9864-5d256d343474"
+				"540b444c-33cb-42eb-9160-bcd6fd811fd9"
 			]
 		},
 		{
@@ -45,7 +44,7 @@
 			"tasks": [
 				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
 				"e1653b3c-4933-4916-ae85-1d2184863784",
-				"c77181e6-c372-4b8b-a616-a06b20798749"
+				"1bad8d01-b74b-4bf0-825f-17c0bdb217c9"
 			]
 		},
 		{
@@ -77,6 +76,7 @@
 				"df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
 				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
 				"5bf10403-7344-4ac2-aa57-b600a050817d",
+				"c77181e6-c372-4b8b-a616-a06b20798749",
 				"053942a6-64b7-4843-a33a-9fcb29746a2e",
 				"6dc3b77f-fdd5-4204-8d1f-1284750a8844",
 				"f7934af6-18b3-482f-8c94-d6ad1f23f1de",
@@ -313,7 +313,7 @@
 		{
 			"uuid": "e1653b3c-4933-4916-ae85-1d2184863784",
 			"title": "UI Improvements",
-			"description": "",
+			"description": "update the abilities to show time cost as well as ap",
 			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"steps": []
 		},
@@ -510,12 +510,13 @@
 			"title": "Music Implementation",
 			"description": "inside level_music is a interactive audio player, it will need to start with playing LevelIntro, and once LevelIntro is done transition directly to LevelMain and loop.  If at any point in time the world is paused, it should transition to one of the three LevelMainPauseX.mp3s at random.  Once it is done if it was still in level intro it should resume level intro where it was at, or it should just transition at the same playback time it is at over to LevelMain again.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"steps": []
 		},
 		{
-			"uuid": "0549192b-b5bc-4804-9864-5d256d343474",
-			"title": "Make the abilities display also show time cost for each ability",
+			"uuid": "1bad8d01-b74b-4bf0-825f-17c0bdb217c9",
+			"title": "New task",
 			"description": "",
-			"category": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
+			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		}
 	],

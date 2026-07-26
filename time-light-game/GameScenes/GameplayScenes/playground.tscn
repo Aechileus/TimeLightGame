@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bparslbjshcjh" path="res://Assets/Creatures/monster_spawner.tscn" id="11_idn6t"]
 [ext_resource type="PackedScene" uid="uid://kvtvwbq1w1se" path="res://Assets/Props/wooden_crate_1.tscn" id="11_o1qbv"]
 [ext_resource type="Texture2D" uid="uid://bdkhw33mu1vtv" path="res://Resources/Skyboxes/skybox_emx_19.png" id="12_13id2"]
-[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="12_kdjov"]
-[ext_resource type="AudioStream" uid="uid://cenear3deqtux" path="res://Resources/Music/boss theme-MP3.mp3" id="12_o1qbv"]
+[ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="13_o1qbv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vlwju"]
 panorama = ExtResource("12_13id2")
@@ -3258,17 +3257,8 @@ mode = 1
 [node name="wooden_crate_1" parent="MonsterSpawner" unique_id=57569319 instance=ExtResource("11_o1qbv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="TempMusic" type="AudioStreamPlayer3D" parent="." unique_id=1966422214]
-process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3498926, 0.31398207, -1.1532942)
-stream = ExtResource("12_o1qbv")
-attenuation_model = 3
-volume_db = -10.0
-autoplay = true
-panning_strength = 0.0
-bus = &"Music"
-parameters/looping = true
-script = ExtResource("12_kdjov")
+[node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("13_o1qbv")]
+attenuation_model = 0
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

@@ -3,9 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://batc8cpgqtu6k" path="res://Assets/StructurePieces/CSG/spike.tscn" id="1_6bfng"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="1_iwhby"]
 [ext_resource type="PackedScene" uid="uid://uhyve2r73fqh" path="res://Assets/GameplayPieces/time_stop_zone.tscn" id="2_0ct3m"]
-[ext_resource type="AudioStream" uid="uid://vkeqnlmryxy6" path="res://Resources/Music/test4.mp3" id="2_lbemy"]
 [ext_resource type="PackedScene" uid="uid://b0cyu8b1k44m4" path="res://Assets/StructurePieces/CSG/csg_wall.tscn" id="2_trajx"]
-[ext_resource type="Script" uid="uid://bcw7um7klq4ep" path="res://Assets/Audio/music_muffle.gd" id="3_40cht"]
 [ext_resource type="PackedScene" uid="uid://3xsfjaaojfis" path="res://Assets/StructurePieces/CSG/csg_floor.tscn" id="3_kfubd"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="4_kfubd"]
 [ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="6_8y5v2"]
@@ -26,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="23_40cht"]
 [ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="24_13i0x"]
 [ext_resource type="PackedScene" uid="uid://tfwp5nchgtp1" path="res://Assets/StructurePieces/CSG/csg_slope.tscn" id="25_ecqmf"]
+[ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="26_gwrfu"]
 [ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="26_njssb"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3cm0x"]
@@ -144,15 +143,6 @@ bones/51/position = Vector3(0.4639069, 1.429291, -0.26763627)
 
 [node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" index="10" unique_id=130594368]
 light_energy = 0.399
-
-[node name="TempMusic" type="AudioStreamPlayer3D" parent="PlayerController" unique_id=1785480647]
-transform = Transform3D(0.0025749928, 0, -0.99999654, 0, 1, 0, 0.99999654, 0, 0.0025749928, 1.1073582, 1.6759896, 65.005844)
-stream = ExtResource("2_lbemy")
-attenuation_model = 3
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
-script = ExtResource("3_40cht")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=342632448]
 use_collision = true
@@ -5909,6 +5899,8 @@ light_energy = 5.357
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.974804, -30.479954, -1.4218355)
 light_color = Color(1, 0, 0.20392157, 1)
 light_energy = 5.357
+
+[node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("26_gwrfu")]
 
 [connection signal="pressed" from="Button" to="FloorCeilingTiled" method="_on_button_pressed"]
 
