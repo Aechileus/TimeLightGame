@@ -27,6 +27,19 @@
 [ext_resource type="Script" uid="uid://67tjngeye5yi" path="res://Assets/Interior/lightswitchclick.gd" id="22_oaxhv"]
 [ext_resource type="AudioStream" uid="uid://dqlgwl3pejwwk" path="res://Resources/SFX/PlaceholderSFX/clickybutton.mp3" id="23_ak7xc"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhttf"]
+render_priority = 0
+shader = ExtResource("16_ch6rl")
+shader_parameter/pixel_size = 1.0
+shader_parameter/levels = 67.0
+shader_parameter/gamma = Vector2(1, 1)
+shader_parameter/tint = Color(1, 1, 1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8605v"]
+material = SubResource("ShaderMaterial_jhttf")
+flip_faces = true
+size = Vector2(3, 3)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_l00eo"]
 size = Vector3(14, 1, 14)
 
@@ -269,24 +282,28 @@ size = Vector3(14.916748, 6.9022217, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlwju"]
 size = Vector3(14.916748, 6.9022217, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhttf"]
-render_priority = 0
-shader = ExtResource("16_ch6rl")
-shader_parameter/pixel_size = 1.0
-shader_parameter/levels = 67.0
-shader_parameter/gamma = Vector2(1, 1)
-shader_parameter/tint = Color(1, 1, 1, 0)
-
-[sub_resource type="QuadMesh" id="QuadMesh_8605v"]
-material = SubResource("ShaderMaterial_jhttf")
-flip_faces = true
-size = Vector2(3, 3)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8605v"]
 size = Vector3(0.2167511, 0.17456055, 0.13465881)
 
 [node name="Node3D" type="Node3D" unique_id=620120409 groups=["level", "tutorial"]]
 transform = Transform3D(0.47, 0, 0, 0, 0.47, 0, 0, 0, 0.47, 0, 0, 0)
+
+[node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("15_aj4v5")]
+transform = Transform3D(3.030303, 0, -1.511793e-14, 0, 3.030303, 0, 1.511793e-14, 0, 3.030303, -3.707351, -0.6799678, 2.0061445)
+_hide_level_timer = true
+_hide_health = true
+_hide_abilities = true
+_hide_time_manipulation = true
+start_time_stopped = false
+
+[node name="MeshInstance3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera" parent_id_path=PackedInt32Array(440292127, 1213490484) index="1" unique_id=2041865859]
+mesh = SubResource("QuadMesh_8605v")
+
+[node name="OmniLight3D" parent="PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="9" unique_id=199843824]
+visible = false
+
+[node name="OmniLight3D2" parent="PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="10" unique_id=130594368]
+visible = false
 
 [node name="FloornCeiling" type="StaticBody3D" parent="." unique_id=1815761589]
 
@@ -309,25 +326,25 @@ shape = SubResource("BoxShape3D_l00eo")
 [node name="Props" parent="." unique_id=146868045 instance=ExtResource("2_aj4v5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.935922, 0, -0.37076354)
 
-[node name="Rug1" parent="Props" index="0" unique_id=849089558]
+[node name="Rug1" parent="Props" index="0" unique_id=500121790]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 5.7675695, 0, -9.558338)
 
-[node name="Rug3" parent="Props" index="2" unique_id=1906462643]
+[node name="Rug3" parent="Props" index="2" unique_id=2040502576]
 transform = Transform3D(-4.3711393e-06, 100.00001, 1.1920929e-05, 0, -1.1920929e-05, 100.00001, 100.000015, 4.371139e-06, 5.210804e-13, -16.789925, 0.5790228, 1.0514079)
 material_override = SubResource("StandardMaterial3D_pmup7")
 
-[node name="Plane_001" parent="Props" index="6" unique_id=2085970631]
+[node name="Plane_001" parent="Props" index="6" unique_id=707767502]
 transform = Transform3D(1.3113418e-05, 100.00001, 1.1920929e-05, -2.258569e-20, -1.1920927e-05, 100, 100.00001, -1.3113417e-05, -1.563241e-12, -13.615488, 4.133908, -6.6580534)
 mesh = SubResource("ArrayMesh_1wn4x")
 
-[node name="Cube_010" parent="Props" index="13" unique_id=89721249]
+[node name="Cube_010" parent="Props" index="13" unique_id=2087985353]
 transform = Transform3D(119.04552, 0, 0, 0, -1.5977354e-05, 119.76959, 0, -134.02774, -1.4277649e-05, -7.2388563, 3.005535, 2.3832417)
 material_override = SubResource("StandardMaterial3D_56o6e")
 
-[node name="Cube_012" parent="Props/Cube_010" index="0" unique_id=1951040655]
+[node name="Cube_012" parent="Props/Cube_010" index="0" unique_id=390161671]
 surface_material_override/0 = SubResource("StandardMaterial3D_vlwju")
 
-[node name="Circle" parent="Props" index="14" unique_id=1492190089]
+[node name="Circle" parent="Props" index="14" unique_id=1981585161]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 100, 0, -100, -1.1920929e-05, -15.207459, 6.7516394, 2.1260095)
 mesh = SubResource("ArrayMesh_2u5nv")
 
@@ -339,14 +356,14 @@ script = ExtResource("9_8605v")
 sfx_chance = 0.57
 sfx = ExtResource("10_row21")
 
-[node name="Plane_007" parent="Props" index="16" unique_id=567636662]
+[node name="Plane_007" parent="Props" index="16" unique_id=1581782415]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -7.340125, 2.8834743, 1.269104)
 material_override = SubResource("StandardMaterial3D_fpfrh")
 
 [node name="Furnitures" parent="." unique_id=1223846184 instance=ExtResource("10_4jiso")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.180104, 0, -29.672913)
 
-[node name="Cube_002" parent="Furnitures" index="1" unique_id=461564298]
+[node name="Cube_002" parent="Furnitures" index="1" unique_id=36459156]
 transform = Transform3D(6.272987e-06, -52.621628, -6.613623e-06, -1.5682467e-06, -6.272987e-06, 44.38327, -52.621628, -3.1364934e-06, 0, 9.68407, 1.005238, 25.003242)
 material_override = SubResource("StandardMaterial3D_t8w31")
 
@@ -356,12 +373,12 @@ material_override = SubResource("StandardMaterial3D_t8w31")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 2.1316282e-14, 2.1060828e-15, 1, 0.0074009, -0.0069701746, -0.001263598)
 shape = SubResource("BoxShape3D_0r82h")
 
-[node name="Cube" parent="Furnitures" index="2" unique_id=287264048]
+[node name="Cube" parent="Furnitures" index="2" unique_id=1833989648]
 transform = Transform3D(61.527317, 0, 0, 0, -1.46692555e-05, 61.527313, 0, -61.527313, -1.46692555e-05, 14.162456, 1.1831256, 7.496338)
 material_override = SubResource("StandardMaterial3D_wtooh")
 mesh = SubResource("ArrayMesh_pmup7")
 
-[node name="Cube_005" parent="Furnitures" index="5" unique_id=1411979663]
+[node name="Cube_005" parent="Furnitures" index="5" unique_id=2057975300]
 transform = Transform3D(70.61382, 0, 0, 0, 4.946669e-06, 82.99133, 0, -82.99133, 4.946669e-06, 8.985771, 1.1534222, 29.633965)
 material_override = SubResource("StandardMaterial3D_ugkg7")
 
@@ -371,7 +388,7 @@ material_override = SubResource("StandardMaterial3D_ugkg7")
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 2.1316648e-14, 0, 1.0000002, -0.015235819, -0.00020821029, -0.0012636008)
 shape = SubResource("BoxShape3D_oaxhv")
 
-[node name="Cube_011" parent="Furnitures" index="11" unique_id=1062742924]
+[node name="Cube_011" parent="Furnitures" index="11" unique_id=796222599]
 transform = Transform3D(100, 0, 0, 0, -2.3841858e-05, 99.99999, 0, -99.99999, -2.3841858e-05, 8.127254, 0.97984815, 34.603806)
 material_override = SubResource("StandardMaterial3D_xjtl7")
 
@@ -440,19 +457,6 @@ mesh = SubResource("BoxMesh_0r82h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072387695, 3.9511108, 6.904422)
 shape = SubResource("BoxShape3D_vlwju")
 
-[node name="PlayerController" parent="wall4" unique_id=440292127 instance=ExtResource("15_aj4v5")]
-transform = Transform3D(-1.3245875e-07, 0, -3.030303, 0, 3.030303, 0, 3.030303, 0, -1.3245875e-07, -2.644308, -0.6799678, 10.758647)
-start_time_stopped = false
-
-[node name="MeshInstance3D" parent="wall4/PlayerController/PlayerCharacterBody3D/PlayerCamera" parent_id_path=PackedInt32Array(440292127, 1213490484) index="1" unique_id=2041865859]
-mesh = SubResource("QuadMesh_8605v")
-
-[node name="OmniLight3D" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="9" unique_id=199843824]
-visible = false
-
-[node name="OmniLight3D2" parent="wall4/PlayerController/PlayerCharacterBody3D" parent_id_path=PackedInt32Array(440292127, 641531457) index="10" unique_id=130594368]
-visible = false
-
 [node name="cell_phone_32" parent="." unique_id=1735592454 instance=ExtResource("16_if310")]
 transform = Transform3D(-0.06016765, 0, 2.1268086, 0, 2.1276596, 0, -2.1268086, 0, -0.06016765, -4.7890654, 2.0172558, -1.603561)
 script = ExtResource("20_ak7xc")
@@ -469,6 +473,7 @@ max_dips = 6
 
 [node name="Johntimeintro" type="AudioStreamPlayer3D" parent="cell_phone_32" unique_id=1756630848]
 stream = ExtResource("20_wa2rh")
+attenuation_model = 1
 
 [node name="light_switch_12" parent="." unique_id=250296937 instance=ExtResource("17_ch6rl")]
 transform = Transform3D(0.1135035, 0, -2.1246297, 0, 2.1276596, 0, 2.1246297, 0, 0.1135035, 6.546276, 3.8632586, -1.0529077)
@@ -488,8 +493,8 @@ shape = SubResource("BoxShape3D_8605v")
 [connection signal="interacted" from="light_switch_12/InteractionArea" to="Props/Circle/OmniLight3D" method="_on_interaction_area_interacted"]
 [connection signal="interacted" from="light_switch_12/InteractionArea" to="light_switch_12" method="_on_interaction_area_interacted"]
 
+[editable path="PlayerController"]
+[editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
 [editable path="Props"]
 [editable path="Furnitures"]
-[editable path="wall4/PlayerController"]
-[editable path="wall4/PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
 [editable path="light_switch_12/InteractionArea"]
