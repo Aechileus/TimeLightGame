@@ -3,6 +3,7 @@ extends Area3D
 @export var speed: float = 40.0
 @export var damage: float = 25.0
 @export var lifetime: float = 4.0
+@export var ball_push: float = 4.0
 
 var _life: float = 0.0
 
@@ -33,6 +34,11 @@ func _on_hit(other: Node) -> void:
 			queue_free()
 			return
 		node = node.get_parent()
+
+	if other is RigidBody3D:
+		other.apply_impulse(-global_transform.basis.z * ball_push, global_position - other.global_position)
+		queue_free()
+		return
 
 	if other is StaticBody3D:
 		queue_free()

@@ -1,8 +1,8 @@
 extends Node3D
 
 @onready var floor = $"."
-@onready var press_sfx = $"../Button/PressSFX"
-@onready var press_sfx_alt = $"../Button3/PressSFX"
+@onready var press_sfx = get_node_or_null("../Button/PressSFX")
+@onready var press_sfx_alt = get_node_or_null("../Button3/PressSFX")
 
 func _ready():
 	pass # Replace with function body.
@@ -11,7 +11,8 @@ func _on_button_pressed():
 	var target_position = floor.position
 	target_position.z += 10
 
-	await press_sfx.finished
+	if press_sfx != null and press_sfx.playing:
+		await press_sfx.finished
 	var tween = create_tween()
 	tween.tween_property(floor, "position", target_position, 2.0)
 

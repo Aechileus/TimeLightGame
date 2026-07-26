@@ -45,6 +45,13 @@ func _process(delta: float) -> void:
 
 
 func _update_ticks() -> void:
+	# a clock pickup can shove time back over the threshold, if that happens bail
+	# out of the countdown track and go back to the tick tock
+	if _countdown_started and time_left > countdown_threshold:
+		_countdown_started = false
+		_last_second = -1
+		audio.stop()
+
 	if not _countdown_started and time_left <= countdown_threshold:
 		_countdown_started = true
 		audio.stream = COUNTDOWN

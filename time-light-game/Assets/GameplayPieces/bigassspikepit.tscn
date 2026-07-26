@@ -1,0 +1,581 @@
+[gd_scene format=3 uid="uid://c44r5x484cc4c"]
+
+[ext_resource type="PackedScene" uid="uid://skxvfc7a54hv" path="res://Assets/GameplayPieces/spike_square.tscn" id="1_lvdxu"]
+
+[node name="SpikeSquares" type="Node3D" unique_id=566990265]
+
+[node name="SpikeSquare" parent="." unique_id=630083072 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -10.7044735)
+
+[node name="SpikeSquare2" parent="." unique_id=936745755 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -13.517123)
+
+[node name="SpikeSquare3" parent="." unique_id=1655611662 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -16.350458)
+
+[node name="SpikeSquare4" parent="." unique_id=1528325346 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -19.163109)
+
+[node name="SpikeSquare5" parent="." unique_id=476522574 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -21.999628)
+
+[node name="SpikeSquare6" parent="." unique_id=1176341592 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -24.812279)
+
+[node name="SpikeSquare7" parent="." unique_id=1157808997 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -27.645613)
+
+[node name="SpikeSquare8" parent="." unique_id=1951499428 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -30.458263)
+
+[node name="SpikeSquare9" parent="." unique_id=1846670628 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -33.300674)
+
+[node name="SpikeSquare10" parent="." unique_id=864858899 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -36.113327)
+
+[node name="SpikeSquare11" parent="." unique_id=9256738 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -38.946663)
+
+[node name="SpikeSquare12" parent="." unique_id=929098373 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.90239, -34.500004, -41.75931)
+
+[node name="SpikeSquare13" parent="." unique_id=236569199 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -10.7044735)
+
+[node name="SpikeSquare14" parent="." unique_id=458658596 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -13.517123)
+
+[node name="SpikeSquare15" parent="." unique_id=1172632331 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -16.350458)
+
+[node name="SpikeSquare16" parent="." unique_id=116399944 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -19.163109)
+
+[node name="SpikeSquare17" parent="." unique_id=1473234162 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -21.999628)
+
+[node name="SpikeSquare18" parent="." unique_id=892239602 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -24.812279)
+
+[node name="SpikeSquare19" parent="." unique_id=563414557 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -27.645613)
+
+[node name="SpikeSquare20" parent="." unique_id=955704984 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -30.458263)
+
+[node name="SpikeSquare21" parent="." unique_id=953415261 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -33.300674)
+
+[node name="SpikeSquare22" parent="." unique_id=74124986 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -36.113327)
+
+[node name="SpikeSquare23" parent="." unique_id=17353938 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -38.946663)
+
+[node name="SpikeSquare24" parent="." unique_id=1021440419 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.69673, -34.500004, -41.75931)
+
+[node name="SpikeSquare25" parent="." unique_id=1594096446 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -10.7044735)
+
+[node name="SpikeSquare26" parent="." unique_id=1093947405 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -13.517123)
+
+[node name="SpikeSquare27" parent="." unique_id=1017951009 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -16.350458)
+
+[node name="SpikeSquare28" parent="." unique_id=1886233906 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -19.163109)
+
+[node name="SpikeSquare29" parent="." unique_id=2006543042 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -21.999628)
+
+[node name="SpikeSquare30" parent="." unique_id=435752103 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -24.812279)
+
+[node name="SpikeSquare31" parent="." unique_id=1397707264 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -27.645613)
+
+[node name="SpikeSquare32" parent="." unique_id=1842515973 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -30.458263)
+
+[node name="SpikeSquare33" parent="." unique_id=1735636870 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -33.300674)
+
+[node name="SpikeSquare34" parent="." unique_id=1095895848 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -36.113327)
+
+[node name="SpikeSquare35" parent="." unique_id=1138525866 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -38.946663)
+
+[node name="SpikeSquare36" parent="." unique_id=123944074 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.49072, -34.500004, -41.75931)
+
+[node name="SpikeSquare37" parent="." unique_id=1236821097 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -10.7044735)
+
+[node name="SpikeSquare38" parent="." unique_id=94580265 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -13.517123)
+
+[node name="SpikeSquare39" parent="." unique_id=1246354458 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -16.350458)
+
+[node name="SpikeSquare40" parent="." unique_id=999303895 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -19.163109)
+
+[node name="SpikeSquare41" parent="." unique_id=1064670227 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -21.999628)
+
+[node name="SpikeSquare42" parent="." unique_id=1919492277 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -24.812279)
+
+[node name="SpikeSquare43" parent="." unique_id=1964603242 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -27.645613)
+
+[node name="SpikeSquare44" parent="." unique_id=798925562 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -30.458263)
+
+[node name="SpikeSquare45" parent="." unique_id=180482726 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -33.300674)
+
+[node name="SpikeSquare46" parent="." unique_id=990828928 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -36.113327)
+
+[node name="SpikeSquare47" parent="." unique_id=1975944051 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -38.946663)
+
+[node name="SpikeSquare48" parent="." unique_id=1946185408 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.285065, -34.500004, -41.75931)
+
+[node name="SpikeSquare49" parent="." unique_id=2078759089 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -10.7044735)
+
+[node name="SpikeSquare50" parent="." unique_id=1481907166 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -13.517123)
+
+[node name="SpikeSquare51" parent="." unique_id=1160041860 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -16.350458)
+
+[node name="SpikeSquare52" parent="." unique_id=608323892 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -19.163109)
+
+[node name="SpikeSquare53" parent="." unique_id=722309244 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -21.999628)
+
+[node name="SpikeSquare54" parent="." unique_id=172139455 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -24.812279)
+
+[node name="SpikeSquare55" parent="." unique_id=1427213243 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -27.645613)
+
+[node name="SpikeSquare56" parent="." unique_id=1728195216 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -30.458263)
+
+[node name="SpikeSquare57" parent="." unique_id=1214818667 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -33.300674)
+
+[node name="SpikeSquare58" parent="." unique_id=2043614843 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -36.113327)
+
+[node name="SpikeSquare59" parent="." unique_id=919470616 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -38.946663)
+
+[node name="SpikeSquare60" parent="." unique_id=1727589842 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.049866, -34.500004, -41.75931)
+
+[node name="SpikeSquare61" parent="." unique_id=1417018368 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -10.7044735)
+
+[node name="SpikeSquare62" parent="." unique_id=407017826 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -13.517123)
+
+[node name="SpikeSquare63" parent="." unique_id=188872254 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -16.350458)
+
+[node name="SpikeSquare64" parent="." unique_id=38825230 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -19.163109)
+
+[node name="SpikeSquare65" parent="." unique_id=110686479 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -21.999628)
+
+[node name="SpikeSquare66" parent="." unique_id=955340880 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -24.812279)
+
+[node name="SpikeSquare67" parent="." unique_id=1976929195 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -27.645613)
+
+[node name="SpikeSquare68" parent="." unique_id=1605884715 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -30.458263)
+
+[node name="SpikeSquare69" parent="." unique_id=1852658267 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -33.300674)
+
+[node name="SpikeSquare70" parent="." unique_id=109501011 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -36.113327)
+
+[node name="SpikeSquare71" parent="." unique_id=255018181 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -38.946663)
+
+[node name="SpikeSquare72" parent="." unique_id=1387192504 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.84421, -34.500004, -41.75931)
+
+[node name="SpikeSquare73" parent="." unique_id=987841868 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -10.7044735)
+
+[node name="SpikeSquare74" parent="." unique_id=1465269575 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -13.517123)
+
+[node name="SpikeSquare75" parent="." unique_id=2064534314 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -16.350458)
+
+[node name="SpikeSquare76" parent="." unique_id=2022718872 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -19.163109)
+
+[node name="SpikeSquare77" parent="." unique_id=1335287673 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -21.999628)
+
+[node name="SpikeSquare78" parent="." unique_id=184987386 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -24.812279)
+
+[node name="SpikeSquare79" parent="." unique_id=2133068481 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -27.645613)
+
+[node name="SpikeSquare80" parent="." unique_id=928697595 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -30.458263)
+
+[node name="SpikeSquare81" parent="." unique_id=1537802120 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -33.300674)
+
+[node name="SpikeSquare82" parent="." unique_id=1293221663 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -36.113327)
+
+[node name="SpikeSquare83" parent="." unique_id=1749516361 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -38.946663)
+
+[node name="SpikeSquare84" parent="." unique_id=1837237275 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.6382, -34.500004, -41.75931)
+
+[node name="SpikeSquare85" parent="." unique_id=2136250646 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -10.7044735)
+
+[node name="SpikeSquare86" parent="." unique_id=1487075516 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -13.517123)
+
+[node name="SpikeSquare87" parent="." unique_id=2137817281 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -16.350458)
+
+[node name="SpikeSquare88" parent="." unique_id=2130834155 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -19.163109)
+
+[node name="SpikeSquare89" parent="." unique_id=884094834 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -21.999628)
+
+[node name="SpikeSquare90" parent="." unique_id=958626451 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -24.812279)
+
+[node name="SpikeSquare91" parent="." unique_id=470461431 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -27.645613)
+
+[node name="SpikeSquare92" parent="." unique_id=1142980539 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -30.458263)
+
+[node name="SpikeSquare93" parent="." unique_id=2083899013 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -33.300674)
+
+[node name="SpikeSquare94" parent="." unique_id=1998630556 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -36.113327)
+
+[node name="SpikeSquare95" parent="." unique_id=213134689 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -38.946663)
+
+[node name="SpikeSquare96" parent="." unique_id=585021193 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.43254, -34.500004, -41.75931)
+
+[node name="SpikeSquare97" parent="." unique_id=267701502 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -10.7044735)
+
+[node name="SpikeSquare98" parent="." unique_id=201912982 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -13.517123)
+
+[node name="SpikeSquare99" parent="." unique_id=1856987822 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -16.350458)
+
+[node name="SpikeSquare100" parent="." unique_id=491886784 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -19.163109)
+
+[node name="SpikeSquare101" parent="." unique_id=833574648 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -21.999628)
+
+[node name="SpikeSquare102" parent="." unique_id=2059029436 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -24.812279)
+
+[node name="SpikeSquare103" parent="." unique_id=2000592397 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -27.645613)
+
+[node name="SpikeSquare104" parent="." unique_id=2025057711 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -30.458263)
+
+[node name="SpikeSquare105" parent="." unique_id=603900440 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -33.300674)
+
+[node name="SpikeSquare106" parent="." unique_id=407410633 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -36.113327)
+
+[node name="SpikeSquare107" parent="." unique_id=627424038 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -38.946663)
+
+[node name="SpikeSquare108" parent="." unique_id=1350903767 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.21307, -34.500004, -41.75931)
+
+[node name="SpikeSquare109" parent="." unique_id=495497610 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -10.7044735)
+
+[node name="SpikeSquare110" parent="." unique_id=1315160665 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -13.517123)
+
+[node name="SpikeSquare111" parent="." unique_id=2016395759 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -16.350458)
+
+[node name="SpikeSquare112" parent="." unique_id=68035843 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -19.163109)
+
+[node name="SpikeSquare113" parent="." unique_id=940891982 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -21.999628)
+
+[node name="SpikeSquare114" parent="." unique_id=1511921493 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -24.812279)
+
+[node name="SpikeSquare115" parent="." unique_id=143875278 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -27.645613)
+
+[node name="SpikeSquare116" parent="." unique_id=996066030 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -30.458263)
+
+[node name="SpikeSquare117" parent="." unique_id=65039033 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -33.300674)
+
+[node name="SpikeSquare118" parent="." unique_id=1456911387 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -36.113327)
+
+[node name="SpikeSquare119" parent="." unique_id=2015414256 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -38.946663)
+
+[node name="SpikeSquare120" parent="." unique_id=42592943 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.007416, -34.500004, -41.75931)
+
+[node name="SpikeSquare121" parent="." unique_id=1215637670 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -10.7044735)
+
+[node name="SpikeSquare122" parent="." unique_id=1042754569 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -13.517123)
+
+[node name="SpikeSquare123" parent="." unique_id=553057533 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -16.350458)
+
+[node name="SpikeSquare124" parent="." unique_id=1175936486 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -19.163109)
+
+[node name="SpikeSquare125" parent="." unique_id=155153457 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -21.999628)
+
+[node name="SpikeSquare126" parent="." unique_id=48488950 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -24.812279)
+
+[node name="SpikeSquare127" parent="." unique_id=484535890 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -27.645613)
+
+[node name="SpikeSquare128" parent="." unique_id=1385282286 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -30.458263)
+
+[node name="SpikeSquare129" parent="." unique_id=1722071111 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -33.300674)
+
+[node name="SpikeSquare130" parent="." unique_id=225560502 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -36.113327)
+
+[node name="SpikeSquare131" parent="." unique_id=80673879 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -38.946663)
+
+[node name="SpikeSquare132" parent="." unique_id=178651167 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.80141, -34.500004, -41.75931)
+
+[node name="SpikeSquare133" parent="." unique_id=173613667 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -10.7044735)
+
+[node name="SpikeSquare134" parent="." unique_id=199854634 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -13.517123)
+
+[node name="SpikeSquare135" parent="." unique_id=1335739574 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -16.350458)
+
+[node name="SpikeSquare136" parent="." unique_id=422742630 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -19.163109)
+
+[node name="SpikeSquare137" parent="." unique_id=2073500529 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -21.999628)
+
+[node name="SpikeSquare138" parent="." unique_id=688319805 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -24.812279)
+
+[node name="SpikeSquare139" parent="." unique_id=1235895414 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -27.645613)
+
+[node name="SpikeSquare140" parent="." unique_id=1872036471 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -30.458263)
+
+[node name="SpikeSquare141" parent="." unique_id=397179971 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -33.300674)
+
+[node name="SpikeSquare142" parent="." unique_id=1094604331 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -36.113327)
+
+[node name="SpikeSquare143" parent="." unique_id=1741119301 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -38.946663)
+
+[node name="SpikeSquare144" parent="." unique_id=1684676387 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.59575, -34.500004, -41.75931)
+
+[node name="SpikeSquare145" parent="." unique_id=83532379 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -10.7044735)
+
+[node name="SpikeSquare146" parent="." unique_id=2052045712 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -13.517123)
+
+[node name="SpikeSquare147" parent="." unique_id=1185749985 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -16.350458)
+
+[node name="SpikeSquare148" parent="." unique_id=75626526 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -19.163109)
+
+[node name="SpikeSquare149" parent="." unique_id=1778581010 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -21.999628)
+
+[node name="SpikeSquare150" parent="." unique_id=1378461798 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -24.812279)
+
+[node name="SpikeSquare151" parent="." unique_id=42696717 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -27.645613)
+
+[node name="SpikeSquare152" parent="." unique_id=1924045690 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -30.458263)
+
+[node name="SpikeSquare153" parent="." unique_id=1802376431 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -33.300674)
+
+[node name="SpikeSquare154" parent="." unique_id=2084302197 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -36.113327)
+
+[node name="SpikeSquare155" parent="." unique_id=1895078177 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -38.946663)
+
+[node name="SpikeSquare156" parent="." unique_id=1087230878 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.36055, -34.500004, -41.75931)
+
+[node name="SpikeSquare157" parent="." unique_id=1493638457 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -10.7044735)
+
+[node name="SpikeSquare158" parent="." unique_id=1601307426 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -13.517123)
+
+[node name="SpikeSquare159" parent="." unique_id=1504712780 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -16.350458)
+
+[node name="SpikeSquare160" parent="." unique_id=1414183285 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -19.163109)
+
+[node name="SpikeSquare161" parent="." unique_id=989435139 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -21.999628)
+
+[node name="SpikeSquare162" parent="." unique_id=1157894738 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -24.812279)
+
+[node name="SpikeSquare163" parent="." unique_id=2123991744 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -27.645613)
+
+[node name="SpikeSquare164" parent="." unique_id=860958476 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -30.458263)
+
+[node name="SpikeSquare165" parent="." unique_id=967288069 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -33.300674)
+
+[node name="SpikeSquare166" parent="." unique_id=1150139787 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -36.113327)
+
+[node name="SpikeSquare167" parent="." unique_id=532062364 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -38.946663)
+
+[node name="SpikeSquare168" parent="." unique_id=1534816081 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.15489, -34.500004, -41.75931)
+
+[node name="SpikeSquare169" parent="." unique_id=423214384 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -10.7044735)
+
+[node name="SpikeSquare170" parent="." unique_id=1579877773 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -13.517123)
+
+[node name="SpikeSquare171" parent="." unique_id=664251167 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -16.350458)
+
+[node name="SpikeSquare172" parent="." unique_id=1499404306 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -19.163109)
+
+[node name="SpikeSquare173" parent="." unique_id=960030140 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -21.999628)
+
+[node name="SpikeSquare174" parent="." unique_id=1429438539 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -24.812279)
+
+[node name="SpikeSquare175" parent="." unique_id=193825764 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -27.645613)
+
+[node name="SpikeSquare176" parent="." unique_id=604748414 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -30.458263)
+
+[node name="SpikeSquare177" parent="." unique_id=2077970947 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -33.300674)
+
+[node name="SpikeSquare178" parent="." unique_id=1175781152 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -36.113327)
+
+[node name="SpikeSquare179" parent="." unique_id=1453695646 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -38.946663)
+
+[node name="SpikeSquare180" parent="." unique_id=1081937214 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.94888, -34.500004, -41.75931)
+
+[node name="SpikeSquare181" parent="." unique_id=1622040032 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -10.7044735)
+
+[node name="SpikeSquare182" parent="." unique_id=418821561 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -13.517123)
+
+[node name="SpikeSquare183" parent="." unique_id=33148713 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -16.350458)
+
+[node name="SpikeSquare184" parent="." unique_id=2025740079 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -19.163109)
+
+[node name="SpikeSquare185" parent="." unique_id=1086109311 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -21.999628)
+
+[node name="SpikeSquare186" parent="." unique_id=984691409 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -24.812279)
+
+[node name="SpikeSquare187" parent="." unique_id=1042491416 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -27.645613)
+
+[node name="SpikeSquare188" parent="." unique_id=1463532723 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -30.458263)
+
+[node name="SpikeSquare189" parent="." unique_id=1897566827 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -33.300674)
+
+[node name="SpikeSquare190" parent="." unique_id=2027686346 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -36.113327)
+
+[node name="SpikeSquare191" parent="." unique_id=1046841084 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -38.946663)
+
+[node name="SpikeSquare192" parent="." unique_id=984826016 instance=ExtResource("1_lvdxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.74323, -34.500004, -41.75931)

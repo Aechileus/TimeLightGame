@@ -137,6 +137,11 @@ func apply_slide_motion(delta: float, current_move_direction: Vector3) -> bool:
 	speed = move_toward(speed, 0.0, slide_friction * delta)
 	speed = minf(speed, max_slide_speed)
 
+	# never hand a non finite value to the physics engine, jolt aborts on nan/inf
+	if not is_finite(speed) or not direction.is_finite():
+		stop_slide()
+		return true
+
 	body.velocity.x = direction.x * speed
 	body.velocity.z = direction.z * speed
 	# dont bail while a downhill is still feeding us that good speed

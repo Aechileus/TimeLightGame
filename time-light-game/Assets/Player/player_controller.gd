@@ -40,6 +40,7 @@ signal update_show_hide_ui
 @export_range(0.1, 20.0, 0.1) var jump_velocity: float = 5.5
 ## how much of your up the ramp speed gets turned into launch when you jump off it
 @export_range(0.0, 3.0, 0.05) var ramp_launch_boost: float = 1.0
+@export_range(0.0, 5.0, 0.05) var ball_push_strength: float = 0.2
 
 @export_group("Sprint Momentum")
 ## No idea
@@ -356,6 +357,11 @@ func _physics_process(delta: float) -> void:
 	# how fast we were dropping right before the move, used to sense hard landings
 	var impact_speed := maxf(-character_body.velocity.y, 0.0)
 	character_body.move_and_slide()
+	for i in character_body.get_slide_collision_count():
+		var col := character_body.get_slide_collision(i)
+		var ball := col.get_collider() as RigidBody3D
+		if ball != null:
+			ball.apply_impulse(-col.get_normal() * character_body.velocity.length() * ball_push_strength, col.get_position() - ball.global_position)
 	character_body.floor_snap_length = saved_floor_snap
 
 	# landing mpact camera bob, dip the camera a bit if it was a

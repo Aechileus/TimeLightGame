@@ -1,3 +1,45 @@
 [gd_scene format=3 uid="uid://dygf4d0tk65j2"]
 
+[ext_resource type="PackedScene" uid="uid://bwxf7rn0vgqp6" path="res://Assets/StructurePieces/ProbsShouldntUse/wall_1.tscn" id="1_7wtxk"]
+[ext_resource type="PackedScene" uid="uid://crjb4eqmyphi0" path="res://Assets/StructurePieces/ProbsShouldntUse/floor_ceiling_tiled.tscn" id="2_sate7"]
+[ext_resource type="PackedScene" uid="uid://c14c4sldypskb" path="res://Assets/Props/ball.tscn" id="3_raua4"]
+[ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_sate7"]
+[ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="5_raua4"]
+[ext_resource type="AudioStream" uid="uid://hslbbxaa8lqe" path="res://Resources/SFX/JohnNoTime.mp3" id="6_by0le"]
+
 [node name="Level2" type="Node3D" unique_id=856644861]
+
+[node name="walls" type="Node3D" parent="." unique_id=1477592370]
+
+[node name="wall_hr_15" parent="walls" unique_id=1710775366 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 1.6092701, 1.7826322)
+
+[node name="wall_hr_13" parent="walls" unique_id=1563012468 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.7984548, 1.6131401, -2.2175486)
+
+[node name="wall_hr_17" parent="walls" unique_id=247419616 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(2.9, 0, 0, 0, 1, 0, 0, 0, 1, 3.796905, 4.60927, -2.2173676)
+
+[node name="wall_hr_20" parent="walls" unique_id=1821038232 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, -2.203095, 1.5310013, -2.2173676)
+
+[node name="wall_hr_21" parent="walls" unique_id=101841875 instance=ExtResource("1_7wtxk")]
+transform = Transform3D(-1.2676303e-07, 0, 0.99999994, 0, 0.99999994, 0, -2.8999999, 0, -4.3711385e-08, 2.092444, 1.5310013, -2.2173676)
+
+[node name="FloorsandCeilings" type="Node3D" parent="." unique_id=1263265896]
+
+[node name="FloorCeilingTiled2" parent="FloorsandCeilings" unique_id=2090689099 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015747547, 1.5459077, -0.27836752)
+
+[node name="FloorCeilingTiled5" parent="FloorsandCeilings" unique_id=275751851 instance=ExtResource("2_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.580515, 0)
+
+[node name="Ball" parent="." unique_id=1396288196 instance=ExtResource("3_raua4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9545519, 1.0656488)
+
+[node name="PlayerController" parent="." unique_id=440292127 instance=ExtResource("4_sate7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62621117, 1.5555229, -0.5366185)
+
+[node name="Button" parent="." unique_id=163315669 instance=ExtResource("5_raua4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11899173, 2.9652076, -2.032762)
+press_sfx = ExtResource("6_by0le")

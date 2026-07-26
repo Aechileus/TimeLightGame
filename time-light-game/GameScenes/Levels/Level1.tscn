@@ -848,6 +848,7 @@ transform = Transform3D(-1, 0, -1.5893256e-08, 0, 1, 0, 1.5893256e-08, 0, -1, 19
 script = ExtResource("12_c1fl4")
 music = NodePath("LevelMusic")
 buttons = [NodePath("../ButtonLevel1")]
+move_distance = 17.5
 
 [node name="LevelMusic" parent="Musicdampener" unique_id=6172196 instance=ExtResource("13_l8w0q")]
 
@@ -871,12 +872,15 @@ max_distance = 100.0
 
 [node name="ClockPickup" parent="." unique_id=819259799 instance=ExtResource("23_jxma5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.459454, 3.0799525, -0.25842744)
+bonus_time = 20.0
 
 [node name="ClockPickup2" parent="." unique_id=599666829 instance=ExtResource("23_jxma5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.858597, -0.20413643, -0.25842744)
+bonus_time = 15.0
 
 [node name="ClockPickup3" parent="." unique_id=426961485 instance=ExtResource("23_jxma5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.18869, 4.4472575, -0.25842744)
+bonus_time = 20.0
 
 [node name="Target" parent="." unique_id=544498001 instance=ExtResource("26_j1cdj")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 52.836346, 4.025468, -0.049365282)
