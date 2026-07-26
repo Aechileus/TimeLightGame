@@ -38,4 +38,5 @@ clip_5/next_clip = 5
 [node name="LevelMusic" type="AudioStreamPlayer3D" unique_id=6172196]
 stream = SubResource("AudioStreamInteractive_l00eo")
 attenuation_model = 3
+bus = &"Music"
 script = ExtResource("6_music")

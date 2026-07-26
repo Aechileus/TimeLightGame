@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cy6pt2nb25j3"]
+
+[ext_resource type="Script" uid="uid://d1gta812eutyg" path="res://Assets/GameplayPieces/fleshwall.gd" id="2_kill"]
+[ext_resource type="Texture2D" uid="uid://dtyp05bjpsj5u" path="res://Resources/Textures/intestine_3.png" id="2_ld11k"]
+[ext_resource type="Script" uid="uid://twpohses2o7o" path="res://Assets/GameplayPieces/fleshwallenergymult.gd" id="3_5nkl0"]
+[ext_resource type="Script" uid="uid://d1gta812ncvph" path="res://Assets/GameplayPieces/fleshwall_sync.gd" id="3_sync"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l00eo"]
+size = Vector3(5.357422, 0.1, 7.989746)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r82h"]
+albedo_texture = ExtResource("2_ld11k")
+emission_enabled = true
+emission = Color(0.09019608, 0, 0, 1)
+emission_energy_multiplier = 0.76
+uv1_scale = Vector3(1.51, 1.51, 1.51)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpgkq"]
+size = Vector3(5.357422, 0.1, 7.989746)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kill"]
+resource_local_to_scene = true
+size = Vector3(5.657422, 0.4, 8.289746)
+
+[node name="Fleshwall" type="Node3D" unique_id=13372753]
+script = ExtResource("3_sync")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1220182386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0056152344)
+mesh = SubResource("BoxMesh_l00eo")
+surface_material_override/0 = SubResource("StandardMaterial3D_0r82h")
+script = ExtResource("3_5nkl0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=986591082]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=243917892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0056152344)
+shape = SubResource("BoxShape3D_jpgkq")
+
+[node name="KillArea" type="Area3D" parent="." unique_id=771003561]
+visible = false
+script = ExtResource("2_kill")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea" unique_id=771003562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0056152344)
+shape = SubResource("BoxShape3D_kill")

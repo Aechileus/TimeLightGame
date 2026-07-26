@@ -31,7 +31,7 @@ Util="*uid://bfdq2honfh70u"
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [editor_plugins]
 

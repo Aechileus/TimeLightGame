@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d33flyojl0kr7"]
 
 [ext_resource type="PackedScene" uid="uid://tgcymlixql3n" path="res://Assets/GameplayPieces/interactable_button.tscn" id="1_dpnh3"]
+[ext_resource type="AudioStream" uid="uid://dks8cofancjtv" path="res://Resources/SFX/button1.mp3" id="2_1qvtu"]
 [ext_resource type="PackedScene" uid="uid://b8fc7wpo54ccm" path="res://GameScenes/UI/level_timer.tscn" id="3_sq6oc"]
 [ext_resource type="PackedScene" uid="uid://dyw3cgh2x26hy" path="res://Assets/Player/player_controller.tscn" id="4_d0bxx"]
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="5_scude"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="18_nsndj"]
 [ext_resource type="PackedScene" uid="uid://d1dgff00nklef" path="res://GameScenes/Levels/Tutorial2.tscn" id="19_fv4n6"]
 [ext_resource type="PackedScene" uid="uid://rvg8y2xlnq2y" path="res://Assets/Props/ceiling_lamp_flicker.tscn" id="19_mxhpp"]
+[ext_resource type="Script" uid="uid://dsxkkmq6xgfbs" path="res://GameScenes/Levels/levelmute.gd" id="20_268ef"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="20_fv4n6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ohwbu"]
@@ -55,7 +57,8 @@ size = Vector3(324.5, 1, 308.80002)
 [node name="Tutorial" type="Node3D" unique_id=1911214141 groups=["level", "tutorial"]]
 
 [node name="Button" parent="." unique_id=163315669 instance=ExtResource("1_dpnh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.584934, -4.563736, -1.8833785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.584934, -4.9574385, -1.8833785)
+press_sfx = ExtResource("2_1qvtu")
 one_shot = true
 change_light_on_interact = true
 interact_light_color = Color(1, 0, 0.105882354, 1)
@@ -1249,6 +1252,14 @@ size = Vector3(4, 12, 0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17.4, 36.000004)
 
 [node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("18_nsndj")]
+
+[node name="Musicdampener" type="Node3D" parent="." unique_id=849889443 node_paths=PackedStringArray("audio")]
+script = ExtResource("20_268ef")
+audio = NodePath("LevelMusic")
+
+[node name="LevelMusic" parent="Musicdampener" unique_id=198301434 instance=ExtResource("18_nsndj")]
+
+[connection signal="pressed" from="Button" to="Musicdampener" method="_on_button_pressed"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

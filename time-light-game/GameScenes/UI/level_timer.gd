@@ -48,7 +48,9 @@ func _update_ticks() -> void:
 	if not _countdown_started and time_left <= countdown_threshold:
 		_countdown_started = true
 		audio.stream = COUNTDOWN
-		audio.play()
+		# if the timer was enabled already under the threshold, scrub into the track
+		# so its position lines up with however much time is actually left
+		audio.play(maxf(countdown_threshold - time_left, 0.0))
 		return
 	if _countdown_started:
 		return

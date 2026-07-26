@@ -540,11 +540,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Time can always stop if free_time_control is on, and we can stop the countdown too
 		#if time_manipulation._free_time_control: # !! Doesn't work, seems to immediately unpause
 			#Global.force_time_stop()
-		# resuming needs the resume unlock, stopping needs the stop unlock plus a charge
+		# resuming needs the resume unlock, stopping needs the stop unlock plus a charge.
+		# with free time control off the player cant stop on their own, time only
+		# stops when the flow clock runs out
 		if Global.is_time_stopped():
 			if Global.can_resume_time:
 				Global.toggle_time_stop()
-		elif Global.can_stop_time and time_manipulation.can_pause():
+		elif time_manipulation._free_time_control and Global.can_stop_time and time_manipulation.can_pause():
 			Global.toggle_time_stop()
 		return
 	if event.is_action_pressed(&"ui_cancel"):

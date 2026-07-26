@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bflxbewhrvime"]
+
+[ext_resource type="Script" uid="uid://c8v7kmus1hh0l" path="res://GameScenes/UI/settings_menu.gd" id="1_set"]
+[ext_resource type="Theme" uid="uid://deqr7fgx0jqxi" path="res://Resources/UI/menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://bnr854diwcdub" path="res://Resources/Tilesheets/Panel.png" id="3_panel"]
+
+[node name="SettingsMenu" type="Control" unique_id=1260048950]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_set")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=902077267]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_panel")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=68671300]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1318281983]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=356886685]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Settings"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BusList" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=733548632]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1109345754]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Back"

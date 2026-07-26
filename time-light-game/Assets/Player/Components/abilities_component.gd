@@ -18,6 +18,7 @@ class_name PlayerAbilitiesComponent
 @export var frozen_push_speed: float = 3.0
 # and how fast it flies out while time is running
 @export var flowing_push_speed: float = 10.0
+@export var marker_surface_offset: float = 0.1
 
 @export_group("Marker Colors")
 @export var aiming_color: Color = Color(0.26, 0.585, 0.65, 1.0)
@@ -102,7 +103,7 @@ func aiming_at_or_max_distance(max_distance: float) -> Vector3:
 	elif distance > max_distance:
 		return position + (target - position).normalized() * max_distance
 	else:
-		return target
+		return target - (target - position).normalized() * marker_surface_offset
 	
 	
 	#if _stuck:

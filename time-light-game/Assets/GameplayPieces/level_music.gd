@@ -89,11 +89,11 @@ func enter_pause() -> void:
 	if state == State.MAIN:
 		if pauses.is_empty():
 			return
-		var pos := active_player().get_playback_position()
+		var pos := synced_position()
 		state = State.PAUSE
 		play_clip(pauses.pick_random(), pos, crossfade_time)
 	else:
-		intro_position = active_player().get_playback_position()
+		intro_position = synced_position()
 		state = State.PAUSE
 		play_clip(intro_pause, intro_position, crossfade_time)
 
@@ -106,7 +106,7 @@ func exit_pause() -> void:
 		intro_handoff = false
 		play_clip(intro, intro_position, crossfade_time)
 	else:
-		var pos := active_player().get_playback_position()
+		var pos := synced_position()
 		state = State.MAIN
 		play_clip(main, pos, crossfade_time)
 
@@ -124,6 +124,15 @@ func handoff_to_main() -> void:
 
 func active_player() -> AudioStreamPlayer3D:
 	return players[active]
+
+
+# get_playback_position lags real playback by the mix buffer and output latency, so
+# compensate for it, otherwise the mixes drift out of sync every pause swap
+func synced_position() -> float:
+	var pos := active_player().get_playback_position()
+	pos += AudioServer.get_time_since_last_mix()
+	pos -= AudioServer.get_output_latency()
+	return maxf(pos, 0.0)
 
 
 func play_clip(clip: AudioStream, from_position: float, fade: float) -> void:

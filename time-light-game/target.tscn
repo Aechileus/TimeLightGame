@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b5v2bvan8vyyb"]
+
+[ext_resource type="Script" uid="uid://l6bp20003p0t" path="res://target.gd" id="1_0mptp"]
+[ext_resource type="Texture2D" uid="uid://dqfrjhbp1tq18" path="res://Resources/Textures/intestine_1.png" id="1_6f2ye"]
+[ext_resource type="Texture2D" uid="uid://dpwdu67adrren" path="res://Resources/Textures/snow_1.png" id="2_0mptp"]
+[ext_resource type="AudioStream" uid="uid://b41tsoapsf46v" path="res://Resources/SFX/PlaceholderSFX/lowpitchbeep.wav" id="4_q42c6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q42c6"]
+albedo_texture = ExtResource("1_6f2ye")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l00eo"]
+height = 0.06628418
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0r82h"]
+albedo_color = Color(1, 0.15686275, 0.16862746, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb2h1"]
+albedo_texture = ExtResource("2_0mptp")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_seges"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.06628418
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqq7a"]
+albedo_texture = ExtResource("2_0mptp")
+emission_enabled = true
+emission = Color(0.67481464, 0.67481464, 0.6748146, 1)
+emission_energy_multiplier = 2.47
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hit"]
+radius = 1.0
+height = 0.2
+
+[node name="Target" type="Node3D" unique_id=544498001]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_0mptp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2047417879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007141292, 0)
+material_override = SubResource("StandardMaterial3D_q42c6")
+mesh = SubResource("CylinderMesh_l00eo")
+surface_material_override/0 = SubResource("StandardMaterial3D_0r82h")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=1041576807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.618992e-09, 0.15142488, 0)
+light_color = Color(0.9510738, 0.4354732, 0.47029316, 1)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1424959642]
+material_override = SubResource("StandardMaterial3D_xb2h1")
+mesh = SubResource("CylinderMesh_seges")
+surface_material_override/0 = SubResource("StandardMaterial3D_hqq7a")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1369262925]
+stream = ExtResource("4_q42c6")
+
+[node name="HitArea" type="Area3D" parent="." unique_id=1369262926]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=1369262927]
+shape = SubResource("CylinderShape3D_hit")
