@@ -23,7 +23,12 @@ var has_shoot: bool = true
 var ui_abilities: bool = true
 var ui_time: bool = true
 var ui_level_timer: bool = true
+var camera_sensitivity: float = 0.1
+var first_time: bool = true
 
+func set_sensitivity(value: float):
+	camera_sensitivity = value
+	SignalBus.change_camera_sensitivity.emit()
 
 # Called on level start, locks everything so a tutorial can grant it piece by piece.
 func lock_all_unlocks() -> void:

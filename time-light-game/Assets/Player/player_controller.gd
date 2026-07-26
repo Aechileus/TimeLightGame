@@ -235,6 +235,11 @@ func _ready() -> void:
 	elif Global.is_time_stopped():
 		# stale stop hanging around from a previous scene, clear it
 		Global.force_time_flow.call_deferred()
+		
+	SignalBus.change_camera_sensitivity.connect(
+		func():
+			self.mouse_sensitivity = Global.camera_sensitivity
+	)
 
 
 func _process(delta: float) -> void:

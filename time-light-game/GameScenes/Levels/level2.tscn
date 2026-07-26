@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="22_l47tf"]
 [ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ProbsShouldntUse/ramp_slim.tscn" id="23_l47tf"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="24_03b2x"]
-[ext_resource type="PackedScene" uid="uid://ckcdl10n03g6d" path="res://GameScenes/Levels/level_unused.tscn" id="25_n175j"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_r1ige"]
 viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
@@ -1861,7 +1860,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.
 
 [node name="FinishLine" parent="." unique_id=8209525 node_paths=PackedStringArray("level_timer") instance=ExtResource("24_03b2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.56893, 16.560194, 1.718034)
-next_level = ExtResource("25_n175j")
 level_timer = NodePath("../LevelTimer")
 
 [connection signal="hit" from="Target" to="FlashwallChaser" method="_on_target_hit"]

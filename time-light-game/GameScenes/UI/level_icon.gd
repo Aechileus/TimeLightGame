@@ -9,6 +9,7 @@ extends Control
 
 ## Level scene to load when this icon is clicked
 @export var level_scene: PackedScene
+@export var disabled: bool = false
 
 @onready var _label: RichTextLabel = $NinePatchRect/MarginContainer/RichTextLabel
 @onready var _button: Button = $Button
@@ -24,6 +25,10 @@ func _ready() -> void:
 func _update_label() -> void:
 	if _label:
 		_label.text = label_text
+		_button.disabled = false
+		if disabled:
+			_label.add_theme_color_override("default_color", Color.SLATE_GRAY)
+			_button.disabled = true
 
 
 func _on_pressed() -> void:

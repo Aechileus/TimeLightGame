@@ -119,6 +119,9 @@ volumetric_fog_sky_affect = 0.67
 [sub_resource type="BoxShape3D" id="BoxShape3D_lbemy"]
 size = Vector3(4.6692505, 2, 5.388565)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwccb"]
+size = Vector3(4.6692505, 2, 5.388565)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bdr4q"]
 size = Vector3(4.118408, 2, 3.4058228)
 
@@ -151,7 +154,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999917, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 0.99999917, -17.238106, 24.894688, -12.748523)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -1241,6 +1244,10 @@ grant_dash = true
 [node name="CollisionShape3D" parent="Trigger Areas/TimeStopZone2/UnlockAbilities" index="0" unique_id=1742873466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09701538, 0, -0.10053253)
 shape = SubResource("BoxShape3D_lbemy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Trigger Areas/TimeStopZone2/UnlockAbilities" unique_id=1163835971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.80558, 4.3587494, -0.10053253)
+shape = SubResource("BoxShape3D_wwccb")
 
 [node name="UnpauseAndMonster" parent="Trigger Areas" unique_id=233979303 instance=ExtResource("15_bdr4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3207667, -8.2689705, -0.2849648)

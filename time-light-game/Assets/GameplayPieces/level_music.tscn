@@ -40,3 +40,4 @@ stream = SubResource("AudioStreamInteractive_l00eo")
 attenuation_model = 3
 bus = &"Music"
 script = ExtResource("6_music")
+crossfade_time = 0.0

@@ -8,8 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://hslbbxaa8lqe" path="res://Resources/SFX/JohnNoTime.mp3" id="6_unbae"]
 [ext_resource type="Script" uid="uid://dsxkkmq6xgfbs" path="res://GameScenes/Levels/levelmute.gd" id="7_cyca4"]
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="8_idmgp"]
-[ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="9_4fk0q"]
-[ext_resource type="PackedScene" uid="uid://dygf4d0tk65j2" path="res://GameScenes/Levels/level2.tscn" id="10_unbae"]
 
 [node name="LevelUnused" type="Node3D" unique_id=856644861 groups=["level"]]
 
@@ -59,10 +57,6 @@ move_distance = 17.5
 transform = Transform3D(0.0025749935, 0, 0.9999968, 0, 1, 0, -0.9999968, 0, 0.0025749935, 0, 1.6100693, 0)
 start_time_stopped = false
 free_time_control = true
-
-[node name="FinishLine" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="6" unique_id=8209525 instance=ExtResource("9_4fk0q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.852055, -3.6638036, -0.16611177)
-next_level = ExtResource("10_unbae")
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

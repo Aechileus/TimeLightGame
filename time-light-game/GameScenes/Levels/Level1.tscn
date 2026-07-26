@@ -517,7 +517,7 @@ vertical_alignment = 1
 [node name="doorway_hr_12" parent="." unique_id=1570751701 instance=ExtResource("8_ttr2i")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 9.298527, -1.010967, -0.09422946)
 
-[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="0" unique_id=1565859138]
+[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 946930463) index="0" unique_id=782573834]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
 script = ExtResource("9_vv5up")
 
@@ -527,7 +527,7 @@ script = ExtResource("9_vv5up")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5109864, 1.0533447, 0.025146484)
 shape = SubResource("BoxShape3D_l00eo")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="1" unique_id=374482373]
+[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 946930463) index="1" unique_id=374482373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3269768, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=1670681262]

@@ -6,6 +6,9 @@ extends Control
 func _ready() -> void:
 	play_button.pressed.connect(play_button_pressed)
 	playground_button.pressed.connect(playground_button_pressed)
+	if Global.first_time:
+		Global.first_time = false
+		play_button_pressed()
 	
 func play_button_pressed():
 	SceneChanger.change_to(Util.GAME_SCENES.INTRO)

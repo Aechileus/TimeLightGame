@@ -8,6 +8,7 @@ const MIN_DB := -60.0
 @onready var _bus_list: VBoxContainer = $CenterContainer/VBoxContainer/BusList
 @onready var _back_button: Button = $CenterContainer/VBoxContainer/BackButton
 
+@onready var sensitivity_slider: HSlider = $CenterContainer/VBoxContainer/HBoxContainer/HSlider
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -16,6 +17,8 @@ func _ready() -> void:
 		var idx := AudioServer.get_bus_index(bus_name)
 		if idx >= 0:
 			_add_slider(bus_name, idx)
+	sensitivity_slider.value = Global.camera_sensitivity
+	sensitivity_slider.value_changed.connect(Global.set_sensitivity)
 
 
 func _add_slider(bus_name: String, idx: int) -> void:

@@ -88,7 +88,7 @@ size = Vector3(5.657422, 0.4, 62.479565)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s4lkw"]
 resource_local_to_scene = true
-size = Vector3(5.657422, 0.4, 8.289746)
+size = Vector3(7.7000003, 0.4, 12.200001)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l00eo"]
 size = Vector3(5.357422, 0.1, 7.989746)
@@ -182,7 +182,7 @@ pause_charges = 99
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1111562941) index="0" unique_id=1508119363]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -387,11 +387,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.942795, -1.571146, 0.69175
 [node name="doorway_hr_12" parent="." unique_id=1570751701 instance=ExtResource("10_rq76t")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 6.7611294, -2, -2.1743772)
 
-[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="0" unique_id=1565859138]
+[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 946930463) index="0" unique_id=782573834]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
 script = ExtResource("11_qplw4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="1" unique_id=1883383215]
+[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 946930463) index="1" unique_id=1883383215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3269768, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=1539351836]
@@ -661,6 +661,7 @@ emitting = false
 [node name="Floormover" type="Node3D" parent="." unique_id=1520694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.748284, -7.7803683, 7.336077)
 script = ExtResource("19_v6hmr")
+target_offset = Vector3(0, 0, 10)
 
 [node name="Fleshwall" parent="Floormover" unique_id=13372753 instance=ExtResource("20_tptxg")]
 

@@ -5,10 +5,10 @@ signal restart_pressed
 
 const SETTINGS_MENU := preload("res://GameScenes/UI/settings_menu.tscn")
 
-@onready var _resume_button: Button = $VBoxContainer2/VBoxContainer/ResumeButton
-@onready var _restart_button: Button = $VBoxContainer2/VBoxContainer/RestartButton
-@onready var _settings_button: Button = $VBoxContainer2/VBoxContainer/SettingsButton
-@onready var _main_menu_button: Button = $VBoxContainer2/VBoxContainer/MainMenuButton
+@onready var _resume_button: Button = $NinePatchRect/VBoxContainer2/VBoxContainer/ResumeButton
+@onready var _restart_button: Button = $NinePatchRect/VBoxContainer2/VBoxContainer/RestartButton
+@onready var _settings_button: Button = $NinePatchRect/VBoxContainer2/VBoxContainer/SettingsButton
+@onready var _main_menu_button: Button = $NinePatchRect/VBoxContainer2/VBoxContainer/MainMenuButton
 
 var _settings: Control = null
 

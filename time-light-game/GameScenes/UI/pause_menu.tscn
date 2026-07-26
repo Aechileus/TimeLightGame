@@ -13,7 +13,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l0ijy")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1915549805]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=213454786]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gs6xa")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect" unique_id=1915549805]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mi0ln")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2" unique_id=1274719661]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer2" unique_id=1274719661]
 custom_minimum_size = Vector2(0, 90.21)
 layout_mode = 2
 size_flags_vertical = 4
@@ -41,13 +57,13 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2" unique_id=2073142545]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer2" unique_id=2073142545]
 layout_mode = 2
 theme = ExtResource("1_mi0ln")
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=659759826]
+[node name="ResumeButton" type="Button" parent="NinePatchRect/VBoxContainer2/VBoxContainer" unique_id=659759826]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -55,7 +71,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_mi0ln")
 theme_override_font_sizes/font_size = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/ResumeButton" unique_id=1498975468]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer2/VBoxContainer/ResumeButton" unique_id=1498975468]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/ResumeButton/MarginContainer" unique_id=900706079]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer2/VBoxContainer/ResumeButton/MarginContainer" unique_id=900706079]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_mi0ln")
@@ -75,7 +91,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=2061595446]
+[node name="RestartButton" type="Button" parent="NinePatchRect/VBoxContainer2/VBoxContainer" unique_id=2061595446]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -83,7 +99,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_mi0ln")
 theme_override_font_sizes/font_size = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/RestartButton" unique_id=1530487404]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer2/VBoxContainer/RestartButton" unique_id=1530487404]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,7 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/RestartButton/MarginContainer" unique_id=1711262366]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer2/VBoxContainer/RestartButton/MarginContainer" unique_id=1711262366]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_mi0ln")
@@ -103,7 +119,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=60325820]
+[node name="SettingsButton" type="Button" parent="NinePatchRect/VBoxContainer2/VBoxContainer" unique_id=60325820]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -111,7 +127,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_mi0ln")
 theme_override_font_sizes/font_size = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/SettingsButton" unique_id=1032182431]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer2/VBoxContainer/SettingsButton" unique_id=1032182431]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +136,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/SettingsButton/MarginContainer" unique_id=1277968701]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer2/VBoxContainer/SettingsButton/MarginContainer" unique_id=1277968701]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_mi0ln")
@@ -131,7 +147,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=60325823]
+[node name="MainMenuButton" type="Button" parent="NinePatchRect/VBoxContainer2/VBoxContainer" unique_id=60325823]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,7 +155,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_mi0ln")
 theme_override_font_sizes/font_size = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer/MainMenuButton" unique_id=1032182430]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer2/VBoxContainer/MainMenuButton" unique_id=1032182430]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,7 +164,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/VBoxContainer/MainMenuButton/MarginContainer" unique_id=1277968700]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/VBoxContainer2/VBoxContainer/MainMenuButton/MarginContainer" unique_id=1277968700]
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_mi0ln")
@@ -159,21 +175,5 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/VBoxContainer" unique_id=1204107233]
+[node name="Control" type="Control" parent="NinePatchRect/VBoxContainer2/VBoxContainer" unique_id=1204107233]
 layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=213454786]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_gs6xa")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1

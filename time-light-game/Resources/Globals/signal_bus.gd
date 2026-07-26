@@ -22,3 +22,5 @@ signal unlocks_changed
 
 # Fires when the level timer reaches zero
 signal out_of_time
+
+signal change_camera_sensitivity

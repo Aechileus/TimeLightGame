@@ -8,7 +8,6 @@ viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
 
 [node name="BillboardSign2" type="Sprite3D" unique_id=1376453946]
 transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 0, 0, 0)
-double_sided = false
 render_priority = 4
 texture = SubResource("ViewportTexture_3cm0x")
 script = ExtResource("1_0xt0h")
