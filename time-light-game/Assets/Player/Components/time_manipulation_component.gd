@@ -12,6 +12,7 @@ class_name PlayerTimeManipulationComponent
 @export_range(1, 99, 1) var pause_charges: int = 3
 ## Whether or not to limit the number of charges
 @export var use_charge_limit: bool = true
+@export var _free_time_control: bool = false
 
 @export_group("UI")
 # readout starts green with a full clock and drains toward red as it ticks down
@@ -27,7 +28,6 @@ var _flow_window_active: bool = false
 var _flow_elapsed: float = 0.0
 var _flow_target: float = 0.0
 var _next_tick: float = 1.0
-@export var _free_time_control: bool = false
 
 var _tick_player: AudioStreamPlayer
 

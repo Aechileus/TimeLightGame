@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bhwwcn1tjytrr"]
+
+[ext_resource type="Texture2D" uid="uid://b0v7d8xu5ci7f" path="res://Assets/PSXPack2/pipe_hr_3.png" id="1_6gvu6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsif2"]
+albedo_texture = ExtResource("1_6gvu6")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.25, 0, 0)
+uv1_triplanar = true
+
+[node name="CSGMetalBeam" type="CSGCylinder3D" unique_id=224211342]
+height = 1.0
+sides = 20
+material = SubResource("StandardMaterial3D_xsif2")
