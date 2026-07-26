@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bp4owgpd7drpt"]
+
+[ext_resource type="PackedScene" uid="uid://dk7b5y8d1fa0n" path="res://Assets/PSXPack2/clock_2.glb" id="1_hnka0"]
+[ext_resource type="Script" uid="uid://vfebihrlh2qy" path="res://Assets/GameplayPieces/clock_pickup.gd" id="2_nawcw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hpwv5"]
+
+[node name="ClockPickup" unique_id=819259799 instance=ExtResource("1_hnka0")]
+script = ExtResource("2_nawcw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=554178160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027769795, 0.029601194)
+layers = 3
+light_color = Color(1, 0.8666667, 0, 1)
+light_energy = 4.249
+light_indirect_energy = 0.505
+omni_range = 2.222
+omni_attenuation = 0.33
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="2" unique_id=673924142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027769795, -0.07039881)
+layers = 3
+light_color = Color(1, 0.8666667, 0, 1)
+light_energy = 4.249
+light_indirect_energy = 0.505
+omni_range = 2.222
+omni_attenuation = 0.33
+
+[node name="Pickup" type="Area3D" parent="." index="3" unique_id=1431236355]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup" index="0" unique_id=1439751443]
+shape = SubResource("SphereShape3D_hpwv5")

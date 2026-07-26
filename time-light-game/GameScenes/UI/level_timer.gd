@@ -9,40 +9,40 @@ extends CanvasLayer
 @export var infinite_time: bool = false
 @export var paused: bool = false
 
-var _time_left: float = 0.0
+var time_left: float = 0.0
 
-@onready var _label: RichTextLabel = $TimerLabel
+@onready var label: RichTextLabel = $TimerLabel
 
 
 func _ready() -> void:
 	if !infinite_time:
-		_time_left = level_time
-		SignalBus.ability_time_spent.connect(_on_ability_time_spent)
-	_update_label()
+		time_left = level_time
+		SignalBus.change_level_time.connect(change_level_time)
+	update_label()
 
 
 func _process(delta: float) -> void:
 	if infinite_time or paused: # If the time is infinite, just update the label
-		_update_label()
+		update_label()
 		return
 		
-	_time_left -= delta
-	_update_label()
-	if _time_left <= 0.0:
+	time_left -= delta
+	update_label()
+	if time_left <= 0.0:
 		# out of time, run it back
 		SignalBus.out_of_time.emit()
 
 
-func _on_ability_time_spent(seconds: float) -> void:
-	_time_left = maxf(_time_left - seconds, 0.0)
-	_update_label()
+func change_level_time(seconds: float) -> void:
+	time_left += seconds
+	update_label()
 
 
-func _update_label() -> void:
+func update_label() -> void:
 	if infinite_time:
-		_label.text = "XXX:XXX"
+		label.text = "XXX:XXX"
 		return
-	var time_left: float = maxf(_time_left, 0.0)
+	var time_left: float = maxf(time_left, 0.0)
 	var secs: int = floori(time_left)
 	var milis: int = floori((time_left - secs) * 1000)
-	_label.text = String.num(secs, 0) + ":" + String.num(milis, 0).pad_zeros(3)
+	label.text = String.num(secs, 0) + ":" + String.num(milis, 0).pad_zeros(3)
