@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="22_l47tf"]
 [ext_resource type="PackedScene" uid="uid://babk721kw363w" path="res://Assets/StructurePieces/ProbsShouldntUse/ramp_slim.tscn" id="23_l47tf"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="24_03b2x"]
+[ext_resource type="PackedScene" uid="uid://dvnufa7sthl5i" path="res://GameScenes/Levels/level3.tscn" id="25_03b2x"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_r1ige"]
 viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
@@ -195,29 +196,29 @@ volumetric_fog_sky_affect = 0.67
 [sub_resource type="BoxMesh" id="BoxMesh_r1ige"]
 size = Vector3(8.63623, 0.1, 17.683746)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pvv2j"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n175j"]
 resource_local_to_scene = true
 size = Vector3(8.936231, 0.4, 17.983746)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yxo03"]
 size = Vector3(9.551697, 0.1, 24.770203)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_03b2x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcrgv"]
 resource_local_to_scene = true
 size = Vector3(9.851697, 0.4, 25.070202)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n175j"]
 size = Vector3(9.551697, 0.1, 30.739105)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fcrgv"]
-resource_local_to_scene = true
-size = Vector3(9.851697, 0.4, 31.039104)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6gwh"]
 resource_local_to_scene = true
 size = Vector3(9.851697, 0.4, 31.039104)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xp4by"]
+resource_local_to_scene = true
+size = Vector3(9.851697, 0.4, 31.039104)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kco53"]
 resource_local_to_scene = true
 size = Vector3(9.851697, 0.4, 25.070202)
 
@@ -231,56 +232,56 @@ size = Vector3(13.21095, 0.4, 25.070202)
 [sub_resource type="BoxMesh" id="BoxMesh_4vnon"]
 size = Vector3(12.742493, 0.1, 24.770203)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_03msq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vnon"]
 resource_local_to_scene = true
 size = Vector3(13.042493, 0.4, 25.070202)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0kgrt"]
 size = Vector3(8.704102, 0.1, 26.028152)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e2htf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_03msq"]
 resource_local_to_scene = true
 size = Vector3(9.004102, 0.4, 26.328152)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4tt1k"]
 size = Vector3(8.884766, 0.1, 24.01535)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kmoh4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2htf"]
 resource_local_to_scene = true
 size = Vector3(9.184766, 0.4, 24.31535)
 
 [sub_resource type="BoxMesh" id="BoxMesh_agx7n"]
 size = Vector3(8.529297, 0.1, 24.10588)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vtowu"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kmoh4"]
 resource_local_to_scene = true
 size = Vector3(8.829297, 0.4, 24.40588)
 
 [sub_resource type="BoxMesh" id="BoxMesh_akrfa"]
 size = Vector3(8.820343, 0.1, 11.489868)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8fi76"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtowu"]
 resource_local_to_scene = true
 size = Vector3(9.120343, 0.4, 11.789868)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jg4x7"]
 size = Vector3(11.984619, 0.1, 9.365845)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jdyau"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fi76"]
 resource_local_to_scene = true
 size = Vector3(12.284619, 0.4, 9.665845)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nb8be"]
-size = Vector3(8.799286, 0.1, 24.770203)
+size = Vector3(8.799286, 0.1, 14.223801)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d2c1t"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdyau"]
 resource_local_to_scene = true
-size = Vector3(9.099286, 0.4, 25.070202)
+size = Vector3(9.099286, 0.4, 14.523801)
 
 [sub_resource type="BoxMesh" id="BoxMesh_psj7s"]
 size = Vector3(9.551697, 0.1, 10.2284775)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lhrjv"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nb8be"]
 resource_local_to_scene = true
 size = Vector3(9.851697, 0.4, 10.528478)
 
@@ -1554,7 +1555,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6394044, 0, -4.852616)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall/KillArea" parent_id_path=PackedInt32Array(13372753, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6394044, 0, -4.852616)
-shape = SubResource("BoxShape3D_pvv2j")
+shape = SubResource("BoxShape3D_n175j")
 
 [node name="Fleshwall5" parent="FleshWalls" unique_id=641037180 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -2.0102239, 11.3849945, 1.7055364)
@@ -1568,7 +1569,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.4014893)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall5/KillArea" parent_id_path=PackedInt32Array(641037180, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.4014893)
-shape = SubResource("BoxShape3D_03b2x")
+shape = SubResource("BoxShape3D_fcrgv")
 
 [node name="Fleshwall6" parent="FleshWalls" unique_id=1778619189 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -26.073963, 11.3849945, -0.25589466)
@@ -1582,7 +1583,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2348657, 0, 1.2542267)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall6/KillArea" parent_id_path=PackedInt32Array(1778619189, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2348657, 0, 1.2542267)
-shape = SubResource("BoxShape3D_fcrgv")
+shape = SubResource("BoxShape3D_e6gwh")
 
 [node name="Fleshwall11" parent="FleshWalls" unique_id=1976784515 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.371138e-08, -1, 8.742278e-08, -4.37114e-08, 8.742278e-08, 1, -1, -4.371139e-08, -4.371139e-08, -40.61239, 11.3849945, -0.25589466)
@@ -1596,7 +1597,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2348657, 0, 1.2542267)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall11/KillArea" parent_id_path=PackedInt32Array(1976784515, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2348657, 0, 1.2542267)
-shape = SubResource("BoxShape3D_e6gwh")
+shape = SubResource("BoxShape3D_xp4by")
 
 [node name="Fleshwall10" parent="FleshWalls" unique_id=2113612080 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -26.073963, 22.524368, -0.25589466)
@@ -1610,7 +1611,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122643, 0, 4.238678)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall10/KillArea" parent_id_path=PackedInt32Array(2113612080, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122643, 0, 4.238678)
-shape = SubResource("BoxShape3D_xp4by")
+shape = SubResource("BoxShape3D_kco53")
 
 [node name="Fleshwall7" parent="FleshWalls" unique_id=1655555611 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.371139e-08, -4.3711385e-08, -1, -1.0000001, -2.9802322e-08, -4.371139e-08, -2.9802322e-08, 1.0000001, -4.3711395e-08, -26.073963, 11.3849945, -1.9909619)
@@ -1638,7 +1639,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1850605, -0.28040504, 4.23
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall9/KillArea" parent_id_path=PackedInt32Array(1799344555, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1850605, -0.28040504, 4.238678)
-shape = SubResource("BoxShape3D_03msq")
+shape = SubResource("BoxShape3D_4vnon")
 
 [node name="Fleshwall2" parent="FleshWalls" unique_id=653401087 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 5.7600346, 5.3075633, 1.6316739)
@@ -1652,7 +1653,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, -7.0693746
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall2/KillArea" parent_id_path=PackedInt32Array(653401087, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, -7.0693746)
-shape = SubResource("BoxShape3D_e2htf")
+shape = SubResource("BoxShape3D_03msq")
 
 [node name="Fleshwall3" parent="FleshWalls" unique_id=479822587 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(-1, -8.742278e-08, -4.371139e-08, 4.371139e-08, 1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 0.09499282, 5.3075633, 5.743783)
@@ -1666,7 +1667,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7636724, 0, -8.018417)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall3/KillArea" parent_id_path=PackedInt32Array(479822587, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7636724, 0, -8.018417)
-shape = SubResource("BoxShape3D_kmoh4")
+shape = SubResource("BoxShape3D_e2htf")
 
 [node name="Fleshwall4" parent="FleshWalls" unique_id=707411912 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(-1, -8.742278e-08, -4.371139e-08, 4.371139e-08, 1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 0.09499282, 5.3075633, -2.289685)
@@ -1680,7 +1681,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5859377, 0, -8.063683)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall4/KillArea" parent_id_path=PackedInt32Array(707411912, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5859377, 0, -8.063683)
-shape = SubResource("BoxShape3D_vtowu")
+shape = SubResource("BoxShape3D_kmoh4")
 
 [node name="Fleshwall8" parent="FleshWalls" unique_id=1801237848 instance=ExtResource("8_r5sh6")]
 transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -1.2796326, 25.07326, -0.95995736)
@@ -1694,7 +1695,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.956682, 0, -2.4014893)
 
 [node name="CollisionShape3D" parent="FleshWalls/Fleshwall8/KillArea" parent_id_path=PackedInt32Array(1801237848, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.956682, 0, -2.4014893)
-shape = SubResource("BoxShape3D_8fi76")
+shape = SubResource("BoxShape3D_vtowu")
 
 [node name="ClockPickup" parent="." unique_id=819259799 instance=ExtResource("9_r5sh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0074017, 12.276343, -1.2186545)
@@ -1843,7 +1844,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73807096, 15.056343, -4.10
 
 [node name="CollisionShape3D" parent="FlashwallChaser/Fleshwall/KillArea" parent_id_path=PackedInt32Array(589773393, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73807096, 15.056343, -4.1093144)
-shape = SubResource("BoxShape3D_jdyau")
+shape = SubResource("BoxShape3D_8fi76")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FlashwallChaser/Fleshwall" unique_id=69332929]
 stream = ExtResource("12_jg4x7")
@@ -1865,15 +1866,15 @@ toggled_node = NodePath(".")
 transform = Transform3D(4.3711392e-08, -4.3711385e-08, -1, 4.3711385e-08, -1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, -0.2585178, 18.966913, -1.993773)
 
 [node name="MeshInstance3D" parent="fleshwallstoremove/Fleshwall6" index="0" unique_id=1220182386]
-transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -0.57585526, 0, -2.4014912)
+transform = Transform3D(1, 0, 0, 0, 1, -1.6420282e-15, 0, -1.6420282e-15, 1, -0.5758554, 0, -7.674692)
 mesh = SubResource("BoxMesh_nb8be")
 
 [node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall6/StaticBody3D" parent_id_path=PackedInt32Array(1703972401, 986591082) index="0" unique_id=243917892]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57585526, 0, -2.4014912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5758554, 0, -7.674692)
 
 [node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall6/KillArea" parent_id_path=PackedInt32Array(1703972401, 771003561) index="0" unique_id=771003562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57585526, 0, -2.4014912)
-shape = SubResource("BoxShape3D_d2c1t")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5758554, 0, -7.674692)
+shape = SubResource("BoxShape3D_jdyau")
 
 [node name="TimeStopZone" parent="fleshwallstoremove/Fleshwall6" unique_id=150785596 instance=ExtResource("10_agx7n")]
 transform = Transform3D(4.3711392e-08, 4.3711385e-08, -1, -4.3711385e-08, -1, -4.371139e-08, -1, 4.371139e-08, -4.371139e-08, -7.13915, 6.7511415, -5.1423845)
@@ -1893,7 +1894,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.6291952)
 
 [node name="CollisionShape3D" parent="fleshwallstoremove/Fleshwall7/KillArea" parent_id_path=PackedInt32Array(1100060420, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4122648, 0, -2.6291952)
-shape = SubResource("BoxShape3D_lhrjv")
+shape = SubResource("BoxShape3D_nb8be")
 
 [node name="Musicdampener" type="Node3D" parent="." unique_id=1887087101 node_paths=PackedStringArray("music")]
 transform = Transform3D(-1, 0, -1.5893256e-08, 0, 1, 0, 1.5893256e-08, 0, -1, 19.971685, -25.159613, 81.60058)
@@ -1982,6 +1983,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.
 
 [node name="FinishLine" parent="." unique_id=8209525 node_paths=PackedStringArray("level_timer") instance=ExtResource("24_03b2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.56893, 16.560194, 1.718034)
+next_level = ExtResource("25_03b2x")
 level_timer = NodePath("../LevelTimer")
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="FinishLine" unique_id=1267588151]

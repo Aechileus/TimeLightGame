@@ -77,19 +77,16 @@ alignment = 1
 layout_mode = 2
 label_text = "T1"
 level_scene = ExtResource("4_gkwew")
-disabled = null
 
 [node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1348206164 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "T2"
 level_scene = ExtResource("5_h8v04")
-disabled = null
 
 [node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=683660083 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "T3"
 level_scene = ExtResource("6_h8v04")
-disabled = null
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer" unique_id=142823328]
 layout_mode = 2
@@ -106,25 +103,21 @@ alignment = 1
 [node name="LevelIcon" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2140096759 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 level_scene = ExtResource("5_mt1uy")
-disabled = null
 
 [node name="LevelIcon2" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1865042256 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "II"
 level_scene = ExtResource("9_m17i5")
-disabled = null
 
 [node name="LevelIcon3" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=257658812 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "III"
 level_scene = ExtResource("9_7lscf")
-disabled = null
 
 [node name="LevelIcon4" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1222712788 instance=ExtResource("3_gkwew")]
 layout_mode = 2
 label_text = "IV"
 level_scene = ExtResource("9_jtfi2")
-disabled = true
 
 [node name="LevelIcon5" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1810911014 instance=ExtResource("3_gkwew")]
 layout_mode = 2
@@ -164,4 +157,3 @@ alignment = 1
 layout_mode = 2
 label_text = "P"
 level_scene = ExtResource("5_pb481")
-disabled = null

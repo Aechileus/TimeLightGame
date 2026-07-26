@@ -62,6 +62,7 @@ start_time_stopped = false
 free_time_control = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1081450726]
+visible = false
 script = ExtResource("9_unbae")
 
 [node name="MainMenu" type="Control" parent="CanvasLayer" unique_id=1360614335]
