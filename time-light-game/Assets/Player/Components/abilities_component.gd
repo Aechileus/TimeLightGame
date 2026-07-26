@@ -241,7 +241,7 @@ func get_queued_animation() -> String:
 
 func _fire(ability: Ability, point: Vector3) -> void:
 	# time is taken away every cast pulls its cost off the level clock
-	SignalBus.change_level_time.emit(ability.time_cost)
+	SignalBus.change_level_time.emit(-ability.time_cost)
 
 	# the actual effect lives on a child node named in the tres, this component
 	# only deals with aiming and queueing
