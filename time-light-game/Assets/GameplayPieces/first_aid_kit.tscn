@@ -10,7 +10,7 @@ script = ExtResource("2_heal")
 bob_height = 0.19
 spin_speed = 1.23
 
-[node name="first_aid_kit_hr_1" parent="." index="0" unique_id=1980657049]
+[node name="first_aid_kit_hr_1" parent="." index="0" unique_id=1536753931]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="first_aid_kit_hr_1" index="0" unique_id=226805590]

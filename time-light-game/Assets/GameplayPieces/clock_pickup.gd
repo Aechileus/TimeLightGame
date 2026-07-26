@@ -17,6 +17,7 @@ extends Node3D
 @onready var pickup: Area3D = $Pickup
 @onready var minutes_hand: MeshInstance3D = $clock_2/clock_2_arm_minutes
 @onready var hours_hand: MeshInstance3D = $clock_2/clock_2_arm_hours
+@onready var audio_stream_player_3d = $AudioStreamPlayer3D
 
 var base_y: float = 0.0
 var time: float = 0.0
@@ -40,4 +41,6 @@ func on_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("player"):
 		return
 	SignalBus.change_level_time.emit(bonus_time)
+	audio_stream_player_3d.play()
+	await audio_stream_player_3d.finished
 	queue_free()

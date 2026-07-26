@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dk7b5y8d1fa0n" path="res://Assets/PSXPack2/clock_2.glb" id="1_hnka0"]
 [ext_resource type="Script" uid="uid://vfebihrlh2qy" path="res://Assets/GameplayPieces/clock_pickup.gd" id="2_nawcw"]
+[ext_resource type="AudioStream" uid="uid://b41tsoapsf46v" path="res://Resources/SFX/PlaceholderSFX/lowpitchbeep.wav" id="3_ryeej"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hpwv5"]
 
@@ -30,3 +31,6 @@ omni_attenuation = 0.33
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup" index="0" unique_id=1439751443]
 shape = SubResource("SphereShape3D_hpwv5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4" unique_id=1073085642]
+stream = ExtResource("3_ryeej")

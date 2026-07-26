@@ -1,50 +1,82 @@
 extends Node3D
 
 
-const MUSIC_BUS := "Music"
-const MUTED_DB := -80.0
+## the music player to pause, all its audio players get paused with it
+@export var music: Node
+## drag every button that should duck the music in here, they auto connect
+@export var buttons: Array[Node] = []
+## walk this far from the saved spot and the music comes back
+@export_range(1.0, 50.0, 0.5) var move_distance: float = 10.0
+## used if a button or its sfx cant be read
+@export_range(0.1, 30.0, 0.1) var fallback_duration: float = 3.0
 
-@export var audio: AudioStreamPlayer3D
-
-var _music_bus_idx: int = -1
-var _saved_db: float = 0.0
-var _ducked: bool = false
+var _active: bool = false
+var _remaining: float = 0.0
+var _saved_pos: Vector3 = Vector3.ZERO
+var _player: Node3D
 
 
 func _ready() -> void:
-	_music_bus_idx = AudioServer.get_bus_index(MUSIC_BUS)
-	if _music_bus_idx >= 0:
-		_saved_db = AudioServer.get_bus_volume_db(_music_bus_idx)
-	if audio != null:
-		audio.finished.connect(_restore_music)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	for button in buttons:
+		if button != null and button.has_signal("pressed"):
+			var cb := _on_duck_button.bind(button)
+			if not button.pressed.is_connected(cb):
+				button.pressed.connect(cb)
 
 
-func duck_music() -> void:
-	if _ducked or _music_bus_idx < 0:
+func _process(delta: float) -> void:
+	if not _active:
 		return
-	_ducked = true
-	var current := AudioServer.get_bus_volume_db(_music_bus_idx)
-	if not is_zero_approx(current) and current > MUTED_DB:
-		_saved_db = current
-	AudioServer.set_bus_volume_db(_music_bus_idx, MUTED_DB)
-	if audio != null:
-		audio.play()
+	_set_music_paused(true)
+	_remaining -= delta
+	var moved_far := false
+	if is_instance_valid(_player):
+		moved_far = _player.global_position.distance_to(_saved_pos) >= move_distance
+	if _remaining <= 0.0 or moved_far:
+		_resume()
 
 
-func _restore_music() -> void:
-	if not _ducked:
+func _on_duck_button(button: Node) -> void:
+	duck_for(_sfx_length(button))
+
+
+func duck_for(seconds: float) -> void:
+	if seconds <= 0.0:
 		return
-	_ducked = false
-	if _music_bus_idx >= 0:
-		AudioServer.set_bus_volume_db(_music_bus_idx, _saved_db)
-
-func _on_button_2_pressed():
-	duck_music()
-
-
-func _on_button_pressed():
-	duck_music()
+	_player = _find_player()
+	if is_instance_valid(_player):
+		_saved_pos = _player.global_position
+	_remaining = seconds
+	_active = true
+	_set_music_paused(true)
 
 
-func _on_button_3_pressed():
-	duck_music()
+func _resume() -> void:
+	_active = false
+	_set_music_paused(false)
+
+
+func _set_music_paused(paused: bool) -> void:
+	if music != null:
+		_apply_pause(music, paused)
+
+
+func _apply_pause(node: Node, paused: bool) -> void:
+	if node is AudioStreamPlayer or node is AudioStreamPlayer2D or node is AudioStreamPlayer3D:
+		node.stream_paused = paused
+	for child in node.get_children():
+		_apply_pause(child, paused)
+
+
+func _find_player() -> Node3D:
+	for n in get_tree().get_nodes_in_group("player"):
+		if n is CharacterBody3D:
+			return n
+	return get_tree().get_first_node_in_group("player")
+
+
+func _sfx_length(button: Node) -> float:
+	if button != null and "press_sfx" in button and button.press_sfx != null:
+		return button.press_sfx.get_length()
+	return fallback_duration

@@ -80,7 +80,7 @@ free_time_control = true
 [node name="CrouchSlide" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="1" unique_id=1120910197]
 max_slide_speed = 30.0
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -1251,15 +1251,12 @@ size = Vector3(4, 12, 0.2)
 [node name="CSGWall2" parent="." unique_id=1338195759 instance=ExtResource("9_dpnh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, -17.4, 36.000004)
 
-[node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("18_nsndj")]
-
-[node name="Musicdampener" type="Node3D" parent="." unique_id=849889443 node_paths=PackedStringArray("audio")]
+[node name="Musicdampener" type="Node3D" parent="." unique_id=849889443 node_paths=PackedStringArray("music", "buttons")]
 script = ExtResource("20_268ef")
-audio = NodePath("LevelMusic")
+music = NodePath("LevelMusic")
+buttons = [NodePath("../Button")]
 
 [node name="LevelMusic" parent="Musicdampener" unique_id=198301434 instance=ExtResource("18_nsndj")]
-
-[connection signal="pressed" from="Button" to="Musicdampener" method="_on_button_pressed"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]

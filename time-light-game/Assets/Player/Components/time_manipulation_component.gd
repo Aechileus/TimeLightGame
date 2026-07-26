@@ -12,7 +12,10 @@ class_name PlayerTimeManipulationComponent
 @export_range(1, 99, 1) var pause_charges: int = 3
 ## Whether or not to limit the number of charges
 @export var use_charge_limit: bool = true
-@export var _free_time_control: bool = false
+@export var _free_time_control: bool = false:
+	set(value):
+		_free_time_control = value
+		_update_label()
 
 @export_group("UI")
 # readout starts green with a full clock and drains toward red as it ticks down
@@ -111,7 +114,7 @@ func _on_game_speed_state_changed(new_state) -> void:
 		#  the scene start freeze never had a window so it stays free
 		if _flow_window_active:
 			_flow_window_active = false
-			if use_charge_limit:
+			if use_charge_limit and not _free_time_control:
 				_charges_left = maxi(_charges_left - 1, 0)
 	_update_label()
 
@@ -128,7 +131,7 @@ func _update_label() -> void:
 		if use_charge_limit:
 			_pauses_remain_label.show()
 		_flowtime_label.show()
-		
+	_pauses_remain_label.text = "[wave=1] Pauses Remaining: " + str(_charges_left)
 
 	if _flow_window_active and not Global.is_time_stopped():
 		# live countdown, drains from green to red as the window runs out
@@ -136,7 +139,6 @@ func _update_label() -> void:
 		var fill := remaining / _flow_target if _flow_target > 0.0 else 0.0
 		_flowtime_label.text = "%ss" % String.num(remaining, 2)
 		_flowtime_label.add_theme_color_override("font_color", countdown_empty_color.lerp(countdown_full_color, fill))
-		_pauses_remain_label.text = "[wave=1] Pauses Remaining: " + str(_charges_left)
 	else:
 		# idle readout just shows whatever the player has dialed in
 		_flowtime_label.text = "%ss" % String.num(flow_time, 2)

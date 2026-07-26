@@ -326,25 +326,25 @@ shape = SubResource("BoxShape3D_l00eo")
 [node name="Props" parent="." unique_id=146868045 instance=ExtResource("2_aj4v5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.935922, 0, -0.37076354)
 
-[node name="Rug1" parent="Props" index="0" unique_id=500121790]
+[node name="Rug1" parent="Props" index="0" unique_id=2076657355]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 5.7675695, 0, -9.558338)
 
-[node name="Rug3" parent="Props" index="2" unique_id=2040502576]
+[node name="Rug3" parent="Props" index="2" unique_id=769287025]
 transform = Transform3D(-4.3711393e-06, 100.00001, 1.1920929e-05, 0, -1.1920929e-05, 100.00001, 100.000015, 4.371139e-06, 5.210804e-13, -16.789925, 0.5790228, 1.0514079)
 material_override = SubResource("StandardMaterial3D_pmup7")
 
-[node name="Plane_001" parent="Props" index="6" unique_id=707767502]
+[node name="Plane_001" parent="Props" index="6" unique_id=572790354]
 transform = Transform3D(1.3113418e-05, 100.00001, 1.1920929e-05, -2.258569e-20, -1.1920927e-05, 100, 100.00001, -1.3113417e-05, -1.563241e-12, -13.615488, 4.133908, -6.6580534)
 mesh = SubResource("ArrayMesh_1wn4x")
 
-[node name="Cube_010" parent="Props" index="13" unique_id=2087985353]
+[node name="Cube_010" parent="Props" index="13" unique_id=809222231]
 transform = Transform3D(119.04552, 0, 0, 0, -1.5977354e-05, 119.76959, 0, -134.02774, -1.4277649e-05, -7.2388563, 3.005535, 2.3832417)
 material_override = SubResource("StandardMaterial3D_56o6e")
 
-[node name="Cube_012" parent="Props/Cube_010" index="0" unique_id=390161671]
+[node name="Cube_012" parent="Props/Cube_010" index="0" unique_id=801632472]
 surface_material_override/0 = SubResource("StandardMaterial3D_vlwju")
 
-[node name="Circle" parent="Props" index="14" unique_id=1981585161]
+[node name="Circle" parent="Props" index="14" unique_id=1252785618]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 100, 0, -100, -1.1920929e-05, -15.207459, 6.7516394, 2.1260095)
 mesh = SubResource("ArrayMesh_2u5nv")
 
@@ -356,14 +356,14 @@ script = ExtResource("9_8605v")
 sfx_chance = 0.57
 sfx = ExtResource("10_row21")
 
-[node name="Plane_007" parent="Props" index="16" unique_id=1581782415]
+[node name="Plane_007" parent="Props" index="16" unique_id=1551184359]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -7.340125, 2.8834743, 1.269104)
 material_override = SubResource("StandardMaterial3D_fpfrh")
 
 [node name="Furnitures" parent="." unique_id=1223846184 instance=ExtResource("10_4jiso")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.180104, 0, -29.672913)
 
-[node name="Cube_002" parent="Furnitures" index="1" unique_id=36459156]
+[node name="Cube_002" parent="Furnitures" index="1" unique_id=1020479572]
 transform = Transform3D(6.272987e-06, -52.621628, -6.613623e-06, -1.5682467e-06, -6.272987e-06, 44.38327, -52.621628, -3.1364934e-06, 0, 9.68407, 1.005238, 25.003242)
 material_override = SubResource("StandardMaterial3D_t8w31")
 
@@ -373,12 +373,12 @@ material_override = SubResource("StandardMaterial3D_t8w31")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 2.1316282e-14, 2.1060828e-15, 1, 0.0074009, -0.0069701746, -0.001263598)
 shape = SubResource("BoxShape3D_0r82h")
 
-[node name="Cube" parent="Furnitures" index="2" unique_id=1833989648]
+[node name="Cube" parent="Furnitures" index="2" unique_id=664476379]
 transform = Transform3D(61.527317, 0, 0, 0, -1.46692555e-05, 61.527313, 0, -61.527313, -1.46692555e-05, 14.162456, 1.1831256, 7.496338)
 material_override = SubResource("StandardMaterial3D_wtooh")
 mesh = SubResource("ArrayMesh_pmup7")
 
-[node name="Cube_005" parent="Furnitures" index="5" unique_id=2057975300]
+[node name="Cube_005" parent="Furnitures" index="5" unique_id=830506589]
 transform = Transform3D(70.61382, 0, 0, 0, 4.946669e-06, 82.99133, 0, -82.99133, 4.946669e-06, 8.985771, 1.1534222, 29.633965)
 material_override = SubResource("StandardMaterial3D_ugkg7")
 
@@ -388,7 +388,7 @@ material_override = SubResource("StandardMaterial3D_ugkg7")
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000002, 0, 2.1316648e-14, 0, 1.0000002, -0.015235819, -0.00020821029, -0.0012636008)
 shape = SubResource("BoxShape3D_oaxhv")
 
-[node name="Cube_011" parent="Furnitures" index="11" unique_id=796222599]
+[node name="Cube_011" parent="Furnitures" index="11" unique_id=1886696846]
 transform = Transform3D(100, 0, 0, 0, -2.3841858e-05, 99.99999, 0, -99.99999, -2.3841858e-05, 8.127254, 0.97984815, 34.603806)
 material_override = SubResource("StandardMaterial3D_xjtl7")
 

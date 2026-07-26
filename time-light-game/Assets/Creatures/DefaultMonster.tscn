@@ -63,7 +63,7 @@ noise_min_interval = 2.0
 noise_max_interval = 8.1
 attack_noise = ExtResource("6_vef0j")
 
-[node name="Skeleton3D" parent="." index="0" unique_id=461418735]
+[node name="Skeleton3D" parent="." index="0" unique_id=1920752636]
 bones/0/position = Vector3(-1.6801059e-06, 1.1428092, -0.004664318)
 bones/0/rotation = Quaternion(5.8678825e-08, -9.58578e-07, 3.292419e-05, 1)
 bones/1/rotation = Quaternion(-0.029908437, 1.9428817e-06, -3.288078e-05, 0.99955267)
@@ -118,7 +118,7 @@ bones/61/rotation = Quaternion(-0.015375495, 0.00014279416, -0.014261386, 0.9997
 bones/62/rotation = Quaternion(0.4577378, -0.0113234045, -0.021094387, 0.88876486)
 bones/63/rotation = Quaternion(0.49113327, 0.071421415, 0.07180578, 0.86517686)
 
-[node name="Character_Monster" parent="Skeleton3D" index="0" unique_id=192044892]
+[node name="Character_Monster" parent="Skeleton3D" index="0" unique_id=587194486]
 surface_material_override/0 = SubResource("ShaderMaterial_8ffd7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=860763169]
@@ -143,7 +143,7 @@ transform = Transform3D(0.63918674, -0.23119518, -0.73347735, -0.3042162, -0.951
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D2/DamagingArea" index="0" unique_id=198530618]
 shape = SubResource("SphereShape3D_l00eo")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1182685909]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1932420046]
 "libraries/Brutal Assassination" = ExtResource("2_nfb52")
 "libraries/Fast Run" = ExtResource("3_yypfn")
 "libraries/Hip Hop Dancing" = ExtResource("2_bekvb")

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Fleshwall.mp3-7000566e3a36d46028462c6ae88c1a0
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -192,6 +192,8 @@ func _ready() -> void:
 	_overlay_material = overlay_mesh.mesh.material as ShaderMaterial
 	# start from no tint, alpha 0 is the off state now that alpha is strength
 	_overlay_material.set_shader_parameter("tint", Color(1, 1, 1, 0))
+	_vhs_material.set_shader_parameter("tint", Color(1, 1, 1, 0))
+	_vhs_material.set_shader_parameter("flash", Color(1, 1, 1, 0))
 	_overlay_was_visible = overlay_mesh.visible
 	SignalBus.game_speed_state_changed.connect(_on_game_speed_state_changed)
 	SignalBus.time_stop_winding_up.connect(_on_time_stop_winding_up)

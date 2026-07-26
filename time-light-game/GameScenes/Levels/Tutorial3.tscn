@@ -78,29 +78,29 @@ emission_energy_multiplier = 0.76
 uv1_scale = Vector3(1.51, 1.51, 1.51)
 uv1_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_slqac"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyxq6"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 62.479565)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b0vnj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_twjlp"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 62.479565)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uqj3m"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4lkw"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 8.289746)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l00eo"]
 size = Vector3(5.357422, 0.1, 7.989746)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8f4yp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_slqac"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 8.289746)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dam8u"]
 size = Vector3(5.357422, 0.1, 12.420898)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_faqj1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0vnj"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 12.720899)
 
@@ -118,43 +118,43 @@ emission_energy_multiplier = 0.76
 uv1_scale = Vector3(1.51, 1.51, 1.51)
 uv1_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yyxq6"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dam8u"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 10.815625)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_twjlp"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_faqj1"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 10.815625)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8bhsm"]
 size = Vector3(38.453613, 0.1, 10.515625)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dam8u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_spa5s"]
 resource_local_to_scene = true
 size = Vector3(38.753613, 0.4, 10.815625)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_36f5a"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8f4yp"]
 resource_local_to_scene = true
 size = Vector3(38.753613, 0.4, 10.815625)
 
 [sub_resource type="BoxMesh" id="BoxMesh_faqj1"]
 size = Vector3(20.739746, 0.1, 6.1190796)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_spa5s"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8bhsm"]
 resource_local_to_scene = true
 size = Vector3(21.039745, 0.4, 6.41908)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8f4yp"]
 size = Vector3(10.014893, 0.1, 5.6951904)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8bhsm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_36f5a"]
 resource_local_to_scene = true
 size = Vector3(10.314893, 0.4, 5.9951906)
 
 [sub_resource type="BoxMesh" id="BoxMesh_36f5a"]
 size = Vector3(5.357422, 0.1, 12.04248)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s4lkw"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_so78h"]
 resource_local_to_scene = true
 size = Vector3(5.657422, 0.4, 12.342481)
 
@@ -176,10 +176,13 @@ _hide_time_manipulation = true
 start_time_stopped = false
 free_time_control = true
 
+[node name="TimeManipulation" parent="PlayerController/Components" parent_id_path=PackedInt32Array(440292127, 1210953728) index="2" unique_id=1307419024]
+pause_charges = 99
+
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -384,11 +387,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.942795, -1.571146, 0.69175
 [node name="doorway_hr_12" parent="." unique_id=1570751701 instance=ExtResource("10_rq76t")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 6.7611294, -2, -2.1743772)
 
-[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="0" unique_id=1411703438]
+[node name="metal_door_1" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="0" unique_id=1565859138]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.5, 0, 0)
 script = ExtResource("11_qplw4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 1793968381) index="1" unique_id=1883383215]
+[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_12/doorway_hr_1" parent_id_path=PackedInt32Array(1570751701, 945340658) index="1" unique_id=1883383215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3269768, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="doorway_hr_12/doorway_hr_1/StaticBody3D" unique_id=1539351836]
@@ -562,7 +565,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BillboardSign9" type="Sprite3D" parent="Billboards" unique_id=233937126]
-transform = Transform3D(-4.3711392e-08, 0, -1, 0, 0.9999998, 0, 1.0000001, 0, -4.371139e-08, 10.995522, -9.024265, 1.9970148)
+transform = Transform3D(-4.3711392e-08, 0, -1, 0, 0.9999998, 0, 1.0000001, 0, -4.371139e-08, 10.995522, -9.024265, 2.9006875)
 double_sided = false
 render_priority = 4
 texture = SubResource("ViewportTexture_5otgx")
@@ -601,7 +604,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BillboardSign10" type="Sprite3D" parent="Billboards" unique_id=225419886]
-transform = Transform3D(-4.3711392e-08, 0, -1, 0, 0.9999998, 0, 1.0000001, 0, -4.371139e-08, 10.763122, -9.269263, -19.926481)
+transform = Transform3D(-4.3711392e-08, 0, -1, 0, 0.9999998, 0, 1.0000001, 0, -4.371139e-08, 10.763122, -9.269263, -20.628311)
 double_sided = false
 render_priority = 4
 texture = SubResource("ViewportTexture_5otgx")
@@ -632,15 +635,17 @@ theme = ExtResource("18_7c05f")
 theme_type_variation = &"WorldLabel"
 theme_override_font_sizes/normal_font_size = 16
 text = "We paid 8 bucks to have someone put a invisible
-wall in hell here just so you would listen to this."
+wall in hell here just so you would listen to this.
+ONCE IT MOVES, DONT JUMP RIGHT AWAY"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Musicdampener" type="Node3D" parent="." unique_id=90814366 node_paths=PackedStringArray("audio")]
+[node name="Musicdampener" type="Node3D" parent="." unique_id=90814366 node_paths=PackedStringArray("music", "buttons")]
 script = ExtResource("17_qbkda")
-audio = NodePath("LevelMusic")
+music = NodePath("LevelMusic")
+buttons = [NodePath("../Button2"), NodePath("../Button3")]
 
 [node name="LevelMusic" parent="Musicdampener" unique_id=6172196 instance=ExtResource("17_6135q")]
 
@@ -666,8 +671,11 @@ one_shot = true
 change_light_on_interact = true
 interact_light_color = Color(1, 0.18431373, 0.043137256, 1)
 
+[node name="PressSFX" parent="Button2" index="3" unique_id=553839750]
+max_distance = 10.0
+
 [node name="Button3" parent="." unique_id=577450303 instance=ExtResource("12_aefbl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.836234, -9.2279005, -21.322084)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.836234, -9.04926, -19.11868)
 press_sfx = ExtResource("23_twjlp")
 one_shot = true
 change_light_on_interact = true
@@ -683,7 +691,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9407501, 2.9642792, 0.0138
 shape = SubResource("BoxShape3D_vlwju")
 
 [node name="OtherFloormover" type="Node3D" parent="." unique_id=753797519]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.095961, -9.2279005, -20.423912)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.095961, -9.2279005, -18.914963)
 script = ExtResource("19_v6hmr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="OtherFloormover" unique_id=903537215]
@@ -710,22 +718,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.100525)
 
 [node name="CollisionShape3D" parent="Fleshwall7/KillArea" parent_id_path=PackedInt32Array(1243869891, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.100525)
-shape = SubResource("BoxShape3D_slqac")
+shape = SubResource("BoxShape3D_yyxq6")
 
 [node name="Fleshwall8" parent="." unique_id=1110071725 instance=ExtResource("20_tptxg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.748284, -3.505371, -12.083965)
 
 [node name="MeshInstance3D" parent="Fleshwall8" index="0" unique_id=1220182386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.100525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.325886)
 mesh = SubResource("BoxMesh_yyxq6")
 surface_material_override/0 = SubResource("StandardMaterial3D_0r82h")
 
 [node name="CollisionShape3D" parent="Fleshwall8/StaticBody3D" parent_id_path=PackedInt32Array(1110071725, 986591082) index="0" unique_id=243917892]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.100525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.325886)
 
 [node name="CollisionShape3D" parent="Fleshwall8/KillArea" parent_id_path=PackedInt32Array(1110071725, 771003561) index="0" unique_id=771003562]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.100525)
-shape = SubResource("BoxShape3D_b0vnj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.325886)
+shape = SubResource("BoxShape3D_twjlp")
 
 [node name="Fleshwall2" parent="." unique_id=989634195 instance=ExtResource("20_tptxg")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.748284, -5.745433, 9.755926)
@@ -738,7 +746,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5004883)
 
 [node name="CollisionShape3D" parent="Fleshwall2/KillArea" parent_id_path=PackedInt32Array(989634195, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5004883)
-shape = SubResource("BoxShape3D_uqj3m")
+shape = SubResource("BoxShape3D_s4lkw")
 
 [node name="Fleshwall13" parent="." unique_id=684978589 instance=ExtResource("20_tptxg")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.748284, -9.783321, 9.755926)
@@ -753,7 +761,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5004883)
 
 [node name="CollisionShape3D" parent="Fleshwall13/KillArea" parent_id_path=PackedInt32Array(684978589, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5004883)
-shape = SubResource("BoxShape3D_8f4yp")
+shape = SubResource("BoxShape3D_slqac")
 
 [node name="Fleshwall9" parent="." unique_id=1673243480 instance=ExtResource("20_tptxg")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.748284, -5.745433, -46.12457)
@@ -768,7 +776,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7563477)
 
 [node name="CollisionShape3D" parent="Fleshwall9/KillArea" parent_id_path=PackedInt32Array(1673243480, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7563477)
-shape = SubResource("BoxShape3D_faqj1")
+shape = SubResource("BoxShape3D_b0vnj")
 
 [node name="Fleshwall3" parent="." unique_id=1235013601 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 11.2501545, -5.745433, 7.4768314)
@@ -783,7 +791,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.173584)
 
 [node name="CollisionShape3D" parent="Fleshwall3/KillArea" parent_id_path=PackedInt32Array(1235013601, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.173584)
-shape = SubResource("BoxShape3D_yyxq6")
+shape = SubResource("BoxShape3D_dam8u")
 
 [node name="Fleshwall6" parent="." unique_id=152124562 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 6.068604, -5.745433, 7.4768314)
@@ -798,7 +806,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.173584)
 
 [node name="CollisionShape3D" parent="Fleshwall6/KillArea" parent_id_path=PackedInt32Array(152124562, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.173584)
-shape = SubResource("BoxShape3D_twjlp")
+shape = SubResource("BoxShape3D_faqj1")
 
 [node name="Fleshwall10" parent="." unique_id=1790440044 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 6.068604, -7.4851046, -11.549368)
@@ -813,7 +821,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.726807, -4.7683716e-07, -1
 
 [node name="CollisionShape3D" parent="Fleshwall10/KillArea" parent_id_path=PackedInt32Array(1790440044, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.726807, -4.7683716e-07, -1.1735826)
-shape = SubResource("BoxShape3D_dam8u")
+shape = SubResource("BoxShape3D_spa5s")
 
 [node name="Fleshwall14" parent="." unique_id=1688850068 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 11.243656, -7.4851046, -11.549368)
@@ -828,7 +836,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.726807, -4.7683716e-07, -1
 
 [node name="CollisionShape3D" parent="Fleshwall14/KillArea" parent_id_path=PackedInt32Array(1688850068, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.726807, -4.7683716e-07, -1.1735826)
-shape = SubResource("BoxShape3D_36f5a")
+shape = SubResource("BoxShape3D_8f4yp")
 
 [node name="Fleshwall11" parent="." unique_id=963524175 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 6.068604, -7.4851046, -6.3018637)
@@ -843,7 +851,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.512451, -0.058413506, -3.3
 
 [node name="CollisionShape3D" parent="Fleshwall11/KillArea" parent_id_path=PackedInt32Array(963524175, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.512451, -0.058413506, -3.3718553)
-shape = SubResource("BoxShape3D_spa5s")
+shape = SubResource("BoxShape3D_8bhsm")
 
 [node name="Fleshwall12" parent="." unique_id=324618990 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 11.122869, -7.1159563, -6.3018637)
@@ -858,7 +866,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1500244, 9.536743e-07, -3.
 
 [node name="CollisionShape3D" parent="Fleshwall12/KillArea" parent_id_path=PackedInt32Array(324618990, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1500244, 9.536743e-07, -3.5838008)
-shape = SubResource("BoxShape3D_8bhsm")
+shape = SubResource("BoxShape3D_36f5a")
 
 [node name="Fleshwall5" parent="." unique_id=2046913122 instance=ExtResource("20_tptxg")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 11.2501545, -5.745433, 7.4768314)
@@ -873,7 +881,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.9370117)
 
 [node name="CollisionShape3D" parent="Fleshwall5/KillArea" parent_id_path=PackedInt32Array(2046913122, 771003561) index="0" unique_id=771003562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17871094, 0, -1.9370117)
-shape = SubResource("BoxShape3D_s4lkw")
+shape = SubResource("BoxShape3D_so78h")
 
 [node name="UnlockArea2" parent="." unique_id=508350657 instance=ExtResource("12_gmjid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.667468, -6.5758557, 3.3780835)
@@ -890,14 +898,13 @@ level_timer = NodePath("../LevelTimer")
 
 [node name="FinishLine2" parent="." unique_id=99248311 node_paths=PackedStringArray("level_timer") instance=ExtResource("22_tptxg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.614584, -12.161096, 3.1416044)
+visible = false
 next_level = ExtResource("23_sks0t")
 level_timer = NodePath("../LevelTimer")
 
 [connection signal="pressed" from="Button" to="doorway_hr_12/doorway_hr_1/metal_door_1" method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="Node3D" method="_on_button_pressed"]
 [connection signal="hit" from="Target" to="Floormover" method="_on_target_hit"]
-[connection signal="pressed" from="Button2" to="Musicdampener" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="Musicdampener" method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button3" to="OtherFloormover" method="_on_button_3_pressed"]
 
 [editable path="PlayerController"]
@@ -907,6 +914,7 @@ level_timer = NodePath("../LevelTimer")
 [editable path="Button"]
 [editable path="Node3D/TimeStopZone"]
 [editable path="TimeStopZone"]
+[editable path="Button2"]
 [editable path="Button3"]
 [editable path="Fleshwall7"]
 [editable path="Fleshwall8"]

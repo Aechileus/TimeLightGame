@@ -22,10 +22,12 @@
 [ext_resource type="Script" uid="uid://cmneuplv0tsds" path="res://GameScenes/GameplayScenes/level_restarter_temp.gd" id="19_4yths"]
 [ext_resource type="PackedScene" uid="uid://crnws1je2racs" path="res://Assets/Creatures/DefaultMonster.tscn" id="19_qlc7j"]
 [ext_resource type="PackedScene" uid="uid://bi5m5xaah2oxr" path="res://Assets/GameplayPieces/finish_line.tscn" id="23_40cht"]
-[ext_resource type="PackedScene" uid="uid://dcfxcv67ffmmo" path="res://GameScenes/GameplayScenes/playground.tscn" id="24_13i0x"]
+[ext_resource type="PackedScene" uid="uid://cs8lxvcdxl7px" path="res://GameScenes/Levels/Tutorial3.tscn" id="24_njssb"]
 [ext_resource type="PackedScene" uid="uid://tfwp5nchgtp1" path="res://Assets/StructurePieces/CSG/csg_slope.tscn" id="25_ecqmf"]
 [ext_resource type="PackedScene" uid="uid://clqdgjtfxxege" path="res://Assets/GameplayPieces/level_music.tscn" id="26_gwrfu"]
 [ext_resource type="Script" uid="uid://c3vdthgcwnwm1" path="res://Assets/GameplayPieces/hurtbox.gd" id="26_njssb"]
+[ext_resource type="AudioStream" uid="uid://djg7ms3ynfckg" path="res://Resources/SFX/tutorial2button.mp3" id="27_ru31p"]
+[ext_resource type="Script" uid="uid://dsxkkmq6xgfbs" path="res://GameScenes/Levels/levelmute.gd" id="28_ru31p"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3cm0x"]
 viewport_path = NodePath("Billboards/BillboardSign2/SubViewport2")
@@ -80,7 +82,7 @@ free_time_control = true
 [node name="PlayerCharacterBody3D" parent="PlayerController" index="4" unique_id=641531457]
 transform = Transform3D(0.99999994, 0, -2.3283064e-10, 0, 1, 0, 2.3283064e-10, 0, 0.99999994, 0, -0.38971734, 0)
 
-[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 54437740) index="0" unique_id=409042480]
+[node name="Skeleton3D" parent="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig/ArmsRig" parent_id_path=PackedInt32Array(440292127, 920561538, 1917370917) index="0" unique_id=1700755622]
 bones/1/rotation = Quaternion(-0.6771994, 0.20400533, 0.20417176, 0.6768284)
 bones/2/position = Vector3(-0.008651819, 0.202249, -0.010967473)
 bones/2/rotation = Quaternion(0.14560084, -0.48732963, 0.77661955, 0.3717153)
@@ -5717,44 +5719,6 @@ RUN FROM THE MONSTER BEHIND YOU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BillboardSign4" type="Sprite3D" parent="Billboards" unique_id=31123941]
-transform = Transform3D(0.96592593, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.96592593, 78.782845, -25.940907, -10.923875)
-billboard = 1
-double_sided = false
-render_priority = 4
-texture = SubResource("ViewportTexture_3cm0x")
-script = ExtResource("8_bma1b")
-
-[node name="SubViewport" type="SubViewport" parent="Billboards/BillboardSign4" unique_id=265506072]
-own_world_3d = true
-transparent_bg = true
-size = Vector2i(400, 321)
-render_target_update_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="Billboards/BillboardSign4/SubViewport" unique_id=791422762]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.27, 0.27, 0.27, 0)
-
-[node name="Label" type="RichTextLabel" parent="Billboards/BillboardSign4/SubViewport/ColorRect" unique_id=348441327]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("9_27x7b")
-theme_type_variation = &"WorldLabel"
-theme_override_font_sizes/normal_font_size = 20
-text = "By the way, using abilities not only
-cost you AP.  But it also eats at
-the time you have left."
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="BillboardSign3" type="Sprite3D" parent="Billboards" unique_id=391277962]
 transform = Transform3D(1.9106857e-15, 1, 4.3711392e-08, 4.3711395e-08, -4.371139e-08, 1.0000001, 1.0000001, 0, -4.3711395e-08, 50.30256, -32.546467, -0.080353655)
 double_sided = false
@@ -5794,12 +5758,6 @@ and right click to use it (left click to undo your queued action)
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TimeStopZone" parent="." unique_id=150785596 instance=ExtResource("2_0ct3m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.69888, -27.09424, -9.108236)
-
-[node name="CPUParticles3D" parent="TimeStopZone" index="1" unique_id=504264376]
-emitting = false
 
 [node name="FakeDoor" parent="." unique_id=1570751701 instance=ExtResource("6_iwhby")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 1.9174066, -2, 0)
@@ -5894,7 +5852,7 @@ script = ExtResource("19_4yths")
 
 [node name="FinishLine" parent="." unique_id=8209525 node_paths=PackedStringArray("level_timer") instance=ExtResource("23_40cht")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 142.09999, -25.899998, -25.7)
-next_level = ExtResource("24_13i0x")
+next_level = ExtResource("24_njssb")
 level_timer = NodePath("../LevelTimer")
 
 [node name="ceiling_lamp_1_off3" parent="." unique_id=1994364997 instance=ExtResource("4_kfubd")]
@@ -5944,13 +5902,26 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 59.9
 light_color = Color(1, 0, 0.20392157, 1)
 light_energy = 5.357
 
-[node name="LevelMusic" parent="." unique_id=6172196 instance=ExtResource("26_gwrfu")]
+[node name="Button2" parent="." unique_id=1007367724 instance=ExtResource("7_s61d0")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 80.78317, -25.713385, -10.869482)
+press_sfx = ExtResource("27_ru31p")
+one_shot = true
+change_light_on_interact = true
+interact_light_color = Color(1, 0, 0.105882354, 1)
+
+[node name="Musicdampener" type="Node3D" parent="." unique_id=1848371417 node_paths=PackedStringArray("music", "buttons")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 80.78317, -25.713385, -10.869482)
+script = ExtResource("28_ru31p")
+music = NodePath("LevelMusic")
+buttons = [NodePath("../Button2")]
+move_distance = 50.0
+
+[node name="LevelMusic" parent="Musicdampener" unique_id=347129609 instance=ExtResource("26_gwrfu")]
 
 [connection signal="pressed" from="Button" to="FloorCeilingTiled" method="_on_button_pressed"]
 
 [editable path="PlayerController"]
 [editable path="PlayerController/PlayerCharacterBody3D/PlayerCamera/arms_rig"]
-[editable path="TimeStopZone"]
 [editable path="Trigger Areas/TimeStopZone2/UnlockAbilities"]
 [editable path="Trigger Areas/UnpauseAndMonster"]
 [editable path="Trigger Areas/ceiling_lamp_1_off2"]

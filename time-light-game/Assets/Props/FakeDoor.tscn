@@ -7,7 +7,7 @@ size = Vector3(4.0321655, 3.0029602, 0.40826416)
 
 [node name="FakeDoor" unique_id=1570751701 instance=ExtResource("1_j64qk")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_1" parent_id_path=PackedInt32Array(1793968381) index="1" unique_id=1910445846]
+[node name="StaticBody3D" type="StaticBody3D" parent="doorway_hr_1" parent_id_path=PackedInt32Array(945340658) index="1" unique_id=1910445846]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="doorway_hr_1/StaticBody3D" index="0" unique_id=1068095589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009185791, 1.5044403, -0.0028381348)
