@@ -14,6 +14,11 @@
 			"uuid": "90a3ff6e-37c7-432b-bc65-5d6c6b0d053e",
 			"title": "Polish",
 			"color": "9ad82a"
+		},
+		{
+			"uuid": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"title": "Refactoring",
+			"color": "f5e312"
 		}
 	],
 	"stages": [
@@ -30,22 +35,20 @@
 		},
 		{
 			"uuid": "14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
-			"title": "IMPORTANT",
+			"title": "Todo: Bugfixes",
 			"tasks": [
+				"0a111623-6452-45ac-a99c-af14f782f009",
 				"4c8caa30-bf34-43eb-a77a-7be6c8caef8c",
-				"d2ab0628-2a01-419e-8eba-06d669fd32b8",
-				"db50e9d0-3e69-4fd0-bcb6-9b255d539b9d",
-				"540b444c-33cb-42eb-9160-bcd6fd811fd9"
+				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d",
+				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
+				"6f535da0-5467-4fbe-a685-9160672ddb67",
+				"5f6c942b-7658-4bcf-b259-86bc775d7a1c"
 			]
 		},
 		{
 			"uuid": "0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
 			"title": "Doing - Aech",
-			"tasks": [
-				"072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-				"e1653b3c-4933-4916-ae85-1d2184863784",
-				"1bad8d01-b74b-4bf0-825f-17c0bdb217c9"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "a0f6e42c-25ba-40d7-bca2-0341b98761eb",
@@ -53,26 +56,20 @@
 			"tasks": [
 				"71dd28a6-560a-414c-94ec-5a642ecac30b",
 				"a7306602-e9a9-4c98-9210-220b43db50b5",
+				"d2ab0628-2a01-419e-8eba-06d669fd32b8",
 				"f0f51e34-9ef3-453c-af0e-8ee75fdd742b",
 				"83e02859-43ab-40a1-bc69-33701a281a41",
+				"e1653b3c-4933-4916-ae85-1d2184863784",
 				"88346907-8f04-487d-aebe-f5d2f1e03f8b",
 				"8d662409-cb6c-4bc7-8567-f105100f5df8"
-			]
-		},
-		{
-			"uuid": "a382d40d-47a3-42c7-9c5e-451ed7717993",
-			"title": "Todo: Bugfixes",
-			"tasks": [
-				"0a111623-6452-45ac-a99c-af14f782f009",
-				"7acc7dca-b8f0-45f1-a269-2e3360d2fb2d",
-				"3be0ebde-f941-4e39-b9e9-ababa08876fb",
-				"6f535da0-5467-4fbe-a685-9160672ddb67"
 			]
 		},
 		{
 			"uuid": "e217d85f-87ef-4bfa-8e5a-45f59656f907",
 			"title": "Done",
 			"tasks": [
+				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce",
+				"540b444c-33cb-42eb-9160-bcd6fd811fd9",
 				"df4e23bf-31c5-44a7-96eb-7308a3ad3e50",
 				"9dca3a24-8ca5-4c4e-b630-ea8504d3aab5",
 				"5bf10403-7344-4ac2-aa57-b600a050817d",
@@ -105,7 +102,17 @@
 			"uuid": "356adc85-abbc-4362-bca0-d9fe5af2229e",
 			"title": "Doing - Snake",
 			"tasks": [
-				"5402b4b4-8ccf-4f2f-a1cb-3e475f4976ce"
+				"914fe28f-2ae1-43b0-861b-ad1b7947669a",
+				"19836fa8-6da8-4097-9f10-5282de961bf1"
+			]
+		},
+		{
+			"uuid": "c9acc0d2-ff4b-4085-bb5d-8eee3171a028",
+			"title": "Todo: Refactoring",
+			"tasks": [
+				"3e5c2874-4250-4f92-bfb2-c9e62cb77913",
+				"2c03aaba-eef0-45be-894e-c91327b32278",
+				"477045e9-eb3f-4e49-b7fc-f924ffd78ad3"
 			]
 		}
 	],
@@ -177,13 +184,6 @@
 			"uuid": "06596bd5-cd59-47f8-ade3-9075b1847e37",
 			"title": "Inertia?",
 			"description": "Maybe a slight inertia system could be interesting\nI decided to make it so speed ramps down really quickly when youre above a speed cap for sprinting or walking.  This doesnt feel floaty like ice, and also lets you feel like you can go fast...",
-			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
-			"steps": []
-		},
-		{
-			"uuid": "072c2cc6-c3b5-4098-bea3-8598fa3f8d6b",
-			"title": "COMMENT EVERYTHING",
-			"description": "Need to add comments to all component functions since it can be confusing reading them not all under one big script.",
 			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
 			"steps": []
 		},
@@ -471,13 +471,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "db50e9d0-3e69-4fd0-bcb6-9b255d539b9d",
-			"title": "Add a ticking effect that follows level timer",
-			"description": "See messages in the group chat for proposed spec",
-			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
-			"steps": []
-		},
-		{
 			"uuid": "540b444c-33cb-42eb-9160-bcd6fd811fd9",
 			"title": "ENEMIES DON'T SPAWN WITH ENEMY GROUP",
 			"description": "I can't kill them with spikes because when checked they never seem to have the enemy group",
@@ -513,10 +506,67 @@
 			"steps": []
 		},
 		{
-			"uuid": "1bad8d01-b74b-4bf0-825f-17c0bdb217c9",
-			"title": "New task",
+			"uuid": "914fe28f-2ae1-43b0-861b-ad1b7947669a",
+			"title": "Player Movement",
+			"description": "Simplify the amount of configuration to make tuning easier and more simple, and in general make the code more centralised and easier to find.\n",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": [
+				{
+					"details": "Find good ways to split up `player_controller.gd`",
+					"done": false
+				},
+				{
+					"details": "Read, streamline, dedup and comment player controller code",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "3e5c2874-4250-4f92-bfb2-c9e62cb77913",
+			"title": "Audio system",
+			"description": "Currently there are a good few bugs with audio looping, especially while time is paused, and the lack of/presence of intro files for the different pause tracks.",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": [
+				{
+					"details": "Make an audio manager that's maintained between scenes for controling the bigger things like level/menu music\n",
+					"done": false
+				},
+				{
+					"details": "Use global signals/properly-defined locations of signals for swapping tracks",
+					"done": false
+				},
+				{
+					"details": "Add good support for turning down the music during voice lines",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "2c03aaba-eef0-45be-894e-c91327b32278",
+			"title": "Move as much text as possible to UI",
+			"description": "I was thinking of text boxes, as from watching a couple of people play through, all of them struggled to read the text",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": []
+		},
+		{
+			"uuid": "477045e9-eb3f-4e49-b7fc-f924ffd78ad3",
+			"title": "Level handling",
+			"description": "Ideally, we should keep more components static and render level scenes in other places",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": []
+		},
+		{
+			"uuid": "5f6c942b-7658-4bcf-b259-86bc775d7a1c",
+			"title": "Pressing escape on the web build will release the mouse before pausing the game",
 			"description": "",
-			"category": "14bc8dfc-382b-4779-a576-ff565ed63cbd",
+			"category": "e87a803b-1fa7-4b22-adaf-7646a0ee04c3",
+			"steps": []
+		},
+		{
+			"uuid": "19836fa8-6da8-4097-9f10-5282de961bf1",
+			"title": "Remove `_` prefixes for variable and function names across the project",
+			"description": "If needed, @warning_ignore(), @warning_ignore_start(), @warning_ignore_restore() exist, though it's helped me catch a good few errors already to not have them on. ",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
 			"steps": []
 		}
 	],
@@ -524,11 +574,11 @@
 		"columns": [
 			[
 				"c65051d6-580c-4ecf-9c68-95bbc66d7b4b",
-				"a0f6e42c-25ba-40d7-bca2-0341b98761eb",
-				"a382d40d-47a3-42c7-9c5e-451ed7717993"
+				"a0f6e42c-25ba-40d7-bca2-0341b98761eb"
 			],
 			[
-				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d"
+				"14cd6ba6-9f3e-48b7-8859-4c6a5460e03d",
+				"c9acc0d2-ff4b-4085-bb5d-8eee3171a028"
 			],
 			[
 				"0612e6e4-ce27-4508-9e27-7cd7181ae9fa",
