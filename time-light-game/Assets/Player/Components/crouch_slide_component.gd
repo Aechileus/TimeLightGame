@@ -8,13 +8,13 @@ class_name PlayerCrouchSlideComponent
 @export_range(0.1, 20.0, 0.1) var slide_minimum_entry_speed: float = 5.5
 ## The speed you get set to when you start sliding (m/s)
 @export_range(0.1, 30.0, 0.1) var slide_start_speed: float = 8.0
+## The deceleration when sliding on a ramp (m/s^2)
 @export_range(0.1, 30.0, 0.1) var slide_friction: float = 4.0
 @export_range(0.1, 10.0, 0.1) var slide_exit_speed: float = 2.5
 @export_range(0.0, 10.0, 0.1) var slide_steering: float = 2.5
 
 @export_group("Ramp Slide")
-## how hard a downhill slide pulls you along the slope, bigger means it builds
-## speed faster. gets scaled by how steep the ramp is
+## The acceleration given to a player moving up or down a ramp (m/s^2)
 @export_range(0.0, 40.0, 0.5) var ramp_acceleration: float = 14.0
 ## ceiling on slide speed so a long ramp doesnt fling you to the moon
 @export_range(1.0, 60.0, 0.5) var max_slide_speed: float = 30.0
@@ -118,7 +118,7 @@ func start_slam():
 	slam_time = 0.0
 	body.velocity.y -= slam_speed 
 	
-## Apply steering and friction while a slide is active.
+## Apply slope pull, friction and speed limits for slides
 func apply_slide_motion(delta: float, current_move_direction: Vector3) -> bool:
 	var velocity := Vector3(body.velocity.x, 0.0, body.velocity.z)
 	var speed := velocity.length()

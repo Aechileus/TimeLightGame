@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jy04eyhe2x6r" path="res://Assets/Player/player_controller.gd" id="1_player"]
 [ext_resource type="AudioStream" uid="uid://dopjj0qliv1x5" path="res://Resources/SFX/PlaceholderSFX/owww.wav" id="2_bdrri"]
+[ext_resource type="Script" uid="uid://bl2qvcmusv5qw" path="res://Assets/Player/base_movement.gd" id="3_fk3g0"]
 [ext_resource type="AudioStream" uid="uid://c4hqdnad4fpnt" path="res://Resources/SFX/Footsteps/carpet.wav" id="3_ihoj2"]
 [ext_resource type="AudioStream" uid="uid://daf52s15mlwco" path="res://Resources/SFX/Footsteps/wood.ogg" id="4_6d8w8"]
 [ext_resource type="Script" uid="uid://thsejqie53kp" path="res://Assets/Player/Components/wall_movement_component.gd" id="5_wall"]
@@ -105,6 +106,9 @@ theme_override_font_sizes/font_size = 32
 text = "HP: 3"
 
 [node name="Components" type="Node" parent="." unique_id=1210953728]
+
+[node name="BaseMovement" type="Node" parent="Components" unique_id=1927816161]
+script = ExtResource("3_fk3g0")
 
 [node name="WallMovement" type="Node" parent="Components" unique_id=264129517]
 script = ExtResource("5_wall")

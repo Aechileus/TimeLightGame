@@ -102,8 +102,8 @@
 			"uuid": "356adc85-abbc-4362-bca0-d9fe5af2229e",
 			"title": "Doing - Snake",
 			"tasks": [
-				"914fe28f-2ae1-43b0-861b-ad1b7947669a",
-				"19836fa8-6da8-4097-9f10-5282de961bf1"
+				"19836fa8-6da8-4097-9f10-5282de961bf1",
+				"73fd02a4-3d5f-48e1-b298-272ba93f395b"
 			]
 		},
 		{
@@ -112,7 +112,9 @@
 			"tasks": [
 				"3e5c2874-4250-4f92-bfb2-c9e62cb77913",
 				"2c03aaba-eef0-45be-894e-c91327b32278",
-				"477045e9-eb3f-4e49-b7fc-f924ffd78ad3"
+				"477045e9-eb3f-4e49-b7fc-f924ffd78ad3",
+				"914fe28f-2ae1-43b0-861b-ad1b7947669a",
+				"447aa4e2-760d-4329-a612-0821705dc53e"
 			]
 		}
 	],
@@ -568,6 +570,38 @@
 			"description": "If needed, @warning_ignore(), @warning_ignore_start(), @warning_ignore_restore() exist, though it's helped me catch a good few errors already to not have them on. ",
 			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
 			"steps": []
+		},
+		{
+			"uuid": "73fd02a4-3d5f-48e1-b298-272ba93f395b",
+			"title": "Remodel the playground",
+			"description": "",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": [
+				{
+					"details": "Use CSGComponents instead of single mesh instances",
+					"done": false
+				},
+				{
+					"details": "Put in examples of all of the features that we add",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "447aa4e2-760d-4329-a612-0821705dc53e",
+			"title": "Add a debug mode",
+			"description": "",
+			"category": "81ad5cd6-e92e-4294-89e4-c9403629ab59",
+			"steps": [
+				{
+					"details": "Hotkeys for freecam/free movement",
+					"done": false
+				},
+				{
+					"details": "Quick unlocks for abilities/level timer",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

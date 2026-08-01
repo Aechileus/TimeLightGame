@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="TimeLightGame"
+config/name="John Time"
+config/version="0.1"
 run/main_scene="uid://b6sdnn32gsh07"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Resources/icon.svg"
